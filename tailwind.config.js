@@ -29,13 +29,19 @@ module.exports = {
         base: "1rem", // 16px
         md: "1.0625rem", // 17px
         lg: "1.25rem", // 20px
-        large: "1.375rem", // 22px
-        xl: "3.125rem", //50px
-        xxl: "3.75rem", //60px
-        xxxl: "6.875rem", //110px
-        large: "2rem",
-        medium: "2.9rem",
-        banner: "4.375rem", //70px
+        vlg: "1.375rem", // 22px
+        vvlg: "1.5rem", // 24px
+        vvvlg: "1.6875rem", // 27px
+        xlg: "1.875", //30px
+        xxlg: "2rem", //32px
+        xxxlg: "2.1875rem", //35px
+        xxxlg: "2.375rem", //38px
+        sxlg: "2.5rem", //40px
+        font60: "3.75rem", //60px
+        font71: "4.375rem", //71px
+        font79: "4.9375rem", //79px
+        font85: "5.3125rem", //85px
+        font123: "7.6875rem", //123px
       },
       lineHeight: {
         half: "0.5",
