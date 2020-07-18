@@ -5,7 +5,7 @@ export default {
   title: "Test",
   component: TestComponent,
 };
-const data = { name: "Elhaw" };
+const data = { name: "Initial set up" };
 export const TestComponentComponent = () => {
   return <TestComponent name={data.name} />;
 };
