@@ -12,61 +12,38 @@ module.exports = {
     },
     extend: {
       colors: {
-        c000: "#ffffff",
-        c100: "#254151",
-        c200: "#d55342",
-        c300: "#efc94c",
-        c400: "#3d9c85",
-        c500: "#4777ce",
-        c600: "#7d8589",
-        c700: "#bac9d2",
-        c800: "#f0ece3",
-        c900: "#1f3948",
-        c1000: "#ff980061",
+        c000: "#ffffff", //white
+        c100: "#000000", // black
+        c200: "#66f28d",
+        c300: "#2D5BFF",
+        c400: "rgba(102, 242, 141, 0.61)",
+        c500: "rgba(0, 0, 0, 0.38)",
+        c600: "rgba(0, 0, 0, 0.51)",
+        c700: "rgba(0, 0, 0, 0.62)",
+        c800: "rgba(0, 0, 0, 0.7)",
+        c900: "rgba(0, 0, 0, 0.96)",
+        c1000: "#0A0A0A",
       },
       fontSize: {
-        sm: "0.875rem", //14px
-        base: "1rem", // 16px
-        md: "1.0625rem", // 17px
-        lg: "1.25rem", // 20px
-        vlg: "1.375rem", // 22px
-        vvlg: "1.5rem", // 24px
-        vvvlg: "1.6875rem", // 27px
-        xlg: "1.875", //30px
-        xxlg: "2rem", //32px
-        xxxlg: "2.1875rem", //35px
-        xxxlg: "2.375rem", //38px
-        sxlg: "2.5rem", //40px
-        font60: "3.75rem", //60px
-        font71: "4.375rem", //71px
-        font79: "4.9375rem", //79px
-        font85: "5.3125rem", //85px
-        font123: "7.6875rem", //123px
+        xxs: "0.875rem", //14px
+        xs: "1rem", // 16px
+        sm: "1.25rem", // 20px
+        base: "1.5rem", // 24px
+        md: "1.75rem", // 28px
+        lg: "2.125rem", //34px
+        xlg: "2.375rem", //38px
+        xxlg: "2.5rem", //40px
+        xxxlg: "3.75rem", //60px
+        super: "4.375rem", //70px
+        ultra: "5rem", //80px
+        giant: "7.75rem", //124px
       },
       lineHeight: {
-        half: "0.5",
-        none: "1",
-        tighter: "1.2",
-        tight: "1.25",
-        snug: "1.375",
-        normal: "1.5",
-        relaxed: "1.625",
-        loose: "2",
-      },
-      letterSpacing: {
-        widest: "0.2em",
-      },
-      borderWidth: {
-        "6": "6px",
-      },
-      spacing: {
-        "7": "1.75rem",
-        "28": "7rem",
+        body: "1.2",
       },
     },
   },
   corePlugins: {
-    textDecoration: false,
     container: false,
   },
   variants: {},
