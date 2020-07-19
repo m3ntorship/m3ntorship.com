@@ -1,0 +1,15 @@
+.gradient-green {
+  background: linear-gradient(
+    0deg,
+    theme('colors.c200') 0%,
+    theme('colors.c000') 40%
+  );
+}
+
+.gradient-blue {
+  background: linear-gradient(
+    0deg,
+    theme('colors.c300') 0%,
+    theme('colors.c000') 40%
+  );
+}
