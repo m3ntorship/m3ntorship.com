@@ -22,8 +22,8 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
     <>
       {cardDetails && (
         <div
-          style={boxShadow && { boxShadow: '0 0 40px rgba(0, 0, 0, 0.1)' }}
-          className={cn('card', 'my-12', 'overflow-hidden', 'px-4', 'py-8', {
+          style={{ boxShadow: boxShadow && '0 0 40px rgba(0, 0, 0, 0.1)' }}
+          className={cn('card', 'overflow-hidden', 'px-4', 'py-8', {
             'bg-c400': bgColord,
             'text-center': rounded
           })}
