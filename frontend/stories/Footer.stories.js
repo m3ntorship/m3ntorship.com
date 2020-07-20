@@ -11,16 +11,16 @@ export default {
 const data = {
   links: [
     { text: 'Github', url: 'github.com' },
-    { text: 'Github', url: 'github.com' },
-    { text: 'Github', url: 'github.com' },
-    { text: 'Github', url: 'github.com' }
+    { text: 'Facebook', url: 'github.com' },
+    { text: 'Twitter', url: 'github.com' },
+    { text: 'infot@m3notorship.com', url: 'github.com' }
   ],
   about: {
     text:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculis ...',
     url: '#'
   },
-  copyrights: 'M3ntorship © 2019-2020. All rights reserved.'
+  copyrights: 'M3ntorship © 2019-2020.'
 };
 export const FooterComponent = () => {
   return <Footer data={data} />;
