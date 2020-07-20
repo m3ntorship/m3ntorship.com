@@ -1,6 +1,6 @@
 import React from 'react';
 import image from './images/Squiggles Monochromatic.png';
-import './style.css';
+import '../../styles/goals.css';
 
 const Goals = ({ data }) => {
   const { title, goals } = data;
