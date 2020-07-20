@@ -2,7 +2,7 @@
   background: linear-gradient(
     0deg,
     theme('colors.c200') 0%,
-    theme('colors.c000') 40%
+    rgba(0, 0, 0, 0) 40%
   );
 }
 
@@ -10,6 +10,6 @@
   background: linear-gradient(
     0deg,
     theme('colors.c300') 0%,
-    theme('colors.c000') 40%
+    rgba(0, 0, 0, 0) 40%
   );
 }
