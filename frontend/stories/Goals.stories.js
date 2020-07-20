@@ -1,7 +1,8 @@
 import React from 'react';
 import Goals from '../components/Goals';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 
-export default { title: 'Goals', component: Goals };
+export default { title: 'Goals', component: Goals, decorators: [withKnobs] };
 
 const data = {
   header: 'Goals',
@@ -12,5 +13,11 @@ const data = {
 };
 
 export const GoalsComponent = () => {
-  return <Goals header={data.header} goals={data.goals} />;
+  return (
+    <Goals
+      data={data}
+      loading={boolean('Loading', false)}
+      error={boolean('Error', false)}
+    />
+  );
 };
