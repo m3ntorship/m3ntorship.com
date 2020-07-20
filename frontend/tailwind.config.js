@@ -39,8 +39,7 @@ module.exports = {
     },
     extend: {
       lineHeight: {
-        body: '1.2',
-        remove: '.9'
+        body: '1.2'
       }
     }
   },
