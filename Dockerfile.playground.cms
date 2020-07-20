@@ -1,23 +1,19 @@
 FROM strapi/base
-
 ARG STRAPI_ADMIN_PATH
-ENV STRAPI_ADMIN_PATH=$STRAPI_ADMIN_PATH
-WORKDIR /m3-strapi
-COPY ./package.json ./
-COPY ./yarn.lock ./
+ENV STRAPI_ADMIN_PATH=$STRAPI_ADMIN_PAT
+ENV NODE_ENV production
+WORKDIR /m3ntorshipcom-cms
+COPY ./backend/package.json ./
+COPY ./backend/yarn.lock ./
+
+COPY ./backend/api ./api
+COPY ./backend/components ./components
+COPY ./backend/config ./config
+COPY ./backend/extensions ./extensions
+COPY ./backend/public ./public
+COPY ./backend/favicon.ico ./favicon.ico
 
 RUN yarn install
-
-COPY ./api ./api
-COPY ./components ./components
-COPY ./config ./config
-COPY ./extensions ./extensions
-COPY ./providers ./providers
-COPY ./public ./public
-COPY ./favicon.ico ./favicon.ico
-
-ENV NODE_ENV production
-
 RUN yarn build
 
 EXPOSE 1337
