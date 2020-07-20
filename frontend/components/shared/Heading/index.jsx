@@ -4,7 +4,7 @@ import cn from 'classnames';
 export const Heading = ({ children, type }) => {
   return (
     <span
-      className={cn('font-bold leading-remove inline-block', {
+      className={cn('font-bold', {
         //Text Size
         'text-super': !type || type === 'main',
         'text-xxxlg': type === 'secondary',
@@ -25,13 +25,10 @@ export const GradientText = ({ text, gradientColor }) => {
   }
   return (
     <span
-      className={cn(
-        'heading__secondary-text leading-remove inline-block relative ',
-        {
-          'gradient-green': !gradientColor || gradientColor === 'green',
-          'gradient-blue': gradientColor === 'blue'
-        }
-      )}
+      className={cn({
+        'gradient-green': !gradientColor || gradientColor === 'green',
+        'gradient-blue': gradientColor === 'blue'
+      })}
     >
       {text}
     </span>
