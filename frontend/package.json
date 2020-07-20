@@ -16,7 +16,6 @@
     "postcss-nested": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
     "react": "^16.13.1",
-    "react-content-loader": "^5.1.0",
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.26.2",
     "react-spring": "^8.0.27",
