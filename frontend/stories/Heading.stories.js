@@ -7,14 +7,13 @@ export default {
   component: Heading,
   decorators: [withKnobs]
 };
-const headingText = text('Heading Text', 'Hello World');
 export const HeadingComponent = () => {
   return (
     <Heading type={text('type', 'main')}>
-      {headingText}{' '}
+      {text('Heading Text', 'Hello World')}{' '}
       <GradientText
         text={text('gradient text', 'Colored Text')}
-        color={text('corlor', 'blue')}
+        gradientColor={text('corlor', 'blue')}
       />
     </Heading>
   );
