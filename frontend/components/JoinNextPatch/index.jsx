@@ -10,8 +10,6 @@ const JoinNextPatch = ({ data }) => {
       <p className="text-center my-8 px-2 text-xs font-normal">
         {data.description}
       </p>
-      <img src="../public/Squiggles Colorful-1.png" alt="" />
-      <img src="../public/Squiggles Colorful-2.png" alt="" />
     </div>
   );
 };
