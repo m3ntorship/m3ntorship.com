@@ -13,11 +13,5 @@ const data = {
 };
 
 export const GoalsComponent = () => {
-  return (
-    <Goals
-      data={data}
-      loading={boolean('Loading', false)}
-      error={boolean('Error', false)}
-    />
-  );
+  return <Goals data={data} />;
 };
