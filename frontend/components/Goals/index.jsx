@@ -8,7 +8,7 @@ const Goals = ({ data }) => {
     return (
       <div className="relative w-full">
         <div className="text-center my-10 text-lg container">
-          <div className="absolute graph">
+          <div className="absolute graph opacity-25 md:opacity-100">
             <img src={image} />
           </div>
           <h2 className="my-2 uppercase font-bold text-c100 mb-5 title">
