@@ -4,12 +4,12 @@ import ContentLoader from 'react-content-loader';
 import './style.css';
 
 const Goals = ({ data, loading, error }) => {
-  // const data = useState(null)
-  // const loading = useState(false)
-  // const error = useState(false)
-
   if (error) {
-    return <div>Sorry An Error Accourd</div>;
+    return (
+      <div className="text-center my-16 text-lg text-c000 py-10 bg-red-600">
+        Sorry An Error occurd
+      </div>
+    );
   }
 
   if (loading) {
@@ -28,7 +28,7 @@ const Goals = ({ data, loading, error }) => {
           <img src={image} />
         </div>
         <h2 className="my-2 uppercase font-bold text-c100 mb-5 title">
-          {data.header}
+          {data.title}
         </h2>
         <div className="mt-16">
           {data.goals.map(goal => {
@@ -44,16 +44,16 @@ const Goals = ({ data, loading, error }) => {
 const GoalsLoader = props => (
   <ContentLoader
     speed={2}
-    width={500}
-    height={160}
-    viewBox="0 0 500 160"
+    width={1000}
+    height={300}
+    viewBox="0 0 1000 300"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     {...props}
   >
-    <rect x="200" y="33" rx="0" ry="0" width="101" height="23" />
-    <rect x="10" y="85" rx="0" ry="0" width="472" height="21" />
-    <rect x="10" y="138" rx="0" ry="0" width="474" height="21" />
+    <rect x="450" y="33" rx="0" ry="0" width="101" height="30" />
+    <rect x="100" y="100" rx="0" ry="0" width="800" height="30" />
+    <rect x="100" y="200" rx="0" ry="0" width="800" height="30" />
   </ContentLoader>
 );
 
