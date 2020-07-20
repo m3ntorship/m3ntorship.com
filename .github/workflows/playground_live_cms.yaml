@@ -8,7 +8,7 @@ on:
 env:
   # fixed deployment envs
   M3_IMAGE: ${{ secrets.M3_DOCKER_HOST }}/m3ntorshipcom
-  M3_DOCKER_FILE: Dockerfile.playground.cms
+  M3_DOCKER_FILE: backend/Dockerfile.playground.cms
 
 jobs:
   build:
