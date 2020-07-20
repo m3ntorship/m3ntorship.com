@@ -1,5 +1,4 @@
 import React from 'react';
-import image from './images/Squiggles Monochromatic.png';
 import { GradientText } from '../shared/Heading';
 import '../../styles/goals.css';
 
