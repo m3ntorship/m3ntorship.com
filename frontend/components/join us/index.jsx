@@ -7,7 +7,7 @@ const JoinUs = ({ data }) => {
     <div className="grid grid-cols-2 p-10">
       <div className="mx-6">
         <div className="JoinUs__dots float-right"></div>
-        <div className="mb-4 leading-normal">
+        <div className="mb-4 uppercase">
           <Heading type="main">
             {primaryHeading}{' '}
             <GradientText text={secondaryHeading} gradientColor="blue" />
