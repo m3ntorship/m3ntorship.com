@@ -16,7 +16,7 @@ export const BlackBtn = () => {
       textColor="white"
       bgColor="black"
       borderStyle="solid"
-      btnPadding="smBtn"
+      btnPadding="small"
       customClassName="custom"
     >
       <span>
@@ -32,7 +32,7 @@ export const BlueBtn = () => {
     <Button
       textColor="white"
       bgColor="blue"
-      btnPadding="small"
+      btnPadding="medium"
       customClassName="custom"
     >
       Apply now
@@ -45,7 +45,7 @@ export const GreenBtn = () => {
     <Button
       textColor="black"
       bgColor="green"
-      btnPadding="medium"
+      btnPadding="large"
       customClassName="custom"
     >
       Apply now
@@ -59,12 +59,10 @@ export const GrayBtn = () => {
       borderStyle="solid"
       borderColor="black"
       bgColor="gray"
+      btnPadding="medium"
       customClassName="custom"
     >
       Apply now
-      <span>
-        <img className="inline-block w-5" src={rightArrow}></img>
-      </span>
     </Button>
   );
 };

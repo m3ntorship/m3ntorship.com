@@ -41,8 +41,7 @@ const Button = ({ children, ...props }) => {
             'p-baseBtn': !btnPadding,
             'p-smBtn': btnPadding === 'small',
             'p-mdBtn': btnPadding === 'medium',
-            'p-lgBtn': btnPadding === 'large',
-            'p-vlgBtn': btnPadding === 'verylarge'
+            'p-lgBtn': btnPadding === 'large'
           },
           customClassName
         )}

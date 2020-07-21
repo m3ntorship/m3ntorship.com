@@ -37,6 +37,12 @@ module.exports = {
       ultra: '5rem', //80px
       giant: '7.75rem' //124px
     },
+    spacing: {
+      baseBtn: '1.5rem 2.25rem', //'24px 36px',
+      smBtn: '1rem 2.5rem', //'16px 40px',
+      mdBtn: '1.5rem 4rem', //'24px 64px',
+      lgBtn: '1.5rem 6.5rem' //'24px 104px'
+    },
     extend: {
       lineHeight: {
         body: '1.2'
