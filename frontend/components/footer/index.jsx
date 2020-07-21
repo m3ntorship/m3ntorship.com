@@ -9,17 +9,20 @@ const Footer = ({ data }) => {
         <div className="mx-4 relative">
           <div className="footer__copyrights__bg absolute xl:block float-right w-16 h-16"></div>
           <h2 className="font-bold mb-8 text-lg">M3ntorship</h2>
-          <p className="text-xxs text-c700 leading-5"> {copyrights}<br/> All rights reserved. </p>
+          <p className="text-xxs text-c700 leading-5">
+            {' '}
+            {copyrights}
+            <br /> All rights reserved.{' '}
+          </p>
         </div>
         <div className="mx-4">
           <h3 className="text-base mb-8 font-bold">About us</h3>
-          <p className='footer__about__description text-c700'>
-            {about.text}
-           
-          </p>
-           <a className="underline float-right" href={about.url}>
+          <p className="text-c700">
+            {about.text.slice(0, 120).concat('... ')}
+            <a className="underline" href={about.url}>
               Read More
             </a>
+          </p>
         </div>
         <div className="mx-4">
           <h3 className="text-base mb-6 font-bold">Links</h3>
