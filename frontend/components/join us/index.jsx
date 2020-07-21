@@ -13,7 +13,7 @@ const JoinUs = ({ data }) => {
             <GradientText text={secondaryHeading} gradientColor="blue" />
           </Heading>
         </div>
-        <p className="text-c700 text-md">{description}</p>
+        <p className="text-c600 text-base">{description}</p>
       </div>
       <div className="JoinUs__right"></div>
     </div>
