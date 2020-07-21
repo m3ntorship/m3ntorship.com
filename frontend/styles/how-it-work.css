@@ -1,0 +1,15 @@
+.num-component > div {
+  z-index: 2;
+  position: relative;
+  background-color: #fff;
+}
+.num-component > div::before {
+  content: '01';
+  font-size: 123px;
+  display: block;
+  /* position: absolute; */
+  transform: translateY(-240px) translateX(20px);
+  z-index: 1;
+  color: #87f5a6;
+  font-weight: bold;
+}
