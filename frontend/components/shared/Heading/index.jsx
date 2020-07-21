@@ -1,7 +1,13 @@
 import React from 'react';
 import cn from 'classnames';
 
-export const Heading = ({ children, type, className }) => {
+export const Heading = ({
+  children,
+  type,
+  textAlign,
+  textTransform,
+  className
+}) => {
   return (
     <span
       className={cn(
@@ -13,7 +19,13 @@ export const Heading = ({ children, type, className }) => {
           'text-xxlg': type === 'section',
           'text-lg': type === 'card',
           'text-md': type === 'cardSmall',
-          'text-ultra': type === 'mainLarge'
+          'text-ultra': type === 'mainLarge',
+          //Alignment
+          'text-left': !textAlign || textTransform === 'left',
+          'text-center': textAlign === 'center',
+          'text-right': textAlign === 'right',
+          //Text transform
+          uppercase: textTransform === 'uppercase'
         },
         className
       )}
