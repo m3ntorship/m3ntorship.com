@@ -13,12 +13,13 @@ const Footer = ({ data }) => {
         </div>
         <div className="mx-4">
           <h3 className="text-base mb-8 font-bold">About us</h3>
-          <p className='text-c700'>
-            {about.text}{' '}
-            <a className="underline" href={about.url}>
+          <p className='footer__about__description text-c700'>
+            {about.text}
+           
+          </p>
+           <a className="underline float-right" href={about.url}>
               Read More
             </a>
-          </p>
         </div>
         <div className="mx-4">
           <h3 className="text-base mb-6 font-bold">Links</h3>

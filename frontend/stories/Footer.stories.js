@@ -17,7 +17,7 @@ const data = {
   ],
   about: {
     text:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculis ...',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculis',
     url: '#'
   },
   copyrights: 'M3ntorship © 2019-2020.'

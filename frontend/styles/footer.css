@@ -7,3 +7,9 @@
     top: -10%;
     
 }
+
+.footer__about__description {
+    white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+}
