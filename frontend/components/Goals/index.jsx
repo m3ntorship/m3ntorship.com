@@ -1,6 +1,5 @@
 import React from 'react';
 import { GradientText } from '../shared/Heading';
-import '../../styles/goals.css';
 
 const Goals = ({ data }) => {
   const {
@@ -15,11 +14,16 @@ const Goals = ({ data }) => {
           <div className="absolute graph opacity-25 md:opacity-100">
             <img src={url} />
           </div>
-          <GradientText text={title} gradientColor="green" className="bold" />
-          <div className="mt-16">
+          <div className="uppercase font-bold">
+            <GradientText text={title} gradientColor="green" />
+          </div>
+          <div className="mt-10 md:mt-16">
             {goals_lists.map(({ id, text }) => {
               return (
-                <p className="uppercase mb-12 font-normal" key={id}>
+                <p
+                  className="uppercase mb-12 font-normal text-sm md:text-xlg"
+                  key={id}
+                >
                   {text}
                 </p>
               );
@@ -28,8 +32,6 @@ const Goals = ({ data }) => {
         </div>
       </div>
     );
-  } else {
-    return <div>Not Fetched Yet</div>;
   }
 };
 
