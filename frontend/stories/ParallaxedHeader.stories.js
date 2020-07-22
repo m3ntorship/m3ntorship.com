@@ -13,5 +13,9 @@ const data = {
 };
 
 export const ParallaxedHeaderComponent = () => {
-  return <ParallaxedHeader data={data} />;
+  return (
+    <div style={{ height: '1000px' }}>
+      <ParallaxedHeader data={data} />
+    </div>
+  );
 };

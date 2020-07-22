@@ -21,7 +21,7 @@ export const ParallaxedHeader = ({ data: { title, sub_title, imgUrl } }) => {
     };
   });
   return (
-    <div style={{ height: '1000px', background: 'red', overflow: 'hidden' }}>
+    <>
       <div className="bg-c200 py-32 lg:py-12">
         <div ref={ref}>
           <a.div
@@ -69,6 +69,6 @@ export const ParallaxedHeader = ({ data: { title, sub_title, imgUrl } }) => {
           ></path>{' '}
         </svg>{' '}
       </div>
-    </div>
+    </>
   );
 };
