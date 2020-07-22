@@ -14,9 +14,7 @@ const Goals = ({ data }) => {
           <div className="absolute graph opacity-25 md:opacity-100">
             <img src={url} />
           </div>
-          <div className="uppercase font-bold">
-            <GradientText text={title} gradientColor="green" />
-          </div>
+          <GradientText text={title} className="uppercase font-bold" />
           <div className="mt-10 md:mt-16">
             {goals_lists.map(({ id, text }) => {
               return (
