@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "goals",
+  "info": {
+    "name": "goals"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "side_image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "goals_lists": {
+      "collection": "goals-list"
+    }
+  }
+}
