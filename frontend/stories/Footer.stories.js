@@ -10,10 +10,10 @@ export default {
 };
 const data = {
   links: [
-    { text: 'Github', url: 'github.com' },
-    { text: 'Facebook', url: 'github.com' },
-    { text: 'Twitter', url: 'github.com' },
-    { text: 'infot@m3notorship.com', url: 'github.com' }
+    { text: 'Github', url: 'github.com', underline: false },
+    { text: 'Facebook', url: 'github.com', underline: false },
+    { text: 'Twitter', url: 'github.com', underline: false },
+    { text: 'infot@m3notorship.com', url: 'github.com', underline: true }
   ],
   about: {
     text:
