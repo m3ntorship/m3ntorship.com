@@ -9,7 +9,7 @@ const Footer = ({ data }) => {
         <div className="grid lg:grid-cols-3 grid-cols-1">
           <div className="mx-4 relative my-4">
             <div className="footer__copyrights__bg absolute hidden lg:block float-right w-16 h-16"></div>
-            <h2 className="font-bold mb-8 text-lg">M3ntorship</h2>
+            <h2 className="font-black mb-8 text-xlg">M3ntorship</h2>
             <p className="text-xxs text-c700 leading-5">
               {' '}
               {copyrights}
