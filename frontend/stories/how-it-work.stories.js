@@ -14,8 +14,8 @@ const data = {
   cardDetails: {
     image: sideImage,
     title: 'Apply',
-    description: 'Decide to join our program.',
-    subtitle: ''
+    description:
+      'Decide to join our program lorem ipsum dollar sient right now.'
   }
 };
 

@@ -13,14 +13,13 @@ const HowItWork = ({ title, paragraph, cardDetails }) => {
         </div>
         <p className="my-10 mx-auto text-base text-c600 w-3/4">{paragraph}</p>
         <div className="grid grid-cols-3 gap-10">
-          {test.map(() => {
+          {test.map((el, index) => {
             return (
               <div className="num-component relative">
-                <PersonCard
-                  cardDetails={cardDetails}
-                  boxShadow={true}
-                  bgColord="#fff"
-                />
+                <span className="num block text-giant transform translate-y-10 z-0 text-c400 font-bold ">{` 0${
+                  index + 1
+                }`}</span>
+                <PersonCard cardDetails={cardDetails} boxShadow={true} />
               </div>
             );
           })}
