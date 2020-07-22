@@ -11,7 +11,7 @@ export const Heading = ({
   return (
     <span
       className={cn(
-        'font-bold',
+        'font-black',
         {
           //Text Size
           'text-super': !type || type === 'main',
@@ -19,7 +19,7 @@ export const Heading = ({
           'text-xxlg': type === 'section',
           'text-lg': type === 'card',
           'text-md': type === 'cardSmall',
-          'text-ultra': type === 'mainLarge',
+          'text-xxlg md:text-ultra': type === 'mainLarge',
           //Alignment
           'text-left': !textAlign || textTransform === 'left',
           'text-center': textAlign === 'center',
