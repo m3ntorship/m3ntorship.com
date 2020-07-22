@@ -1,9 +1,9 @@
 import React from 'react';
 import { Heading } from '../shared/Heading';
-import Button from '../shared/Heading';
+import Button from '../shared/Button';
 
 const JoinUs = ({ data }) => {
-  const { title, description, left_img, right_img } = data;
+  const { description, left_img, right_img } = data;
   return (
     <div className="border-4 border-dashed border-c100">
       <div className="flex justify-around">
