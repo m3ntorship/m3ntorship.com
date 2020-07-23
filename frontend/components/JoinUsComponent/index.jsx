@@ -22,13 +22,8 @@ const JoinUs = ({ data }) => {
             {description}
           </p>
 
-          <div className="m-auto mt-8">
-            <Button
-              bgColor="green"
-              customClassName="font-bold text-xs uppercase"
-            >
-              Apply As Member
-            </Button>
+          <div className="m-auto mt-8 font-black text-xs uppercase">
+            <Button bgColor="green">Apply As Member</Button>
           </div>
           <div className="m-auto mt-5">
             <Button
