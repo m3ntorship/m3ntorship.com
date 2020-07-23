@@ -9,7 +9,7 @@ const JoinUs = ({ data }) => {
       <div className="flex justify-around">
         <div className="my-24 w-1/6">
           <img
-            className="object-cover w-11/12 hidden sm:block"
+            className="object-cover w-11/12 hidden md:block"
             src={left_img}
             alt=""
           />
@@ -41,7 +41,7 @@ const JoinUs = ({ data }) => {
         </div>
         <div className="my-24 w-1/6">
           <img
-            className="object-cover w-11/12 hidden sm:block"
+            className="object-cover w-11/12 hidden md:block"
             src={right_img}
             alt=""
           />
