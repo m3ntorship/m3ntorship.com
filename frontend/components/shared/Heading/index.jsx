@@ -11,7 +11,7 @@ export const Heading = ({
   return (
     <span
       className={cn(
-        'font-black',
+        'font-black inline-block',
         {
           //Text Size
           'text-super': !type || type === 'main',
