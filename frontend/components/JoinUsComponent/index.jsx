@@ -33,11 +33,25 @@ const JoinUs = ({ data }) => {
             {description}
           </p>
 
-          <div className="mt-8 font-black text-xs text-center uppercase">
-            <Button bgColor="green">{memberBtn}</Button>
+          <div className="mt-8 text-center">
+            <Button
+              customClassName="uppercase"
+              textSize="medium"
+              fontWeight="bold"
+              bgColor="green"
+            >
+              {memberBtn}
+            </Button>
           </div>
-          <div className="mt-5 font-black text-xs text-center uppercase">
-            <Button bgColor="blue">{mentorBtn}</Button>
+          <div className="mt-5 text-center">
+            <Button
+              customClassName="uppercase"
+              textSize="medium"
+              fontWeight="bold"
+              bgColor="blue"
+            >
+              {mentorBtn}
+            </Button>
           </div>
         </div>
         <div className="my-24 w-1/6">
