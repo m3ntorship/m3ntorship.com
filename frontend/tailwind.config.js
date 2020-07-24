@@ -40,6 +40,9 @@ module.exports = {
     extend: {
       lineHeight: {
         body: '1.2'
+      },
+      boxShadow: {
+        btn: '0px 4px 20px rgba(0, 0, 0, 0.1)'
       }
     }
   },
