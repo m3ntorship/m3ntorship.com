@@ -37,7 +37,9 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 'mx-auto',
                 'py-4',
                 'flex-wrap',
-                'items-center'
+                'items-center',
+                'justify-center',
+                'md:justify-start'
               )}
             >
               {images.map((image, i) => (
