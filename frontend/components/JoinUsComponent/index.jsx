@@ -3,7 +3,14 @@ import { Heading } from '../shared/Heading';
 import Button from '../shared/Button';
 
 const JoinUs = ({ data }) => {
-  const { description, left_img, right_img } = data;
+  const {
+    title,
+    description,
+    mentorBtn,
+    memberBtn,
+    left_img,
+    right_img
+  } = data;
   return (
     <div className="border-4 border-dashed border-c100">
       <div className="flex justify-around">
@@ -15,23 +22,22 @@ const JoinUs = ({ data }) => {
           />
         </div>
         <div className="w-3/6 flex flex-col justify-center mb-24">
-          <h1 className=" text-center mt-16 py-5 uppercase text-lg font-black">
-            <Heading type="cardSmall">Join Next Patch</Heading>
-          </h1>
-          <p className="join-us-description text-center px-2 pt-8 text-xs">
+          <Heading
+            type="cardSmall"
+            className="text-center mt-16 py-5 uppercase text-lg font-black"
+          >
+            {title}
+          </Heading>
+
+          <p className="join-us-description text-center px-2 pt-8 text-xs text-c500">
             {description}
           </p>
 
-          <div className="m-auto mt-8 font-black text-xs uppercase">
-            <Button bgColor="green">Apply As Member</Button>
+          <div className="mt-8 font-black text-xs text-center uppercase">
+            <Button bgColor="green">{memberBtn}</Button>
           </div>
-          <div className="m-auto mt-5">
-            <Button
-              bgColor="blue"
-              customClassName="font-bold text-xs uppercase block m-auto"
-            >
-              Apply As Mentor
-            </Button>
+          <div className="mt-5 font-black text-xs text-center uppercase">
+            <Button bgColor="blue">{mentorBtn}</Button>
           </div>
         </div>
         <div className="my-24 w-1/6">
