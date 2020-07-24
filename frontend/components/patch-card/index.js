@@ -25,7 +25,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
           })}
         >
           {title && (
-            <p className="card__title text-c800 pb-6">
+            <p className="card__title text-c800">
               <Heading type="card">{title}</Heading>
             </p>
           )}
@@ -45,7 +45,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                   key={i}
                   src={image}
                   alt="title"
-                  className="rounded-full w-16 h-16 my-1"
+                  className="rounded-full w-8 h-8 my-1"
                   style={{
                     objectFit: 'cover',
                     marginLeft: '-.5rem',
@@ -61,7 +61,8 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 'card__description',
                 'text-xs',
                 'pb-6',
-                'text-c700'
+                'text-c700',
+                { 'my-8': dashed }
               )}
             >
               {description}
