@@ -2,9 +2,7 @@ import React from 'react';
 import { GradientText } from '../shared/Heading';
 import PersonCard from '../person-card';
 
-const HowItWork = ({ title, paragraph, cardDetails, sideImage }) => {
-  const test = new Array(6);
-  test.fill(1);
+const HowItWork = ({ title, paragraph, cardDetails, sideImage, steps }) => {
   return (
     <div className="text-center my-16">
       <div className="container relative">
@@ -16,11 +14,11 @@ const HowItWork = ({ title, paragraph, cardDetails, sideImage }) => {
         </div>
         <p className="my-10 mx-auto text-base text-c600 lg:w-4/6">{paragraph}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {test.map((el, index) => {
+          {steps.map((el) => {
             return (
               <div className="num-component relative">
                 <span className="num block text-giant transform translate-y-8 z-0 text-c400 font-bold ">{` 0${
-                  index + 1
+                  el.num
                 }`}</span>
                 <PersonCard cardDetails={cardDetails} boxShadow={true} />
               </div>

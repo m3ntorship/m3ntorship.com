@@ -20,7 +20,27 @@ const data = {
   },
   side_image: {
     url: sideImage
-  }
+  },
+  steps: [
+    {
+      num: 1
+    },
+    {
+      num: 2
+    },
+    {
+      num: 3
+    },
+    {
+      num: 4
+    },
+    {
+      num: 5
+    },
+    {
+      num: 6
+    },
+  ]
 };
 
 export const HowItWorks = () => {
@@ -30,6 +50,7 @@ export const HowItWorks = () => {
       paragraph={data.paragraph}
       cardDetails={data.cardDetails}
       sideImage={data.side_image}
+      steps={data.steps}
     />
   );
 };
