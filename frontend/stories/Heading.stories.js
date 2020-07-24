@@ -23,11 +23,13 @@ export const CodeExample = () => {
       type={HEADING_OPTIONS.TYPE.MAIN}
       textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
       textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+      className="my-12"
     >
       {uncoloredText}{' '}
       <GradientText
         text={coloredText}
         gradientColor={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
+        className="underline"
       />
     </Heading>
   );
