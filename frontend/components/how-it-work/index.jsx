@@ -11,10 +11,10 @@ const HowItWork = ({ title, paragraph, cardDetails, sideImage }) => {
         <div className="absolute left-0 top-0 lg:-ml-10 opacity-25 md:opacity-100">
           <img src={sideImage.url} />
         </div>
-        <div className="text-xxlg uppercase font-bold">
-          <GradientText text={title} />
+        <div>
+          <GradientText text={title} className="text-xxlg uppercase font-bold" />
         </div>
-        <p className="my-10 mx-auto text-sm text-c600 lg:w-2/4">{paragraph}</p>
+        <p className="my-10 mx-auto text-base text-c600 lg:w-4/6">{paragraph}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {test.map((el, index) => {
             return (
