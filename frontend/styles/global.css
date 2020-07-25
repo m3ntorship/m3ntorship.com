@@ -5,3 +5,16 @@
   max-width: 1327px;
   margin: 0 auto;
 }
+
+input {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  box-sizing: border-box;
+  border: solid black 1px;
+}
+input[type=submit]{
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
