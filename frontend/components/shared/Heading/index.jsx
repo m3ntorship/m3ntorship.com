@@ -30,7 +30,7 @@ export const Heading = ({
   textAlign,
   textTransform,
   className,
-  as
+  as = 'p'
 }) => {
   const classes = cn(
     'font-black inline-block',
@@ -51,13 +51,7 @@ export const Heading = ({
     },
     className
   );
-  return (
-    <>
-      {React.createElement(`${as ? as : 'p'}`, { className: classes }, [
-        ...children
-      ])}
-    </>
-  );
+  return <>{React.createElement(as, { className: classes }, [...children])}</>;
 };
 
 export const GradientText = ({ text, gradientColor, className }) => {
