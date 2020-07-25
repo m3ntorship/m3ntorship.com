@@ -13,7 +13,7 @@ const JoinUs = ({ data }) => {
   } = data;
   return (
     <div className="border-4 border-dashed border-c100">
-      <div className="flex justify-around mx-32">
+      <div className="flex justify-around mx-0 lg:mx-32">
         <div className="my-24 w-1/6">
           <img
             className="object-cover w-11/12 hidden md:block"
