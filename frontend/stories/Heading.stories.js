@@ -24,7 +24,7 @@ export const CodeExample = () => {
       textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
       textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
       className="my-12"
-      tag="h3"
+      as="p"
     >
       {uncoloredText}{' '}
       <GradientText
@@ -54,7 +54,7 @@ export const Variations = () => {
         { ...HEADING_OPTIONS.TEXT_TRANSFORM, None: null },
         HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE
       )}
-      tag={text('tag', 'h1')}
+      as={text('as', 'p')}
     >
       {text('Heading Text', 'Hello World')}{' '}
       <GradientText

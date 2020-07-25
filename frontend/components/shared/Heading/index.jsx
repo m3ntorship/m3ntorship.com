@@ -30,7 +30,7 @@ export const Heading = ({
   textAlign,
   textTransform,
   className,
-  tag
+  as
 }) => {
   const classes = cn(
     'font-black inline-block',
@@ -53,7 +53,7 @@ export const Heading = ({
   );
   return (
     <>
-      {React.createElement(`${tag ? tag : 'h1'}`, { className: classes }, [
+      {React.createElement(`${as ? as : 'p'}`, { className: classes }, [
         ...children
       ])}
     </>
