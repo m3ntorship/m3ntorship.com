@@ -11,11 +11,13 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
     borderColor,
     borderStyle,
     href,
+    onClick,
     extrnalLink
   } = props;
   return (
     <>
       <a
+        onClick={onClick}
         href={`${href ? href : ''}`}
         ref={ref}
         target={extrnalLink && '_blank'}
@@ -45,7 +47,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
             //spacing
             'py-4 px-10': !btnPadding,
             'py-6 px-16': btnPadding === 'small',
-            'py-6 px-24': btnPadding === 'medium',
+            'py-6 px-24': btnPadding === 'medium'
           },
           customClassName
         )}
