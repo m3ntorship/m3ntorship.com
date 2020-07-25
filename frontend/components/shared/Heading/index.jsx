@@ -51,7 +51,7 @@ export const Heading = ({
     },
     className
   );
-  return <>{React.createElement(as, { className: classes }, [children])}</>;
+  return <>{React.createElement(as, { className: classes }, children)}</>;
 };
 
 export const GradientText = ({ text, gradientColor, className }) => {
