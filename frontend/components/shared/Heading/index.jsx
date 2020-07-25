@@ -29,7 +29,8 @@ export const Heading = ({
   type,
   textAlign,
   textTransform,
-  className
+  className,
+  as = 'p'
 }) => {
   const classes = cn(
     'font-black inline-block',
@@ -50,31 +51,7 @@ export const Heading = ({
     },
     className
   );
-  const headingElement = type => {
-    switch (type) {
-      case HEADING_OPTIONS.TYPE.MAIN_LARGE:
-        return 'h1';
-      case HEADING_OPTIONS.TYPE.MAIN:
-        return 'h1';
-      case HEADING_OPTIONS.TYPE.SECONDARY:
-        return 'h2';
-      case HEADING_OPTIONS.TYPE.SECTION:
-        return 'h3';
-      case HEADING_OPTIONS.TYPE.CARD:
-        return 'h4';
-      case HEADING_OPTIONS.TYPE.CARD_SMALL:
-        return 'h5';
-      default:
-        return 'h1';
-    }
-  };
-  return (
-    <>
-      {React.createElement(headingElement(type), { className: classes }, [
-        ...children
-      ])}
-    </>
-  );
+  return <>{React.createElement(as, { className: classes }, [...children])}</>;
 };
 
 export const GradientText = ({ text, gradientColor, className }) => {
