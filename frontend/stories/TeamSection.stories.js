@@ -1,9 +1,9 @@
 import React from 'react';
-import TeamSection from '../components/TeamSection';
+import TeamGroupSection from '../components/TeamSection';
 
 export default {
   title: 'Team Section',
-  component: TeamSection
+  component: TeamGroupSection
 };
 
 const data = {
@@ -19,5 +19,5 @@ const data = {
 };
 
 export const TeamSectionComponent = () => {
-  return <TeamSection data={data} />;
+  return <TeamGroupSection data={data} />;
 };
