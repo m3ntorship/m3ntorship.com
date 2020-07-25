@@ -13,7 +13,7 @@ const JoinUs = ({ data }) => {
   } = data;
   return (
     <div className="border-4 border-dashed border-c100">
-      <div className="flex justify-around">
+      <div className="flex justify-around mx-32">
         <div className="my-24 w-1/6">
           <img
             className="object-cover w-11/12 hidden md:block"
@@ -23,8 +23,11 @@ const JoinUs = ({ data }) => {
         </div>
         <div className="w-4/6 flex flex-col justify-center mx-auto mb-24">
           <Heading
-            type="cardSmall"
-            className="text-center mt-16 py-5 uppercase text-lg font-black"
+            type="section"
+            textAlign="center"
+            textTransform="uppercase"
+            as="h1"
+            className="mt-16 pb-5"
           >
             {title}
           </Heading>
@@ -33,26 +36,23 @@ const JoinUs = ({ data }) => {
             {description}
           </p>
 
-          <div className="mt-8 mx-auto">
-            <Button
-              customClassName="uppercase block"
-              textSize="medium"
-              fontWeight="bold"
-              bgColor="green"
-            >
-              {memberBtn}
-            </Button>
-          </div>
-          <div className="mt-5 mx-auto">
-            <Button
-              customClassName="uppercase block"
-              textSize="medium"
-              fontWeight="bold"
-              bgColor="blue"
-            >
-              {mentorBtn}
-            </Button>
-          </div>
+          <Button
+            customClassName="uppercase mt-8 mx-auto"
+            textSize="medium"
+            fontWeight="bold"
+            bgColor="green"
+          >
+            {memberBtn}
+          </Button>
+
+          <Button
+            customClassName="uppercase mt-5 mx-auto"
+            textSize="medium"
+            fontWeight="bold"
+            bgColor="blue"
+          >
+            {mentorBtn}
+          </Button>
         </div>
         <div className="my-24 w-1/6">
           <img
