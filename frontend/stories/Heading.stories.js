@@ -24,7 +24,7 @@ export const CodeExample = () => {
       textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
       textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
       className="my-12"
-      as="p"
+      as="h4"
     >
       {uncoloredText}{' '}
       <GradientText
