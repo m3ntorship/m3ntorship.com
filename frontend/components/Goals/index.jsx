@@ -11,7 +11,7 @@ const Goals = ({ data }) => {
     return (
       <div className="relative w-full">
         <div className="text-center my-10 text-lg container">
-          <div className="absolute graph opacity-25 md:opacity-100">
+          <div className="absolute graph hidden md:block">
             <img src={url} />
           </div>
           <GradientText text={title} className="uppercase font-bold" />
