@@ -12,33 +12,63 @@ const data = {
   title: 'How It Working?',
   paragraph:
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.',
-  cardDetails: {
-    image: testImage,
-    title: 'Apply',
-    description:
-      'Decide to join our program lorem ipsum dollar sient right now.'
-  },
   side_image: {
     url: sideImage
   },
-  steps: [
+  cards : [
     {
-      num: 1
+      id: 1,
+      cardDetails: {
+        image: testImage,
+        title: 'Apply',
+        description:
+          'Decide to join our program lorem ipsum dollar sient right now.'
+      }
     },
     {
-      num: 2
+      id: 2,
+      cardDetails: {
+        image: testImage,
+        title: 'Apply',
+        description:
+          'Decide to join our program lorem ipsum dollar sient right now.'
+      }
     },
     {
-      num: 3
+      id: 3,
+      cardDetails: {
+        image: testImage,
+        title: 'Apply',
+        description:
+          'Decide to join our program lorem ipsum dollar sient right now.'
+      }
     },
     {
-      num: 4
+      id: 4,
+      cardDetails: {
+        image: testImage,
+        title: 'Apply',
+        description:
+          'Decide to join our program lorem ipsum dollar sient right now.'
+      }
     },
     {
-      num: 5
+      id: 5,
+      cardDetails: {
+        image: testImage,
+        title: 'Apply',
+        description:
+          'Decide to join our program lorem ipsum dollar sient right now.'
+      }
     },
     {
-      num: 6
+      id: 6,
+      cardDetails: {
+        image: testImage,
+        title: 'Apply',
+        description:
+          'Decide to join our program lorem ipsum dollar sient right now.'
+      }
     },
   ]
 };
@@ -48,7 +78,7 @@ export const HowItWorks = () => {
     <HowItWork
       title={data.title}
       paragraph={data.paragraph}
-      cardDetails={data.cardDetails}
+      cards={data.cards}
       sideImage={data.side_image}
       steps={data.steps}
     />
