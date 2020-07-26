@@ -76,11 +76,7 @@ const data = {
 export const HowItWorks = () => {
   return (
     <HowItWork
-      title={data.title}
-      paragraph={data.paragraph}
-      cards={data.cards}
-      sideImage={data.side_image}
-      steps={data.steps}
+    data={data}
     />
   );
 };
