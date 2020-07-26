@@ -3,8 +3,9 @@ name: deploy cms to playground cluster
 on:
   push:
     branches:
-      - develop
-      - playground-deployment
+      # - develop
+      # - playground-deployment
+      - bala7
 env:
   # fixed deployment envs
   M3_IMAGE: ${{ secrets.M3_DOCKER_HOST }}/m3ntorshipcom

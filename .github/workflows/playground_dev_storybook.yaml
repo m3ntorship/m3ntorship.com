@@ -1,48 +1,71 @@
-name: deploy cms to playground cluster
+name: deploy storybook to playground cluster
 
 on:
   push:
     branches:
-      - master
-      - playground-deployment
+      - develop
+      - playground-deployment-storybook
 env:
   # fixed deployment envs
-  M3_IMAGE: ${{ secrets.M3_DOCKER_HOST }}/m3ntorshipcom
-  M3_DOCKER_FILE: Dockerfile.playground.cms
+  M3_IMAGE: m3ntorship/m3ntorshipcom-storybook
+  M3_DOCKER_FILE: Dockerfile.playground.storybook
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v1
+      # dynamic deployment envs
+      - name: set templating envs
+        id: version
+        run: |
+          echo ::set-output name=version::$(git rev-parse --short=4 ${{ github.sha }})
+
+  test-env:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.prepare.outputs.version }}
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    env:
+      M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
       # checkout the code commit
       - name: checkout the code
         uses: actions/checkout@v1
 
-      # dynamic deployment envs
-      - name: set templating envs
-        id: version
-        run: |
-          echo ::set-env name=M3_VERSION::$(git rev-parse --short=4 ${{ github.sha }})
-          echo ::set-output name=version::$(git rev-parse --short=4 ${{ github.sha }})
+      # Installing dependencies
+      - name: installing dependencies
+        run: yarn --cwd frontend
+
+      # building storybook
+      - name: building storybook
+        run: yarn --cwd frontend build-storybook
 
       # login to docker
       - uses: azure/docker-login@v1
         with:
-          login-server: ${{ secrets.M3_DOCKER_HOST }} # default: index.docker.io
-          username: ${{ secrets.M3_DOCKER_USERNAME }}
-          password: ${{ secrets.M3_DOCKER_PASSWORD }}
+          username: ${{ secrets.M3NTORSHIP_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.M3NTORSHIP_DOCKERHUB_PASSWORD }}
 
       # build and push docker image
       - name: build and push the app
         run: |
           echo $M3_VERSION
-          docker build --build-arg STRAPI_ADMIN_PATH=${{ secrets.M3_STRAPI_ADMIN_PATH }} -t $M3_IMAGE:$M3_VERSION -f $M3_DOCKER_FILE .
+          docker build -t $M3_IMAGE:$M3_VERSION -f $M3_DOCKER_FILE .
           docker push $M3_IMAGE:$M3_VERSION
-  deploy_live:
-    needs: build
+  deploy_dev:
+    needs: 
+      - prepare
+      - build 
     runs-on: ubuntu-latest
+    env:
+      M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
       - uses: actions/checkout@v1
       - uses: azure/setup-kubectl@v1
@@ -58,27 +81,18 @@ jobs:
           sudo mv mo /usr/local/bin/
           echo "works" | mo
 
-      # deploy live
-      - name: deploy-live
+      # deploy dev
+      - name: deploy-dev
         env:
-          M3_DEPLOYMENT_PATH: deploy/cms
+          M3_DEPLOYMENT_PATH: deploy/storybook
           TEMP_DIR: temp
           M3_NAMESPACE: default
           M3_PROJECT: m3ntorshipcom
-          M3_COMPONENET: cms
-          M3_ENVIRONMENT: live
+          M3_COMPONENET: storybook
+          M3_ENVIRONMENT: dev
           M3_REPLICAS: "1"
-          M3_PORT: "1337"
-          M3_VERSION: ${{needs.build.outputs.version}}
+          M3_PORT: "5000"
         run: |
           mkdir -p $TEMP_DIR
           for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
           kubectl apply -f $TEMP_DIR
-
-  test-env:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - env:
-          M3_VERSION: ${{needs.build.outputs.version}}
-        run: echo $M3_VERSION
