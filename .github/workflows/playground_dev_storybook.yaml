@@ -3,9 +3,8 @@ name: deploy storybook to playground cluster
 on:
   push:
     branches:
-      # - develop
-      # - playground-deployment
-      - bal7
+      - develop
+      - playground-deployment
 env:
   # fixed deployment envs
   M3_IMAGE: m3ntorship/m3ntorshipcom-storybook
@@ -28,8 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       M3_VERSION: ${{needs.prepare.outputs.version}}
-    outputs:
-      version: ${{ steps.version.outputs.version }}
     steps:
       # checkout the code commit
       - name: checkout the code
@@ -42,13 +39,6 @@ jobs:
       # building storybook
       - name: building storybook
         run: yarn --cwd build-storybook
-
-      # dynamic deployment envs
-      - name: set templating envs
-        id: version
-        run: |
-          echo ::set-env name=M3_VERSION::$(git rev-parse --short=4 ${{ github.sha }})
-          echo ::set-output name=version::$(git rev-parse --short=4 ${{ github.sha }})
 
       # login to docker
       - uses: azure/docker-login@v1
@@ -65,6 +55,8 @@ jobs:
   deploy_dev:
     needs: prepare
     runs-on: ubuntu-latest
+    env:
+      M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
       - uses: actions/checkout@v1
       - uses: azure/setup-kubectl@v1
