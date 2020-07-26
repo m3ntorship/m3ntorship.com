@@ -1,0 +1,4 @@
+FROM node:12.18.2-alpine3.12
+RUN yarn global add serve
+COPY ./frontend/storybook-static ./storybook-static
+CMD ["serve","storybook-static"]
