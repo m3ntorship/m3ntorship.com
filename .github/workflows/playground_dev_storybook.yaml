@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-      - playground-deployment
+      - playground-deployment-storybook
 env:
   # fixed deployment envs
   M3_IMAGE: m3ntorship/m3ntorshipcom-storybook
@@ -12,16 +12,23 @@ env:
 
 jobs:
   prepare:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
+      - uses: actions/checkout@v1
       # dynamic deployment envs
       - name: set templating envs
         id: version
         run: |
-          echo ::set-env name=M3_VERSION::$(git rev-parse --short=4 ${{ github.sha }})
           echo ::set-output name=version::$(git rev-parse --short=4 ${{ github.sha }})
+
+  test-env:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.prepare.outputs.version }}
+
   build:
     needs: prepare
     runs-on: ubuntu-latest
@@ -38,7 +45,7 @@ jobs:
 
       # building storybook
       - name: building storybook
-        run: yarn --cwd build-storybook
+        run: yarn --cwd frontend build-storybook
 
       # login to docker
       - uses: azure/docker-login@v1
@@ -53,7 +60,9 @@ jobs:
           docker build -t $M3_IMAGE:$M3_VERSION -f $M3_DOCKER_FILE .
           docker push $M3_IMAGE:$M3_VERSION
   deploy_dev:
-    needs: prepare
+    needs: 
+      - prepare
+      - build 
     runs-on: ubuntu-latest
     env:
       M3_VERSION: ${{needs.prepare.outputs.version}}
@@ -87,8 +96,3 @@ jobs:
           mkdir -p $TEMP_DIR
           for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
           kubectl apply -f $TEMP_DIR
-  test-env:
-    needs: prepare
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo $M3_VERSION
