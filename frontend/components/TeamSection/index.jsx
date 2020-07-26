@@ -12,7 +12,6 @@ const TeamGroupSection = ({ data }) => {
           className="border border-c1000"
           cardDetails={cardData}
           rounded={true}
-          border={true}
         />
       </div>
     );
