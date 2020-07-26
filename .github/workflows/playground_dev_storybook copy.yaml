@@ -6,10 +6,11 @@ on:
       - playground-deployment-storybook
 jobs:
   prepare:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
+      - uses: actions/checkout@v1
       # dynamic deployment envs
       - name: set templating envs
         id: version
@@ -18,7 +19,5 @@ jobs:
   test-env:
     needs: prepare
     runs-on: ubuntu-latest
-    env:
-      - M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
-      - run: echo $M3_VERSION
+      - run: echo ${{ needs.prepare.outputs.version }}
