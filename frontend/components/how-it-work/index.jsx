@@ -6,7 +6,7 @@ const HowItWork = ({ title, paragraph, cardDetails, sideImage, steps }) => {
   return (
     <div className="text-center my-16">
       <div className="container relative">
-        <div className="absolute left-0 top-0 lg:-ml-10 opacity-25 md:opacity-100">
+        <div className="absolute left-0 top-0 lg:-ml-10 hidden lg:block">
           <img src={sideImage.url} />
         </div>
         <Heading type={HEADING_OPTIONS.TYPE.SECTION} textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER} >
