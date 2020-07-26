@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import GenericParagrapgh from '../shared/GenericParagrapgh/index';
-const M3Form = () => {
-  const [name, setName] = useState('');
+const Form = ({ inputFields }) => {
+  const createData = () => {
+    let temp = {};
+    inputFields.forEach(el => {
+      temp[el.props.name] = '';
+    });
+    return temp;
+  };
+  let data = createData();
+  const handleChange = e => {
+    const { name, value } = e.target;
+    data[name] = value;
+  };
   const handleSubmit = e => {
     e.preventDefault();
-    alert(`Name Submitted ${name}`);
-    setName('');
+    console.log(data);
   };
   return (
     <>
@@ -17,12 +27,19 @@ const M3Form = () => {
             aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.
           </GenericParagrapgh>
           <form className="mt-8" onSubmit={handleSubmit}>
-            <input
+            {inputFields.map(el => {
+              return React.createElement(el.tag, {
+                ...el.props,
+                onChange: handleChange
+              });
+            })}
+            {/* <input
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder="Name"
             />
+             */}
             <input type="submit" value="Apply Now" />
           </form>
         </div>
@@ -37,4 +54,4 @@ const M3Form = () => {
   );
 };
 
-export default M3Form;
+export default Form;
