@@ -7,6 +7,5 @@
 @import 'tailwindcss/utilities';
 /* import components styles */
 @import './heading.css';
-@import './how-it-work.css';
 @import './goals.css';
 @import './patches.css';

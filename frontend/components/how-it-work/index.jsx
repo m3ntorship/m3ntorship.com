@@ -20,7 +20,9 @@ const HowItWork = ({ title, paragraph, cardDetails, sideImage, steps }) => {
                 <span className="num block text-giant transform translate-y-8 z-0 text-c400 font-bold ">{` 0${
                   index + 1
                 }`}</span>
+                <div className='z-10 relative bg-c000'>
                 <PersonCard cardDetails={cardDetails} boxShadow={true} />
+                </div>
               </div>
             );
           })}
