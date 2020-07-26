@@ -16,7 +16,9 @@ export const Team = ({data}) => {
             </Heading>
           <p className='my-10 mx-auto text-center text-xs md:text-base text-c600 lg:w-4/6'>{paragraph}</p>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
-              {team_members.map((member, index) => <PersonCard cardDetails={member} bgColord={true} rounded={true} /> )}
+              {team_members.map(member => {
+                  return (<PersonCard key={member.id} cardDetails={member} bgColord={true} rounded={true} />)
+              } )}
           </div>
             </div>
         </div>

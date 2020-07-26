@@ -23,9 +23,9 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
       {cardDetails && (
         <div
           style={{ boxShadow: boxShadow && '0 0 40px rgba(0, 0, 0, 0.1)' }}
-          className={cn('card', 'overflow-hidden', 'px-10', 'py-10', {
+          className={cn('card', 'overflow-hidden', 'px-4', 'py-8', {
             'bg-c400': bgColord,
-            'text-center': rounded
+            'text-center px-10, px-10': rounded
           })}
         >
           {image && (
@@ -49,14 +49,14 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
             </p>
           )}
           {subtitle && (
-            <p className="card__subtitle pb-2 text-center text-sm font-light text-c500">
+            <p className="card__subtitle pb-2 text-center text-base text-c700">
               {subtitle}
             </p>
           )}
 
           {description && (
             <p
-              className={cn('card__description', 'text-xs', 'pb-2', 'font-normal', 'my-5', {
+              className={cn('card__description', 'text-sm', 'pb-2', 'font-normal', 'my-5', {
                 'text-c600': !rounded,
                 'text-c800': rounded
               })}
