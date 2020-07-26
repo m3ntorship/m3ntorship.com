@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import {Heading, HEADING_OPTIONS} from '../shared/Heading'
 
 // props list
 
@@ -44,9 +45,9 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
             </div>
           )}
           {title && (
-            <p className="card__title text-c800 font-bold text-lg pb-4 text-center">
+            <Heading type={HEADING_OPTIONS.TYPE.CARD} textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER} className='pb-4'>
               {title}
-            </p>
+            </Heading>
           )}
           {subtitle && (
             <p className="card__subtitle pb-2 text-center text-base text-c700">
