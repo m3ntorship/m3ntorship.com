@@ -1,55 +1,19 @@
 import React from 'react';
-import { Heading, GradientText } from '../shared/Heading';
+import { Heading, GradientText, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
 
 const TeamGroupSection = ({ data }) => {
-  const {
-    title,
-    userOne,
-    userTwo,
-    userTitle,
-    description,
-    userOneImg,
-    userTwoImg
-  } = data;
+  const { title, cardsData } = data;
 
-  // const userOneData = {
-  //   image: userOneImg,
-  //   title: userOne,
-  //   subtitle: userTitle,
-  //   description: description
-  // };
-  // const userTwoData = {
-  //   image: userTwoImg,
-  //   title: userTwo,
-  //   subtitle: userTitle,
-  //   description: description
-  // };
-
-  const usersData = [
-    {
-      image: userOneImg,
-      title: userOne,
-      subtitle: userTitle,
-      description: description
-    },
-    {
-      image: userTwoImg,
-      title: userTwo,
-      subtitle: userTitle,
-      description: description
-    }
-  ];
-
-  const cardData = usersData.map((userData, index) => {
+  const membersData = cardsData.map(cardData => {
     return (
-      <div>
+      <div className="w-1/2 mx-auto border border-c1000">
         <PersonCard
-          cardDetails={usersData[index]}
+          className="border border-c1000"
+          cardDetails={cardData}
           rounded={true}
           border={true}
         />
-        <div className="mx-5 md:mt-0 sm:mt-5"></div>
       </div>
     );
   });
@@ -57,20 +21,19 @@ const TeamGroupSection = ({ data }) => {
   return (
     <div className="text-center">
       <Heading
-        type="section"
-        textAlign="center"
-        textTransform="uppercase"
-        as="h1"
+        type={HEADING_OPTIONS.TYPE.SECTION}
+        textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+        textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
         className="mt-16 pb-5"
+        as="h3"
       >
         <GradientText
           text={title}
-          gradientColor="green"
-          className="text-xxlg"
+          gradientColor={HEADING_OPTIONS.GRADIENT_COLOR.GREEN}
         />
       </Heading>
-      <div className="flex flex-col md:flex-row justify-center mt-10 ">
-        {cardData}
+      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-1">
+        {membersData}
       </div>
     </div>
   );
