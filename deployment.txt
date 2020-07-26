@@ -1,0 +1,18 @@
+build docker image for storybook
+  - understand how to build and run storybook
+  - use alpine node image as a base image
+run storybook docker image
+login to docker with m3ntorship ci account
+push storybook docker image
+delete storybook local image
+pull storybook image
+run storybook image again with different port
+add docker credintials as secrets
+apply same steps in github actions
+  - checkout code
+  - install frontend dependencies (yarn --cwd frontend)
+  - build storbook (yarn build-storybook --cwd frontend)
+  - build docker image
+  - login to docker
+  - push docker image
+  - deploy docker image to playground cluster

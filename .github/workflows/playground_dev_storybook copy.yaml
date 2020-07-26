@@ -1,0 +1,24 @@
+name: deploy storybook to playground cluster
+
+on:
+  push:
+    branches:
+      - playground-deployment-storybook
+jobs:
+  prepare:
+    run-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      # dynamic deployment envs
+      - name: set templating envs
+        id: version
+        run: |
+          echo ::set-output name=version::$(git rev-parse --short=4 ${{ github.sha }})
+  test-env:
+    needs: prepare
+    runs-on: ubuntu-latest
+    env:
+      - M3_VERSION: ${{needs.prepare.outputs.version}}
+    steps:
+      - run: echo $M3_VERSION
