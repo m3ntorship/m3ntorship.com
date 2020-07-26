@@ -7,9 +7,9 @@ const TeamGroupSection = ({ data }) => {
 
   const membersData = cardsData.map(cardData => {
     return (
-      <div className="w-1/2 mx-auto border border-c1000">
+      <div className="col-span-3 border border-c1100 ">
         <PersonCard
-          className="border border-c1000"
+          className="border border-c400"
           cardDetails={cardData}
           rounded={true}
         />
@@ -31,7 +31,8 @@ const TeamGroupSection = ({ data }) => {
           gradientColor={HEADING_OPTIONS.GRADIENT_COLOR.GREEN}
         />
       </Heading>
-      <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-1">
+      <div className="grid md:grid-cols-12 sm:grid-cols-1 gap-5 justify-around items-center">
+        <div className="col-end-4"></div>
         {membersData}
       </div>
     </div>
