@@ -33,7 +33,7 @@ export const Heading = ({
   as = 'p'
 }) => {
   const classes = cn(
-    'font-black inline-block',
+    'font-black inline-block w-full',
     {
       //Text Size
       'text-xxlg md:text-ultra': type === HEADING_OPTIONS.TYPE.MAIN_LARGE,
