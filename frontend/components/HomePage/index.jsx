@@ -5,16 +5,18 @@ import SectionHeader from '../shared/SectionHeader';
 import Button from '../shared/Button';
 import Goals from '../Goals';
 import HowItWork from '../how-it-work';
+import Patches from '../Patches'
 
 export const HomePage = ({data}) => {
     if(data) {
-        const {top_bar_data, section_header_data, goals_data, how_it_working_data} = data
+        const {top_bar_data, section_header_data, goals_data, how_it_working_data, patches_data} = data
         return (
             <>
             <TopBar data={top_bar_data} />
             <SectionHeaderComponent data={section_header_data} />
             <Goals data={goals_data} />
             <HowItWork data={how_it_working_data} />
+            <Patches data={patches_data} />
             </>
         )
     }
