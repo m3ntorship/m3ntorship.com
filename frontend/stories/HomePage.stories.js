@@ -1,6 +1,8 @@
 import React from 'react';
 import { HomePage } from '../components/HomePage';
 import right_image from '../components/HomePage/images/right_image.png';
+import testImage from '../components/how-it-work/images/side-image.png';
+import sideImage from '../components/how-it-work/images/Squiggles.png';
 
 export default {
     title: 'Home Page',
@@ -39,6 +41,70 @@ const data = {
           }
         ],
         title: 'Goals'
+    },
+    how_it_working_data: {
+        title: 'How It Working?',
+        paragraph:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.',
+        side_image: {
+          url: sideImage
+        },
+        cards : [
+          {
+            id: 1,
+            cardDetails: {
+              image: testImage,
+              title: 'Apply',
+              description:
+                'Decide to join our program lorem ipsum dollar sient right now.'
+            }
+          },
+          {
+            id: 2,
+            cardDetails: {
+              image: testImage,
+              title: 'Apply',
+              description:
+                'Decide to join our program lorem ipsum dollar sient right now.'
+            }
+          },
+          {
+            id: 3,
+            cardDetails: {
+              image: testImage,
+              title: 'Apply',
+              description:
+                'Decide to join our program lorem ipsum dollar sient right now.'
+            }
+          },
+          {
+            id: 4,
+            cardDetails: {
+              image: testImage,
+              title: 'Apply',
+              description:
+                'Decide to join our program lorem ipsum dollar sient right now.'
+            }
+          },
+          {
+            id: 5,
+            cardDetails: {
+              image: testImage,
+              title: 'Apply',
+              description:
+                'Decide to join our program lorem ipsum dollar sient right now.'
+            }
+          },
+          {
+            id: 6,
+            cardDetails: {
+              image: testImage,
+              title: 'Apply',
+              description:
+                'Decide to join our program lorem ipsum dollar sient right now.'
+            }
+          },
+        ]
       }
 }
 
