@@ -1,6 +1,6 @@
 import React from 'react';
 import { HomePage } from '../components/HomePage';
-import right_image from '../components/HomePage/images/right_image.png';
+import right_header_image from '../components/HomePage/images/right_image.png';
 import testImage from '../components/how-it-work/images/side-image.png';
 import sideImage from '../components/how-it-work/images/Squiggles.png';
 
@@ -30,10 +30,10 @@ const data = {
     },
     section_header_data: {
         heading: 'Level-up your tech skills',
-  headingGradientText: '',
-  description:
-    'A10-weeks program that helps new developers gain real world experience by building real projects in a collaborative remote environment.',
-   headerImage:right_image,
+        headingGradientText: '',
+        description:
+            'A10-weeks program that helps new developers gain real world experience by building real projects in a collaborative remote environment.',
+        headerImage:right_header_image,
     },
     goals_data: {
         side_image: {
@@ -150,6 +150,27 @@ const data = {
             description: 'A job listings and job application app for working abroad.',
             anchorText: 'APPLY NOW'
         }
+    },
+    contribute_section_data: {
+        heading: '',
+        headingGradientText: 'Wanr to contribute?',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.',
+        headerImage:right_header_image,
+    },
+    footer_data: {
+        links: [
+          { text: 'Github', url: 'github.com', underline: false },
+          { text: 'Facebook', url: 'github.com', underline: false },
+          { text: 'Twitter', url: 'github.com', underline: false },
+          { text: 'infot@m3notorship.com', url: 'github.com', underline: true }
+        ],
+        about: {
+          text:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculis',
+          url: '#'
+        },
+        copyrights: 'M3ntorship © 2019-2020.'
     }
 }
 
