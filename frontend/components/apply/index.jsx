@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { Heading, GradientText } from '../shared/Heading/index';
+import {
+  Heading,
+  GradientText,
+  HEADING_OPTIONS
+} from '../shared/Heading/index';
 import GenericParagrapgh from '../shared/GenericParagrapgh/index';
 import Button from '../shared/Button/index';
 import Form from '../shared/form';
@@ -19,11 +23,15 @@ const Apply = ({ data, inputFields }) => {
       <div className="p-5">
         <div className="grid grid-cols-3">
           <div className="col-span-2">
-            <Heading>
+            <Heading type={HEADING_OPTIONS.TYPE.MAIN}>
               {primaryHeading}{' '}
               <GradientText
                 text={gradiendtText}
-                gradientColor={mentor ? mentorButtonColor : menteeButtonColor}
+                gradientColor={
+                  mentor
+                    ? HEADING_OPTIONS.GRADIENT_COLOR.BLUE
+                    : HEADING_OPTIONS.GRADIENT_COLOR.GREEN
+                }
               />
             </Heading>
             <GenericParagrapgh textColor="gray" customClassName="mt-8">
