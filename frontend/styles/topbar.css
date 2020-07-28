@@ -1,0 +1,6 @@
+@media (max-width: 410px) {
+    .top-bar-btn {
+      padding: 10px 20px !important ;
+      font-size: 12px !important;
+    }
+  }
