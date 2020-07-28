@@ -1,6 +1,6 @@
 import React from 'react';
 import SectionHeader from './../components/shared/SectionHeader/index';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 
 // import pic from './Big-Shoes-Discussion-2 2';
 import Button from './../components/shared/Button/index';
@@ -22,8 +22,7 @@ const data = {
 };
 export const SectionHeaderContainer = () => {
   return (
-    <div className="container">
-      <SectionHeader data={data} type="section">
+      <SectionHeader data={data} headingtype={text('Header Type', 'main')} gradient_color={text('gradient color', 'green')}>
         <Button
           textColor="black"
           bgColor="green"
@@ -42,6 +41,5 @@ export const SectionHeaderContainer = () => {
           Apply now
         </Button>
       </SectionHeader>
-    </div>
   );
 };
