@@ -2,6 +2,7 @@ import React from 'react';
 import { TopBar } from '../components/TopBar';
 import SectionHeader from './../components/shared/SectionHeader';
 import { ListOfRoundedImages } from './../components/ListOfRoundedImages';
+import Button from './../components/shared/Button';
 
 export default {
   title: 'Patch page',
@@ -59,9 +60,31 @@ export const PatchPageComponent = () => {
   return (
     <>
       <TopBar data={topBarData} />
-      <div className="container my-16 grid grid-cols-1 md:grid-cols-2">
-        <SectionHeader data={sectionHeaderData} />
-        <div className="lg:pl-24">
+      <div className="container my-16 grid grid-cols-1 md:grid-cols-2 row-gap-10">
+        <SectionHeader data={sectionHeaderData}>
+          <Button
+            textColor="white"
+            bgColor="black"
+            extrnalLink={true}
+            customClassName="my-6 md:mr-6"
+          >
+            <img
+              src="static/media/github.b4a9bf26.png"
+              className="inline mr-4 h-full"
+            />
+            Repository
+          </Button>
+          <Button
+            textColor="black"
+            bgColor="gray"
+            fontWeight="normal"
+            customClassName="py-6"
+            extrnalLink={true}
+          >
+            <span className="uppercase underline">View Project</span>
+          </Button>
+        </SectionHeader>
+        <div className="lg:px-24">
           <ListOfRoundedImages data={team_images} />
         </div>
       </div>
