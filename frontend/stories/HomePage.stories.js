@@ -1,6 +1,7 @@
 import React from 'react';
 import { HomePage } from '../components/HomePage';
 import right_header_image from '../components/HomePage/images/right_image.png';
+import contribute_image from '../components/HomePage/images/contribute.png';
 import testImage from '../components/how-it-work/images/side-image.png';
 import sideImage from '../components/how-it-work/images/Squiggles.png';
 
@@ -157,6 +158,13 @@ const data = {
         description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.',
         headerImage:right_header_image,
+    },
+    contribute_data: {
+      heading: '',
+      headingGradientText: 'want to contribute?',
+      description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.',
+      headerImage:contribute_image,
     },
     footer_data: {
         links: [

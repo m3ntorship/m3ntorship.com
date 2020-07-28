@@ -10,7 +10,7 @@ import Footer from '../footer'
 
 export const HomePage = ({data}) => {
     if(data) {
-        const {top_bar_data, section_header_data, goals_data, how_it_working_data, patches_data, footer_data} = data
+        const {top_bar_data, section_header_data, goals_data, how_it_working_data, patches_data, contribute_data, footer_data} = data
         return (
             <>
             <TopBar data={top_bar_data} />
@@ -18,6 +18,7 @@ export const HomePage = ({data}) => {
             <Goals data={goals_data} />
             <HowItWork data={how_it_working_data} />
             <Patches data={patches_data} />
+            <ContributeSection data={contribute_data} />
             <Footer data={footer_data} />
             </>
         )
@@ -27,21 +28,17 @@ export const HomePage = ({data}) => {
 // side components
 const SectionHeaderComponent = ({data}) => {
     return (
-        <div className='container'>
         <SectionHeader data={data}> 
             <Button textColor='black' bgColor='green' btnPadding='small' textSize='medium' customClassName='uppercase' > Apply As A Member </Button>
             <Button textColor='white' bgColor='blue' btnPadding='small' textSize='medium' customClassName='uppercase mt-2 md:ml-2 md:mt-0'> Apply As A Mentor </Button>
         </SectionHeader>
-        </div>
     )
 }
 
-// const ContributeSection = ({data}) => {
-//     return (
-//         <div className='container'>
-//     <SectionHeader data={data}>
-//         <Button textColor='white' bgColor='blue' btnPadding='small' textSize='medium' customClassName='uppercase'> Apply As a Mentor </Button>
-//     </SectionHeader>
-//     </div>
-//     )
-// }
+const ContributeSection = ({data}) => {
+    return (
+        <SectionHeader data={data} gradient_color='blue' headingtype='section'>
+            <Button textColor='white' bgColor='blue' btnPadding='small' textSize='medium' customClassName='uppercase'> Apply As a Mentor </Button>
+        </SectionHeader>
+    )
+}
