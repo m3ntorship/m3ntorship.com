@@ -8,29 +8,35 @@ export const ApplyPage = ({ data }) => {
   const [mentor, setMenor] = useState(true);
 
   if (data) {
-    const { topBarData, mentorSectionHeaderData, footerData } = data;
+    const {
+      topBarData,
+      mentorSectionHeaderData,
+      menteeSectionHeaderData,
+      footerData
+    } = data;
+
     return (
       <>
         <div className="container">
           <UserProvider value={{ mentor, setMenor }}>
             {mentor ? (
-              <template>
+              <div>
                 <TopBar data={topBarData} button_color="blue" />
                 <SectionHeader
                   data={mentorSectionHeaderData}
                   gradient_color="blue"
                   headingtype="main"
                 />
-              </template>
+              </div>
             ) : (
-              <template>
+              <div>
                 <TopBar data={topBarData} button_color="green" />
                 <SectionHeader
-                  data={mentorSectionHeaderData}
+                  data={menteeSectionHeaderData}
                   gradient_color="green"
                   headingtype="main"
                 />
-              </template>
+              </div>
             )}
           </UserProvider>
           <Footer data={footerData} />
