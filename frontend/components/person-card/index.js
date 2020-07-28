@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import {Heading, HEADING_OPTIONS} from '../shared/Heading'
 
 // props list
 
@@ -25,12 +26,12 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
           style={{ boxShadow: boxShadow && '0 0 40px rgba(0, 0, 0, 0.1)' }}
           className={cn('card', 'overflow-hidden', 'px-4', 'py-8', {
             'bg-c400': bgColord,
-            'text-center': rounded
+            'text-center px-10, px-10': rounded
           })}
         >
           {image && (
             <div
-              className={cn('card__image', 'mx-auto', 'pb-4', {
+              className={cn('person__card__image', 'mx-auto', 'pb-4', 'text-center', {
                 'w-56': !rounded,
                 'w-32': rounded
               })}
@@ -38,15 +39,15 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
               <img
                 src={image}
                 alt="title"
-                className={cn({ 'rounded-full': rounded })}
+                className={cn({ 'rounded-full w-20 h-20 max-w-none m-auto': rounded })}
                 style={{ objectFit: 'cover' }}
               />
             </div>
           )}
           {title && (
-            <p className="card__title text-c800 font-bold text-md pb-4 text-center">
+            <Heading type={HEADING_OPTIONS.TYPE.CARD} textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER} className='pb-4'>
               {title}
-            </p>
+            </Heading>
           )}
           {subtitle && (
             <p className="card__subtitle pb-2 text-center text-base text-c700">
@@ -56,7 +57,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
 
           {description && (
             <p
-              className={cn('card__description', 'text-sm', 'pb-2', {
+              className={cn('card__description', 'text-sm', 'pb-2', 'font-normal', 'my-5', {
                 'text-c600': !rounded,
                 'text-c800': rounded
               })}
