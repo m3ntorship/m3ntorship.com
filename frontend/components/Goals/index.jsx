@@ -9,8 +9,8 @@ const Goals = ({ data }) => {
   } = data;
   if (data) {
     return (
-      <div className="relative w-full">
-        <div className="text-center my-10 text-lg container">
+      <div className="relative w-full my-24">
+        <div className="text-center text-lg container">
           <div className="absolute graph hidden md:block">
             <img src={url} />
           </div>
