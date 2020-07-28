@@ -23,7 +23,10 @@ const Apply = ({ data, inputFields }) => {
       <div className="p-5">
         <div className="grid grid-cols-3">
           <div className="col-span-2">
-            <Heading type={HEADING_OPTIONS.TYPE.MAIN}>
+            <Heading
+              type={HEADING_OPTIONS.TYPE.MAIN}
+              textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+            >
               {primaryHeading}{' '}
               <GradientText
                 text={gradiendtText}
