@@ -25,8 +25,7 @@ export const TopBar = ({
             {link_text && (
               <Button
                 textSize="medium"
-                btnPadding="small"
-                customClassName={`ml-auto uppercase ${
+                customClassName={`ml-auto uppercase top-bar-btn ${
                   button_shadow ? 'shadow-btn' : ''
                 }`}
                 bgColor={button_color ? button_color : 'green'}
