@@ -35,6 +35,42 @@ const data = {
     headerImage:
       'https://s3-alpha-sig.figma.com/img/d0ba/c46d/961c8d1e30044a84a088c3ef1c6e6137?Expires=1597017600&Signature=TSWZdIThqecLZPHjNXwbbIvRnUqh0RTeK1DD3UUq0iY7p34Xgf0bKZclastAaVf3dx~ALXafr9Ama33CSlF0QZko~oCN3d-qtGr3aOzQgvMpNcAhVkmMJQHcEU214Xwv4vJwY8Q8V0AfqYErwfQJAoQiRVmQ1KqAOnPa0r3pv-NvcsANGht~6oRThxYooGj62vWLJS3spN1OY8ElkMa-4mP08qodY~9P59I4laWKw1rGEiERk1JJ06Yp1imcHLKEyYQVSiXSEE289waB6VE3pIPF-aLFCxPP~MeEpyiqwQZ72rlDdKF4zjAM0sAvjx2Un8K3dIXEHqm2oO1IP~A1kA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
   },
+  applyInputFields: [
+    {
+      tag: 'input',
+      props: {
+        type: 'text',
+        placeholder: 'name',
+        name: 'name'
+      }
+    },
+    {
+      tag: 'input',
+      props: {
+        type: 'mail',
+        placeholder: 'email',
+        name: 'email'
+      }
+    },
+    {
+      tag: 'input',
+      props: {
+        type: 'tel',
+        placeholder: 'Phone Number',
+        name: 'phone'
+      }
+    }
+  ],
+  applyData: {
+    primaryHeading: 'You Want to',
+    gradiendtText: 'Apply As',
+    paragraph:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Molestie aliquam iaculis facilisis sit pharetra pellentesqueullamcorper.',
+    buttons: {
+      menteeButton: { menteeButtonColor: 'green', menteeButtonText: 'Mentee' },
+      mentorButton: { mentorButtonColor: 'blue', mentorButtonText: 'Mentor' }
+    }
+  },
   footerData: {
     links: [
       { text: 'Github', url: 'github.com', underline: false },
