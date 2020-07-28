@@ -6,6 +6,8 @@ export default {
   component: ApplyPage
 };
 
+
+
 const data = {
   topBarData: {
     logo_title: 'M3ntorship',
