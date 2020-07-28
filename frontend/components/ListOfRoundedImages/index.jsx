@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ListOfRoundedImages = ({ data }) => {
   return (
-    <div className="flex flex-wrap">
+    <div className="flex justify-center flex-wrap">
       {data &&
         data.map(image => {
           return (
