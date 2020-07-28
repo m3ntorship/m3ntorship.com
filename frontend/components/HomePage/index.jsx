@@ -30,7 +30,7 @@ const SectionHeaderComponent = ({data}) => {
         <div className='container'>
         <SectionHeader data={data}> 
             <Button textColor='black' bgColor='green' btnPadding='small' textSize='medium' customClassName='uppercase' > Apply As A Member </Button>
-            <Button textColor='white' bgColor='blue' btnPadding='small' textSize='medium' customClassName='uppercase ml-2' > Apply As A Mentor </Button>
+            <Button textColor='white' bgColor='blue' btnPadding='small' textSize='medium' customClassName='uppercase mt-2 md:ml-2 md:mt-0'> Apply As A Mentor </Button>
         </SectionHeader>
         </div>
     )
