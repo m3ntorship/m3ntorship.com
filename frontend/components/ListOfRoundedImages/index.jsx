@@ -2,12 +2,16 @@ import React from 'react';
 
 export const ListOfRoundedImages = ({ data }) => {
   return (
-    <div className="grid grid-cols-3 gap-10">
-      {data.map(image => {
-        <div className="w-24 h-24 rounded">
-          <img src={image.image.url} className="w-full h-full object-cover" />
-        </div>;
-      })}
+    <div className="flex flex-wrap">
+      {data &&
+        data.map(image => {
+          return (
+            <img
+              src={image.image.url}
+              className="object-cover w-24 h-24 rounded-full m-5 mt-3"
+            />
+          );
+        })}
     </div>
   );
 };

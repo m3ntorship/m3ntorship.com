@@ -59,10 +59,11 @@ export const PatchPageComponent = () => {
   return (
     <>
       <TopBar data={topBarData} />
-      <div className="container my-16">
+      <div className="container my-16 grid grid-cols-1 md:grid-cols-2">
         <SectionHeader data={sectionHeaderData} />
-        <ListOfRoundedImages data={team_images} />
-        <p>Helllllllooooo</p>
+        <div className="lg:pl-24">
+          <ListOfRoundedImages data={team_images} />
+        </div>
       </div>
     </>
   );
