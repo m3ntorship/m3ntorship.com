@@ -26,6 +26,7 @@ const Apply = ({ data, inputFields }) => {
             <Heading
               type={HEADING_OPTIONS.TYPE.MAIN}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
             >
               {primaryHeading}{' '}
               <GradientText
@@ -37,11 +38,13 @@ const Apply = ({ data, inputFields }) => {
                 }
               />
             </Heading>
-            <GenericParagrapgh textColor="gray" customClassName="mt-8">
+            <GenericParagrapgh
+              textColor="gray"
+              customClassName="mt-8 text-center md:text-left"
+            >
               {paragraph}
             </GenericParagrapgh>
-
-            <div className="mt-8 flex flex-row">
+            <div className="mt-8 flex flex-col md:flex-row">
               {mentor ? (
                 <Button
                   onClick={e => {
@@ -58,7 +61,7 @@ const Apply = ({ data, inputFields }) => {
               ) : (
                 <Button
                   bgColor={menteeButtonColor}
-                  customClassName="md:mr-6 font-black "
+                  customClassName="md:mr-6 font-black"
                   onClick={e => {
                     e.preventDefault();
                   }}
@@ -69,7 +72,7 @@ const Apply = ({ data, inputFields }) => {
               {mentor ? (
                 <Button
                   bgColor={mentorButtonColor}
-                  customClassName="font-black"
+                  customClassName="font-black mt-6 md:mt-0"
                   onClick={e => {
                     e.preventDefault();
                   }}
@@ -84,7 +87,7 @@ const Apply = ({ data, inputFields }) => {
                   }}
                   borderStyle="solid"
                   borderColor={mentorButtonColor}
-                  customClassName="text-c300 font-black"
+                  customClassName="text-c300 font-black mt-6 md:mt-0"
                 >
                   {mentorButtonText}
                 </Button>
