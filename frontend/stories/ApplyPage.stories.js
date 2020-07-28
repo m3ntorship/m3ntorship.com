@@ -6,8 +6,6 @@ export default {
   component: ApplyPage
 };
 
-
-
 const data = {
   topBarData: {
     logo_title: 'M3ntorship',
@@ -17,7 +15,17 @@ const data = {
       link_text: 'Apply Now'
     }
   },
-  sectionHeaderData: {
+  mentorSectionHeaderData: {
+    heading: 'One more step  to ',
+    headingGradientText: 'Join Us.',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis',
+    image:
+      'https://s3-alpha-sig.figma.com/img/c276/0ada/30e5f4ecc27eb8df318751c75c42c98c?Expires=1597017600&Signature=fFh0MYvoweW5r4HGxqR1HKKtgjR39uyn6hT0IsnXsMiVpva-DreihqEERiAZWnCvntyCtNO4dIHKGi8pI4J8QdWrRgM4jXgCGOEIGezTxXEKjcX0Ys-ONZ2lJP6M5crh64w1X5d~M~MzoQjMNe-70a3zkNLobjGYuK4b4EIfFFWwwv09hNLQzqOsAryBIO-sF7kCdDakrOOxNJUPlSowwJYrstxz9LX3xUzyif32uP~3BuWhKuqfr0eZOaoKJhcfXxhNLHR6adI41vAUIA53c-4ZBTV9xbsm2l9WI5cNsMNlpOJ5gp7KZf~JknROKme3Z3527zxqmCm-pDBSpU6ZjA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+    headerImage:
+      'https://s3-alpha-sig.figma.com/img/e0fb/9d44/70033efcc509d4151625f082b4edeb05?Expires=1597017600&Signature=dLTl2Mho6MoYZK0nvNvNk6nsUvRaljZnYNBJu6opUnIZ15WhxY~AQu-Xforsm7PZvN92Kio0lYFkjwxUGSmwHq7PSdplLG-M7ZyAewpkUWIE-imb-tfDlyjt-weiSwa6dDqIhNVjzviSktN1YksCKjgD21JDo2~G7QweTpbrZBmUKidrY~eb4o1MW3fFrv1JTVR3L2M0AIkqUyD5hFPqo9qBWyVIYC9yT1Qrt1X428CuEfROCipWnee4SoESWZsOun3HmAeODUeX~QiWw3LTa1PchuLeCfnQEyjRHQWZncuTSbBAoT6pfgqEghj50oqL~EQwbRfh5GodTpfNKtt7AA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
+  },
+  menteeSectionHeaderData: {
     heading: 'One more step  to ',
     headingGradientText: 'Join Us.',
     description:
