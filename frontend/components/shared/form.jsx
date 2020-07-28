@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import GenericParagrapgh from '../shared/GenericParagrapgh/index';
-const Form = ({ inputFields }) => {
+const Form = ({ inputFields, sideImg }) => {
   const createData = () => {
     let temp = {};
     inputFields.forEach(el => {
@@ -44,11 +44,7 @@ const Form = ({ inputFields }) => {
           </form>
         </div>
         <div className="px-10 mx-10 hidden md:block">
-          <img
-            src="https://s3-alpha-sig.figma.com/img/2b73/7a06/63d6c70e5a3acaea8b40ac2bc166be42?Expires=1596412800&Signature=g2aHFQjxXo-lKLl~mUB3J34Nx9U9VwKnTXTFnYYqJtMllS-k8H6~TGwJ71uIPrMmzubkddOCCHcSONnZMXO~HzeaD1NG~lDjgeIJMekh9sibKiueQGnZlnrU995Cf0tOxwp8vpWCEdFyoRwdhWVafdX~Sd17fejv-nKCXdVJ2aDtBJgw1xtQjJgZPmY96yd8PCUaTxMZhf8ZSKAtVj9A7tkerPwo6eI5-8WqQnHsYR7SK2seki3fe5Ff84kh9mIlRWPaNhk0bqPNkOOt05tTa5KDU8unBiXon0DzFS01CuctFJDJO-IU1ShSmR-qpy~dLUiRvbeISFPcvsWNTt5AKQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            alt=""
-            className="mx-auto"
-          />
+          <img src={sideImg} alt="" className="mx-auto" />
         </div>
       </div>
     </>
