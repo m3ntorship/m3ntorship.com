@@ -11,7 +11,7 @@ const Patches = ({ data }) => {
             <div className='text-center'>
           <GradientText text={title} className="uppercase font-bold text-xxlg inline-block"  />
             </div>
-          <p className='my-10 mx-auto text-center text-base text-c600 lg:w-4/6'>{paragraph}</p>
+          <p className='my-16 mx-auto text-center text-base text-c600 lg:w-4/6'>{paragraph}</p>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
             {cards.map(card => {
               return (

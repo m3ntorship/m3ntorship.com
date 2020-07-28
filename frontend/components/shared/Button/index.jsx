@@ -11,6 +11,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
     borderColor,
     borderStyle,
     href,
+    onClick,
     extrnalLink,
     textSize,
     fontWeight
@@ -18,6 +19,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
   return (
     <>
       <a
+        onClick={onClick}
         href={`${href ? href : ''}`}
         ref={ref}
         target={extrnalLink && '_blank'}
