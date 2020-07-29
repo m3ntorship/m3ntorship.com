@@ -10,7 +10,9 @@
   },
   "attributes": {
     "text": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "default": "Goals of the initiative "
     }
   }
 }
