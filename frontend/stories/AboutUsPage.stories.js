@@ -76,7 +76,9 @@ export const AboutUsComponent = () => {
       <div className="container mb-16">
         <TeamGroupSection data={TeamGroupData} />
       </div>
-      <Footer data={footerData} />
+      <div className="container">
+        <Footer data={footerData} />
+      </div>
     </>
   );
 };
