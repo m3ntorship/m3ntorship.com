@@ -21,7 +21,7 @@ const Apply = ({ data, inputFields }) => {
     } = data;
     const { mentor, setMentor } = useContext(UserContext);
     return (
-      <div className="p-5 container">
+      <div className="container">
         <div className="grid grid-cols-3">
           <div className="col-span-2">
             <Heading
