@@ -122,7 +122,7 @@ export const PatchPageComponent = () => {
     <>
       <div className="container">
         <TopBar data={topBarData} />
-        <div className="container my-16 grid grid-cols-1 md:grid-cols-2 row-gap-10">
+        <div className="container my-16 grid grid-cols-1 md:grid-cols-2 row-gap-10 mb-32">
           <SectionHeader data={sectionHeaderData}>
             <Button
               textColor="white"
@@ -150,8 +150,12 @@ export const PatchPageComponent = () => {
             <ListOfRoundedImages data={team_images} />
           </div>
         </div>
-        <Team data={teamData} />
-        <JoinUs data={joinNextPatchData} />
+        <div className="mb-32">
+          <Team data={teamData} />
+        </div>
+        <div className="mb-32">
+          <JoinUs data={joinNextPatchData} />
+        </div>
         <Footer data={footerData} />
       </div>
     </>
