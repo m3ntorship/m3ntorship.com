@@ -19,29 +19,24 @@ export const ApplyPage = ({ data }) => {
 
     return (
       <>
-        <div className="container">
-          <UserProvider value={{ mentor, setMentor }}>
-            <TopBar
-              data={topBarData}
-              button_color={mentor ? 'blue' : 'green'}
+        <UserProvider value={{ mentor, setMentor }}>
+          <TopBar data={topBarData} button_color={mentor ? 'blue' : 'green'} />
+          {mentor ? (
+            <SectionHeader
+              data={mentorSectionHeaderData}
+              gradient_color="blue"
+              headingtype="main"
             />
-            {mentor ? (
-              <SectionHeader
-                data={mentorSectionHeaderData}
-                gradient_color="blue"
-                headingtype="main"
-              />
-            ) : (
-              <SectionHeader
-                data={menteeSectionHeaderData}
-                gradient_color="green"
-                headingtype="main"
-              />
-            )}
-            <Apply data={applyData} inputFields={applyInputFields} />
-          </UserProvider>
-          <Footer data={footerData} />
-        </div>
+          ) : (
+            <SectionHeader
+              data={menteeSectionHeaderData}
+              gradient_color="green"
+              headingtype="main"
+            />
+          )}
+          <Apply data={applyData} inputFields={applyInputFields} />
+        </UserProvider>
+        <Footer data={footerData} />
       </>
     );
   }
