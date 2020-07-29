@@ -3,7 +3,9 @@ import { TopBar } from '../components/TopBar';
 import SectionHeader from './../components/shared/SectionHeader';
 import { ListOfRoundedImages } from './../components/ListOfRoundedImages';
 import Button from './../components/shared/Button';
-
+import { Team } from '../components/Team';
+import JoinUs from '../components/JoinUsComponent';
+import Footer from '../components/footer';
 export default {
   title: 'Patch page',
   component: PatchPageComponent
@@ -15,6 +17,20 @@ const topBarData = {
     link_url: '/apply',
     link_text: 'Apply Now'
   }
+};
+const footerData = {
+  links: [
+    { text: 'Github', url: 'github.com', underline: false },
+    { text: 'Facebook', url: 'github.com', underline: false },
+    { text: 'Twitter', url: 'github.com', underline: false },
+    { text: 'infot@m3notorship.com', url: 'github.com', underline: true }
+  ],
+  about: {
+    text:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculisLorem ipsum dolor sit amet, consectetur adipiscing elit. Molestiealiquam iaculis',
+    url: '#'
+  },
+  copyrights: 'M3ntorship © 2019-2020.'
 };
 const sectionHeaderData = {
   heading: 'One more step  to ',
@@ -56,37 +72,87 @@ const team_images = [
     }
   }
 ];
+const teamData = {
+  side_image: {
+    url:
+      'https://res.cloudinary.com/malngaawy/image/upload/v1595261682/Squiggles_Monochromatic_jwvct9.png'
+  },
+  title: 'Team',
+  paragraph:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.',
+  team_members: [
+    {
+      id: '1',
+      image:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+      title: 'Yara',
+      subtitle: 'Front End Developer',
+      description: 'A job listings and job application app for working abroad.'
+    },
+    {
+      id: '2',
+      image:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+      title: 'Yara',
+      subtitle: 'Front End Developer',
+      description: 'A job listings and job application app for working abroad.'
+    },
+    {
+      id: '3',
+      image:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80',
+      title: 'Yara',
+      subtitle: 'Front End Developer',
+      description: 'A job listings and job application app for working abroad.'
+    }
+  ]
+};
+const joinNextPatchData = {
+  title: 'Join Next Patch',
+  description: 'A job listings and job application app for working abroad.',
+  mentorBtn: 'Apply as Mentor',
+  memberBtn: 'Apply as Member',
+  left_img:
+    'https://s3-alpha-sig.figma.com/img/6ab3/7f82/5cedbb0153583a74429f439e480c8d2a?Expires=1596412800&Signature=OQHfF1fV7IspMfGtbXN6n0d6xjZJ~NSW8SJMsApIvve2nwawX9~2GVO3PkuSmrSFKJyoO958QrJlHKNdPl9wEnydQ2RNtu8IyRtsQNQ0hNesuLMUUF8m7KK42mIorUMMpSsCLU7GEK671lhAl1R4Iliyk~GBmMb197JXNCK4nspcieahLV5xnI-285IpU5mFx2JiOOjqKlcDkVKCGqOAvO0KAN80tywMwcEOisB5E7RqzZ0MQiAAi1gX1lXq~MfBLjaq1KpvKS~2XlxDTyuTgTmEIkwYZloeBIhVwgGULGVyzYfQy5IUzH5YFJ9-Nd-GIN5FWtlfsYBKnhz0eq6k0g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
+  right_img:
+    'https://s3-alpha-sig.figma.com/img/a1ba/aaf1/75daa654aef922b1f1ea60ae6d402855?Expires=1596412800&Signature=hlXZ9MIzIg0wynLj~xmoD4wSnquIIxJDhcfsVLG97RJXZpCSb1TAMi5bgkAG3JcVbylbkNcCHySe13XwVJCqsWMmIIlM8IynoanL3JBhujTtwOCefuiKpCk4I2fE57HgWSVDFatu0WWmarXwSPgjf6-VQiz5YFIF3oGylX1bSeY7bmZjcKP4dBCOgAwFRSjD2zjlzfyjM~N0H6nNfhiLUq-poUB~bbCgX9VUoTwDs446iB6Geq8kfohohOCvm-1hF~NSh2EUf9ENKWAOHCs7oVg6VvsZT3Kf9LJA8schQXwWL2JaYAs-krwFonkbCNAzJHtz-KZI0BsjrXQeftGHsw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
+};
 export const PatchPageComponent = () => {
   return (
     <>
-      <TopBar data={topBarData} />
-      <div className="container my-16 grid grid-cols-1 md:grid-cols-2 row-gap-10">
-        <SectionHeader data={sectionHeaderData}>
-          <Button
-            textColor="white"
-            bgColor="black"
-            extrnalLink={true}
-            customClassName="my-6 md:mr-6"
-          >
-            <img
-              src="static/media/github.b4a9bf26.png"
-              className="inline mr-4 h-full"
-            />
-            Repository
-          </Button>
-          <Button
-            textColor="black"
-            bgColor="gray"
-            fontWeight="normal"
-            customClassName="py-6"
-            extrnalLink={true}
-          >
-            <span className="uppercase underline">View Project</span>
-          </Button>
-        </SectionHeader>
-        <div className="lg:px-24">
-          <ListOfRoundedImages data={team_images} />
+      <div className="container">
+        <TopBar data={topBarData} />
+        <div className="container my-16 grid grid-cols-1 md:grid-cols-2 row-gap-10">
+          <SectionHeader data={sectionHeaderData}>
+            <Button
+              textColor="white"
+              bgColor="black"
+              extrnalLink={true}
+              customClassName="my-6 md:mr-6"
+            >
+              <img
+                src="static/media/github.b4a9bf26.png"
+                className="inline mr-4 h-full"
+              />
+              Repository
+            </Button>
+            <Button
+              textColor="black"
+              bgColor="gray"
+              fontWeight="normal"
+              customClassName="py-6"
+              extrnalLink={true}
+            >
+              <span className="uppercase underline">View Project</span>
+            </Button>
+          </SectionHeader>
+          <div className="lg:px-24">
+            <ListOfRoundedImages data={team_images} />
+          </div>
         </div>
+        <Team data={teamData} />
+        <JoinUs data={joinNextPatchData} />
+        <Footer data={footerData} />
       </div>
     </>
   );
