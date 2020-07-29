@@ -27,7 +27,7 @@ const Apply = ({ data, inputFields }) => {
             <Heading
               type={HEADING_OPTIONS.TYPE.MAIN}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
-              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+              textAlign={HEADING_OPTIONS.TEXT_ALIGN.LEFT}
             >
               {primaryHeading}{' '}
               <GradientText
@@ -72,6 +72,7 @@ const Apply = ({ data, inputFields }) => {
               )}
               {mentor ? (
                 <Button
+                  textColor="white"
                   bgColor={mentorButtonColor}
                   customClassName="font-black mt-6 md:mt-0"
                   onClick={e => {
