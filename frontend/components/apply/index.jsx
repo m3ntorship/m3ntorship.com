@@ -53,8 +53,8 @@ const Apply = ({ data, inputFields }) => {
                     setMentor(false);
                   }}
                   borderStyle="solid"
-                  borderColor={menteeButtonColor}
-                  customClassName="text-c200 md:mr-6
+                  borderColor="black"
+                  customClassName="text-c100 md:mr-6
                  font-black"
                 >
                   {menteeButtonText}
