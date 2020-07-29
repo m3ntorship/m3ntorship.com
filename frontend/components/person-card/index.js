@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import {Heading, HEADING_OPTIONS} from '../shared/Heading'
+import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 // props list
 
@@ -31,21 +31,35 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
         >
           {image && (
             <div
-              className={cn('person__card__image', 'mx-auto', 'pb-4', 'text-center', {
-                'w-56': !rounded,
-                'w-32': rounded
-              })}
+              className={cn(
+                'person__card__image',
+                'mx-auto',
+                'pb-4',
+                'text-center',
+                {
+                  'w-56': !rounded,
+                  'w-32': rounded
+                }
+              )}
             >
               <img
                 src={image}
                 alt="title"
-                className={cn({ 'rounded-full w-20 h-20 max-w-none m-auto': rounded })}
+                className={cn({
+                  'rounded-full  max-w-none m-auto': rounded,
+                  'w-20 h-20': bgColord,
+                  'lg:w-48 lg:h-48 w-24 h-24': !bgColord
+                })}
                 style={{ objectFit: 'cover' }}
               />
             </div>
           )}
           {title && (
-            <Heading type={HEADING_OPTIONS.TYPE.CARD} textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER} className='pb-4'>
+            <Heading
+              type={HEADING_OPTIONS.TYPE.CARD}
+              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+              className="pb-4"
+            >
               {title}
             </Heading>
           )}
@@ -57,10 +71,17 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
 
           {description && (
             <p
-              className={cn('card__description', 'text-sm', 'pb-2', 'font-normal', 'my-5', {
-                'text-c600': !rounded,
-                'text-c800': rounded
-              })}
+              className={cn(
+                'card__description',
+                'text-sm',
+                'pb-2',
+                'font-normal',
+                'my-5',
+                {
+                  'text-c600': !rounded,
+                  'text-c800': rounded
+                }
+              )}
             >
               {description}
             </p>

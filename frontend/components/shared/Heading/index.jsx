@@ -37,9 +37,9 @@ export const Heading = ({
     {
       //Text Size
       'text-xxlg md:text-ultra': type === HEADING_OPTIONS.TYPE.MAIN_LARGE,
-      'text-super': !type || type === HEADING_OPTIONS.TYPE.MAIN,
-      'text-xxxlg': type === HEADING_OPTIONS.TYPE.SECONDARY,
-      'text-xxlg': type === HEADING_OPTIONS.TYPE.SECTION,
+      'text-xlg md:text-super': !type || type === HEADING_OPTIONS.TYPE.MAIN,
+      'text-lg md:text-xxxlg': type === HEADING_OPTIONS.TYPE.SECONDARY,
+      'text-lg md:text-xxlg': type === HEADING_OPTIONS.TYPE.SECTION,
       'text-lg': type === HEADING_OPTIONS.TYPE.CARD,
       'text-md': type === HEADING_OPTIONS.TYPE.CARD_SMALL,
       //Alignment
