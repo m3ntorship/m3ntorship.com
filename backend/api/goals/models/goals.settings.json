@@ -25,8 +25,11 @@
       "plugin": "upload",
       "required": true
     },
-    "goals_lists": {
-      "collection": "goals-list"
+    "list_goals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.one-line-paragraph",
+      "required": true
     }
   }
 }
