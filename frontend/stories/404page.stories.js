@@ -45,7 +45,7 @@ export const Custom404Component = () => {
   return (
     <>
       <TopBar data={topBarData} />
-      <div className="container pb-24 px-56">
+      <div className="container pb-24 md:w-1/2">
         <BackToHomeWithTitleAndImage
           imageUrl={imageUrl}
           title={title}
