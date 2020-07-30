@@ -11,8 +11,8 @@ export default function BackToHomeWithTitleAndImage({
 }) {
   return (
     <section className="w-full flex flex-col justify-center items-center">
-      <div className="overflow-hidden rounded-full w-64 h-64 bg-c200">
-        {imageUrl && <img src={imageUrl} alt="" />}
+      <div className="overflow-hidden rounded-full w-64 h-64 bg-c200 flex justify-center items-end">
+        {imageUrl && <img src={imageUrl} alt="" className="w-4/5 h-4/5" />}
       </div>
       {title && (
         <Heading
@@ -28,7 +28,12 @@ export default function BackToHomeWithTitleAndImage({
       )}
       {btnText && btnUrl && (
         <Link href={btnUrl}>
-          <Button textColor="white" bgColor="black" customClassName="uppercase">
+          <Button
+            textColor="white"
+            bgColor="black"
+            customClassName="uppercase"
+            btnPadding="small"
+          >
             {btnText}
           </Button>
         </Link>

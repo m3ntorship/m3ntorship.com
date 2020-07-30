@@ -2,7 +2,7 @@ import React from 'react';
 import BackToHomeWithTitleAndImage from '../components/BackToHomeWithTitleAndImage';
 
 export default {
-  title: '404 component',
+  title: 'BackToHomeWithTitleAndImage',
   component: BackToHomeWithTitleAndImage
 };
 const imageUrl =
@@ -14,7 +14,7 @@ const btn = {
   text: 'GO TO HOME',
   url: '/'
 };
-export const Custom404Component = () => {
+export const BackToHomeWithTitleAndImageComponent = () => {
   return (
     <BackToHomeWithTitleAndImage
       imageUrl={imageUrl}
