@@ -5,6 +5,7 @@ on:
     branches:
       # - develop
       # - playground-deployment
+      - deploy-cms
       - bala7
 env:
   # fixed deployment envs
