@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/apply-page-form",
+      "handler": "apply-page-form.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/apply-page-form",
+      "handler": "apply-page-form.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/apply-page-form",
+      "handler": "apply-page-form.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
