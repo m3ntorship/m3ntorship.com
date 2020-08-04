@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_general_footer_abouts",
+  "info": {
+    "name": "footer-about",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "About Us",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculisl Molestie aliquam iaculisl ... ",
+      "required": true
+    },
+    "url": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    }
+  }
+}

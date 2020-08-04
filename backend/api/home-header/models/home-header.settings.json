@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_headers",
+  "info": {
+    "name": "Home Header"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Level-up your tech skills",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "A10-weeks program that helps new developers gain real world experience by building real projects in a collaborative remote environment.",
+      "required": true
+    },
+    "apply_as_member": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "apply_as_mentor": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    }
+  }
+}

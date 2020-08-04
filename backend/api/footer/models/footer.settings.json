@@ -1,34 +1,45 @@
 {
   "kind": "singleType",
-  "collectionName": "goals",
+  "collectionName": "footers",
   "info": {
-    "name": "goals"
+    "name": "footer"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "title": {
+    "logo": {
       "type": "string",
-      "default": "Goals",
+      "default": "M3ntorship",
+      "required": true
+    },
+    "copy_right": {
+      "type": "string",
+      "default": "M3ntorship ©  2019-2020.  All rights reserved.",
       "required": true
     },
     "side_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "files",
         "images",
+        "files",
         "videos"
       ],
       "plugin": "upload",
       "required": true
     },
-    "list_goals": {
+    "links": {
       "type": "component",
       "repeatable": true,
-      "component": "general.one-line-paragraph",
+      "component": "general.link",
+      "required": true
+    },
+    "footer_about": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.footer-about",
       "required": true
     }
   }
