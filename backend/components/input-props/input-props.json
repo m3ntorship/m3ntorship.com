@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_input_props_input_props",
+  "info": {
+    "name": "inputProps",
+    "icon": "grip-horizontal"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "palceholder": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
