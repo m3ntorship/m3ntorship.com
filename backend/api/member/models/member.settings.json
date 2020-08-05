@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "name": "member"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "profession": {
+      "type": "string",
+      "required": true
+    },
+    "avatar": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "isMentor": {
+      "type": "boolean",
+      "required": true
+    },
+    "isMentee": {
+      "type": "boolean",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "batch": {
+      "via": "members",
+      "model": "batch"
+    }
+  }
+}
