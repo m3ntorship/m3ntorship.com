@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "team_group_data",
+  "info": {
+    "name": "team-group-data"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "teamMemberCard": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.cards"
+    }
+  }
+}

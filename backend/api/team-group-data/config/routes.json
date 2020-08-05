@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/team-group-data",
+      "handler": "team-group-data.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/team-group-data",
+      "handler": "team-group-data.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/team-group-data",
+      "handler": "team-group-data.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
