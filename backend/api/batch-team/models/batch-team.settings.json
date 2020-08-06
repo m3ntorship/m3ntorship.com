@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "batch_teams",
+  "info": {
+    "name": "Batch Team"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Team",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Lorem Ipsum",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "team_cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.cards"
+    }
+  }
+}
