@@ -120,7 +120,6 @@ const joinNextPatchData = {
 export const PatchPageComponent = () => {
   return (
     <>
-      <div className="container">
         <TopBar data={topBarData} />
         <div className="container my-16 grid grid-cols-1 md:grid-cols-2 row-gap-10 mb-32">
           <SectionHeader data={sectionHeaderData}>
@@ -157,7 +156,6 @@ export const PatchPageComponent = () => {
           <JoinUs data={joinNextPatchData} />
         </div>
         <Footer data={footerData} />
-      </div>
     </>
   );
 };
