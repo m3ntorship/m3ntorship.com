@@ -25,6 +25,7 @@ export const TopBar = ({
             {link_text && (
               <Button
                 textSize="medium"
+                textColor={button_color === 'blue' ? 'white' : 'black'}
                 customClassName={`ml-auto uppercase top-bar-btn ${
                   button_shadow ? 'shadow-btn' : ''
                 }`}
