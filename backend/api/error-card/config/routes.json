@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/error-card",
+      "handler": "error-card.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/error-card",
+      "handler": "error-card.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/error-card",
+      "handler": "error-card.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

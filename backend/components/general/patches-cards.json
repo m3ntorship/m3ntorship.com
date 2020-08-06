@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_general_patches_cards",
+  "info": {
+    "name": "patches_cards",
+    "icon": "address-book"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "VOLUME",
+      "required": true
+    },
+    "team": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "default": "A job listings and job application app for working abroad.",
+      "required": true
+    },
+    "btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    }
+  }
+}

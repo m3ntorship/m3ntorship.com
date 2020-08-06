@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_general_cards",
+  "info": {
+    "name": "cards",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "card_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "default": "Card Title",
+      "required": true
+    },
+    "sub_title": {
+      "type": "string",
+      "default": "Sub Title",
+      "required": false
+    },
+    "describe": {
+      "type": "text",
+      "default": "Card Describtion",
+      "required": true
+    }
+  }
+}
