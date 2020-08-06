@@ -1,0 +1,57 @@
+{
+  "kind": "singleType",
+  "collectionName": "join_us_cards",
+  "info": {
+    "name": "join_us_card"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Join Us",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Lorem Ipsum",
+      "required": true
+    },
+    "right_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "left_img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "mentorBtn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    },
+    "memberBtn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    }
+  }
+}
