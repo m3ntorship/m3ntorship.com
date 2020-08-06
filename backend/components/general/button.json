@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_general_buttons",
+  "info": {
+    "name": "Button",
+    "icon": "bullseye"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "textColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    }
+  }
+}
