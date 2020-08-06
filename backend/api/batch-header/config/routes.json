@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/batch-header",
+      "handler": "batch-header.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/batch-header",
+      "handler": "batch-header.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/batch-header",
+      "handler": "batch-header.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

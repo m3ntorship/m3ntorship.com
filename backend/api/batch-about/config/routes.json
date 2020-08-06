@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/batch-about",
+      "handler": "batch-about.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/batch-about",
+      "handler": "batch-about.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/batch-about",
+      "handler": "batch-about.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
