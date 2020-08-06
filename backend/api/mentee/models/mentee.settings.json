@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mentees",
+  "info": {
+    "name": "mentee"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "batchTitle": {
+      "type": "string"
+    },
+    "batch_mentees": {
+      "collection": "member",
+      "via": "mentees",
+      "dominant": true
+    },
+    "mentees_at": {
+      "model": "batch",
+      "via": "mentee"
+    }
+  }
+}

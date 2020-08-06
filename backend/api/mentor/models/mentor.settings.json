@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mentors",
+  "info": {
+    "name": "Mentor"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "MentorAt": {
+      "type": "string"
+    },
+    "BatchMentors": {
+      "collection": "member"
+    },
+    "mentors_at": {
+      "model": "batch",
+      "via": "mentor"
+    }
+  }
+}

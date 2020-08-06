@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "name": "Member"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "MemberInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.cards"
+    },
+    "mentees": {
+      "via": "batch_mentees",
+      "collection": "mentee"
+    }
+  }
+}

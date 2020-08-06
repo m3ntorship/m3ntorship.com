@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "batches",
+  "info": {
+    "name": "Batch"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "BatchInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.cards"
+    },
+    "mentee": {
+      "via": "mentees_at",
+      "model": "mentee"
+    },
+    "mentor": {
+      "via": "mentors_at",
+      "model": "mentor"
+    }
+  }
+}
