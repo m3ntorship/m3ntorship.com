@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_general_one_line_paragraphs",
+  "info": {
+    "name": "one line paragraph",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "goal": {
+      "type": "string",
+      "default": "Help new developers gain real world experience",
+      "required": true
+    }
+  }
+}

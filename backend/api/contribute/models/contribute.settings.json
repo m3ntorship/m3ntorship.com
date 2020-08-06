@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "contributes",
+  "info": {
+    "name": "contribute"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "want to contribute?",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.",
+      "required": true
+    },
+    "btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    }
+  }
+}

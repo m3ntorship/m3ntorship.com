@@ -1,0 +1,46 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "name": "footer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "logo": {
+      "type": "string",
+      "default": "M3ntorship",
+      "required": true
+    },
+    "copy_right": {
+      "type": "string",
+      "default": "M3ntorship ©  2019-2020.  All rights reserved.",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.link",
+      "required": true
+    },
+    "footer_about": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.footer-about",
+      "required": true
+    }
+  }
+}

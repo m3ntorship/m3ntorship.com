@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "batch_abouts",
+  "info": {
+    "name": "Batch About"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "About"
+    },
+    "first_description": {
+      "type": "text",
+      "default": "lorem ipsum"
+    },
+    "second_description": {
+      "type": "text",
+      "default": "Lorem Ipsum"
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
