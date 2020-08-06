@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/batch-mentors",
+      "handler": "batch-mentors.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/batch-mentors",
+      "handler": "batch-mentors.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/batch-mentors",
+      "handler": "batch-mentors.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

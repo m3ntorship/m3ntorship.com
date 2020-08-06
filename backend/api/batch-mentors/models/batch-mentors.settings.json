@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "batch_mentors",
+  "info": {
+    "name": "Batch Mentors"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Mentors",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Lorem Ipsum",
+      "required": true
+    },
+    "mentors_cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.cards",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "batch_headers",
+  "info": {
+    "name": "Batch Header"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "One More Step To Join Us",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Lorem Ipsum",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "team_images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "repo_btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
+    },
+    "project_btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
+    }
+  }
+}
