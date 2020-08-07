@@ -1,5 +1,7 @@
-import Head from "next/head";
-const Layout = ({ children }) => {
+import Head from 'next/head';
+import { TopBar } from '../TopBar';
+import Footer from '../footer';
+const Layout = ({ children, topBarData, footerData }) => {
   return (
     <>
       <Head>
@@ -11,9 +13,13 @@ const Layout = ({ children }) => {
           href="../../static/favicon/favicon.ico"
         ></link>
       </Head>
-      <header></header>
+      <header>
+        <TopBar data={topBarData} />
+      </header>
       <main>{children}</main>
-      <footer></footer>
+      <footer>
+        <Footer data={footerData} />
+      </footer>
     </>
   );
 };
