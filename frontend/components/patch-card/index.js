@@ -14,7 +14,7 @@ import { Heading } from './../shared/Heading/index';
  */
 
 const PatchCard = ({ cardDetails, dashed }) => {
-  const { title, images, description, anchorText } = cardDetails;
+  const {link : {url,name},BatchInfo : {title,describe} ,images} = cardDetails;
   return (
     <>
       {cardDetails && (
@@ -55,7 +55,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
               ))}
             </div>
           )}
-          {description && (
+          {describe && (
             <p
               className={cn(
                 'card__description',
@@ -65,13 +65,13 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 { 'my-8': dashed }
               )}
             >
-              {description}
+              {describe}
             </p>
           )}
 
-          {anchorText && (
-            <a className="font-bold text-sm underline " href="#">
-              {anchorText}
+          {url && (
+            <a className="font-bold text-sm underline " href={url}>
+              {name}
             </a>
           )}
         </div>
