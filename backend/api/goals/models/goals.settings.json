@@ -10,21 +10,26 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "default": "Goals",
+      "required": true
     },
     "side_image": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
-    "goals_lists": {
-      "collection": "goals-list"
+    "list_goals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.one-line-paragraph",
+      "required": true
     }
   }
 }

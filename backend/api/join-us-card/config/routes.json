@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/join-us-card",
+      "handler": "join-us-card.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/join-us-card",
+      "handler": "join-us-card.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/join-us-card",
+      "handler": "join-us-card.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
