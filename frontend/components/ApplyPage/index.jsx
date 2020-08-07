@@ -8,15 +8,13 @@ export const ApplyPage = ({ data }) => {
   const [mentor, setMentor] = useState(false);
 
   if (data) {
-    const {
-      topBarData,
-      mentorSectionHeaderData,
-      menteeSectionHeaderData,
-      applyData,
-      applyInputFields,
-      footerData
-    } = data;
-
+    const { topBarData, headerSectionData, formData, footerData } = data;
+    let menteeSectionHeaderData = headerSectionData;
+    menteeSectionHeaderData['headerImage'] =
+      menteeSectionHeaderData['menteeHeaderImage'];
+    let mentorSectionHeaderData = headerSectionData;
+    mentorSectionHeaderData['headerImage'] =
+      mentorSectionHeaderData['mentorHeaderImage'];
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
@@ -34,7 +32,7 @@ export const ApplyPage = ({ data }) => {
               headingtype="main"
             />
           )}
-          <Apply data={applyData} inputFields={applyInputFields} />
+          <Apply data={formData} />
         </UserProvider>
         <Footer data={footerData} />
       </>
