@@ -1,0 +1,54 @@
+{
+  "kind": "singleType",
+  "collectionName": "apply_page_forms",
+  "info": {
+    "name": "Apply Page Form"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "gradiendtText": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "mentorImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "menteeImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "MenteeButton": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.button"
+    },
+    "MentorButton": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.button"
+    }
+  }
+}
