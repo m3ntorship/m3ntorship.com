@@ -13,46 +13,45 @@ export async function getStaticProps(context) {
     mentorshipAPI('/footer')
   ];
   return Promise.all(
-    endPoints
-      .map(ep =>
-        ep
-          .then(res => {
-            if (Object.keys(res.data).length) {
-              return res;
-            } else {
-              return {
-                data: {
-                  statusCode: 404
-                }
-              };
-            }
-          })
-          .catch(err => {
-            data: {
-              message: err.message;
-            }
-          })
-      )
-      .then(
-        ([
-          { data: topBarData },
-          { data: headerSectionData },
-          { data: formData },
-          { data: footerData }
-        ]) => {
-          return {
-            props: {
+    endPoints.map(ep =>
+      ep
+        .then(res => {
+          if (Object.keys(res.data).length) {
+            console.log(res);
+            return res;
+          } else {
+            return {
               data: {
-                topBarData,
-                headerSectionData,
-                formData,
-                footerData
+                statusCode: 404
               }
-            },
-            revalidate: 1
-          };
-        }
-      )
+            };
+          }
+        })
+        .catch(err => {
+          data: {
+            message: err.message;
+          }
+        })
+    )
+  ).then(
+    ([
+      { data: topBarData },
+      { data: headerSectionData },
+      { data: formData },
+      { data: footerData }
+    ]) => {
+      return {
+        props: {
+          data: {
+            topBarData,
+            headerSectionData,
+            formData,
+            footerData
+          }
+        },
+        revalidate: 1
+      };
+    }
   );
 }
 

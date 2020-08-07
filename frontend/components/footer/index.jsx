@@ -1,12 +1,10 @@
 import React from 'react';
-import '../../styles/footer.css';
 
 const Footer = ({ data }) => {
   const { links, about, copyrights } = data;
   if (data) {
     return (
       <footer className="mt-24 container">
-
         <div className="grid lg:grid-cols-3 grid-cols-1">
           <div className="mx-4 relative my-4">
             <div className="footer__copyrights__bg absolute hidden lg:block float-right w-16 h-16"></div>
