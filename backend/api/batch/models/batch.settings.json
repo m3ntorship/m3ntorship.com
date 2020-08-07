@@ -18,12 +18,17 @@
       "component": "general.cards"
     },
     "mentee": {
-      "via": "mentees_at",
-      "model": "mentee"
+      "model": "mentee",
+      "via": "mentees_at"
     },
     "mentor": {
-      "via": "mentors_at",
-      "model": "mentor"
+      "model": "mentor",
+      "via": "mentors_at"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
     }
   }
 }
