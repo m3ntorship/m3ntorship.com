@@ -8,7 +8,7 @@ import {
 import GenericParagrapgh from '../shared/GenericParagrapgh/index';
 import Button from '../shared/Button/index';
 import Form from '../shared/form';
-const Apply = ({ data, inputFields }) => {
+const Apply = ({ data }) => {
   if (data) {
     const {
       primaryHeading,
@@ -103,13 +103,14 @@ const Apply = ({ data, inputFields }) => {
             />
           </div>
         </div>
-        <div className="mt-8">
+
+        {/* <div className="mt-8">
           <Form
             inputFields={inputFields}
             sideImg="https://s3-alpha-sig.figma.com/img/2b73/7a06/63d6c70e5a3acaea8b40ac2bc166be42?Expires=1597017600&Signature=QmvpwbPGcGZwtNl8CvFkOVF~AwH2Efz1r5H5m5gOUuJDV16up3nw-NVCZcxTNSP5rH27k6WAFoNhEMeBLkYrwnQt1yEsk6J00awJO61Fa40UeOOn94lK-vNYHbmcc8tFV0Ngs1DM0~jcNwmmSNRcMuns0By9AwoMLJMVymnTGzvRmFA08IpZ85ycD1njjIXIp0AEMgMhN0T4JD4rRpk15SLkQofEEf7NW3IycczDMfCL9i~Q3TMQXcxk927t7kYqZngr0F-TPTfCD~PHYTPCStOBbrcIeD7cNPakz9kHWQZpSw0M-rzXWtQjJDPbOzuaH3JrRsn96xIgmeuv1mtVcA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
           />
         </div>
-      </div>
+      </div> */}
     );
   }
 };
