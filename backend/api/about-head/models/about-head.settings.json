@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_heads",
+  "info": {
+    "name": "about_us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "about_head": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.mini-card"
+    },
+    "about_description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.mini-card"
+    }
+  }
+}

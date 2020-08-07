@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/about-head",
+      "handler": "about-head.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/about-head",
+      "handler": "about-head.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/about-head",
+      "handler": "about-head.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
