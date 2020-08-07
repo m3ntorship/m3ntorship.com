@@ -3,9 +3,9 @@ import Button from '../shared/Button';
 import Link from 'next/link';
 export const TopBar = ({
   data: {
-    logo_title,
-    sub_title,
-    link: { link_url, link_text }
+    logo: logo_title,
+    sub_text: sub_title,
+    apply_btn: { url: link_url, name: link_text }
   },
   background_color,
   button_color,
