@@ -16,10 +16,8 @@ export async function getStaticProps(context) {
     endPoints.map(ep =>
       ep.then(res => {
         if (Object.keys(res.data).length) {
-          console.log(res);
           return res;
         } else {
-          console.log(res);
           return {
             data: {
               statusCode: 404
