@@ -8,7 +8,7 @@ module.exports = {
   // important: true,
   theme: {
     fontFamily: {
-      body: ['Noto Sans HK', 'sans-serif']
+      body: ['Jost', 'sans-serif']
     },
     colors: {
       c000: '#ffffff', //white

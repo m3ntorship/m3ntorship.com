@@ -1,0 +1,71 @@
+/* Jost-100 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../public/fonts/Jost-100-Hairline.otf');
+}
+
+/* Jost-200 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../public/fonts/Jost-200-Thin.otf');
+}
+
+/* Jost-300 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../public/fonts/Jost-300-Light.otf');
+}
+
+/* Jost-400 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../public/fonts/Jost-400-Book.otf');
+}
+
+/* Jost-500 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../public/fonts/Jost-500-Medium.otf');
+}
+
+/* Jost-600 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../public/fonts/Jost-600-Semi.otf');
+}
+
+/* Jost-700 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../public/fonts/Jost-700-Bold.otf');
+}
+
+/* Jost-800 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../public/fonts/Jost-800-Hevy.otf');
+}
+
+/* Jost-900 */
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../public/fonts/Jost-900-Black.otf');
+}

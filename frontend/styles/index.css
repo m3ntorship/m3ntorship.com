@@ -2,6 +2,7 @@
 
 @import 'tailwindcss/components';
 
+@import './fonts.css';
 @import './global.css';
 
 @import 'tailwindcss/utilities';
@@ -9,4 +10,4 @@
 @import './heading.css';
 @import './goals.css';
 @import './patches.css';
-@import './topbar.css'
+@import './topbar.css';
