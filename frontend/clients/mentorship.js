@@ -1,3 +1,3 @@
 import { create } from "axios";
 
-export const mentorshipAPI = create({ baseURL: process.env.url });
+export const mentorshipAPI = create({ baseURL: 'http://localhost:1337' });
