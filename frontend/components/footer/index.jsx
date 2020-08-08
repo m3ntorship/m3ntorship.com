@@ -28,20 +28,12 @@ const Footer = ({ data }) => {
             <h3 className="text-base mb-6 font-bold">Links</h3>
             <ul className="flex flex-col flex-wrap h-32">
               {links.map(link => {
-                const { url, underline, text } = link;
-                if (underline) {
-                  return (
-                    <li className="mb-4 leading-7 underline">
-                      <a href={url}>{text}</a>
-                    </li>
-                  );
-                } else {
-                  return (
-                    <li className="mb-4 leading-7">
-                      <a href={url}>{text}</a>
-                    </li>
-                  );
-                }
+                const { url, name } = link;
+                return (
+                  <li className="mb-4 leading-7 underline">
+                    <a href={url}>{name}</a>
+                  </li>
+                );
               })}
             </ul>
           </div>
