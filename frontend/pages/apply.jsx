@@ -14,24 +14,19 @@ export async function getStaticProps(context) {
   ];
   return Promise.all(
     endPoints.map(ep =>
-      ep
-        .then(res => {
-          if (Object.keys(res.data).length) {
-            console.log(res);
-            return res;
-          } else {
-            return {
-              data: {
-                statusCode: 404
-              }
-            };
-          }
-        })
-        .catch(err => {
-          data: {
-            message: err.message;
-          }
-        })
+      ep.then(res => {
+        if (Object.keys(res.data).length) {
+          console.log(res);
+          return res;
+        } else {
+          console.log(res);
+          return {
+            data: {
+              statusCode: 404
+            }
+          };
+        }
+      })
     )
   ).then(
     ([
@@ -49,7 +44,7 @@ export async function getStaticProps(context) {
             footerData
           }
         },
-        revalidate: 1
+        unstable_revalidate: 1
       };
     }
   );

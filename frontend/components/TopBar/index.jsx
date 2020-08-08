@@ -3,9 +3,9 @@ import Button from '../shared/Button';
 import Link from 'next/link';
 export const TopBar = ({
   data: {
-    logo_title,
-    sub_title,
-    link: { link_url, link_text }
+    logo,
+    sub_text,
+    apply_btn: { url, name }
   },
   background_color,
   button_color,
@@ -14,15 +14,15 @@ export const TopBar = ({
   return (
     <div className={`py-8 md:py-16 ${background_color ? 'bg-c200' : ''}`}>
       <div className="container flex items-center">
-        {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
-        {sub_title && (
+        {logo && <div className="text-md md:text-lg">{logo}</div>}
+        {sub_text && (
           <p className="uppercase text-sm text-c500 self-end ml-4 hidden md:inline">
-            {sub_title}
+            {sub_text}
           </p>
         )}
-        {link_url && (
-          <Link href={link_url}>
-            {link_text && (
+        {url && (
+          <Link href={url}>
+            {name && (
               <Button
                 textSize="medium"
                 textColor={button_color === 'blue' ? 'white' : 'black'}
@@ -31,7 +31,7 @@ export const TopBar = ({
                 }`}
                 bgColor={button_color ? button_color : 'green'}
               >
-                {link_text}
+                {name}
               </Button>
             )}
           </Link>

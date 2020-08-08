@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = ({ data }) => {
-  const { links, about, copyrights } = data;
+  const { links, footer_about: about, copyright } = data;
   if (data) {
     return (
       <footer className="mt-24 container">
@@ -11,16 +11,16 @@ const Footer = ({ data }) => {
             <h2 className="font-black mb-8 text-xlg">M3ntorship</h2>
             <p className="text-xxs text-c700 leading-5">
               {' '}
-              {copyrights}
+              {copyright}
               <br /> All rights reserved.{' '}
             </p>
           </div>
           <div className="mx-4 my-4">
             <h3 className="text-base mb-8 font-bold">About us</h3>
             <p className="text-c700">
-              {about.text.slice(0, 120).concat('... ')}
-              <a className="underline" href={about.url}>
-                Read More
+              {about.description.slice(0, 120).concat('... ')}
+              <a className="underline" href={about.url.url}>
+                {about.url.name}
               </a>
             </p>
           </div>
