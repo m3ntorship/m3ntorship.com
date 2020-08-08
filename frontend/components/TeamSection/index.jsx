@@ -7,7 +7,7 @@ const TeamGroupSection = ({ data }) => {
 
   const membersData = member.map(cardData => {
     return (
-      <div className="border border-c1100">
+      <div key={cardData.id} className="border border-c1100">
         <PersonCard cardDetails={cardData} rounded={true} />
       </div>
     );

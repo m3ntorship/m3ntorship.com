@@ -7,7 +7,6 @@ const About = ({
   aboutData: { about_head, about_description },
   TeamGroupData
 }) => {
-  console.log(TeamGroupData);
   return (
     <>
       <ParallaxedHeader data={about_head} />
