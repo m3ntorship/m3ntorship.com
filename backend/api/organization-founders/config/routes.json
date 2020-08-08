@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/organization-founders",
+      "handler": "organization-founders.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/organization-founders",
+      "handler": "organization-founders.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/organization-founders",
+      "handler": "organization-founders.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
