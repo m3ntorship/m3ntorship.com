@@ -7,20 +7,20 @@ import {
 } from '../shared/Heading/index';
 import GenericParagrapgh from '../shared/GenericParagrapgh/index';
 import Button from '../shared/Button/index';
-import Form from '../shared/form';
+// import Form from '../shared/form';
 const Apply = ({ data }) => {
   if (data) {
     const {
-      primaryHeading,
+      heading: primaryHeading,
       gradiendtText,
       description,
 
-      MenteeButton: [{ color: menteeButtonColor, text: menteeButtonText }],
-      MentorButton: [{ color: mentorButtonColor, text: mentorButtonText }]
+      MenteeButton: [{ textColor: menteeButtonColor, text: menteeButtonText }],
+      MentorButton: [{ textColor: mentorButtonColor, text: mentorButtonText }]
     } = data;
     const { mentor, setMentor } = useContext(UserContext);
     return (
-      <div className="container">
+      <div>
         <div className="grid grid-cols-3">
           <div className="col-span-2">
             <Heading
@@ -97,7 +97,7 @@ const Apply = ({ data }) => {
           </div>
           <div className="mt-8 hidden md:block">
             <img
-              src="https://s3-alpha-sig.figma.com/img/7718/8515/e137ebf7ac9175f7efc97260dc799db1?Expires=1596412800&Signature=ZXzEM4iwW0trNUXKaP9RCesSP-xTjRAuZGa~mdEvJ9eLyJLVPrPO4CubYOAtUhM5OA20a-hrom4wm3mwkpyqBgTc8K4HiI5RqKDULsLSRoj3AS-dpHYFBQzTIBFOCVX2Df4q1YT6OOWLQ06u42BG5SmhT4NKAq3cGKCg53AFZAQqmIqV0b1K~4nk8yD3jArzMvzFUBuYsEyrHRAQD-Vro4ZBDNlx60L5IxlwthyEE3SS2tb0xDz0GeL9Z2vGCrgg4KfM2PE763CwLtVB2B9LU~C2EjEQc4dLhkoFW0N3IxYrubeQ~9P8RIJYLY8wa8VZp8AajIcxNhNNLMUFxxKLIw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+              src="https://s3-alpha-sig.figma.com/img/7718/8515/e137ebf7ac9175f7efc97260dc799db1?Expires=1597622400&Signature=DENH6VZ94XdjV2lefh9-fdcEy13r2Axqfs5aaw2ub3C5bYia--YCfEcCdMvMuwsdI5685MpBb45h4ua0qNwi-iER0yQYZIBi~7gA6IwsSQVjVM7T2G0MLFfEol~RVFZAkCcDk~sE~4fE1COLh7-45FS4GdqoqBFfThJPrPKnfFlFuq0BzfxFKA0gGfU2bR6A8ePQOwFxb84yusJLxiqr62vSYh0xEFWAu4kL84iCD3uhh3d1sFXOAM8AT5tupjj6hRQ3F4Sk~65CVu3QAOXERYzMslJKSsVXd4~qytRJHscggV2PRC7ctCPc7LkXeo95LVZx7DL7aXqRqXyXv-cA7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
               className="float-right w-32"
             />
           </div>
