@@ -93,6 +93,7 @@ export async function getStaticProps(context) {
             contribute
           }
         },
+        unstable_revalidate: 1
       };
     }
   );
