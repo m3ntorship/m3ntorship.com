@@ -3,7 +3,6 @@ import { GradientText } from '../shared/Heading/index';
 import PatchCard from '../patch-card';
 
 const Patches = ({ data, batchesCards }) => {
-  console.log('cards' , batchesCards)
   const { title, description, dashed_card } = data;
   if (data, batchesCards) {
     return (
@@ -16,7 +15,7 @@ const Patches = ({ data, batchesCards }) => {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
             {batchesCards.map(card => {
               return (
-                <PatchCard cardDetails={card} dashed={false} />
+                <PatchCard key={card.id} cardDetails={card} dashed={false} />
               );
             })}
             <PatchCard cardDetails={dashed_card} dashed={true} />
