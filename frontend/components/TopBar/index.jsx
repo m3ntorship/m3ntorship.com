@@ -3,9 +3,9 @@ import Button from '../shared/Button';
 import Link from 'next/link';
 export const TopBar = ({
   data: {
-    logo_title,
-    sub_title,
-    link: { link_url, link_text }
+    logo: logo_title,
+    sub_text: sub_title,
+    apply_btn: { url: link_url, name: link_text }
   },
   background_color,
   button_color,
@@ -25,7 +25,13 @@ export const TopBar = ({
             {link_text && (
               <Button
                 textSize="medium"
-                textColor={button_color === 'blue' ? 'white' : 'black'}
+                textColor={
+                  button_color
+                    ? button_color === 'blue'
+                      ? 'white'
+                      : 'black'
+                    : 'black'
+                }
                 customClassName={`ml-auto uppercase top-bar-btn ${
                   button_shadow ? 'shadow-btn' : ''
                 }`}
