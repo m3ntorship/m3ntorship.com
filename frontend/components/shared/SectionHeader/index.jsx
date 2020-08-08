@@ -13,7 +13,7 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
 
 const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   const {
-    heading,
+    title,
     headerImage,
     headingGradientText,
     description,
@@ -23,17 +23,17 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   return (
     <>
       {data && (
-        <section className="flex items-center justify-center flex-col-reverse lg:flex-row">
+        <section className="flex items-center justify-center flex-col-reverse lg:flex-row my-20">
           <div className='container'>
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
               <div className="heading ">
-                {heading && (
+                {title && (
                   <Heading
                     type={headingtype}
                     textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
                   >
-                    {heading}
+                    {title}
                     {headingGradientText && (
                       <GradientText
                         text={headingGradientText}
