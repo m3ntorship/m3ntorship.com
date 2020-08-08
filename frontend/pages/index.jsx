@@ -7,6 +7,7 @@ import Patches from '../components/Patches'
 import {mentorshipAPI} from '../clients'
 
 export const Home = ({data}) => {
+  console.log(data)
     if(data) {
       const {home_header,
         goals,
@@ -22,6 +23,8 @@ export const Home = ({data}) => {
             <ContributeSection data={contribute} />
             </>
         )
+    } else {
+      return <h1>Loading....</h1>
     }
 }
 
@@ -44,58 +47,167 @@ const ContributeSection = ({data}) => {
 }
 
 
-export async function getStaticProps(context) {
+// const test = async function() {
+//   const endPoints = [
+//     mentorshipAPI('/home-header'),
+//     mentorshipAPI('/goals'),
+//     // mentorshipAPI('/steps'),
+//     // mentorshipAPI('/patches'),
+//     // mentorshipAPI('/contribute')
+//   ];
+
+// Promise.all(endPoints).then(([
+//       {data: homePgaeData},
+//       {data: goalsData},
+// ]) => {
+//   return {
+//     props: {
+//       data: {
+//         homePgaeData,
+//         goalsData
+//       }
+//     }
+//   }
+// }).then ((ret) => {console.log(ret)} )
+// }
+
+// test()
+
+
+export async function getStaticProps() {
   const endPoints = [
-    mentorshipAPI('/home-header'),
-    mentorshipAPI('/goals'),
-    mentorshipAPI('/steps'),
-    mentorshipAPI('/patches'),
-    mentorshipAPI('/contribute')
-  ];
-  return Promise.all(
-    endPoints
-      .map(ep =>
-        ep
-          .then(res => {
-            if (Object.keys(res.data).length) {
-              return res;
-            } else {
-              return {
-                data: {
-                  statusCode: 404
-                }
-              };
-            }
-          })
-          .catch(err => {
-            data: {
-              message: err.message;
-            }
-          })
-      )
-      .then(
-        ([
-          { data: home_header },
-          { data: goals },
-          { data: steps },
-          { data: patches },
-          { data: contribute }
-        ]) => {
-          return {
-            props: {
-              data: {
-                home_header,
-                goals,
-                steps,
-                patches,
-                contribute
-              }
-            },
-            revalidate: 1
-          };
-        }
-      )
-  );
+        mentorshipAPI('/home-header'),
+        mentorshipAPI('/goals'),
+        mentorshipAPI('/steps'),
+        mentorshipAPI('/patches'),
+        mentorshipAPI('/contribute')
+      ];
+    Promise.all(endPoints).then(([
+      {data: home_header},
+      {data: goals},
+      {data: steps},
+      {data: patches},
+      {data: contribute},
+    ]) => {
+      return home_header
+      // return {
+      //   props : {
+      //       data: {
+      //         home_header,
+      //         goals,
+      //         steps,
+      //         patches,
+      //         contribute
+      //       }
+      //   }
+      // }
+    })
 }
 
+// export async function getStaticProps(context) {
+//   const endPoints = [
+//     mentorshipAPI('/home-header'),
+//     mentorshipAPI('/goals'),
+//     mentorshipAPI('/steps'),
+//     mentorshipAPI('/patches'),
+//     mentorshipAPI('/contribute')
+//   ];
+//   return Promise.all(
+//     endPoints.map(ep =>
+//         ep
+//           .then(res => {
+//             if (Object.keys(res.data).length) {
+//               console.log(res)
+//               return res;
+//             } else {
+//               return {
+//                 data: {
+//                   statusCode: 404
+//                 }
+//               };
+//             }
+//           })
+//           .catch(err => {
+//             data: {
+//               message: err.message;
+//             }
+//           })
+//       )
+//       .then(
+//         ([
+//           { data: home_header },
+//           { data: goals },
+//           { data: steps },
+//           { data: patches },
+//           { data: contribute }
+//         ]) => {
+//           return {
+//             props: {
+//               data: {
+//                 home_header,
+//                 goals,
+//                 steps,
+//                 patches,
+//                 contribute
+//               }
+//             },
+//             unstable_revalidate: 1
+//           };
+//         }
+//       )
+//   );
+// }
+
 export default Home;
+
+
+
+// export async function getStaticProps(context) {
+//   const endPoints = [
+//     mentorshipAPI('/top-bar'),
+//     mentorshipAPI('/apply-page-intro-section'),
+//     mentorshipAPI('/apply-page-form'),
+//     mentorshipAPI('/footer')
+//   ];
+//   return Promise.all(
+//     endPoints.map(ep =>
+//       ep
+//         .then(res => {
+//           if (Object.keys(res.data).length) {
+//             console.log(res);
+//             return res;
+//           } else {
+//             return {
+//               data: {
+//                 statusCode: 404
+//               }
+//             };
+//           }
+//         })
+//         .catch(err => {
+//           data: {
+//             message: err.message;
+//           }
+//         })
+//     )
+//   ).then(
+//     ([
+//       { data: topBarData },
+//       { data: headerSectionData },
+//       { data: formData },
+//       { data: footerData }
+//     ]) => {
+//       return {
+//         props: {
+//           data: {
+//             topBarData,
+//             headerSectionData,
+//             formData,
+//             footerData
+//           }
+//         },
+//         revalidate: 1
+//       };
+//     }
+//   );
+// }
