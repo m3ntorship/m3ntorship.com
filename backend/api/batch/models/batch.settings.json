@@ -29,6 +29,11 @@
       "collection": "member",
       "via": "batches",
       "dominant": true
+    },
+    "batch_slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": false
     }
   }
 }
