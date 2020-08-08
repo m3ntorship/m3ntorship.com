@@ -24,6 +24,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
     <>
       {data && (
         <section className="flex items-center justify-center flex-col-reverse lg:flex-row">
+          <div className='container'>
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
               <div className="heading ">
@@ -69,6 +70,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
               <img src={headerImage} alt="" />
             </div>
           )}
+          </div>
         </section>
       )}
     </>
