@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "batches",
+  "info": {
+    "name": "batch"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
+    },
+    "batch_mentors": {
+      "collection": "member",
+      "via": "batches",
+      "dominant": true
+    },
+    "batch_mentees": {
+      "collection": "member",
+      "via": "batches",
+      "dominant": true
+    },
+    "batch_slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": false
+    }
+  }
+}
