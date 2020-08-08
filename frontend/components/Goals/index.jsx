@@ -5,14 +5,16 @@ const Goals = ({ data }) => {
   const {
     title,
     list_goals,
-    side_image: { url }
+    side_image
   } = data;
   if (data) {
     return (
       <div className="relative w-full my-24">
         <div className="text-center text-lg container">
           <div className="absolute graph hidden md:block">
-            <img src={url} />
+            {side_image && 
+              <img src={side_image.url} />
+            }
           </div>
           <GradientText text={title} className="uppercase font-bold" />
           <div className="mt-10 md:mt-16">
