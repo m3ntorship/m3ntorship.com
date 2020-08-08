@@ -3,14 +3,11 @@ import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
 
 const HowItWork = ({data}) => {
-  const { title, paragraph, cards, side_image } = data
+  const { title, paragraph, cards } = data
   if(data) {
     return (
       <div className="text-center mt-40 mb-20">
         <div className="container relative">
-          <div className="absolute left-0 top-0 lg:-ml-10 hidden lg:block">
-            <img src={side_image.url} />
-          </div>
           <Heading type={HEADING_OPTIONS.TYPE.SECTION} textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER} >
             <GradientText text={title} className="uppercase font-bold" />
           </Heading>
@@ -23,7 +20,7 @@ const HowItWork = ({data}) => {
                     index + 1
                   }`}</span>
                   <div className='z-10 relative bg-c000'>
-                  <PersonCard cardDetails={el.cardDetails} boxShadow={true} />
+                  <PersonCard cardDetails={el} boxShadow={true} />
                   </div>
                 </div>
               );

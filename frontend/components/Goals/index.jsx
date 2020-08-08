@@ -4,7 +4,7 @@ import { GradientText } from '../shared/Heading';
 const Goals = ({ data }) => {
   const {
     title,
-    goals_lists,
+    list_goals,
     side_image: { url }
   } = data;
   if (data) {
@@ -16,13 +16,13 @@ const Goals = ({ data }) => {
           </div>
           <GradientText text={title} className="uppercase font-bold" />
           <div className="mt-10 md:mt-16">
-            {goals_lists.map(({ id, text }) => {
+            {list_goals.map(({ id, goal }) => {
               return (
                 <p
                   className="uppercase mb-12 font-normal text-sm md:text-xlg"
                   key={id}
                 >
-                  {text}
+                  {goal}
                 </p>
               );
             })}
