@@ -12,13 +12,15 @@ export const Home = ({data}) => {
         goals,
         steps,
         patches,
-        contribute} = data
+        contribute,
+        batches
+          } = data
         return (
             <>
             <SectionHeaderComponent data={home_header} />
             <Goals data={goals} />
             <HowItWork data={steps} />
-            <Patches data={patches} />
+            <Patches data={patches} batchesCards={batches} />
             <ContributeSection data={contribute} />
             </>
         )
@@ -52,7 +54,8 @@ export async function getStaticProps(context) {
     mentorshipAPI('/goals'),
     mentorshipAPI('/steps'),
     mentorshipAPI('/patches'),
-    mentorshipAPI('/contribute')
+    mentorshipAPI('/contribute'),
+    mentorshipAPI('/batches'),
   ];
   return Promise.all(
     endPoints.map(ep =>
@@ -82,6 +85,7 @@ export async function getStaticProps(context) {
       {data: steps},
       {data: patches},
       {data: contribute},
+      {data: batches},
     ]) => {
       return {
         props: {
@@ -90,7 +94,8 @@ export async function getStaticProps(context) {
             goals,
             steps,
             patches,
-            contribute
+            contribute,
+            batches
           }
         },
         unstable_revalidate: 1
