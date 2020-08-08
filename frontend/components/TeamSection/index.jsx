@@ -3,9 +3,9 @@ import { Heading, GradientText, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
 
 const TeamGroupSection = ({ data }) => {
-  const { title, cardsData } = data;
+  const { title, member } = data;
 
-  const membersData = cardsData.map(cardData => {
+  const membersData = member.map(cardData => {
     return (
       <div className="border border-c1100">
         <PersonCard cardDetails={cardData} rounded={true} />
