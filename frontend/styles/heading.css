@@ -4,7 +4,7 @@
     theme('colors.c200') 0%,
     rgba(0, 0, 0, 0) 40%
   );
-  background-position-y: -0.27em;
+  background-position-y: -0.37em;
 }
 
 .gradient-blue {
@@ -13,5 +13,5 @@
     theme('colors.c300') 0%,
     rgba(0, 0, 0, 0) 40%
   );
-  background-position-y: -0.27em;
+  background-position-y: -0.37em;
 }
