@@ -13,12 +13,11 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
 
 const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   const {
-    heading,
+    title,
     headerImage,
     headingGradientText,
     description,
-    image,
-    buttons
+    side_image
   } = data;
   return (
     <>
@@ -27,12 +26,12 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
               <div className="heading ">
-                {heading && (
+                {title && (
                   <Heading
                     type={headingtype}
                     textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
                   >
-                    {heading}
+                    {title}
                     {headingGradientText && (
                       <GradientText
                         text={headingGradientText}
@@ -43,9 +42,9 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
                 )}
               </div>
 
-              {image && (
+              {side_image && (
                 <div className="hidden lg:block heading-image">
-                  <img src={image} alt="" />
+                  <img src={side_image.url} alt="" />
                 </div>
               )}
             </div>
@@ -57,11 +56,9 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
                 {description}
               </GenericParagrapgh>
             )}
-            {!buttons && (
-              <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
-                {children}
-              </div>
-            )}
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
+              {children}
+            </div>
           </div>
 
           {headerImage && (
