@@ -17,8 +17,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
     headerImage,
     headingGradientText,
     description,
-    image,
-    buttons
+    side_image
   } = data;
   return (
     <>
@@ -44,9 +43,9 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
                 )}
               </div>
 
-              {image && (
+              {side_image && (
                 <div className="hidden lg:block heading-image">
-                  <img src={image} alt="" />
+                  <img src={side_image.url} alt="" />
                 </div>
               )}
             </div>
@@ -58,11 +57,9 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
                 {description}
               </GenericParagrapgh>
             )}
-            {!buttons && (
-              <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
-                {children}
-              </div>
-            )}
+            <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
+              {children}
+            </div>
           </div>
 
           {headerImage && (

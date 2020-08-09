@@ -6,10 +6,10 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 /**
  * cardDetails
- *  // image
+ *  // card_image
  *  // title
- *  // subtitle
- *  // description
+ *  // sub_title
+ *  // describe
  *
  * bgColord
  * rounded
@@ -17,12 +17,7 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
  */
 
 const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
-  const {
-    card_image: { url },
-    title,
-    sub_title,
-    describe
-  } = cardDetails;
+  const { card_image, title, sub_title, describe } = cardDetails;
 
   return (
     <>
@@ -34,7 +29,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
             'text-center px-10, px-10': rounded
           })}
         >
-          {url && (
+          {card_image && (
             <div
               className={cn(
                 'person__card__image',
@@ -48,7 +43,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
               )}
             >
               <img
-                src={url}
+                src={card_image.url}
                 alt="title"
                 className={cn({
                   'rounded-full  max-w-none m-auto': rounded,
