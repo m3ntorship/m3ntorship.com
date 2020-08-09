@@ -50,7 +50,7 @@ const ContributeSection = ({data}) => {
 
 export async function getStaticProps(context) {
   const endPoints = [
-    mentorshipAPI('/home-header'),
+    mentorshipAPI('/home-heaer'),
     mentorshipAPI('/goals'),
     mentorshipAPI('/steps'),
     mentorshipAPI('/patches'),
@@ -73,9 +73,9 @@ export async function getStaticProps(context) {
           }
         })
         .catch(err => {
-          data: {
-            message: err.message;
-          }
+          return {data: {
+            message: err.message
+          }}
         })
     )
   ).then(
