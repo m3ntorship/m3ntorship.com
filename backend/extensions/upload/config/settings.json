@@ -1,0 +1,9 @@
+{
+  "provider": "m3-minio",
+  "providerOptions": {
+    "public": "${process.env.MINIO_PUBLIC_KEY}",
+    "private": "${process.env.MINIO_PRIVATE_KEY}",
+    "endpoint": "${process.env.MINIO_URL}",
+    "bucket": "${process.env.MINIO_BUCKET}"
+  }
+}

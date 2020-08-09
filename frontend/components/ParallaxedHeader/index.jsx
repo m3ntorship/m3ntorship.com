@@ -2,7 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { Heading } from '../shared/Heading';
 import { useSpring, animated as a, interpolate } from 'react-spring';
 
-export const ParallaxedHeader = ({ data: { title, sub_title, imgUrl } }) => {
+export const ParallaxedHeader = ({
+  data: {
+    title,
+    sub_title,
+    image: { url }
+  }
+}) => {
   const ref = useRef();
 
   const [{ offset }, set] = useSpring(() => ({ offset: 0 }));
@@ -29,7 +35,7 @@ export const ParallaxedHeader = ({ data: { title, sub_title, imgUrl } }) => {
             style={{ transform: offset.interpolate(calc) }}
           >
             <div className="hidden lg:block mr-auto w-56">
-              {imgUrl && <img src={imgUrl} />}
+              {url && <img src={url} />}
             </div>
             <div className="flex flex-col justify-center items-center mx-10">
               {title && (
@@ -48,7 +54,7 @@ export const ParallaxedHeader = ({ data: { title, sub_title, imgUrl } }) => {
               )}
             </div>
             <div className="hidden lg:block ml-auto w-56">
-              {imgUrl && <img src={imgUrl} />}
+              {url && <img src={url} />}
             </div>
           </a.div>
         </div>
