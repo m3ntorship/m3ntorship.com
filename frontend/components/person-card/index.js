@@ -88,7 +88,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
                 }
               )}
             >
-              {descripe}
+              {describe}
             </p>
           )}
         </div>
