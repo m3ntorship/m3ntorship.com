@@ -14,7 +14,7 @@ import { Heading } from './../shared/Heading/index';
  */
 
 const PatchCard = ({ cardDetails, dashed }) => {
-  const { title, images, description, anchorText } = cardDetails;
+  const { title, batch_mentees, description, link } = cardDetails;
   return (
     <>
       {cardDetails && (
@@ -29,22 +29,23 @@ const PatchCard = ({ cardDetails, dashed }) => {
               <Heading type="card">{title}</Heading>
             </p>
           )}
-          {images && (
+          {batch_mentees && (
             <div
               className={cn(
                 'card__image',
                 'flex',
                 'mx-auto',
                 'py-4',
+                'ml-0',
                 'flex-wrap',
                 'items-center'
               )}
             >
-              {images.map((image, i) => (
+              {batch_mentees.map(({ id, member_info: { card_image: { url } }, name }) => (
                 <img
-                  key={i}
-                  src={image}
-                  alt="title"
+                  key={id}
+                  src={url}
+                  alt={name}
                   className="rounded-full w-8 h-8 my-1"
                   style={{
                     objectFit: 'cover',
@@ -69,9 +70,9 @@ const PatchCard = ({ cardDetails, dashed }) => {
             </p>
           )}
 
-          {anchorText && (
-            <a className="font-bold text-sm underline " href="#">
-              {anchorText}
+          {link && (
+            <a className="font-bold text-sm underline " href={link.url}>
+              {link.name}
             </a>
           )}
         </div>
