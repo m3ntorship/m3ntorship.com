@@ -3,7 +3,7 @@ import SectionHeader from './../../components/shared/SectionHeader/index';
 import Button from '../../components/shared/Button';
 import { ListOfRoundedImages } from '../../components/ListOfRoundedImages';
 import { Team } from '../../components/Team';
-import { JoinUs } from '../../components/JoinUsComponent';
+import JoinUs from '../../components/JoinUsComponent';
 import { useRouter } from 'next/router';
 import { mentorshipAPI } from './../../clients/mentorship';
 const BatchPage = ({
@@ -12,6 +12,7 @@ const BatchPage = ({
   batchTeamData,
   joinUsData
 }) => {
+  console.log(joinUsData);
   if (!batchData || batchData.length === 0) return <p>Errrrrror</p>;
   const router = useRouter();
 
@@ -23,7 +24,11 @@ const BatchPage = ({
   const team_members = [
     ...batchData[0].batch_mentors,
     ...batchData[0].batch_mentees
-  ];
+  ].filter(
+    (member, index, team_members) =>
+      team_members.map(item => item.id).indexOf(member.id) === index
+  );
+
   // all team images
   const team_images = team_members.map(
     ({
@@ -74,9 +79,9 @@ const BatchPage = ({
       <div className="mb-32">
         <Team data={batchTeamData} team_members={team_members} />
       </div>
-      {/* <div className="mb-32">
+      <div className="mb-32">
         <JoinUs data={joinUsData} />
-      </div> */}
+      </div>
     </>
   );
 };
