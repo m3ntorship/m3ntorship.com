@@ -55,6 +55,8 @@ const Apply = ({ data }) => {
                   borderColor="black"
                   customClassName="text-c100 md:mr-6
                  font-black"
+                  href="#"
+                  extrnalLink={true}
                 >
                   {menteeButtonText}
                 </Button>
@@ -65,6 +67,8 @@ const Apply = ({ data }) => {
                   onClick={e => {
                     e.preventDefault();
                   }}
+                  href="#"
+                  extrnalLink={true}
                 >
                   {menteeButtonText}
                 </Button>
@@ -77,6 +81,8 @@ const Apply = ({ data }) => {
                   onClick={e => {
                     e.preventDefault();
                   }}
+                  href="#"
+                  extrnalLink={true}
                 >
                   {mentorButtonText}
                 </Button>
@@ -89,6 +95,8 @@ const Apply = ({ data }) => {
                   borderStyle="solid"
                   borderColor={mentorButtonColor}
                   customClassName="text-c300 font-black mt-6 md:mt-0"
+                  href="#"
+                  extrnalLink={true}
                 >
                   {mentorButtonText}
                 </Button>
