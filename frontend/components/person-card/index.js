@@ -21,7 +21,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
     card_image: { url },
     title,
     sub_title,
-    descripe
+    describe
   } = cardDetails;
 
   return (
@@ -74,7 +74,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
             </p>
           )}
 
-          {descripe && (
+          {describe && (
             <p
               className={cn(
                 'card__description',
