@@ -70,7 +70,7 @@ const ContributeSection = ({ data }) => {
 
 export async function getStaticProps(context) {
   const endPoints = [
-    mentorshipAPI('/home-heaer'),
+    mentorshipAPI('/home-header'),
     mentorshipAPI('/goals'),
     mentorshipAPI('/steps'),
     mentorshipAPI('/patches'),
