@@ -27,7 +27,7 @@ const TeamGroupSection = ({ data }) => {
           gradientColor={HEADING_OPTIONS.GRADIENT_COLOR.GREEN}
         />
       </Heading>
-      <div className="grid md:grid-cols-2 sm:grid-cols-1 md:px-48 gap-5">
+      <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-48 gap-5">
         {membersData}
       </div>
     </div>
