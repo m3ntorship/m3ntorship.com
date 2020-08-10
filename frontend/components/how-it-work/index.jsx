@@ -18,14 +18,20 @@ const HowItWork = ({ data }) => {
           <p className="my-10 mx-auto text-base text-c600 lg:w-4/6">
             {description}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 col-gap-5 row-gap-32 mt-32">
             {cards.map((el, index) => {
               return (
-                <div className="relative" key={el.id}>
-                  <span className="num block text-giant transform translate-y-8 z-0 text-c400 font-bold ">{` 0${
-                    index + 1
-                  }`}</span>
-                  <div className="z-10 relative bg-c000">
+                <div className="relative h-full" key={el.id}>
+                  <span
+                    className="absolute block text-giant z-0 text-c400 font-bold "
+                    style={{
+                      top: '-120px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      zIndex: '-1'
+                    }}
+                  >{` 0${index + 1}`}</span>
+                  <div className="z-10 bg-c000 h-full">
                     <PersonCard cardDetails={el} boxShadow={true} />
                   </div>
                 </div>
