@@ -3,12 +3,14 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
 import Link from 'next/link';
 
-export default function BackToHomeWithTitleAndImage({
-  imageUrl,
-  title,
-  description,
-  btn: { text: btnText, url: btnUrl }
-}) {
+export default function BackToHomeWithTitleAndImage({ data }) {
+  const {
+    image: { url: imageUrl },
+    title,
+    description,
+    button: { name: btnText, url: btnUrl }
+  } = data;
+
   return (
     <section className="w-full flex flex-col justify-center items-center">
       <div className="overflow-hidden rounded-full w-64 h-64 bg-c200 flex justify-center items-end">
