@@ -119,7 +119,7 @@ export async function getStaticProps(context) {
             batches
           }
         },
-        revalidate: 1
+        unstable_revalidate: 1
       };
     }
   );
