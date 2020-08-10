@@ -8,15 +8,25 @@ export const ApplyPage = ({ data }) => {
   const [mentor, setMentor] = useState(false);
 
   if (data) {
-    const { headerSectionData, formData } = data;
-    let menteeSectionHeaderData = headerSectionData;
-    menteeSectionHeaderData['headerImage'] =
-      menteeSectionHeaderData['menteeHeaderImage']['url'];
-    menteeSectionHeaderData['image'] = menteeSectionHeaderData['Image']['url'];
-    let mentorSectionHeaderData = headerSectionData;
-    mentorSectionHeaderData['headerImage'] =
-      mentorSectionHeaderData['mentorHeaderImage']['url'];
-    mentorSectionHeaderData['image'] = mentorSectionHeaderData['Image']['url'];
+    const {
+      headerSectionData,
+      headerSectionData: {
+        menteeHeaderImage: { url: menteeUrl }
+      },
+      headerSectionData: {
+        mentorHeaderImage: { url: mentorUrl }
+      },
+      formData
+    } = data;
+
+    let menteeSectionHeaderData = {
+      ...headerSectionData,
+      header_image: { url: menteeUrl }
+    };
+    let mentorSectionHeaderData = {
+      ...headerSectionData,
+      header_image: { url: mentorUrl }
+    };
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
