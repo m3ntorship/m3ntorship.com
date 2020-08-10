@@ -1,22 +1,22 @@
 import React from 'react';
-import { GradientText } from '../shared/Heading';
+import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 const Goals = ({ data }) => {
-  const {
-    title,
-    list_goals,
-    side_image
-  } = data;
+  const { title, list_goals, side_image } = data;
   if (data) {
     return (
       <div className="relative w-full my-24">
         <div className="text-center text-lg container">
           <div className="absolute graph hidden md:block">
-            {side_image && 
-              <img src={side_image.url} />
-            }
+            {side_image && <img src={side_image.url} />}
           </div>
-          <GradientText text={title} className="uppercase font-bold" />
+          <Heading
+            textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+            type={HEADING_OPTIONS.TYPE.SECTION}
+            as="h2"
+          >
+            <GradientText text={title} className="uppercase font-bold" />
+          </Heading>
           <div className="mt-10 md:mt-16">
             {list_goals.map(({ id, goal }) => {
               return (
