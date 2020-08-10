@@ -19,7 +19,7 @@ const HowItWork = ({data}) => {
                   <span className="num block text-giant transform translate-y-8 z-0 text-c400 font-bold ">{` 0${
                     index + 1
                   }`}</span>
-                  <div className='z-10 relative bg-c000'>
+                  <div className='z-10 relative person_card_wrapper  bg-c000'>
                   <PersonCard cardDetails={el} boxShadow={true} />
                   </div>
                 </div>
