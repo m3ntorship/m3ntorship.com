@@ -5,6 +5,7 @@ const Footer = ({ data }) => {
     const {
       logo,
       links,
+      side_image,
       footer_about: {
         title,
         description,
@@ -13,33 +14,35 @@ const Footer = ({ data }) => {
       copy_right: copyrights
     } = data;
     return (
-      <footer className="mt-24 container">
-        <div className="grid lg:grid-cols-3 grid-cols-1">
-          <div className="mx-4 relative my-4">
-            <div className="footer__copyrights__bg absolute hidden lg:block float-right w-16 h-16"></div>
-            <h2 className="font-black mb-8 text-xlg">{logo}</h2>
+      <footer className="container">
+        <div className="grid lg:grid-cols-3 grid-cols-1 py-16">
+          <div className="my-4 md:my-0">
+            <h2 className="font-black mb-6 text-xlg">
+              {logo}
+              <img className="inline-block ml-6" src={side_image.url} />
+            </h2>
             <p className="text-xxs text-c700 leading-5">
               {' '}
               {copyrights}
               <br /> All rights reserved.{' '}
             </p>
           </div>
-          <div className="mx-4 my-4">
+          <div className="my-4 mr-4 md:my-0">
             <h3 className="text-base mb-8 font-bold">{title}</h3>
             <p className="text-c700">
-              {description.slice(0, 120).concat('... ')}
+              {description}
               <a className="underline" href={url}>
                 {name}
               </a>
             </p>
           </div>
-          <div className="mx-4 my-4">
+          <div className="my-4 md:my-0">
             <h3 className="text-base mb-6 font-bold">Links</h3>
-            <ul className="flex flex-col flex-wrap h-32">
+            <ul className="flex flex-wrap">
               {links.map(link => {
                 const { url, underline, name } = link;
                 return (
-                  <li className="mb-4 leading-7 underline">
+                  <li className="mb-4 leading-7 font-bold underline w-1/2">
                     <a href={url}>{name}</a>
                   </li>
                 );

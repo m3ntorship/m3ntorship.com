@@ -27,9 +27,9 @@ const PatchCard = ({ cardDetails, dashed }) => {
           })}
         >
           {title && (
-            <p className="card__title text-c800">
-              <Heading type="card">{title}</Heading>
-            </p>
+            <Heading type="card" as="h3" className="card__title text-c800">
+              {title}
+            </Heading>
           )}
           {batch_mentees && (
             <div
@@ -55,7 +55,11 @@ const PatchCard = ({ cardDetails, dashed }) => {
                     key={id}
                     src={url}
                     alt={name}
+<<<<<<< HEAD
                     className="rounded-full w-8 h-8 my-1"
+=======
+                    className="rounded-full w-12 h-12 my-1"
+>>>>>>> develop
                     style={{
                       objectFit: 'cover',
                       marginLeft: '-.5rem',

@@ -7,7 +7,7 @@ const Layout = ({
   topBarBackgroundColor,
   topBarButtonColor,
   topBarButtonShadow,
-  footerData,
+  footerData
 }) => {
   return (
     <>
@@ -29,9 +29,7 @@ const Layout = ({
         />
       </header>
       <main>{children}</main>
-      <footer>
-        <Footer data={footerData} />
-      </footer>
+      <Footer data={footerData} />
     </>
   );
 };

@@ -25,7 +25,7 @@
       "component": "general.link",
       "required": true
     },
-    "side_image": {
+    "header_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
