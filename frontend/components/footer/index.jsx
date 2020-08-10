@@ -27,7 +27,7 @@ const Footer = ({ data }) => {
           <div className="mx-4 my-4">
             <h3 className="text-base mb-8 font-bold">{title}</h3>
             <p className="text-c700">
-              {description.slice(0, 120).concat('... ')}
+              {description}
               <a className="underline" href={url}>
                 {name}
               </a>
