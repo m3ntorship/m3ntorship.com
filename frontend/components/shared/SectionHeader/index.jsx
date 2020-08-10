@@ -14,7 +14,7 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
 const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   const {
     title,
-    headerImage,
+    header_image,
     headingGradientText,
     description,
     side_image
@@ -22,8 +22,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   return (
     <>
       {data && (
-        <section className="flex items-center justify-center flex-col-reverse lg:flex-row my-20">
-          <div className='container'>
+        <section className="container flex items-center justify-center flex-col-reverse lg:flex-row my-20">
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
               <div className="heading ">
@@ -62,12 +61,11 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
             </div>
           </div>
 
-          {headerImage && (
-            <div className="flex-1">
-              <img src={headerImage} alt="" />
+          {header_image && (
+            <div className="flex-1 mb-16 md:mb-0">
+              <img src={header_image.url} alt="" />
             </div>
           )}
-          </div>
         </section>
       )}
     </>
