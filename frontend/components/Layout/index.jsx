@@ -7,7 +7,8 @@ const Layout = ({
   topBarBackgroundColor,
   topBarButtonColor,
   topBarButtonShadow,
-  footerData
+  footerData,
+  pageName
 }) => {
   return (
     <>
@@ -20,7 +21,7 @@ const Layout = ({
           href="../../static/favicon/favicon.ico"
         ></link>
       </Head>
-      <header>
+      <header className={pageName ? `${pageName}_page` : "home_page"}>
         <TopBar
           data={topBarData}
           background_color={topBarBackgroundColor}
