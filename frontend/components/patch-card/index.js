@@ -1,4 +1,6 @@
 import React from 'react';
+import Link from 'next/link';
+
 import cn from 'classnames';
 import { Heading } from './../shared/Heading/index';
 
@@ -41,19 +43,27 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 'items-center'
               )}
             >
-              {batch_mentees.map(({ id, member_info: { card_image: { url } }, name }) => (
-                <img
-                  key={id}
-                  src={url}
-                  alt={name}
-                  className="rounded-full w-8 h-8 my-1"
-                  style={{
-                    objectFit: 'cover',
-                    marginLeft: '-.5rem',
-                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)'
-                  }}
-                />
-              ))}
+              {batch_mentees.map(
+                ({
+                  id,
+                  member_info: {
+                    card_image: { url }
+                  },
+                  name
+                }) => (
+                  <img
+                    key={id}
+                    src={url}
+                    alt={name}
+                    className="rounded-full w-8 h-8 my-1"
+                    style={{
+                      objectFit: 'cover',
+                      marginLeft: '-.5rem',
+                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)'
+                    }}
+                  />
+                )
+              )}
             </div>
           )}
           {description && (
@@ -71,9 +81,9 @@ const PatchCard = ({ cardDetails, dashed }) => {
           )}
 
           {link && (
-            <a className="font-bold text-sm underline " href={link.url}>
-              {link.name}
-            </a>
+            <Link href={link.url}>
+              <a className="font-bold text-sm underline">{link.name}</a>
+            </Link>
           )}
         </div>
       )}

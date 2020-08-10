@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
+import Link from 'next/link';
 import Button from '../shared/Button';
 
 const JoinUs = ({ data }) => {
@@ -36,26 +37,26 @@ const JoinUs = ({ data }) => {
             <p className="join-us-description text-center pt-8 text-xs text-c500">
               {description}
             </p>
-
-            <Button
-              customClassName="uppercase mt-8 mx-auto"
-              textSize="medium"
-              fontWeight="bold"
-              bgColor="green"
-              href={memberBtn.url}
-            >
-              {memberBtn.name}
-            </Button>
-
-            <Button
-              customClassName="uppercase mt-5 mx-auto"
-              textSize="medium"
-              fontWeight="bold"
-              bgColor="blue"
-              href={mentorBtn.url}
-            >
-              {mentorBtn.name}
-            </Button>
+            <Link href={'/apply'} passHref>
+              <Button
+                customClassName="uppercase mt-8 mx-auto"
+                textSize="medium"
+                fontWeight="bold"
+                bgColor="green"
+              >
+                {memberBtn.name}
+              </Button>
+            </Link>
+            <Link href={'/apply'} passHref>
+              <Button
+                customClassName="uppercase mt-5 mx-auto"
+                textSize="medium"
+                fontWeight="bold"
+                bgColor="blue"
+              >
+                {mentorBtn.name}
+              </Button>
+            </Link>
           </div>
           <div className="my-24 w-1/6 flex items-center">
             <img

@@ -12,7 +12,6 @@ const BatchPage = ({
   batchTeamData,
   joinUsData
 }) => {
-  console.log(joinUsData);
   if (!batchData || batchData.length === 0) return <p>Errrrrror</p>;
   const router = useRouter();
 
