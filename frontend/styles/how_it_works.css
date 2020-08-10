@@ -1,7 +1,3 @@
-.card_wrapper {
-    height: 28rem;
-}
-
-.card__description {
-
+.person_card_wrapper {
+  height: 80%;
 }
