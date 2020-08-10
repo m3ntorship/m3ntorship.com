@@ -14,14 +14,11 @@ const Patches = ({ data, batchesCards }) => {
         <div className="container">
           <div className="text-center">
             <Heading
-              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-              type={HEADING_OPTIONS.TYPE.SECTION}
               as="h2"
+              type={HEADING_OPTIONS.TYPE.SECTION}
+              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
             >
-              <GradientText
-                text={title}
-                className="uppercase font-bold text-xxlg inline-block"
-              />
+              <GradientText text={title} className="uppercase font-bold" />
             </Heading>
           </div>
           <p className="my-16 mx-auto text-center text-base text-c600 lg:w-4/6">
