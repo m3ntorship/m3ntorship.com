@@ -125,7 +125,7 @@ export async function getStaticProps(context) {
             batches
           }
         },
-        unstable_revalidate: 1
+        revalidate: 1
       };
     }
   );
