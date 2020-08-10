@@ -38,7 +38,6 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
                 'text-center',
                 {
                   'w-56': !rounded,
-                  'w-32': rounded
                 }
               )}
             >
