@@ -8,35 +8,37 @@ export const ApplyPage = ({ data }) => {
   const [mentor, setMentor] = useState(false);
 
   if (data) {
-    const {
-      topBarData,
-      mentorSectionHeaderData,
-      menteeSectionHeaderData,
-      applyData,
-      applyInputFields,
-      footerData
-    } = data;
-
+    const { headerSectionData, formData } = data;
+    let menteeSectionHeaderData = headerSectionData;
+    menteeSectionHeaderData['headerImage'] =
+      menteeSectionHeaderData['menteeHeaderImage']['url'];
+    menteeSectionHeaderData['image'] = menteeSectionHeaderData['Image']['url'];
+    let mentorSectionHeaderData = headerSectionData;
+    mentorSectionHeaderData['headerImage'] =
+      mentorSectionHeaderData['mentorHeaderImage']['url'];
+    mentorSectionHeaderData['image'] = mentorSectionHeaderData['Image']['url'];
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
-          <TopBar data={topBarData} button_color={mentor ? 'blue' : 'green'} />
-          {mentor ? (
-            <SectionHeader
-              data={mentorSectionHeaderData}
-              gradient_color="blue"
-              headingtype="main"
-            />
-          ) : (
-            <SectionHeader
-              data={menteeSectionHeaderData}
-              gradient_color="green"
-              headingtype="main"
-            />
-          )}
-          <Apply data={applyData} inputFields={applyInputFields} />
+          <div className="container mt-24">
+            {mentor ? (
+              <SectionHeader
+                data={mentorSectionHeaderData}
+                gradient_color="blue"
+                headingtype="main"
+              />
+            ) : (
+              <SectionHeader
+                data={menteeSectionHeaderData}
+                gradient_color="green"
+                headingtype="main"
+              />
+            )}
+          </div>
+          <div className="container mt-24 mb-24">
+            <Apply data={formData} />
+          </div>
         </UserProvider>
-        <Footer data={footerData} />
       </>
     );
   }
