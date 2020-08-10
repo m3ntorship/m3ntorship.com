@@ -1,10 +1,9 @@
 import '../styles/index.css';
 import Layout from '../components/Layout';
 import { mentorshipAPI } from '../clients/mentorship.js';
-import getPageName from '../helper/getPageName';
-function MyApp({ topBarData, footerData, Component,pageProps, pageName }) {
+function MyApp({ topBarData, footerData, Component, pageProps }) {
   return (
-    <Layout pageName={pageName} topBarData={topBarData} footerData={footerData}>
+    <Layout topBarData={topBarData} footerData={footerData}>
       <Component {...pageProps} />
     </Layout>
   );
@@ -12,8 +11,7 @@ function MyApp({ topBarData, footerData, Component,pageProps, pageName }) {
 
 export default MyApp;
 
-MyApp.getInitialProps = async ({ ctx: { asPath } }) => {
-  let pageName = await getPageName(asPath);
+MyApp.getInitialProps = async () => {
   const layoutEndPointsArr = [
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer')
@@ -41,8 +39,7 @@ MyApp.getInitialProps = async ({ ctx: { asPath } }) => {
   ).then(([{ data: topBarData }, { data: footerData }]) => {
     return {
       topBarData,
-      footerData,
-      pageName
+      footerData
     };
   });
 };
