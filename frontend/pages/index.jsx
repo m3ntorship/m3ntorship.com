@@ -5,7 +5,7 @@ import Goals from '../components/Goals';
 import HowItWork from '../components/how-it-work';
 import Patches from '../components/Patches';
 import { mentorshipAPI } from '../clients';
-
+import Link from 'next/link';
 export const Home = ({ data }) => {
   if (data) {
     const { home_header, goals, steps, patches, contribute, batches } = data;
@@ -27,26 +27,30 @@ export const Home = ({ data }) => {
 const SectionHeaderComponent = ({ data }) => {
   return (
     <SectionHeader data={data}>
-      <Button
-        textColor="black"
-        bgColor="green"
-        btnPadding="small"
-        textSize="medium"
-        customClassName="uppercase"
-      >
-        {' '}
-        Apply As A Member{' '}
-      </Button>
-      <Button
-        textColor="white"
-        bgColor="blue"
-        btnPadding="small"
-        textSize="medium"
-        customClassName="uppercase mt-2 md:ml-2 md:mt-0"
-      >
-        {' '}
-        Apply As A Mentor{' '}
-      </Button>
+      <Link href={'/apply'} passHref>
+        <Button
+          textColor="black"
+          bgColor="green"
+          btnPadding="small"
+          textSize="medium"
+          customClassName="uppercase"
+        >
+          {' '}
+          Apply As A Member{' '}
+        </Button>
+      </Link>
+      <Link href={'/apply'} passHref>
+        <Button
+          textColor="white"
+          bgColor="blue"
+          btnPadding="small"
+          textSize="medium"
+          customClassName="uppercase mt-2 md:ml-2 md:mt-0"
+        >
+          {' '}
+          Apply As A Mentor{' '}
+        </Button>
+      </Link>
     </SectionHeader>
   );
 };
@@ -54,16 +58,18 @@ const SectionHeaderComponent = ({ data }) => {
 const ContributeSection = ({ data }) => {
   return (
     <SectionHeader data={data} gradient_color="blue" headingtype="section">
-      <Button
-        textColor="white"
-        bgColor="blue"
-        btnPadding="small"
-        textSize="medium"
-        customClassName="uppercase"
-      >
-        {' '}
-        Apply As a Mentor{' '}
-      </Button>
+      <Link href={'/apply'} passHref>
+        <Button
+          textColor="white"
+          bgColor="blue"
+          btnPadding="small"
+          textSize="medium"
+          customClassName="uppercase"
+        >
+          {' '}
+          Apply As a Mentor{' '}
+        </Button>
+      </Link>
     </SectionHeader>
   );
 };

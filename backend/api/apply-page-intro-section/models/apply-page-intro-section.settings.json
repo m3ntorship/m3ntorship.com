@@ -9,8 +9,10 @@
     "timestamps": true
   },
   "attributes": {
-    "heading": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "default": "Hello title",
+      "required": true
     },
     "headingGradientText": {
       "type": "string"
