@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../shared/Button';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 export const TopBar = ({
   data: {
@@ -7,12 +8,14 @@ export const TopBar = ({
     sub_text: sub_title,
     apply_btn: { url: link_url, name: link_text }
   },
-  background_color,
-  button_color,
-  button_shadow
+  button_color
 }) => {
+  let router = useRouter();
+  let pageRouter = router.pathname;
   return (
-    <div className={`py-8 md:py-16 ${background_color ? 'bg-c200' : ''}`}>
+    <div
+      className={`py-8 md:py-16 ${pageRouter === '/about' ? 'bg-c200' : ''}`}
+    >
       <div className="container flex items-center">
         {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
         {sub_title && (
@@ -33,7 +36,7 @@ export const TopBar = ({
                     : 'black'
                 }
                 customClassName={`ml-auto uppercase top-bar-btn ${
-                  button_shadow ? 'shadow-btn' : ''
+                  pageRouter === '/about' ? 'shadow-btn' : ''
                 }`}
                 bgColor={button_color ? button_color : 'green'}
               >

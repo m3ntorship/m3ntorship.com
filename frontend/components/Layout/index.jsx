@@ -7,7 +7,7 @@ const Layout = ({
   topBarBackgroundColor,
   topBarButtonColor,
   topBarButtonShadow,
-  footerData
+  footerData,
 }) => {
   return (
     <>
