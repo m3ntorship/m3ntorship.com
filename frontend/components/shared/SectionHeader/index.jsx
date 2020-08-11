@@ -22,7 +22,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   return (
     <>
       {data && (
-        < >
+        <section className="container flex  flex-col-reverse lg:flex-row">
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
               <div className="heading ">
@@ -56,7 +56,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
                 {description}
               </GenericParagrapgh>
             )}
-            <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
+            <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start">
               {children}
             </div>
           </div>
@@ -66,7 +66,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
               <img src={header_image.url} alt="" />
             </div>
           )}
-        </>
+        </section>
       )}
     </>
   );
