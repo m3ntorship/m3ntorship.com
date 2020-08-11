@@ -24,7 +24,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
         ref={ref}
         target={extrnalLink && '_blank'}
         className={cn(
-          'inline-block text-center ',
+          'global-btn inline-block text-center transition-all duration-200',
           {
             // border
             'border-none': !borderStyle,
