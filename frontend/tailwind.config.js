@@ -43,9 +43,10 @@ module.exports = {
         body: '1.2'
       },
       boxShadow: {
-        btn: '0px 4px 20px rgba(0, 0, 0, 0.1)'
+        btn: '0px 8px 20px 3px rgba(0, 0, 0, 0.08)'
       },
       spacing: {
+        '.5': '2px',
         '72': '19rem'
       }
     }
