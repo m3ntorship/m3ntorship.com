@@ -47,10 +47,10 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
             'bg-c1000': bgColor === 'gray',
 
             //spacing
-            'w-24 h-12 md:w-48 md:h-16': !btnSize,
-            'w-16 h-12 md:w-16 md:h-20': btnSize === 'small',
-            'w-32 h-12  md:w-56 md:h-16': btnSize === 'medium',
-            'w-48 h-12 md:w-64 md:h-16': btnSize === 'large',
+            ' w-48 h-20': !btnSize,
+            ' w-48 h-20': btnSize === 'small',
+            ' w-32 sm:w-64 h-16': btnSize === 'medium',
+            ' w-64 sm:w-72 h-16': btnSize === 'large',
 
             //font size
             'text-base': !textSize || textSize === 'large',
