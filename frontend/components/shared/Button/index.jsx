@@ -24,7 +24,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
         ref={ref}
         target={extrnalLink && '_blank'}
         className={cn(
-          'flex items-center justify-center sm:h-',
+          'flex items-center justify-center',
           {
             // border
             'border-none': !borderStyle,
