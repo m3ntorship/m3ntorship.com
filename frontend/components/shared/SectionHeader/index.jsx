@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../Heading/index';
 import GenericParagrapgh from '../GenericParagrapgh/index';
+import {motion} from 'framer-motion';
 
 /**
  * Props List
@@ -23,7 +24,12 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
     <>
       {data && (
         <section className="container flex  flex-col-reverse lg:flex-row">
-          <div className="flex-1 lg:mr-6 justify-center">
+          <motion.div
+            initial={{opacity:0, x: -400}}
+            animate={{opacity:1, x: 0}}
+            transition={{type:'spring', duration: .3}}
+            className="flex-1 lg:mr-6 justify-center"
+          >
             <div className="flex items-start">
               <div className="heading ">
                 {title && (
@@ -59,12 +65,17 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
             <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start">
               {children}
             </div>
-          </div>
+          </motion.div>
 
           {header_image && (
-            <div className="flex-1 mb-16 md:mb-0">
+            <motion.div
+              initial={{opacity:0, x: 400}}
+              animate={{opacity:1, x: 0}}
+              transition={{type:'spring', duration: .3}} 
+              className="flex-1 mb-16 md:mb-0"
+            >
               <img src={header_image.url} alt="" />
-            </div>
+            </motion.div>
           )}
         </section>
       )}
