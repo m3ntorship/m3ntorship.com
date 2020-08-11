@@ -2,6 +2,8 @@ import React from 'react';
 import Button from '../shared/Button';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import {motion} from 'framer-motion';
+
 export const TopBar = ({
   data: {
     logo: logo_title,
@@ -13,7 +15,10 @@ export const TopBar = ({
   let router = useRouter();
   let pageRouter = router.pathname;
   return (
-    <div
+    <motion.div
+      initial={{y: -200, opacity: 0}}
+      animate={{y: 0, opacity: 1}}
+      transition={{type: 'spring',duration: .5}}
       className={`py-8 md:py-16 ${pageRouter === '/about' ? 'bg-c200' : ''}`}
     >
       <div className="container flex items-center">
@@ -47,6 +52,6 @@ export const TopBar = ({
           </Link>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
