@@ -1,12 +1,30 @@
 import React from 'react';
 import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
+import {motion} from 'framer-motion';
+
+const sectionVariants = {
+  hidden: {
+    opacity: 0,
+    y: -50
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {duration: 1, type: 'spring'}
+  }
+}
 
 const HowItWork = ({ data }) => {
   const { title, description, cards } = data;
   if (data) {
     return (
-      <div className="text-center mt-40 mb-20">
+      <motion.div
+        className="text-center mt-40 mb-20"
+        variants={sectionVariants}
+        initial='hidden'
+        animate='visible'
+      >
         <div className="container relative">
           <Heading
             as="h2"
@@ -39,7 +57,7 @@ const HowItWork = ({ data }) => {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 };
