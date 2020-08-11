@@ -11,11 +11,15 @@ export const Home = ({ data }) => {
     const { home_header, goals, steps, patches, contribute, batches } = data;
     return (
       <>
-        <SectionHeaderComponent data={home_header} />
+        <section className="container flex items-center justify-center flex-col-reverse lg:flex-row my-20">
+          <SectionHeaderComponent data={home_header} />
+        </section>
         <Goals data={goals} />
         <HowItWork data={steps} />
         <Patches data={patches} batchesCards={batches} />
-        <ContributeSection data={contribute} />
+        <section className="container flex items-center justify-center flex-col-reverse lg:flex-row my-20">
+          <ContributeSection data={contribute} />
+        </section>
       </>
     );
   } else {
