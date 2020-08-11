@@ -23,7 +23,7 @@ const JoinUs = ({ data }) => {
               alt=""
             />
           </div>
-          <div className="w-4/6 flex flex-col justify-center mx-auto mb-24">
+          <div className="w-full md:w-4/6 flex flex-col justify-center mx-auto mb-24">
             <Heading
               type={HEADING_OPTIONS.TYPE.SECTION}
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
