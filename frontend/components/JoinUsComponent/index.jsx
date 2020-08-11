@@ -41,6 +41,7 @@ const JoinUs = ({ data }) => {
               <Button
                 customClassName="uppercase mt-8 mx-auto"
                 textSize="medium"
+                btnSize="large"
                 fontWeight="bold"
                 bgColor="green"
               >
@@ -51,6 +52,7 @@ const JoinUs = ({ data }) => {
               <Button
                 customClassName="uppercase mt-5 mx-auto"
                 textSize="medium"
+                btnSize="large"
                 fontWeight="bold"
                 bgColor="blue"
               >

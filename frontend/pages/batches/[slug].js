@@ -48,6 +48,7 @@ const BatchPage = ({
             <Button
               textColor="white"
               bgColor="black"
+              btnSize="large"
               extrnalLink={true}
               href={repo_link}
               customClassName="my-6 md:mr-6"
@@ -63,6 +64,7 @@ const BatchPage = ({
             <Button
               textColor="black"
               bgColor="gray"
+              btnSize="large"
               fontWeight="normal"
               extrnalLink={true}
               href={project_link}

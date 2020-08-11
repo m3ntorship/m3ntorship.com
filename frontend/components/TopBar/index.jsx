@@ -27,6 +27,7 @@ export const TopBar = ({
           <Link href={link_url}>
             {link_text && (
               <Button
+                btnSize="medium"
                 textSize="medium"
                 textColor={
                   button_color

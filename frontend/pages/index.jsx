@@ -31,7 +31,7 @@ const SectionHeaderComponent = ({ data }) => {
         <Button
           textColor="black"
           bgColor="green"
-          btnPadding="small"
+          btnSize="large"
           textSize="medium"
           customClassName="uppercase"
         >
@@ -43,7 +43,7 @@ const SectionHeaderComponent = ({ data }) => {
         <Button
           textColor="white"
           bgColor="blue"
-          btnPadding="small"
+          btnSize="large"
           textSize="medium"
           customClassName="uppercase mt-2 md:ml-2 md:mt-0"
         >
@@ -62,7 +62,7 @@ const ContributeSection = ({ data }) => {
         <Button
           textColor="white"
           bgColor="blue"
-          btnPadding="small"
+          btnSize="large"
           textSize="medium"
           customClassName="uppercase"
         >
