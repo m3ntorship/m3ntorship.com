@@ -48,13 +48,14 @@ const BatchPage = ({
             <Button
               textColor="white"
               bgColor="black"
+              btnSize="large"
               extrnalLink={true}
               href={repo_link}
               customClassName="my-6 md:mr-6"
             >
               <img
-                src="static/media/github.b4a9bf26.png"
-                className="inline mr-4 h-full"
+                src="../../static/images/github.png"
+                className="inline mr-4 w-8 h-8"
               />
               {repo_btn_name}
             </Button>
@@ -63,6 +64,7 @@ const BatchPage = ({
             <Button
               textColor="black"
               bgColor="gray"
+              btnSize="large"
               fontWeight="normal"
               extrnalLink={true}
               href={project_link}
