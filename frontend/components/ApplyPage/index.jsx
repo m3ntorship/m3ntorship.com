@@ -9,34 +9,46 @@ export const ApplyPage = ({ data }) => {
 
   if (data) {
     const {
-      topBarData,
-      mentorSectionHeaderData,
-      menteeSectionHeaderData,
-      applyData,
-      applyInputFields,
-      footerData
+      headerSectionData,
+      headerSectionData: {
+        menteeHeaderImage: { url: menteeUrl }
+      },
+      headerSectionData: {
+        mentorHeaderImage: { url: mentorUrl }
+      },
+      formData
     } = data;
 
+    let menteeSectionHeaderData = {
+      ...headerSectionData,
+      header_image: { url: menteeUrl }
+    };
+    let mentorSectionHeaderData = {
+      ...headerSectionData,
+      header_image: { url: mentorUrl }
+    };
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
-          <TopBar data={topBarData} button_color={mentor ? 'blue' : 'green'} />
-          {mentor ? (
-            <SectionHeader
-              data={mentorSectionHeaderData}
-              gradient_color="blue"
-              headingtype="main"
-            />
-          ) : (
-            <SectionHeader
-              data={menteeSectionHeaderData}
-              gradient_color="green"
-              headingtype="main"
-            />
-          )}
-          <Apply data={applyData} inputFields={applyInputFields} />
+          <div className="container mt-24">
+            {mentor ? (
+              <SectionHeader
+                data={mentorSectionHeaderData}
+                gradient_color="blue"
+                headingtype="main"
+              />
+            ) : (
+              <SectionHeader
+                data={menteeSectionHeaderData}
+                gradient_color="green"
+                headingtype="main"
+              />
+            )}
+          </div>
+          <div className="container mt-24 mb-24">
+            <Apply data={formData} />
+          </div>
         </UserProvider>
-        <Footer data={footerData} />
       </>
     );
   }
