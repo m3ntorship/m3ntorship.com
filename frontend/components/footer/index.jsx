@@ -40,10 +40,10 @@ const Footer = ({ data }) => {
             <h3 className="text-base mb-6 font-bold">Links</h3>
             <ul className="flex flex-wrap">
               {links.map(link => {
-                const { url, underline, name } = link;
+                const { url, name, id } = link;
                 return (
-                  <li className="mb-4 leading-7 font-bold underline w-1/2">
-                    <a href={url}>{name}</a>
+                  <li key={id} className="mb-4 leading-7 font-bold underline w-1/2">
+                    <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
                   </li>
                 );
               })}
