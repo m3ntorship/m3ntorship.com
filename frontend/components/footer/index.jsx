@@ -43,7 +43,7 @@ const Footer = ({ data }) => {
                 const { url, name, id } = link;
                 return (
                   <li key={id} className="mb-4 leading-7 font-bold underline w-1/2">
-                    <a href={url} target="_blank">{name}</a>
+                    <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
                   </li>
                 );
               })}
