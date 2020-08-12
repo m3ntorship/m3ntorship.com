@@ -15,14 +15,14 @@ const sectionVariants = {
     x: 0,
     transition: {
       type: 'spring',
-      staggerChildren: 0.3
+      // staggerChildren: 0.3
     }
   }
 };
 
 const cardVariants = {
   hidden: {
-    scale: 0,
+    scale: 0
   },
   visible: {
     scale: 1,
@@ -36,9 +36,6 @@ const cardVariants = {
 const HowItWork = ({ data }) => {
   const [ref, inView] = useInView({
     threshold: 0.1
-  });
-  const [cardRef, cardInView] = useInView({
-    threshold: 0.5
   });
   const { title, description, cards } = data;
   if (data) {
@@ -65,10 +62,10 @@ const HowItWork = ({ data }) => {
             {cards.map((el, index) => {
               return (
                 <motion.div
-                  ref={cardRef}
+                  ref={el}
                   variants={cardVariants}
-                  initial='hidden'
-                  animate={cardInView ? 'visible': ''}
+                  initial="hidden"
+                  animate='visible'
                   className="relative h-full"
                   key={el.id}
                 >
