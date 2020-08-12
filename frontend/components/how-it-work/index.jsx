@@ -15,7 +15,7 @@ const sectionVariants = {
     x: 0,
     transition: {
       type: 'spring',
-      // staggerChildren: 0.3
+      staggerChildren: 0.3
     }
   }
 };
@@ -62,10 +62,7 @@ const HowItWork = ({ data }) => {
             {cards.map((el, index) => {
               return (
                 <motion.div
-                  ref={el}
                   variants={cardVariants}
-                  initial="hidden"
-                  animate='visible'
                   className="relative h-full"
                   key={el.id}
                 >
