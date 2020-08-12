@@ -32,15 +32,20 @@ const SectionHeader = ({
     <>
       {data && (
         <section
-          className={cn('flex  flex-col-reverse lg:flex-row', customClassName)}
+          className={cn(
+            'flex  flex-col-reverse items-center lg:flex-row',
+            customClassName
+          )}
         >
-          <div className="flex-1 lg:mr-6 justify-center">
+          <div className="flex-1 lg:mr-6 justify-center w-full lg:w-1/2">
             <div className="flex items-start">
               <Heading
                 type={headingtype}
                 fontWeight={headingFontWeight}
                 textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+                textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
                 as={headingAs ? headingAs : 'h1'}
+                className="lg:text-left"
               >
                 {title ? title : null}{' '}
                 {headingGradientText && (
@@ -57,16 +62,18 @@ const SectionHeader = ({
               )}
             </div>
             {description && (
-              <p className=" text-c600 text-base mb-16">{description}</p>
+              <p className=" text-c600 text-center lg:text-left text-base mb-16">
+                {description}
+              </p>
             )}
-            <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start">
+            <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center lg:justify-start">
               {children}
             </div>
           </div>
 
           {header_image && (
-            <div className="flex-1 mb-16 md:mb-0">
-              <img src={header_image.url} alt="" />
+            <div className="flex-1 mb-12 lg:mb-0 w-full lg:w-1/2">
+              <img src={header_image.url} className="mx-auto" alt="" />
             </div>
           )}
         </section>

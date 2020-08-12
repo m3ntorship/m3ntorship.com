@@ -27,9 +27,13 @@ export const Home = ({ data }) => {
 
 // side components
 const SectionHeaderComponent = ({ data }) => {
+  const {
+    apply_as_member: { url: memberBtnUrl, name: memberBtnName },
+    apply_as_mentor: { url: mentorBtnUrl, name: mentorBtnName }
+  } = data;
   return (
     <SectionHeader data={data} customClassName="container">
-      <Link href={'/apply'} passHref>
+      <Link href={memberBtnUrl} passHref>
         <Button
           textColor="black"
           bgColor="green"
@@ -37,11 +41,10 @@ const SectionHeaderComponent = ({ data }) => {
           textSize="medium"
           customClassName="uppercase"
         >
-          {' '}
-          Apply As A Member{' '}
+          {memberBtnName}
         </Button>
       </Link>
-      <Link href={'/apply'} passHref>
+      <Link href={mentorBtnUrl} passHref>
         <Button
           textColor="white"
           bgColor="blue"
@@ -49,8 +52,7 @@ const SectionHeaderComponent = ({ data }) => {
           textSize="medium"
           customClassName="uppercase mt-2 md:ml-2 md:mt-0"
         >
-          {' '}
-          Apply As A Mentor{' '}
+          {mentorBtnName}
         </Button>
       </Link>
     </SectionHeader>
@@ -58,6 +60,9 @@ const SectionHeaderComponent = ({ data }) => {
 };
 
 const ContributeSection = ({ data }) => {
+  const {
+    btn: { url: mentorBtnUrl, name: mentorBtnName }
+  } = data;
   return (
     <SectionHeader
       data={data}
@@ -67,7 +72,7 @@ const ContributeSection = ({ data }) => {
       customClassName="container"
       headingAs="h2"
     >
-      <Link href={'/apply'} passHref>
+      <Link href={mentorBtnUrl} passHref>
         <Button
           textColor="white"
           bgColor="blue"
@@ -75,8 +80,7 @@ const ContributeSection = ({ data }) => {
           textSize="medium"
           customClassName="uppercase"
         >
-          {' '}
-          Apply As a Mentor{' '}
+          {mentorBtnName}
         </Button>
       </Link>
     </SectionHeader>
