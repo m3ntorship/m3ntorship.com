@@ -15,16 +15,16 @@ export const TopBar = ({
   let router = useRouter();
   let pageRouter = router.pathname;
   return (
-    <motion.div
+    <motion.section
       initial={{y: -200, opacity: 0}}
       animate={{y: 0, opacity: 1}}
       transition={{type: 'spring',duration: .5}}
-      className={`py-8 md:py-16 ${pageRouter === '/about' ? 'bg-c200' : ''}`}
+      className={`${pageRouter === '/about' ? 'bg-c200' : ''}`}
     >
       <div className="container flex items-center">
         {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
         {sub_title && (
-          <p className="uppercase text-sm text-c500 self-end ml-4 hidden md:inline">
+          <p className="uppercase font-normal text-sm text-c500 self-end ml-4 hidden md:inline">
             {sub_title}
           </p>
         )}
@@ -52,6 +52,6 @@ export const TopBar = ({
           </Link>
         )}
       </div>
-    </motion.div>
+    </motion.section>
   );
 };

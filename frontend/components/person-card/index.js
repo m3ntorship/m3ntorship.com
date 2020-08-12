@@ -16,17 +16,23 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
  * boxShadow
  */
 
-const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
+const PersonCard = ({
+  cardDetails,
+  bgColord,
+  rounded,
+  roundedSmall,
+  boxShadow
+}) => {
   const { card_image, title, sub_title, describe } = cardDetails;
 
   return (
     <>
       {cardDetails && (
         <div
-          style={{ boxShadow: boxShadow && '0 0 40px rgba(0, 0, 0, 0.1)' }}
-          className={cn('card h-full', 'overflow-hidden', 'px-4', 'py-8', {
+          className={cn('card h-full', 'overflow-hidden', 'p-10', {
             'bg-c400': bgColord,
-            'text-center px-10, px-10': rounded
+            'text-center p-12': rounded,
+            'shadow-card': boxShadow
           })}
         >
           {card_image && (
@@ -34,7 +40,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
               className={cn(
                 'person__card__image',
                 'mx-auto',
-                'pb-4',
+                'mb-8',
                 'text-center',
                 {
                   'w-56': !rounded
@@ -44,43 +50,46 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
               <img
                 src={card_image.url}
                 alt="title"
-                className={cn({
+                className={cn('object-cover', {
                   'rounded-full  max-w-none m-auto': rounded,
                   'w-20 h-20': bgColord,
                   'lg:w-48 lg:h-48 w-24 h-24': !bgColord
                 })}
-                style={{ objectFit: 'cover' }}
               />
             </div>
           )}
           {title && (
             <Heading
-              type={HEADING_OPTIONS.TYPE.CARD}
+              type={
+                rounded
+                  ? roundedSmall
+                    ? HEADING_OPTIONS.TYPE.CARD_SMALL
+                    : HEADING_OPTIONS.TYPE.CARD
+                  : HEADING_OPTIONS.TYPE.CARD_SMALL
+              }
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-              className="pb-4"
+              fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              as="h3"
             >
               {title}
             </Heading>
           )}
           {sub_title && (
-            <p className="card__subtitle pb-2 text-center text-base text-c700">
+            <p
+              className={`card__subtitle mb-5 text-center ${
+                roundedSmall ? 'text-sm' : 'text-base'
+              } font-normal text-c600`}
+            >
               {sub_title}
             </p>
           )}
 
           {describe && (
             <p
-              className={cn(
-                'card__description',
-                'text-sm',
-                'pb-2',
-                'font-normal',
-                'my-5',
-                {
-                  'text-c600': !rounded,
-                  'text-c800': rounded
-                }
-              )}
+              className={cn('card__description', 'text-sm', 'font-normal', {
+                'text-c600': !rounded,
+                'text-c800': rounded
+              })}
             >
               {describe}
             </p>

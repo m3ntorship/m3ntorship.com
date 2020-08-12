@@ -1,12 +1,3 @@
-.graph {
-  top: -50px;
-  right: 50px;
-}
-.title::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 5px;
-  background-color: #66f28d;
-  margin: -13px auto 20px auto;
+.goals__goals-list > :last-child {
+  margin-bottom: 0;
 }

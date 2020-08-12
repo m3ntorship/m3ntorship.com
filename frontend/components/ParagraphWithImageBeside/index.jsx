@@ -10,16 +10,14 @@ export const ParagraphWithImageBeside = ({
   return (
     <div className="flex justify-between">
       <div>
-        <p className="text-base text-center mb-4 md:text-left w-ful md:w-3/4 leading-normal">
-          {title}
-        </p>
-        <p className="text-base text-center  mb-4  md:text-left w-ful md:w-3/4 leading-normal">
+        <p className="text-center mb-4 md:text-left w-ful md:w-3/4">{title}</p>
+        <p className="text-center  mb-4  md:text-left w-ful md:w-3/4">
           {sub_title}
         </p>
       </div>
 
       <div className="w-56 hidden md:block">
-        {url && <img src={url}  className="w-full" />}
+        {url && <img src={url} className="w-full" />}
       </div>
     </div>
   );
