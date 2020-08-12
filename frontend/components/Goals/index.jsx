@@ -17,7 +17,6 @@ const Goals = ({ data }) => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
         when: 'beforeChildren'
       }
     }
@@ -29,10 +28,7 @@ const Goals = ({ data }) => {
     },
     animate: {
       opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5
-      }
+      x: 0
     }
   };
   const goalVariants = {
@@ -42,10 +38,7 @@ const Goals = ({ data }) => {
     },
     animate: {
       opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5
-      }
+      x: 0
     }
   };
   if (data) {
