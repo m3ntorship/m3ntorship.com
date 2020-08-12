@@ -11,11 +11,11 @@ const data = {
   },
   list_goals: [
     {
-      text: 'Help new developers gain real world experience',
+      goal: 'Help new developers gain real world experience',
       id: '5f15be11c8184a2250a760e2'
     },
     {
-      text: 'Help NGOs and small businesses build their online identity',
+      goal: 'Help NGOs and small businesses build their online identity',
       id: '5f15be24c8184a2250a760e3'
     }
   ],
