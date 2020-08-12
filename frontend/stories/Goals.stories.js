@@ -9,7 +9,7 @@ const data = {
     url:
       'https://res.cloudinary.com/malngaawy/image/upload/v1595261682/Squiggles_Monochromatic_jwvct9.png'
   },
-  goals_lists: [
+  list_goals: [
     {
       text: 'Help new developers gain real world experience',
       id: '5f15be11c8184a2250a760e2'
