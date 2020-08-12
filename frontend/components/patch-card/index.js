@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import cn from 'classnames';
-import { Heading } from './../shared/Heading/index';
+import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 /**
  * Props List
@@ -21,13 +21,19 @@ const PatchCard = ({ cardDetails, dashed }) => {
     <>
       {cardDetails && (
         <div
-          className={cn('card', 'py-6', 'px-8', {
+          className={cn('card', 'p-12', {
             'bg-c400': !dashed,
             'border-dashed border-4 border-black': dashed
           })}
         >
           {title && (
-            <Heading type="card" as="h3" className="card__title text-c800">
+            <Heading
+              type={HEADING_OPTIONS.TYPE.CARD_SMALL}
+              fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+              as="h3"
+              className="card__title text-c800"
+            >
               {title}
             </Heading>
           )}
@@ -37,7 +43,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 'card__image',
                 'flex',
                 'mx-auto',
-                'py-4',
+                'mb-6',
                 'ml-0',
                 'flex-wrap',
                 'items-center',
@@ -56,7 +62,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                     key={id}
                     src={url}
                     alt={name}
-                    className="rounded-full w-12 h-12 my-1 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear group-hover:ml-0 group-hover:mr-1"
+                    className="rounded-full w-16 h-16 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear group-hover:ml-0 group-hover:mr-1"
                   />
                 )
               )}

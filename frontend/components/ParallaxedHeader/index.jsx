@@ -48,7 +48,7 @@ export const ParallaxedHeader = ({
                 </Heading>
               )}
               {sub_title && (
-                <p className="text-base md:text-md uppercase mt-4 text-center">
+                <p className="text-base md:text-md uppercase text-center">
                   {sub_title}
                 </p>
               )}

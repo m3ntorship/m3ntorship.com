@@ -24,9 +24,10 @@ const Apply = ({ data, inputFields }) => {
         <div className="grid grid-cols-3">
           <div className="col-span-2">
             <Heading
-              type={HEADING_OPTIONS.TYPE.MAIN}
+              type={HEADING_OPTIONS.TYPE.SECONDARY}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.LEFT}
+              as="h2"
             >
               {primaryHeading}{' '}
               <GradientText
@@ -38,10 +39,10 @@ const Apply = ({ data, inputFields }) => {
                 }
               />
             </Heading>
-            <p className="mt-8 text-center md:text-left text-c600">
+            <p className="text-center mb-10 md:text-left text-c600">
               {description}
             </p>
-            <div className="mt-8 flex flex-col md:flex-row">
+            <div className="flex flex-col md:flex-row">
               {mentor ? (
                 <Button
                   onClick={e => {

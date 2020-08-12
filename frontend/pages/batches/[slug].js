@@ -51,7 +51,7 @@ const BatchPage = ({
               btnSize="large"
               extrnalLink={true}
               href={repo_link}
-              customClassName="my-6 md:mr-6"
+              customClassName="my-6 md:my-0 md:mr-6"
             >
               <img
                 src="../../static/images/github.png"

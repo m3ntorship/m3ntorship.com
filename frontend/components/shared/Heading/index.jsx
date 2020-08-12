@@ -42,13 +42,13 @@ export const Heading = ({
     'inline-block w-full',
     {
       //Text Size
-      'text-xxlg md:text-ultra mb-10': type === HEADING_OPTIONS.TYPE.MAIN_LARGE,
+      'text-xxlg md:text-ultra': type === HEADING_OPTIONS.TYPE.MAIN_LARGE,
       'text-xlg md:text-super mb-10':
         !type || type === HEADING_OPTIONS.TYPE.MAIN,
       'text-lg md:text-xxxlg mb-10': type === HEADING_OPTIONS.TYPE.SECONDARY,
       'text-lg md:text-xxlg mb-10': type === HEADING_OPTIONS.TYPE.SECTION,
       'text-lg mb-6': type === HEADING_OPTIONS.TYPE.CARD,
-      'text-md mb-4': type === HEADING_OPTIONS.TYPE.CARD_SMALL,
+      'text-md mb-6': type === HEADING_OPTIONS.TYPE.CARD_SMALL,
       //Alignment
       'text-left': !textAlign || textAlign === HEADING_OPTIONS.TEXT_ALIGN.LEFT,
       'text-center': textAlign === HEADING_OPTIONS.TEXT_ALIGN.CENTER,

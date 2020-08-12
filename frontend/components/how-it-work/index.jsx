@@ -14,7 +14,7 @@ const HowItWork = ({ data }) => {
         >
           <GradientText text={title} className="uppercase font-bold" />
         </Heading>
-        <p className="my-10 mx-auto text-base text-c600 lg:w-4/6">
+        <p className="mb-10 mx-auto text-base text-c600 lg:w-4/6">
           {description}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 col-gap-5 row-gap-32 mt-32">

@@ -5,6 +5,8 @@ import Goals from '../components/Goals';
 import HowItWork from '../components/how-it-work';
 import Patches from '../components/Patches';
 import { mentorshipAPI } from '../clients';
+import { HEADING_OPTIONS } from '../components/shared/Heading/index';
+
 import Link from 'next/link';
 export const Home = ({ data }) => {
   if (data) {
@@ -59,9 +61,11 @@ const ContributeSection = ({ data }) => {
   return (
     <SectionHeader
       data={data}
-      gradient_color="blue"
-      headingtype="section"
+      gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
+      headingtype={HEADING_OPTIONS.TYPE.SECTION}
+      headingFontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
       customClassName="container"
+      headingAs="h2"
     >
       <Link href={'/apply'} passHref>
         <Button

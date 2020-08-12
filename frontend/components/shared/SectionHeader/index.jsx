@@ -17,7 +17,9 @@ const SectionHeader = ({
   headingtype,
   children,
   gradient_color,
-  customClassName
+  headingFontWeight,
+  customClassName,
+  headingAs
 }) => {
   const {
     title,
@@ -34,23 +36,20 @@ const SectionHeader = ({
         >
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
-              <div className="heading ">
-                {title && (
-                  <Heading
-                    type={headingtype}
-                    textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
-                  >
-                    {title}
-                    {headingGradientText && (
-                      <GradientText
-                        text={headingGradientText}
-                        gradientColor={gradient_color}
-                      ></GradientText>
-                    )}
-                  </Heading>
+              <Heading
+                type={headingtype}
+                fontWeight={headingFontWeight}
+                textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+                as={headingAs ? headingAs : 'h1'}
+              >
+                {title ? title : null}{' '}
+                {headingGradientText && (
+                  <GradientText
+                    text={headingGradientText}
+                    gradientColor={gradient_color}
+                  ></GradientText>
                 )}
-              </div>
-
+              </Heading>
               {side_image && (
                 <div className="hidden lg:block heading-image">
                   <img src={side_image.url} alt="" />

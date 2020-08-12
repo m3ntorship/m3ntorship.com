@@ -22,7 +22,7 @@ const Goals = ({ data }) => {
           {list_goals.map(({ id, goal }) => {
             return (
               <p
-                className="font-normal text-base md:text-xlg mb-10 md:mb-16"
+                className="font-normal text-base md:text-xlg md:mb-12"
                 key={id}
               >
                 {goal}

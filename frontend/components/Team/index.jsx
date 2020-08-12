@@ -19,12 +19,13 @@ export const Team = ({ data, team_members }) => {
             type={HEADING_OPTIONS.TYPE.SECTION}
             textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
             textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+            as="h2"
           >
             <GradientText text={title} />
           </Heading>
         )}
         {description && (
-          <p className="my-10 mx-auto text-center text-xs md:text-base text-c600 lg:w-4/6">
+          <p className="mb-16 mx-auto text-center text-xs md:text-base text-c600 lg:w-4/6">
             {description}
           </p>
         )}
@@ -37,6 +38,7 @@ export const Team = ({ data, team_members }) => {
                   cardDetails={member_info}
                   bgColord={true}
                   rounded={true}
+                  roundedSmall={true}
                 />
               );
             })}

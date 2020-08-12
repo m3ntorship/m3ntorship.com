@@ -1,4 +1,5 @@
 import React from 'react';
+import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 const Footer = ({ data }) => {
   if (data) {
@@ -11,7 +12,8 @@ const Footer = ({ data }) => {
         description,
         url: { url, name }
       },
-      copy_right: copyrights
+      copy_right: copyrights,
+      title_links
     } = data;
     return (
       <footer className="container">
@@ -28,7 +30,15 @@ const Footer = ({ data }) => {
             </p>
           </div>
           <div className="my-4 mr-4 md:my-0">
-            <h3 className="text-md mb-8 font-bold">{title}</h3>
+            {title && (
+              <Heading
+                type={HEADING_OPTIONS.TYPE.CARD_SMALL}
+                fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+                as="h3"
+              >
+                {title}
+              </Heading>
+            )}
             <p className=" text-xxs font-normal text-c700">
               {description}
               <a className="underline font-bold" href={url}>
@@ -37,7 +47,15 @@ const Footer = ({ data }) => {
             </p>
           </div>
           <div className="my-4 md:my-0">
-            <h3 className="text-md mb-6 font-bold">Links</h3>
+            {title_links && (
+              <Heading
+                type={HEADING_OPTIONS.TYPE.CARD_SMALL}
+                fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+                as="h3"
+              >
+                {title_links}
+              </Heading>
+            )}
             <ul className="flex flex-wrap">
               {links.map(link => {
                 const { url, name, id } = link;
