@@ -76,7 +76,7 @@ const Goals = ({ data }) => {
           {list_goals.map(({ id, goal }) => {
             return (
               <motion.p
-                className="font-normal text-base md:text-xlg md:mb-12"
+                className="font-normal text-base md:text-xlg mb-12"
                 key={id}
                 variants={goalVariants}
               >

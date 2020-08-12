@@ -12,7 +12,7 @@ const About = ({
       <section className="container">
         <ParagraphWithImageBeside data={about_description} />
       </section>
-      <TeamGroupSection data={TeamGroupData} />
+      <TeamGroupSection data={teamGroupData} />
     </>
   );
 };

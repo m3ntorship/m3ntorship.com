@@ -50,10 +50,10 @@ const PersonCard = ({
               <img
                 src={card_image.url}
                 alt="title"
-                className={cn('object-cover', {
-                  'rounded-full  max-w-none m-auto': rounded,
-                  'w-20 h-20': bgColord,
-                  'lg:w-48 lg:h-48 w-24 h-24': !bgColord
+                className={cn('object-cover mx-auto', {
+                  'rounded-full': rounded,
+                  'w-24 h-24': bgColord,
+                  'lg:w-48 lg:h-48 w-32 h-32': !bgColord
                 })}
               />
             </div>

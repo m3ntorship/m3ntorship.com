@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { UserProvider } from '../../context/UserContext';
-import { TopBar } from '../TopBar';
 import SectionHeader from '../shared/SectionHeader';
-import Footer from '../footer';
 import Apply from '../apply/index';
 import { HEADING_OPTIONS } from '../shared/Heading';
 export const ApplyPage = ({ data }) => {
