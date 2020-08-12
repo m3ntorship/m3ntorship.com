@@ -30,6 +30,7 @@ const childVariants = {
     transition: { type: 'spring', duration: 0.3 }
   }
 };
+
 const SectionHeader = ({
   data,
   headingtype,
@@ -49,12 +50,14 @@ const SectionHeader = ({
   return (
     <>
       {data && (
-        <section className="flex  flex-col-reverse lg:flex-row">
+        <section
+          className={cn('flex  flex-col-reverse lg:flex-row', customClassName)}
+        >
           <motion.div
+            className="flex-1 lg:mr-6 justify-center"
             variants={sectionVariants}
             initial="hidden"
             animate="visible"
-            className="flex-1 lg:mr-6 justify-center"
           >
             <div className="flex items-start">
               <Heading
