@@ -9,7 +9,10 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 const Patches = ({ data, batchesCards }) => {
   const { title, description, dashed_card } = data;
-  const [ref, inView] = useInView({
+  const [containerRef, contianerInView] = useInView({
+    threshold: 0.5
+  });
+  const [cardsRef, cardsInView] = useInView({
     threshold: 0.1
   });
   const containerVariants = {
@@ -21,8 +24,8 @@ const Patches = ({ data, batchesCards }) => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
-        when: 'beforeChildren'
+        when: 'beforeChildren',
+        duration: 0.5
       }
     }
   };
@@ -53,10 +56,11 @@ const Patches = ({ data, batchesCards }) => {
   if ((data, batchesCards)) {
     return (
       <motion.section
+        ref={containerRef}
         className="patches container"
         variants={containerVariants}
         initial="initial"
-        animate={inView ? 'animate' : ''}
+        animate={contianerInView ? 'animate' : ''}
       >
         <div className="text-center">
           <Heading
@@ -73,8 +77,6 @@ const Patches = ({ data, batchesCards }) => {
         <motion.div
           className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
           variants={cardListVariants}
-          initial="initial"
-          animate="animate"
         >
           {batchesCards.map(card => {
             return (

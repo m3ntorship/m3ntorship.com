@@ -51,6 +51,7 @@ const Goals = ({ data }) => {
   if (data) {
     return (
       <motion.section
+        ref={ref}
         className="text-center text-lg container relative"
         variants={containerVariants}
         initial="initial"
