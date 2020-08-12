@@ -17,7 +17,7 @@ export const TopBar = ({
       <div className="container flex items-center">
         {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
         {sub_title && (
-          <p className="uppercase text-sm text-c500 self-end ml-4 hidden md:inline">
+          <p className="uppercase font-normal text-sm text-c500 self-end ml-4 hidden md:inline">
             {sub_title}
           </p>
         )}

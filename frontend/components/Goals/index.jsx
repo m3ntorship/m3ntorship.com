@@ -12,15 +12,17 @@ const Goals = ({ data }) => {
         <Heading
           textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
           type={HEADING_OPTIONS.TYPE.SECTION}
+          textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+          fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
           as="h2"
         >
-          <GradientText text={title} className="uppercase font-bold" />
+          <GradientText text={title} />
         </Heading>
-        <div className="mt-10 md:mt-16">
+        <div className="goals__goals-list">
           {list_goals.map(({ id, goal }) => {
             return (
               <p
-                className="uppercase mt-12 font-normal text-sm md:text-xlg"
+                className="font-normal text-base md:text-xlg mb-10 md:mb-16"
                 key={id}
               >
                 {goal}

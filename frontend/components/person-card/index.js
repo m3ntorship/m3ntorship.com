@@ -62,7 +62,7 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
             </Heading>
           )}
           {sub_title && (
-            <p className="card__subtitle pb-2 text-center text-base text-c700">
+            <p className="card__subtitle pb-2 text-center text-base font-normal text-c600">
               {sub_title}
             </p>
           )}

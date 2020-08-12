@@ -37,3 +37,7 @@ section,
 footer {
   @extend .global-section-padding;
 }
+
+p {
+  @apply font-light leading-normal text-base;
+}

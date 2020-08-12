@@ -58,12 +58,7 @@ const SectionHeader = ({
               )}
             </div>
             {description && (
-              <GenericParagrapgh
-                textColor="gray"
-                customClassName="text-base py-10"
-              >
-                {description}
-              </GenericParagrapgh>
+              <p className=" text-c600 text-base mb-16">{description}</p>
             )}
             <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start">
               {children}

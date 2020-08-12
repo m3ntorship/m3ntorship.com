@@ -38,12 +38,9 @@ const Apply = ({ data, inputFields }) => {
                 }
               />
             </Heading>
-            <GenericParagrapgh
-              textColor="gray"
-              customClassName="mt-8 text-center md:text-left"
-            >
+            <p className="mt-8 text-center md:text-left text-c600">
               {description}
-            </GenericParagrapgh>
+            </p>
             <div className="mt-8 flex flex-col md:flex-row">
               {mentor ? (
                 <Button

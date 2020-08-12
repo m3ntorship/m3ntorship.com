@@ -21,6 +21,11 @@ export const HEADING_OPTIONS = {
   GRADIENT_COLOR: {
     GREEN: 'green',
     BLUE: 'blue'
+  },
+  FONT_WEIGHT: {
+    BLACK: 'font-black',
+    BOLD: 'font-bold',
+    NORMAL: 'font-normal'
   }
 };
 
@@ -28,24 +33,32 @@ export const Heading = ({
   children,
   type,
   textAlign,
+  fontWeight,
   textTransform,
   className,
   as = 'p'
 }) => {
   const classes = cn(
-    'font-black inline-block w-full',
+    'inline-block w-full',
     {
       //Text Size
-      'text-xxlg md:text-ultra': type === HEADING_OPTIONS.TYPE.MAIN_LARGE,
-      'text-xlg md:text-super': !type || type === HEADING_OPTIONS.TYPE.MAIN,
-      'text-lg md:text-xxxlg': type === HEADING_OPTIONS.TYPE.SECONDARY,
-      'text-lg md:text-xxlg': type === HEADING_OPTIONS.TYPE.SECTION,
-      'text-lg': type === HEADING_OPTIONS.TYPE.CARD,
-      'text-md': type === HEADING_OPTIONS.TYPE.CARD_SMALL,
+      'text-xxlg md:text-ultra mb-10': type === HEADING_OPTIONS.TYPE.MAIN_LARGE,
+      'text-xlg md:text-super mb-10':
+        !type || type === HEADING_OPTIONS.TYPE.MAIN,
+      'text-lg md:text-xxxlg mb-10': type === HEADING_OPTIONS.TYPE.SECONDARY,
+      'text-lg md:text-xxlg mb-10': type === HEADING_OPTIONS.TYPE.SECTION,
+      'text-lg mb-6': type === HEADING_OPTIONS.TYPE.CARD,
+      'text-md mb-4': type === HEADING_OPTIONS.TYPE.CARD_SMALL,
       //Alignment
       'text-left': !textAlign || textAlign === HEADING_OPTIONS.TEXT_ALIGN.LEFT,
       'text-center': textAlign === HEADING_OPTIONS.TEXT_ALIGN.CENTER,
       'text-right': textAlign === HEADING_OPTIONS.TEXT_ALIGN.RIGHT,
+      //Font Weight
+      'font-black':
+        !fontWeight || fontWeight === HEADING_OPTIONS.FONT_WEIGHT.BLACK,
+      'font-bold': fontWeight === HEADING_OPTIONS.FONT_WEIGHT.BOLD,
+      'font-normal': fontWeight === HEADING_OPTIONS.FONT_WEIGHT.NORMAL,
+
       //Text transform
       uppercase: textTransform === HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE
     },
