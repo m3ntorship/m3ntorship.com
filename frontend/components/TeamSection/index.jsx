@@ -14,13 +14,13 @@ const TeamGroupSection = ({ data }) => {
   });
 
   return (
-    <div className="text-center">
+    <section className="text-center container">
       <Heading
         type={HEADING_OPTIONS.TYPE.SECTION}
         textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
         textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
-        className="mt-16 pb-5"
-        as="h3"
+        className="pb-5"
+        as="h2"
       >
         <GradientText
           text={title}
@@ -30,7 +30,7 @@ const TeamGroupSection = ({ data }) => {
       <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-40 gap-5">
         {membersData}
       </div>
-    </div>
+    </section>
   );
 };
 
