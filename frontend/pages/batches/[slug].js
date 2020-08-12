@@ -6,13 +6,14 @@ import { Team } from '../../components/Team';
 import JoinUs from '../../components/JoinUsComponent';
 import { useRouter } from 'next/router';
 import { mentorshipAPI } from './../../clients/mentorship';
+import Error from '../../pages/_error';
 const BatchPage = ({
   batchData,
   sectionHeaderData,
   batchTeamData,
   joinUsData
 }) => {
-  if (!batchData || batchData.length === 0) return <p>Errrrrror</p>;
+  if (!batchData || batchData.length === 0) return <Error statusCode={404} />;
   const router = useRouter();
 
   if (router.isFallback) {
@@ -86,38 +87,31 @@ const BatchPage = ({
 export default BatchPage;
 
 export async function getStaticPaths() {
-  try {
-    const { data: batchesData } = await mentorshipAPI('/batches');
-    const paths = await batchesData.map(({ batch_slug }) => ({
-      params: { slug: batch_slug }
-    }));
+  const { data: batchesData } = await mentorshipAPI('/batches');
+  const paths = await batchesData.map(({ batch_slug }) => ({
+    params: { slug: batch_slug }
+  }));
 
-    return {
-      paths,
-      fallback: true
-    };
-  } catch (err) {
-    const paths = [{ params: { slug: '/not-found' } }];
-    return { paths, fallback: true };
-  }
+  return {
+    paths,
+    fallback: true
+  };
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  try {
-    const { data: batchData } = await mentorshipAPI(
-      `/batches?batch_slug=${slug}`
-    );
-    const { data: sectionHeaderData } = await mentorshipAPI('/batch-header');
-    const { data: batchTeamData } = await mentorshipAPI('/batch-team');
-    const { data: joinUsData } = await mentorshipAPI('/join-us-card');
-    return {
-      props: { batchData, sectionHeaderData, batchTeamData, joinUsData },
-      revalidate: 1
-    };
-  } catch (err) {
-    return {
-      props: { batchData: false, sectionHeaderData: false },
-      revalidate: 1
-    };
-  }
+  const { data: batchData } = await mentorshipAPI(
+    `/batches?batch_slug=${slug}`
+  );
+  const { data: sectionHeaderData } = await mentorshipAPI('/batch-header');
+  const { data: batchTeamData } = await mentorshipAPI('/batch-team');
+  const { data: joinUsData } = await mentorshipAPI('/join-us-card');
+  return {
+    props: {
+      batchData,
+      sectionHeaderData,
+      batchTeamData,
+      joinUsData
+    },
+    revalidate: 1
+  };
 }
