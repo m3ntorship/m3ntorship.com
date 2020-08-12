@@ -46,41 +46,41 @@ const Goals = ({ data }) => {
   };
   if (data) {
     return (
-      <motion.div
-        className="relative w-full my-24"
+      <motion.section
+        className="text-center text-lg container relative"
         variants={containerVariants}
         initial="initial"
         animate="animate"
       >
-        <div className="text-center text-lg container">
-          <motion.div
-            className="absolute graph hidden md:block"
-            variants={sideImageVariants}
-          >
-            {side_image && <img src={side_image.url} />}
-          </motion.div>
-          <Heading
-            textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-            type={HEADING_OPTIONS.TYPE.SECTION}
-            as="h2"
-          >
-            <GradientText text={title} className="uppercase font-bold" />
-          </Heading>
-          <div className="mt-10 md:mt-16">
-            {list_goals.map(({ id, text }) => {
-              return (
-                <motion.p
-                  className="uppercase mb-12 font-normal text-sm md:text-xlg"
-                  key={id}
-                  variants={goalVariants}
-                >
-                  {text}
-                </motion.p>
-              );
-            })}
-          </div>
+        <motion.div
+          className="absolute hidden md:block -top-12 right-12"
+          variants={sideImageVariants}
+        >
+          {side_image && <img src={side_image.url} />}
+        </motion.div>
+        <Heading
+          textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+          type={HEADING_OPTIONS.TYPE.SECTION}
+          textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+          fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+          as="h2"
+        >
+          <GradientText text={title} />
+        </Heading>
+        <div className="goals__goals-list">
+          {list_goals.map(({ id, goal }) => {
+            return (
+              <motion.p
+                className="font-normal text-base md:text-xlg md:mb-12"
+                key={id}
+                variants={goalVariants}
+              >
+                {goal}
+              </motion.p>
+            );
+          })}
         </div>
-      </motion.div>
+      </motion.section>
     );
   }
 };

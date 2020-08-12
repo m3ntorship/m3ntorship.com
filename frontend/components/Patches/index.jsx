@@ -48,44 +48,42 @@ const Patches = ({ data, batchesCards }) => {
   };
   if ((data, batchesCards)) {
     return (
-      <div className="patches my-8">
+      <motion.section
+        className="patches container"
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+      >
+        <div className="text-center">
+          <Heading
+            as="h2"
+            type={HEADING_OPTIONS.TYPE.SECTION}
+            textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+          >
+            <GradientText text={title} className="uppercase font-bold" />
+          </Heading>
+        </div>
+        <p className="mb-16 mx-auto text-center text-base text-c600 lg:w-4/6">
+          {description}
+        </p>
         <motion.div
-          className="container"
-          variants={containerVariants}
+          className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
+          variants={cardListVariants}
           initial="initial"
           animate="animate"
         >
-          <div className="text-center">
-            <Heading
-              as="h2"
-              type={HEADING_OPTIONS.TYPE.SECTION}
-              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-            >
-              <GradientText text={title} className="uppercase font-bold" />
-            </Heading>
-          </div>
-          <p className="my-16 mx-auto text-center text-base text-c600 lg:w-4/6">
-            {description}
-          </p>
-          <motion.div
-            className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
-            variants={cardListVariants}
-            initial="initial"
-            animate="animate"
-          >
-            {batchesCards.map(card => {
-              return (
-                <motion.div variants={cardVariants}>
-                  <PatchCard key={card.id} cardDetails={card} dashed={false} />
-                </motion.div>
-              );
-            })}
-            <motion.div variants={cardVariants}>
-              <PatchCard cardDetails={dashed_card} dashed={true} />
-            </motion.div>
+          {batchesCards.map(card => {
+            return (
+              <motion.div variants={cardVariants}>
+                <PatchCard key={card.id} cardDetails={card} dashed={false} />
+              </motion.div>
+            );
+          })}
+          <motion.div variants={cardVariants}>
+            <PatchCard cardDetails={dashed_card} dashed={true} />
           </motion.div>
         </motion.div>
-      </div>
+      </motion.section>
     );
   }
 };

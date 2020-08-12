@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../Heading/index';
 import GenericParagrapgh from '../GenericParagrapgh/index';
+import cn from 'classnames';
 
 /**
  * Props List
@@ -11,7 +12,15 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
  *    children >> buttons
  */
 
-const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
+const SectionHeader = ({
+  data,
+  headingtype,
+  children,
+  gradient_color,
+  headingFontWeight,
+  customClassName,
+  headingAs
+}) => {
   const {
     title,
     header_image,
@@ -22,26 +31,25 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   return (
     <>
       {data && (
-        <section className="container flex  flex-col-reverse lg:flex-row">
+        <section
+          className={cn('flex  flex-col-reverse lg:flex-row', customClassName)}
+        >
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
-              <div className="heading ">
-                {title && (
-                  <Heading
-                    type={headingtype}
-                    textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
-                  >
-                    {title}
-                    {headingGradientText && (
-                      <GradientText
-                        text={headingGradientText}
-                        gradientColor={gradient_color}
-                      ></GradientText>
-                    )}
-                  </Heading>
+              <Heading
+                type={headingtype}
+                fontWeight={headingFontWeight}
+                textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+                as={headingAs ? headingAs : 'h1'}
+              >
+                {title ? title : null}{' '}
+                {headingGradientText && (
+                  <GradientText
+                    text={headingGradientText}
+                    gradientColor={gradient_color}
+                  ></GradientText>
                 )}
-              </div>
-
+              </Heading>
               {side_image && (
                 <div className="hidden lg:block heading-image">
                   <img src={side_image.url} alt="" />
@@ -49,12 +57,7 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
               )}
             </div>
             {description && (
-              <GenericParagrapgh
-                textColor="gray"
-                customClassName="text-base py-10"
-              >
-                {description}
-              </GenericParagrapgh>
+              <p className=" text-c600 text-base mb-16">{description}</p>
             )}
             <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start">
               {children}

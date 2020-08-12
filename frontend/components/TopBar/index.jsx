@@ -13,13 +13,11 @@ export const TopBar = ({
   let router = useRouter();
   let pageRouter = router.pathname;
   return (
-    <div
-      className={`py-8 md:py-16 ${pageRouter === '/about' ? 'bg-c200' : ''}`}
-    >
+    <section className={`${pageRouter === '/about' ? 'bg-c200' : ''}`}>
       <div className="container flex items-center">
         {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
         {sub_title && (
-          <p className="uppercase text-sm text-c500 self-end ml-4 hidden md:inline">
+          <p className="uppercase font-normal text-sm text-c500 self-end ml-4 hidden md:inline">
             {sub_title}
           </p>
         )}
@@ -47,6 +45,6 @@ export const TopBar = ({
           </Link>
         )}
       </div>
-    </div>
+    </section>
   );
 };

@@ -5,17 +5,19 @@ import Goals from '../components/Goals';
 import HowItWork from '../components/how-it-work';
 import Patches from '../components/Patches';
 import { mentorshipAPI } from '../clients';
+import { HEADING_OPTIONS } from '../components/shared/Heading/index';
+
 import Link from 'next/link';
 export const Home = ({ data }) => {
   if (data) {
     const { home_header, goals, steps, patches, contribute, batches } = data;
     return (
       <>
-          <SectionHeaderComponent data={home_header} />
+        <SectionHeaderComponent data={home_header} />
         <Goals data={goals} />
         <HowItWork data={steps} />
         <Patches data={patches} batchesCards={batches} />
-          <ContributeSection data={contribute} />
+        <ContributeSection data={contribute} />
       </>
     );
   } else {
@@ -26,7 +28,7 @@ export const Home = ({ data }) => {
 // side components
 const SectionHeaderComponent = ({ data }) => {
   return (
-    <SectionHeader data={data}>
+    <SectionHeader data={data} customClassName="container">
       <Link href={'/apply'} passHref>
         <Button
           textColor="black"
@@ -57,7 +59,14 @@ const SectionHeaderComponent = ({ data }) => {
 
 const ContributeSection = ({ data }) => {
   return (
-    <SectionHeader data={data} gradient_color="blue" headingtype="section">
+    <SectionHeader
+      data={data}
+      gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
+      headingtype={HEADING_OPTIONS.TYPE.SECTION}
+      headingFontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+      customClassName="container"
+      headingAs="h2"
+    >
       <Link href={'/apply'} passHref>
         <Button
           textColor="white"

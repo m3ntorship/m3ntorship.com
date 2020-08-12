@@ -7,7 +7,7 @@ body {
 }
 .container {
   width: 92%;
-  max-width: 1327px;
+  max-width: 1328px;
   margin: 0 auto;
 }
 
@@ -15,15 +15,29 @@ input {
   width: 100%;
   padding: 1rem;
   margin: 0.5rem 0;
-  box-sizing: border-box;
-  border: solid black 1px;
+  border: solid theme('colors.c100') 1px;
 }
-input[type=submit]{
-  background-color: black;
-  color: white;
+input[type='submit'] {
+  background-color: theme('colors.c100');
+  color: theme('colors.c000');
   cursor: pointer;
 }
 
-.global-btn:hover {
-  box-shadow: 0px 8px 20px 3px rgba(0, 0, 0, 0.08);
+.global-section-padding {
+  @apply py-10;
+}
+
+@media (min-width: 1024px) {
+  .global-section-padding {
+    @apply py-16;
+  }
+}
+
+section,
+footer {
+  @extend .global-section-padding;
+}
+
+p {
+  @apply font-light leading-normal text-base;
 }
