@@ -10,7 +10,7 @@ import { useInView } from 'react-intersection-observer';
 const Patches = ({ data, batchesCards }) => {
   const { title, description, dashed_card } = data;
   const [containerRef, contianerInView] = useInView({
-    threshold: 0.3
+    threshold: 0.1
   });
   const [cardsRef, cardsInView] = useInView({
     threshold: 0.3
