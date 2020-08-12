@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { Heading } from '../shared/Heading';
-import { useSpring, animated as a, interpolate } from 'react-spring';
 
 export const ParallaxedHeader = ({
   data: {
@@ -9,54 +8,32 @@ export const ParallaxedHeader = ({
     image: { url }
   }
 }) => {
-  const ref = useRef();
-
-  const [{ offset }, set] = useSpring(() => ({ offset: 0 }));
-  const calc = o => `translateY(${-o * 0.2}px)`;
-
-  const handleScroll = () => {
-    const posY = ref.current.getBoundingClientRect().top;
-    const offset = window.pageYOffset - posY;
-    set({ offset });
-  };
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  });
   return (
     <section className="pt-0">
       <div className="bg-c200 global-section-padding">
-        <div ref={ref}>
-          <a.div
-            className="container flex justify-center items-center"
-            style={{ transform: offset.interpolate(calc) }}
-          >
-            <div className="hidden lg:block mr-auto w-56">
-              {url && <img src={url} />}
-            </div>
-            <div className="flex flex-col justify-center items-center mx-10">
-              {title && (
-                <Heading
-                  type="mainLarge"
-                  textAlign="center"
-                  textTransform="uppercase"
-                >
-                  {title}
-                </Heading>
-              )}
-              {sub_title && (
-                <p className="text-base md:text-md uppercase text-center">
-                  {sub_title}
-                </p>
-              )}
-            </div>
-            <div className="hidden lg:block ml-auto w-56">
-              {url && <img src={url} />}
-            </div>
-          </a.div>
+        <div className="container flex justify-center items-center">
+          <div className="hidden lg:block mr-auto w-56">
+            {url && <img src={url} />}
+          </div>
+          <div className="flex flex-col justify-center items-center mx-10">
+            {title && (
+              <Heading
+                type="mainLarge"
+                textAlign="center"
+                textTransform="uppercase"
+              >
+                {title}
+              </Heading>
+            )}
+            {sub_title && (
+              <p className="text-base md:text-md uppercase text-center">
+                {sub_title}
+              </p>
+            )}
+          </div>
+          <div className="hidden lg:block ml-auto w-56">
+            {url && <img src={url} />}
+          </div>
         </div>
       </div>
       <div className="text-c200">

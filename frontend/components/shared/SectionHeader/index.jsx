@@ -39,7 +39,7 @@ const imageVarians = {
     x: 0,
     transition: { type: 'spring', duration: 0.3 }
   }
-}
+};
 
 const SectionHeader = ({
   data,
@@ -50,7 +50,6 @@ const SectionHeader = ({
   customClassName,
   headingAs
 }) => {
-
   const [headerRef, headerInView] = useInView({
     threshold: 0.1
   });
@@ -62,25 +61,31 @@ const SectionHeader = ({
     description,
     side_image
   } = data;
+
   return (
     <>
       {data && (
         <section
           ref={headerRef}
-          className={cn('flex  flex-col-reverse lg:flex-row', customClassName)}
+          className={cn(
+            'flex flex-col-reverse items-center lg:flex-row',
+            customClassName
+          )}
         >
           <motion.div
-            className="flex-1 lg:mr-6 justify-center"
+            className="flex-1 lg:mr-6 justify-center w-full lg:w-1/2"
             variants={sectionVariants}
             initial="hidden"
-            animate={headerInView ? "visible" : ""}
+            animate={headerInView ? 'visible' : ''}
           >
             <div className="flex items-start">
               <Heading
                 type={headingtype}
                 fontWeight={headingFontWeight}
                 textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+                textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
                 as={headingAs ? headingAs : 'h1'}
+                className="lg:text-left"
               >
                 {title ? title : null}{' '}
                 {headingGradientText && (
@@ -97,11 +102,13 @@ const SectionHeader = ({
               )}
             </div>
             {description && (
-              <p className=" text-c600 text-base mb-16">{description}</p>
+              <p className=" text-c600 text-center lg:text-left text-base mb-16">
+                {description}
+              </p>
             )}
             <motion.div
               variants={childVariants}
-              className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start"
+              className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center lg:justify-start"
             >
               {children}
             </motion.div>
@@ -110,11 +117,11 @@ const SectionHeader = ({
           {header_image && (
             <motion.div
               variants={imageVarians}
-              initial='hidden'
-              animate={headerInView ? "visible" : ''}
-              className="flex-1 mb-16 md:mb-0"
+              initial="hidden"
+              animate={headerInView ? 'visible' : ''}
+              className="flex-1 mb-12 lg:mb-0 w-full lg:w-1/2"
             >
-              <img src={header_image.url} alt="" />
+              <img src={header_image.url} className="mx-auto" alt="" />
             </motion.div>
           )}
         </section>
