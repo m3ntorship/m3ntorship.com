@@ -1,29 +1,54 @@
 import React from 'react';
 import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const sectionVariants = {
   hidden: {
     opacity: 0,
-    y: -50
+    x: -50,
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: {duration: 1, type: 'spring'}
+    x: 0,
+    transition: {
+      type: 'spring',
+      staggerChildren: 0.3
+    }
   }
-}
+};
+
+const cardVariants = {
+  hidden: {
+    scale: 0,
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      duration: 1,
+      type: 'spring'
+    }
+  }
+};
 
 const HowItWork = ({ data }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.1
+  });
+  const [cardRef, cardInView] = useInView({
+    threshold: 0.5
+  });
   const { title, description, cards } = data;
   if (data) {
     return (
       <motion.div
+        ref={ref}
         className="text-center mt-40 mb-20"
         variants={sectionVariants}
-        initial='hidden'
-        animate='visible'
+        initial="hidden"
+        animate={inView ? 'visible' : ''}
       >
         <div className="container relative">
           <Heading
@@ -39,7 +64,14 @@ const HowItWork = ({ data }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 col-gap-5 row-gap-32 mt-32">
             {cards.map((el, index) => {
               return (
-                <div className="relative h-full" key={el.id}>
+                <motion.div
+                  ref={cardRef}
+                  variants={cardVariants}
+                  initial='hidden'
+                  animate={cardInView ? 'visible': ''}
+                  className="relative h-full"
+                  key={el.id}
+                >
                   <span
                     className="absolute block text-giant z-0 text-c400 font-bold "
                     style={{
@@ -52,7 +84,7 @@ const HowItWork = ({ data }) => {
                   <div className="z-10 bg-c000 h-full">
                     <PersonCard cardDetails={el} boxShadow={true} />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
