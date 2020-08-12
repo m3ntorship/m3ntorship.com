@@ -6,8 +6,12 @@ import {
 } from '../shared/Heading/index';
 import PatchCard from '../patch-card';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 const Patches = ({ data, batchesCards }) => {
   const { title, description, dashed_card } = data;
+  const [ref, inView] = useInView({
+    threshold: 0.1
+  });
   const containerVariants = {
     initial: {
       opacity: 0,
@@ -52,7 +56,7 @@ const Patches = ({ data, batchesCards }) => {
         className="patches container"
         variants={containerVariants}
         initial="initial"
-        animate="animate"
+        animate={inView ? 'animate' : ''}
       >
         <div className="text-center">
           <Heading

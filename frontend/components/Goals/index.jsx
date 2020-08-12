@@ -1,9 +1,13 @@
 import React from 'react';
 import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 const Goals = ({ data }) => {
   const { title, list_goals, side_image } = data;
-
+  const [ref, inView] = useInView({
+    threshold: 0.1
+  });
   const containerVariants = {
     initial: {
       opacity: 0,
@@ -50,7 +54,7 @@ const Goals = ({ data }) => {
         className="text-center text-lg container relative"
         variants={containerVariants}
         initial="initial"
-        animate="animate"
+        animate={inView ? 'animate' : ''}
       >
         <motion.div
           className="absolute hidden md:block -top-12 right-12"
