@@ -9,10 +9,11 @@
     "timestamps": true
   },
   "attributes": {
-    "heading": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "default": "You want to apply as?"
     },
-    "gradiendtText": {
+    "headingGradientText": {
       "type": "string"
     },
     "description": {
