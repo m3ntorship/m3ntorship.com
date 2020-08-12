@@ -44,10 +44,13 @@ const Patches = ({ data, batchesCards }) => {
   };
   const cardVariants = {
     initial: {
+      scale: 0,
+
       opacity: 0,
       y: 150
     },
     animate: {
+      scale: 1,
       opacity: 1,
       y: 0
     }
