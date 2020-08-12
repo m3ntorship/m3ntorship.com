@@ -41,6 +41,11 @@
       "repeatable": false,
       "component": "general.footer-about",
       "required": true
+    },
+    "title_links": {
+      "type": "string",
+      "required": true,
+      "default": "Links"
     }
   }
 }

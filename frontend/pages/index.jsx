@@ -5,6 +5,8 @@ import Goals from '../components/Goals';
 import HowItWork from '../components/how-it-work';
 import Patches from '../components/Patches';
 import { mentorshipAPI } from '../clients';
+import { HEADING_OPTIONS } from '../components/shared/Heading/index';
+
 import Link from 'next/link';
 export const Home = ({ data }) => {
   if (data) {
@@ -26,12 +28,12 @@ export const Home = ({ data }) => {
 // side components
 const SectionHeaderComponent = ({ data }) => {
   return (
-    <SectionHeader data={data}>
+    <SectionHeader data={data} customClassName="container">
       <Link href={'/apply'} passHref>
         <Button
           textColor="black"
           bgColor="green"
-          btnPadding="small"
+          btnSize="large"
           textSize="medium"
           customClassName="uppercase"
         >
@@ -43,7 +45,7 @@ const SectionHeaderComponent = ({ data }) => {
         <Button
           textColor="white"
           bgColor="blue"
-          btnPadding="small"
+          btnSize="large"
           textSize="medium"
           customClassName="uppercase mt-2 md:ml-2 md:mt-0"
         >
@@ -57,12 +59,19 @@ const SectionHeaderComponent = ({ data }) => {
 
 const ContributeSection = ({ data }) => {
   return (
-    <SectionHeader data={data} gradient_color="blue" headingtype="section">
+    <SectionHeader
+      data={data}
+      gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
+      headingtype={HEADING_OPTIONS.TYPE.SECTION}
+      headingFontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+      customClassName="container"
+      headingAs="h2"
+    >
       <Link href={'/apply'} passHref>
         <Button
           textColor="white"
           bgColor="blue"
-          btnPadding="small"
+          btnSize="large"
           textSize="medium"
           customClassName="uppercase"
         >

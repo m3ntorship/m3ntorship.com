@@ -9,12 +9,10 @@ const About = ({
   return (
     <>
       <ParallaxedHeader data={about_head} />
-      <div className="container my-16">
+      <section className="container">
         <ParagraphWithImageBeside data={about_description} />
-      </div>
-      <div className="container mb-16">
-        <TeamGroupSection data={teamGroupData} />
-      </div>
+      </section>
+      <TeamGroupSection data={TeamGroupData} />
     </>
   );
 };

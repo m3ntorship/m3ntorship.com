@@ -1,8 +1,0 @@
-.card__image > img {
-  transition: all 0.2s linear;
-}
-
-.card__image:hover > img {
-  margin-left: 0 !important;
-  margin-right: 2px !important;
-}

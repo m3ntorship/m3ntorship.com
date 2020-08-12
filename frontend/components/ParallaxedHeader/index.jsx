@@ -27,8 +27,8 @@ export const ParallaxedHeader = ({
     };
   });
   return (
-    <>
-      <div className="bg-c200 py-32 lg:py-12">
+    <section className="pt-0">
+      <div className="bg-c200 global-section-padding">
         <div ref={ref}>
           <a.div
             className="container flex justify-center items-center"
@@ -48,7 +48,7 @@ export const ParallaxedHeader = ({
                 </Heading>
               )}
               {sub_title && (
-                <p className="text-base md:text-md uppercase mt-4 text-center">
+                <p className="text-base md:text-md uppercase text-center">
                   {sub_title}
                 </p>
               )}
@@ -75,6 +75,6 @@ export const ParallaxedHeader = ({
           ></path>{' '}
         </svg>{' '}
       </div>
-    </>
+    </section>
   );
 };

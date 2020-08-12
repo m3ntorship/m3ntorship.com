@@ -12,7 +12,7 @@
     "title": {
       "type": "string",
       "default": "want to contribute?",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "string",
@@ -35,6 +35,10 @@
       ],
       "plugin": "upload",
       "required": true
+    },
+    "headingGradientText": {
+      "type": "string",
+      "default": "Colored Text"
     }
   }
 }
