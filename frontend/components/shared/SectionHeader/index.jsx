@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../Heading/index';
 import GenericParagrapgh from '../GenericParagrapgh/index';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 /**
  * Props List
@@ -11,6 +11,24 @@ import {motion} from 'framer-motion';
  *    image or images (patch)
  *    children >> buttons
  */
+
+const sectionVariants = {
+  hidden: { opacity: 0, x: -400 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', duration: 0.3 }
+  }
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', duration: 0.3 }
+  }
+};
 
 const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   const {
@@ -25,9 +43,9 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
       {data && (
         <section className="container flex  flex-col-reverse lg:flex-row">
           <motion.div
-            initial={{opacity:0, x: -400}}
-            animate={{opacity:1, x: 0}}
-            transition={{type:'spring', duration: .3}}
+            variants={sectionVariants}
+            initial="hidden"
+            animate="visible"
             className="flex-1 lg:mr-6 justify-center"
           >
             <div className="flex items-start">
@@ -62,16 +80,19 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
                 {description}
               </GenericParagrapgh>
             )}
-            <div className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start">
+            <motion.div
+              variants={childVariants}
+              className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center md:justify-start"
+            >
               {children}
-            </div>
+            </motion.div>
           </motion.div>
 
           {header_image && (
             <motion.div
-              initial={{opacity:0, x: 400}}
-              animate={{opacity:1, x: 0}}
-              transition={{type:'spring', duration: .3}} 
+              initial={{ opacity: 0, x: 400 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ type: 'spring', duration: 0.3 }}
               className="flex-1 mb-16 md:mb-0"
             >
               <img src={header_image.url} alt="" />
