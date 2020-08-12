@@ -21,7 +21,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
     <>
       {cardDetails && (
         <div
-          className={cn('card', 'p-12', {
+          className={cn('card', 'p-12', 'h-full', {
             'bg-c400': !dashed,
             'border-dashed border-4 border-black': dashed
           })}
