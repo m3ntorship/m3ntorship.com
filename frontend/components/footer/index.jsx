@@ -15,7 +15,7 @@ const Footer = ({ data }) => {
     } = data;
     return (
       <footer className="container">
-        <div className="grid lg:grid-cols-3 grid-cols-1 py-16">
+        <div className="grid lg:grid-cols-3 grid-cols-1">
           <div className="my-4 md:my-0">
             <h2 className="font-black mb-6 text-xlg">
               {logo}
@@ -42,8 +42,13 @@ const Footer = ({ data }) => {
               {links.map(link => {
                 const { url, name, id } = link;
                 return (
-                  <li key={id} className="mb-4 leading-7 font-bold underline w-1/2">
-                    <a href={url} target="_blank" rel="noopener noreferrer">{name}</a>
+                  <li
+                    key={id}
+                    className="mb-4 leading-7 font-bold underline w-1/2"
+                  >
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      {name}
+                    </a>
                   </li>
                 );
               })}

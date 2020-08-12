@@ -30,24 +30,24 @@ export const ApplyPage = ({ data }) => {
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
-          <div className="container mt-24">
-            {mentor ? (
-              <SectionHeader
-                data={mentorSectionHeaderData}
-                gradient_color="blue"
-                headingtype="main"
-              />
-            ) : (
-              <SectionHeader
-                data={menteeSectionHeaderData}
-                gradient_color="green"
-                headingtype="main"
-              />
-            )}
-          </div>
-          <div className="container mt-24 mb-24">
+          {mentor ? (
+            <SectionHeader
+              data={mentorSectionHeaderData}
+              gradient_color="blue"
+              headingtype="main"
+              customClassName="container"
+            />
+          ) : (
+            <SectionHeader
+              data={menteeSectionHeaderData}
+              gradient_color="green"
+              headingtype="main"
+              customClassName="container"
+            />
+          )}
+          <section className="container">
             <Apply data={formData} />
-          </div>
+          </section>
         </UserProvider>
       </>
     );

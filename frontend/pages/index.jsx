@@ -11,11 +11,11 @@ export const Home = ({ data }) => {
     const { home_header, goals, steps, patches, contribute, batches } = data;
     return (
       <>
-          <SectionHeaderComponent data={home_header} />
+        <SectionHeaderComponent data={home_header} />
         <Goals data={goals} />
         <HowItWork data={steps} />
         <Patches data={patches} batchesCards={batches} />
-          <ContributeSection data={contribute} />
+        <ContributeSection data={contribute} />
       </>
     );
   } else {
@@ -26,7 +26,7 @@ export const Home = ({ data }) => {
 // side components
 const SectionHeaderComponent = ({ data }) => {
   return (
-    <SectionHeader data={data}>
+    <SectionHeader data={data} customClassName="container">
       <Link href={'/apply'} passHref>
         <Button
           textColor="black"
@@ -57,7 +57,12 @@ const SectionHeaderComponent = ({ data }) => {
 
 const ContributeSection = ({ data }) => {
   return (
-    <SectionHeader data={data} gradient_color="blue" headingtype="section">
+    <SectionHeader
+      data={data}
+      gradient_color="blue"
+      headingtype="section"
+      customClassName="container"
+    >
       <Link href={'/apply'} passHref>
         <Button
           textColor="white"

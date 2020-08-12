@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../Heading/index';
 import GenericParagrapgh from '../GenericParagrapgh/index';
+import cn from 'classnames';
 
 /**
  * Props List
@@ -11,7 +12,13 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
  *    children >> buttons
  */
 
-const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
+const SectionHeader = ({
+  data,
+  headingtype,
+  children,
+  gradient_color,
+  customClassName
+}) => {
   const {
     title,
     header_image,
@@ -22,7 +29,9 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
   return (
     <>
       {data && (
-        <section className="container flex  flex-col-reverse lg:flex-row">
+        <section
+          className={cn('flex  flex-col-reverse lg:flex-row', customClassName)}
+        >
           <div className="flex-1 lg:mr-6 justify-center">
             <div className="flex items-start">
               <div className="heading ">

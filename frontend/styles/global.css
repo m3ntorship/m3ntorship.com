@@ -22,3 +22,18 @@ input[type='submit'] {
   color: theme('colors.c000');
   cursor: pointer;
 }
+
+.global-section-padding {
+  @apply py-10;
+}
+
+@media (min-width: 1024px) {
+  .global-section-padding {
+    @apply py-16;
+  }
+}
+
+section,
+footer {
+  @extend .global-section-padding;
+}

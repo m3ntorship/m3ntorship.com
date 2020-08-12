@@ -13,7 +13,7 @@ const JoinUs = ({ data }) => {
     right_img
   } = data;
   return (
-    <div className="container">
+    <section className="container">
       <div className="border-4 border-dashed border-c100">
         <div className="flex justify-around mx-0 lg:mx-32">
           <div className="my-24 w-1/6">
@@ -69,7 +69,7 @@ const JoinUs = ({ data }) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

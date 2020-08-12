@@ -23,10 +23,10 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
     <>
       {cardDetails && (
         <div
-          style={{ boxShadow: boxShadow && '0 0 40px rgba(0, 0, 0, 0.1)' }}
           className={cn('card h-full', 'overflow-hidden', 'px-4', 'py-8', {
             'bg-c400': bgColord,
-            'text-center px-10, px-10': rounded
+            'text-center px-10, px-10': rounded,
+            'shadow-card': boxShadow
           })}
         >
           {card_image && (
@@ -44,12 +44,11 @@ const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
               <img
                 src={card_image.url}
                 alt="title"
-                className={cn({
+                className={cn('object-cover', {
                   'rounded-full  max-w-none m-auto': rounded,
                   'w-20 h-20': bgColord,
                   'lg:w-48 lg:h-48 w-24 h-24': !bgColord
                 })}
-                style={{ objectFit: 'cover' }}
               />
             </div>
           )}
