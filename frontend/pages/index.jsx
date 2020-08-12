@@ -50,7 +50,7 @@ const SectionHeaderComponent = ({ data }) => {
           bgColor="blue"
           btnSize="large"
           textSize="medium"
-          customClassName="uppercase mt-2 md:ml-2 md:mt-0"
+          customClassName="uppercase mt-4 md:ml-4 md:mt-0"
         >
           {mentorBtnName}
         </Button>

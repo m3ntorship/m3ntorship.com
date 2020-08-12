@@ -17,6 +17,7 @@ export const Team = ({ data, team_members }) => {
         {title && (
           <Heading
             type={HEADING_OPTIONS.TYPE.SECTION}
+            fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
             textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
             textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
             as="h2"

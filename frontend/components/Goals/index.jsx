@@ -21,10 +21,7 @@ const Goals = ({ data }) => {
         <div className="goals__goals-list">
           {list_goals.map(({ id, goal }) => {
             return (
-              <p
-                className="font-normal text-base md:text-xlg md:mb-12"
-                key={id}
-              >
+              <p className="font-normal text-base md:text-xlg mb-12" key={id}>
                 {goal}
               </p>
             );
