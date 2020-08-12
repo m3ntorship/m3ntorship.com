@@ -10,21 +10,20 @@ import { useInView } from 'react-intersection-observer';
 const Patches = ({ data, batchesCards }) => {
   const { title, description, dashed_card } = data;
   const [containerRef, contianerInView] = useInView({
-    threshold: 0.5
+    threshold: 0.3
   });
   const [cardsRef, cardsInView] = useInView({
-    threshold: 0.1
+    threshold: 0.3
   });
   const containerVariants = {
     initial: {
       opacity: 0,
-      y: '-50vh'
+      y: '50vh'
     },
     animate: {
       opacity: 1,
       y: 0,
       transition: {
-        when: 'beforeChildren',
         duration: 0.5
       }
     }
@@ -39,7 +38,7 @@ const Patches = ({ data, batchesCards }) => {
       y: 0,
       transition: {
         when: 'beforeChildren',
-        staggerChildren: 0.3
+        staggerChildren: 0.4
       }
     }
   };
@@ -77,6 +76,9 @@ const Patches = ({ data, batchesCards }) => {
         <motion.div
           className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
           variants={cardListVariants}
+          initial="initial"
+          animate={cardsInView ? 'animate' : ''}
+          ref={cardsRef}
         >
           {batchesCards.map(card => {
             return (
