@@ -48,12 +48,18 @@ module.exports = {
       spacing: {
         '.5': '2px',
         '72': '19rem'
+      },
+      inset: {
+        '12': '3rem',
+        '-12': '-3rem'
       }
     }
   },
   corePlugins: {
     container: false
   },
-  variants: {},
+  variants: {
+    margin: ['responsive', 'group-hover']
+  },
   plugins: []
 };

@@ -40,7 +40,8 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 'py-4',
                 'ml-0',
                 'flex-wrap',
-                'items-center'
+                'items-center',
+                'group'
               )}
             >
               {batch_mentees.map(
@@ -55,12 +56,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                     key={id}
                     src={url}
                     alt={name}
-                    className="rounded-full w-12 h-12 my-1"
-                    style={{
-                      objectFit: 'cover',
-                      marginLeft: '-.5rem',
-                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)'
-                    }}
+                    className="rounded-full w-12 h-12 my-1 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear group-hover:ml-0 group-hover:mr-1"
                   />
                 )
               )}

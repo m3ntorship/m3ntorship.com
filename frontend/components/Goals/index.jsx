@@ -7,7 +7,7 @@ const Goals = ({ data }) => {
     return (
       <div className="relative w-full my-24">
         <div className="text-center text-lg container">
-          <div className="absolute graph hidden md:block">
+          <div className="absolute hidden md:block -top-12 right-12">
             {side_image && <img src={side_image.url} />}
           </div>
           <Heading
