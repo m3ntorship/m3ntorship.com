@@ -1,6 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
+import useMedia from '../../helper/useMedia';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion'
 
 // props list
 
@@ -16,6 +19,19 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
  * boxShadow
  */
 
+const cardVaruants = {
+  scale: {
+    scale: 0
+  },
+  unScale: {
+    scale: 1,
+    transition: {
+      type: 'spring',
+      duration: .5
+    }
+  }
+}
+
 const PersonCard = ({
   cardDetails,
   bgColord,
@@ -24,11 +40,20 @@ const PersonCard = ({
   boxShadow
 }) => {
   const { card_image, title, sub_title, describe } = cardDetails;
+  const [crdRef, cardInView] = useInView({
+    threshold: 0.2,
+    triggerOnce: true
+  })
+  const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
 
   return (
     <>
       {cardDetails && (
-        <div
+        <motion.div
+          ref={crdRef}
+          variants={cardVaruants}
+          initial={isMobile ? 'scale' : ''}
+          animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
             'bg-c400': bgColord,
             'text-center p-12': rounded,
@@ -78,7 +103,7 @@ const PersonCard = ({
             <p
               className={`card__subtitle mb-5 text-center ${
                 roundedSmall ? 'text-sm' : 'text-base'
-              } font-normal text-c600`}
+                } font-normal text-c600`}
             >
               {sub_title}
             </p>
@@ -94,7 +119,7 @@ const PersonCard = ({
               {describe}
             </p>
           )}
-        </div>
+        </motion.div>
       )}
     </>
   );
