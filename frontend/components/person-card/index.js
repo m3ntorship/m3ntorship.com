@@ -21,7 +21,7 @@ import { motion } from 'framer-motion'
 
 const cardVaruants = {
   scale: {
-    scale: 0
+    scale: 0.2
   },
   unScale: {
     scale: 1,
