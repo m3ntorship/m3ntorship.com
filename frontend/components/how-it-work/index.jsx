@@ -35,10 +35,10 @@ const cardVariants = {
 };
 
 const HowItWork = ({ data }) => {
-  const [ref, inView] = useInView({
-    threshold: 0.1
-  });
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true)
+  const [ref, inView] = useInView({
+    threshold: isDesktop ? 0.1 : 0.05
+  });
   const { title, description, cards } = data;
   if (data) {
     return (
