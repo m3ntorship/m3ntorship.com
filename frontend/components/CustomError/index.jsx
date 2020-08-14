@@ -12,7 +12,7 @@ export default function CustomError({ statusCode }) {
       <Heading
         type={HEADING_OPTIONS.TYPE.SECTION}
         textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-        className="my-10"
+        className="mt-10"
         as="h1"
       >
         {statusCode
@@ -21,7 +21,7 @@ export default function CustomError({ statusCode }) {
             : `An error ${statusCode} occurred on server`
           : 'An unexpected error'}
       </Heading>
-      <p className="text-base text-c600 text-center mb-8">
+      <p className="text-base text-c600 text-center mb-10">
         {statusCode
           ? statusCode === 404
             ? 'Please be sure of the entered page name'
