@@ -41,3 +41,8 @@ footer {
 p {
   @apply font-light leading-normal text-base;
 }
+
+#nprogress .bar {
+  background: #66f28d !important;
+  height: 4px !important;
+}

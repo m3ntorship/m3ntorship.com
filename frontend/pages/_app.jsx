@@ -1,6 +1,27 @@
 import '../styles/index.css';
 import Layout from '../components/Layout';
 import { mentorshipAPI } from '../clients/mentorship.js';
+import Router from 'next/router';
+
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+NProgress.configure({
+  showSpinner: false,
+  trickleRate: 0.1,
+  trickleSpeed: 300
+});
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start();
+});
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done();
+});
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done();
+});
+
 function MyApp({ topBarData, footerData, Component, pageProps }) {
   return (
     <Layout topBarData={topBarData} footerData={footerData}>
