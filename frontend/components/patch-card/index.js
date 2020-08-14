@@ -21,7 +21,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
     <>
       {cardDetails && (
         <div
-          className={cn('card', 'p-12', {
+          className={cn('card', 'p-12', 'flex', 'flex-col', {
             'bg-c400': !dashed,
             'border-dashed border-4 border-black': dashed
           })}
@@ -84,7 +84,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
 
           {link && (
             <Link href={'/batches/[slug]'} as={`/batches/${batch_slug}`}>
-              <a className="font-bold text-sm underline">{link.name}</a>
+              <a className="font-bold text-sm underline mt-auto">{link.name}</a>
             </Link>
           )}
         </div>
