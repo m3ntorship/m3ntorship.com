@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { ReactTypeformEmbed } from 'react-typeform-embed';
 import UserContext from '../../context/UserContext';
 import {
   Heading,
@@ -13,7 +14,6 @@ import { useRouter } from 'next/router';
 const Apply = ({ data, inputFields }) => {
   const router = useRouter();
   const { as } = router.query;
-
   if (data) {
     const {
       heading: primaryHeading,
@@ -25,111 +25,136 @@ const Apply = ({ data, inputFields }) => {
     } = data;
     const { mentor, setMentor } = useContext(UserContext);
     return (
-      <div className="flex">
-        <SectionHeader
-          data={data}
-          gradient_color={
-            mentor || as === 'mentor'
-              ? HEADING_OPTIONS.GRADIENT_COLOR.BLUE
-              : HEADING_OPTIONS.GRADIENT_COLOR.GREEN
-          }
-          headingtype={HEADING_OPTIONS.TYPE.SECONDARY}
-          headingAs="h2"
-          customClassName="w-full lg:w-1/2 py-0"
-        >
-          <div className="flex flex-col sm:flex-row">
-            {mentor || as === 'mentor' ? (
-              <Button
-                onClick={e => {
-                  e.preventDefault();
-                  setMentor(false);
-                  router.push(
-                    {
-                      pathname: '/apply',
-                      query: { as: 'mentee' }
-                    },
-                    '/apply',
-                    { shallow: true }
-                  );
-                }}
-                borderStyle="solid"
-                borderColor="black"
-                btnSize="small"
-                customClassName="text-c100 mr-6 mt-6 lg:mt-0 font-black"
-              >
-                {menteeButtonText}
-              </Button>
-            ) : (
-              <Button
-                bgColor={menteeButtonColor}
-                btnSize="small"
-                customClassName="mr-6 mt-6 lg:mt-0 font-black"
-                onClick={e => {
-                  e.preventDefault();
-                  router.push(
-                    {
-                      pathname: '/apply',
-                      query: { as: 'mentee' }
-                    },
-                    '/apply',
-                    { shallow: true }
-                  );
-                }}
-              >
-                {menteeButtonText}
-              </Button>
-            )}
-            {mentor || as === 'mentor' ? (
-              <Button
-                textColor="white"
-                bgColor={mentorButtonColor}
-                btnSize="small"
-                customClassName="font-black mt-6 lg:mt-0"
-                onClick={e => {
-                  e.preventDefault();
-                  router.push(
-                    {
-                      pathname: '/apply',
-                      query: { as: 'mentor' }
-                    },
-                    '/apply',
-                    { shallow: true }
-                  );
-                }}
-              >
-                {mentorButtonText}
-              </Button>
-            ) : (
-              <Button
-                onClick={e => {
-                  e.preventDefault();
-                  setMentor(true);
-                  router.push(
-                    {
-                      pathname: '/apply',
-                      query: { as: 'mentor' }
-                    },
-                    '/apply',
-                    { shallow: true }
-                  );
-                }}
-                borderStyle="solid"
-                btnSize="small"
-                borderColor={mentorButtonColor}
-                customClassName="text-c300 font-black mt-6 lg:mt-0"
-              >
-                {mentorButtonText}
-              </Button>
-            )}
+      <>
+        <div className="flex">
+          <SectionHeader
+            data={data}
+            gradient_color={
+              mentor || as === 'mentor'
+                ? HEADING_OPTIONS.GRADIENT_COLOR.BLUE
+                : HEADING_OPTIONS.GRADIENT_COLOR.GREEN
+            }
+            headingtype={HEADING_OPTIONS.TYPE.SECONDARY}
+            headingAs="h2"
+            customClassName="w-full lg:w-1/2 py-0"
+          >
+            <div className="flex flex-col sm:flex-row">
+              {mentor || as === 'mentor' ? (
+                <Button
+                  onClick={e => {
+                    e.preventDefault();
+                    setMentor(false);
+                    router.push(
+                      {
+                        pathname: '/apply',
+                        query: { as: 'mentee' }
+                      },
+                      '/apply',
+                      { shallow: true }
+                    );
+                  }}
+                  borderStyle="solid"
+                  borderColor="black"
+                  btnSize="small"
+                  customClassName="text-c100 mr-6 mt-6 lg:mt-0 font-black"
+                >
+                  {menteeButtonText}
+                </Button>
+              ) : (
+                <Button
+                  bgColor={menteeButtonColor}
+                  btnSize="small"
+                  customClassName="mr-6 mt-6 lg:mt-0 font-black"
+                  onClick={e => {
+                    e.preventDefault();
+                    router.push(
+                      {
+                        pathname: '/apply',
+                        query: { as: 'mentee' }
+                      },
+                      '/apply',
+                      { shallow: true }
+                    );
+                  }}
+                >
+                  {menteeButtonText}
+                </Button>
+              )}
+              {mentor || as === 'mentor' ? (
+                <Button
+                  textColor="white"
+                  bgColor={mentorButtonColor}
+                  btnSize="small"
+                  customClassName="font-black mt-6 lg:mt-0"
+                  onClick={e => {
+                    e.preventDefault();
+                    router.push(
+                      {
+                        pathname: '/apply',
+                        query: { as: 'mentor' }
+                      },
+                      '/apply',
+                      { shallow: true }
+                    );
+                  }}
+                >
+                  {mentorButtonText}
+                </Button>
+              ) : (
+                <Button
+                  onClick={e => {
+                    e.preventDefault();
+                    setMentor(true);
+                    router.push(
+                      {
+                        pathname: '/apply',
+                        query: { as: 'mentor' }
+                      },
+                      '/apply',
+                      { shallow: true }
+                    );
+                  }}
+                  borderStyle="solid"
+                  btnSize="small"
+                  borderColor={mentorButtonColor}
+                  customClassName="text-c300 font-black mt-6 lg:mt-0"
+                >
+                  {mentorButtonText}
+                </Button>
+              )}
+            </div>
+          </SectionHeader>
+          <div className="mt-8 lg:w-1/2 hidden lg:block">
+            <img
+              src="https://s3-alpha-sig.figma.com/img/7718/8515/e137ebf7ac9175f7efc97260dc799db1?Expires=1597622400&Signature=DENH6VZ94XdjV2lefh9-fdcEy13r2Axqfs5aaw2ub3C5bYia--YCfEcCdMvMuwsdI5685MpBb45h4ua0qNwi-iER0yQYZIBi~7gA6IwsSQVjVM7T2G0MLFfEol~RVFZAkCcDk~sE~4fE1COLh7-45FS4GdqoqBFfThJPrPKnfFlFuq0BzfxFKA0gGfU2bR6A8ePQOwFxb84yusJLxiqr62vSYh0xEFWAu4kL84iCD3uhh3d1sFXOAM8AT5tupjj6hRQ3F4Sk~65CVu3QAOXERYzMslJKSsVXd4~qytRJHscggV2PRC7ctCPc7LkXeo95LVZx7DL7aXqRqXyXv-cA7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+              className="float-right w-32"
+            />
           </div>
-        </SectionHeader>
-        <div className="mt-8 lg:w-1/2 hidden lg:block">
-          <img
-            src="https://s3-alpha-sig.figma.com/img/7718/8515/e137ebf7ac9175f7efc97260dc799db1?Expires=1597622400&Signature=DENH6VZ94XdjV2lefh9-fdcEy13r2Axqfs5aaw2ub3C5bYia--YCfEcCdMvMuwsdI5685MpBb45h4ua0qNwi-iER0yQYZIBi~7gA6IwsSQVjVM7T2G0MLFfEol~RVFZAkCcDk~sE~4fE1COLh7-45FS4GdqoqBFfThJPrPKnfFlFuq0BzfxFKA0gGfU2bR6A8ePQOwFxb84yusJLxiqr62vSYh0xEFWAu4kL84iCD3uhh3d1sFXOAM8AT5tupjj6hRQ3F4Sk~65CVu3QAOXERYzMslJKSsVXd4~qytRJHscggV2PRC7ctCPc7LkXeo95LVZx7DL7aXqRqXyXv-cA7w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-            className="float-right w-32"
-          />
         </div>
-      </div>
+        {mentor || as === 'mentor' ? (
+          <div
+            style={{ height: '30rem' }}
+            className="ExampleWidget mentor relative my-8"
+          >
+            {/* <div className="hidden"></div> */}
+            <ReactTypeformEmbed
+              popup={false}
+              url="https://m3ntorshipcom.typeform.com/to/F9BNbwS2"
+            />
+          </div>
+        ) : (
+          <div
+            style={{ height: '30rem' }}
+            className="ExampleWidget mentee relative my-8"
+          >
+            <div className="hidden"></div>
+            <ReactTypeformEmbed
+              popup={false}
+              url="https://m3ntorshipcom.typeform.com/to/yj7E4NEG"
+            />
+          </div>
+        )}
+      </>
     );
   }
 };
