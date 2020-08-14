@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../shared/Button';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -10,12 +9,11 @@ export const TopBar = ({
     sub_text: sub_title,
     apply_btn: { url: link_url, name: link_text }
   },
-  button_color
+  button_color,
+  bgColored
 }) => {
-  let router = useRouter();
-  let pageRouter = router.pathname;
   return (
-    <section className={`${pageRouter === '/about' ? 'bg-c200' : ''}`}>
+    <section className={`${bgColored ? 'bg-c200' : ''}`}>
       <motion.div
         initial={{ y: -200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -29,7 +27,7 @@ export const TopBar = ({
           </p>
         )}
         {link_url && (
-          <Link href={link_url}>
+          <Link href={link_url} passHref>
             {link_text && (
               <Button
                 btnSize="medium"
@@ -42,7 +40,7 @@ export const TopBar = ({
                     : 'black'
                 }
                 customClassName={`ml-auto uppercase top-bar-btn ${
-                  pageRouter === '/about' ? 'shadow-btn' : ''
+                  bgColored ? 'shadow-btn' : ''
                 }`}
                 bgColor={button_color ? button_color : 'green'}
               >

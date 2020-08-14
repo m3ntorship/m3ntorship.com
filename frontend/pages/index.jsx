@@ -6,23 +6,32 @@ import HowItWork from '../components/how-it-work';
 import Patches from '../components/Patches';
 import { mentorshipAPI } from '../clients';
 import { HEADING_OPTIONS } from '../components/shared/Heading/index';
-
 import Link from 'next/link';
+import { TopBar } from '../components/TopBar';
+import Footer from '../components/footer';
+
 export const Home = ({ data }) => {
-  if (data) {
-    const { home_header, goals, steps, patches, contribute, batches } = data;
-    return (
-      <>
-        <SectionHeaderComponent data={home_header} />
-        <Goals data={goals} />
-        <HowItWork data={steps} />
-        <Patches data={patches} batchesCards={batches} />
-        <ContributeSection data={contribute} />
-      </>
-    );
-  } else {
-    return <h1>Loading....</h1>;
-  }
+  const {
+    home_header,
+    goals,
+    steps,
+    patches,
+    contribute,
+    batches,
+    topBarData,
+    footerData
+  } = data;
+  return (
+    <>
+      <TopBar data={topBarData} />
+      <SectionHeaderComponent data={home_header} />
+      <Goals data={goals} />
+      <HowItWork data={steps} />
+      <Patches data={patches} batchesCards={batches} />
+      <ContributeSection data={contribute} />
+      <Footer data={footerData} />
+    </>
+  );
 };
 
 // side components
@@ -95,7 +104,9 @@ export async function getStaticProps(context) {
     mentorshipAPI('/steps'),
     mentorshipAPI('/patches'),
     mentorshipAPI('/contribute'),
-    mentorshipAPI('/batches')
+    mentorshipAPI('/batches'),
+    mentorshipAPI('/top-bar'),
+    mentorshipAPI('/footer')
   ];
   return Promise.all(
     endPoints.map(ep =>
@@ -126,7 +137,9 @@ export async function getStaticProps(context) {
       { data: steps },
       { data: patches },
       { data: contribute },
-      { data: batches }
+      { data: batches },
+      { data: topBarData },
+      { data: footerData }
     ]) => {
       return {
         props: {
@@ -136,7 +149,9 @@ export async function getStaticProps(context) {
             steps,
             patches,
             contribute,
-            batches
+            batches,
+            topBarData,
+            footerData
           }
         },
         revalidate: 1
