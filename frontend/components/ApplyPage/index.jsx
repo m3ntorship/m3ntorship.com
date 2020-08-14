@@ -3,7 +3,10 @@ import { UserProvider } from '../../context/UserContext';
 import SectionHeader from '../shared/SectionHeader';
 import Apply from '../apply/index';
 import { HEADING_OPTIONS } from '../shared/Heading';
+import { useRouter } from 'next/router';
 export const ApplyPage = ({ data }) => {
+  const router = useRouter();
+  const { as } = router.query;
   const [mentor, setMentor] = useState(false);
 
   if (data) {
@@ -29,7 +32,7 @@ export const ApplyPage = ({ data }) => {
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
-          {mentor ? (
+          {mentor || as === 'mentor' ? (
             <SectionHeader
               data={mentorSectionHeaderData}
               gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}

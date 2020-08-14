@@ -33,11 +33,7 @@ const SectionHeaderComponent = ({ data }) => {
   } = data;
   return (
     <SectionHeader data={data} customClassName="container">
-      <Link
-        href={{ pathname: memberBtnUrl, query: { as: 'mentee' } }}
-        as={memberBtnUrl}
-        passHref
-      >
+      <Link href={`${memberBtnUrl}?as=mentee`} passHref>
         <Button
           textColor="black"
           bgColor="green"
@@ -48,11 +44,7 @@ const SectionHeaderComponent = ({ data }) => {
           {memberBtnName}
         </Button>
       </Link>
-      <Link
-        href={{ pathname: mentorBtnUrl, query: { as: 'mentor' } }}
-        as={mentorBtnUrl}
-        passHref
-      >
+      <Link href={`${mentorBtnUrl}?as=mentor`} passHref>
         <Button
           textColor="white"
           bgColor="blue"
@@ -81,11 +73,7 @@ const ContributeSection = ({ data }) => {
       customClassName="container"
       headingAs="h2"
     >
-      <Link
-        href={{ pathname: mentorBtnUrl, query: { as: 'mentor' } }}
-        as={mentorBtnUrl}
-        passHref
-      >
+      <Link href={`${mentorBtnUrl}?as=mentor`} passHref>
         <Button
           textColor="white"
           bgColor="blue"
