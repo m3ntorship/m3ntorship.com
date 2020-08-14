@@ -5,11 +5,15 @@ import {
   GradientText,
   HEADING_OPTIONS
 } from '../shared/Heading/index';
-import GenericParagrapgh from '../shared/GenericParagrapgh/index';
+
 import Button from '../shared/Button/index';
-import Form from '../shared/form';
 import SectionHeader from '../shared/SectionHeader';
+
+import { useRouter } from 'next/router';
 const Apply = ({ data, inputFields }) => {
+  const router = useRouter();
+  const { as } = router.query;
+
   if (data) {
     const {
       heading: primaryHeading,
@@ -25,7 +29,7 @@ const Apply = ({ data, inputFields }) => {
         <SectionHeader
           data={data}
           gradient_color={
-            mentor
+            mentor || as === 'mentor'
               ? HEADING_OPTIONS.GRADIENT_COLOR.BLUE
               : HEADING_OPTIONS.GRADIENT_COLOR.GREEN
           }
@@ -34,17 +38,24 @@ const Apply = ({ data, inputFields }) => {
           customClassName="w-full lg:w-1/2 py-0"
         >
           <div className="flex flex-col sm:flex-row">
-            {mentor ? (
+            {mentor || as === 'mentor' ? (
               <Button
                 onClick={e => {
                   e.preventDefault();
                   setMentor(false);
+                  router.push(
+                    {
+                      pathname: '/apply',
+                      query: { as: 'mentee' }
+                    },
+                    '/apply',
+                    { shallow: true }
+                  );
                 }}
                 borderStyle="solid"
                 borderColor="black"
                 btnSize="small"
-                customClassName="text-c100 lg:mr-6
-                 font-black"
+                customClassName="text-c100 mr-6 mt-6 lg:mt-0 font-black"
               >
                 {menteeButtonText}
               </Button>
@@ -55,12 +66,20 @@ const Apply = ({ data, inputFields }) => {
                 customClassName="mr-6 mt-6 lg:mt-0 font-black"
                 onClick={e => {
                   e.preventDefault();
+                  router.push(
+                    {
+                      pathname: '/apply',
+                      query: { as: 'mentee' }
+                    },
+                    '/apply',
+                    { shallow: true }
+                  );
                 }}
               >
                 {menteeButtonText}
               </Button>
             )}
-            {mentor ? (
+            {mentor || as === 'mentor' ? (
               <Button
                 textColor="white"
                 bgColor={mentorButtonColor}
@@ -68,6 +87,14 @@ const Apply = ({ data, inputFields }) => {
                 customClassName="font-black mt-6 lg:mt-0"
                 onClick={e => {
                   e.preventDefault();
+                  router.push(
+                    {
+                      pathname: '/apply',
+                      query: { as: 'mentor' }
+                    },
+                    '/apply',
+                    { shallow: true }
+                  );
                 }}
               >
                 {mentorButtonText}
@@ -77,6 +104,14 @@ const Apply = ({ data, inputFields }) => {
                 onClick={e => {
                   e.preventDefault();
                   setMentor(true);
+                  router.push(
+                    {
+                      pathname: '/apply',
+                      query: { as: 'mentor' }
+                    },
+                    '/apply',
+                    { shallow: true }
+                  );
                 }}
                 borderStyle="solid"
                 btnSize="small"

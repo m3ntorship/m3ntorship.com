@@ -12,6 +12,7 @@ const JoinUs = ({ data }) => {
     left_img,
     right_img
   } = data;
+
   return (
     <section className="container">
       <div className="border-4 py-20 border-dashed border-c100 flex justify-evenly items-center">
@@ -36,7 +37,7 @@ const JoinUs = ({ data }) => {
           <p className="join-us-description text-center text-xs font-light text-c700">
             {description}
           </p>
-          <Link href={memberBtnUrl} passHref>
+          <Link href={`${memberBtnUrl}?as=mentee`} passHref>
             <Button
               customClassName="uppercase mt-10 mx-auto"
               textSize="medium"
@@ -47,7 +48,7 @@ const JoinUs = ({ data }) => {
               {memberBtnName}
             </Button>
           </Link>
-          <Link href={mentorBtnUrl} passHref>
+          <Link href={`${mentorBtnUrl}?as=mentor`} passHref>
             <Button
               customClassName="uppercase mt-5 mx-auto"
               textSize="medium"
