@@ -6,7 +6,7 @@ const Goals = ({ data }) => {
   if (data) {
     return (
       <section className="text-center text-lg container relative">
-        <div className="absolute hidden md:block -top-12 right-12">
+        <div className="absolute hidden xl:block -top-12 right-12">
           {side_image && <img src={side_image.url} />}
         </div>
         <Heading
@@ -21,7 +21,10 @@ const Goals = ({ data }) => {
         <div className="goals__goals-list">
           {list_goals.map(({ id, goal }) => {
             return (
-              <p className="font-normal text-base md:text-xlg mb-12" key={id}>
+              <p
+                className="font-normal text-base md:text-xlg mb-10 last:mb-0"
+                key={id}
+              >
                 {goal}
               </p>
             );
