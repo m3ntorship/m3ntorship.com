@@ -4,7 +4,8 @@ import SectionHeader from '../shared/SectionHeader';
 import Apply from '../apply/index';
 import { HEADING_OPTIONS } from '../shared/Heading';
 import { useRouter } from 'next/router';
-export const ApplyPage = ({ data }) => {
+import { TopBar } from '../TopBar';
+export const ApplyPage = ({ data, topBarData }) => {
   const router = useRouter();
   const { as } = router.query;
   const [mentor, setMentor] = useState(false);
@@ -32,6 +33,10 @@ export const ApplyPage = ({ data }) => {
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
+          <TopBar
+            data={topBarData}
+            button_color={mentor || as === 'mentor' ? 'blue' : 'green'}
+          />
           {mentor || as === 'mentor' ? (
             <SectionHeader
               data={mentorSectionHeaderData}

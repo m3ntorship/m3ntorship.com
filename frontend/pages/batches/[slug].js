@@ -7,18 +7,23 @@ import JoinUs from '../../components/JoinUsComponent';
 import { useRouter } from 'next/router';
 import { mentorshipAPI } from './../../clients/mentorship';
 import Error from '../../pages/_error';
+import { TopBar } from '../../components/TopBar';
+import Footer from '../../components/footer';
+
 const BatchPage = ({
   batchData,
   sectionHeaderData,
   batchTeamData,
-  joinUsData
+  joinUsData,
+  topBarData,
+  footerData
 }) => {
-  if (!batchData || batchData.length === 0) return <Error statusCode={404} />;
   const router = useRouter();
-
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
+  if (!batchData || batchData.length === 0) return <Error statusCode={404} />;
 
   //Destructring member all member teams and joining them in one array
   const team_members = [
@@ -43,6 +48,7 @@ const BatchPage = ({
   } = sectionHeaderData;
   return (
     <>
+      <TopBar data={topBarData} />
       <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
         <SectionHeader
           data={sectionHeaderData}
@@ -87,6 +93,7 @@ const BatchPage = ({
       </section>
       <Team data={batchTeamData} team_members={team_members} />
       <JoinUs data={joinUsData} />
+      <Footer data={footerData} />
     </>
   );
 };
@@ -109,15 +116,19 @@ export async function getStaticProps({ params: { slug } }) {
   const { data: batchData } = await mentorshipAPI(
     `/batches?batch_slug=${slug}`
   );
+  const { data: topBarData } = await mentorshipAPI('/top-bar');
   const { data: sectionHeaderData } = await mentorshipAPI('/batch-header');
   const { data: batchTeamData } = await mentorshipAPI('/batch-team');
   const { data: joinUsData } = await mentorshipAPI('/join-us-card');
+  const { data: footerData } = await mentorshipAPI('/footer');
   return {
     props: {
       batchData,
       sectionHeaderData,
       batchTeamData,
-      joinUsData
+      joinUsData,
+      topBarData,
+      footerData
     },
     revalidate: 1
   };
