@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../shared/Button';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const TopBar = ({
   data: {
@@ -15,13 +15,13 @@ export const TopBar = ({
   let router = useRouter();
   let pageRouter = router.pathname;
   return (
-    <motion.section
-      initial={{y: -200, opacity: 0}}
-      animate={{y: 0, opacity: 1}}
-      transition={{type: 'spring',duration: .5}}
-      className={`${pageRouter === '/about' ? 'bg-c200' : ''}`}
-    >
-      <div className="container flex items-center">
+    <section className={`${pageRouter === '/about' ? 'bg-c200' : ''}`}>
+      <motion.div
+        initial={{ y: -200, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: 'spring', duration: 0.5 }}
+        className="container flex items-center"
+      >
         {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
         {sub_title && (
           <p className="uppercase font-normal text-sm text-c500 self-end ml-4 hidden md:inline">
@@ -51,7 +51,7 @@ export const TopBar = ({
             )}
           </Link>
         )}
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 };

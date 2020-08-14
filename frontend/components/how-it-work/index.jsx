@@ -3,6 +3,7 @@ import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import useMedia from '../../helper/useMedia';
 
 const sectionVariants = {
   hidden: {
@@ -34,8 +35,9 @@ const cardVariants = {
 };
 
 const HowItWork = ({ data }) => {
+  const isDesktop = useMedia(['(max-width: 1025px)'], [false], true)
   const [ref, inView] = useInView({
-    threshold: 0.1
+    threshold: isDesktop ? 0.1 : 0.05
   });
   const { title, description, cards } = data;
   if (data) {
@@ -61,7 +63,7 @@ const HowItWork = ({ data }) => {
           {cards.map((el, index) => {
             return (
               <motion.div
-                variants={cardVariants}
+                variants={isDesktop ?  cardVariants : ''}
                 className="relative h-full"
                 key={el.id}
               >
