@@ -56,7 +56,7 @@ const Footer = ({ data }) => {
                 {title_links}
               </Heading>
             )}
-            <ul className="flex flex-wrap">
+            <ul className="flex flex-col sm:flex-row flex-wrap">
               {links.map(link => {
                 const { url, name, id } = link;
                 return (
