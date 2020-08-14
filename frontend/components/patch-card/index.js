@@ -16,7 +16,7 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
  */
 
 const PatchCard = ({ cardDetails, dashed }) => {
-  const { title, batch_mentees, description, link } = cardDetails;
+  const { title, batch_mentees, description, link, batch_slug } = cardDetails;
   return (
     <>
       {cardDetails && (
@@ -83,7 +83,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
           )}
 
           {link && (
-            <Link href={link.url}>
+            <Link href={'/batches/[slug]'} as={`/batches/${batch_slug}`}>
               <a className="font-bold text-sm underline mt-auto">{link.name}</a>
             </Link>
           )}
