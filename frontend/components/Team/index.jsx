@@ -11,7 +11,7 @@ export const Team = ({ data, team_members }) => {
     } = data;
     return (
       <section className="team relative text-center container">
-        <div className="absolute graph hidden lg:block">
+        <div className="absolute graph right-0 hidden xl:block">
           <img src={url} />
         </div>
         {title && (
@@ -26,7 +26,7 @@ export const Team = ({ data, team_members }) => {
           </Heading>
         )}
         {description && (
-          <p className="mb-16 mx-auto text-center text-xs md:text-base text-c600 lg:w-4/6">
+          <p className="mb-16 mx-auto text-center text-base text-c600 lg:w-4/6">
             {description}
           </p>
         )}

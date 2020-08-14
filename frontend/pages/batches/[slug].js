@@ -43,19 +43,22 @@ const BatchPage = ({
   } = sectionHeaderData;
   return (
     <>
-      <section className="container grid grid-cols-1 md:grid-cols-2 row-gap-10">
-        <SectionHeader data={sectionHeaderData} customClassName="py-0">
+      <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
+        <SectionHeader
+          data={sectionHeaderData}
+          customClassName="py-0 order-2 lg:order-none"
+        >
           {repo_link && repo_btn_name && (
             <Button
               textColor="white"
               bgColor="black"
-              btnSize="large"
+              btnSize="largeTall"
               extrnalLink={true}
               href={repo_link}
-              customClassName="my-6 md:my-0 md:mr-6"
+              customClassName="mb-6 md:mb-0 md:mr-6"
             >
               <img
-                src="../../static/images/github.png"
+                src="/static/images/github.png"
                 className="inline mr-4 w-8 h-8"
               />
               {repo_btn_name}
@@ -65,16 +68,20 @@ const BatchPage = ({
             <Button
               textColor="black"
               bgColor="gray"
-              btnSize="large"
+              btnSize="largeTall"
               fontWeight="normal"
               extrnalLink={true}
               href={project_link}
             >
               <span className="uppercase underline">{project_btn_name}</span>
+              <img
+                src="/static/images/right-arrow.svg"
+                className="inline ml-4 w-6"
+              />
             </Button>
           )}
         </SectionHeader>
-        <div className="lg:px-24">
+        <div className="order-1 lg:order-none">
           <ListOfRoundedImages data={team_images} />
         </div>
       </section>

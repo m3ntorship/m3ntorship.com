@@ -52,6 +52,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
             ' w-48 h-20': btnSize === 'small',
             ' w-32 sm:w-64 h-16': btnSize === 'medium',
             ' w-64 sm:w-72 h-16': btnSize === 'large',
+            ' w-64 sm:w-72 h-20': btnSize === 'largeTall',
 
             //font size
             'text-base': !textSize || textSize === 'large',
