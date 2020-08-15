@@ -21,7 +21,11 @@ const Footer = ({ data }) => {
               <h2 className="font-black mb-6 text-xxlg">
                 {logo}
                 {side_image && (
-                  <img className="inline-block ml-6" src={side_image.url} />
+                  <img
+                    className="inline-block ml-6"
+                    src={side_image.url}
+                    alt="footer"
+                  />
                 )}
               </h2>
             )}

@@ -7,7 +7,7 @@ const Goals = ({ data }) => {
     return (
       <section className="text-center text-lg container relative">
         <div className="absolute hidden xl:block -top-12 right-12">
-          {side_image && <img src={side_image.url} />}
+          {side_image && <img src={side_image.url} alt="birds icon" />}
         </div>
         {title && (
           <Heading

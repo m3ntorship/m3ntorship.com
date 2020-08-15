@@ -37,13 +37,14 @@ const BatchPage = ({
       team_members.map(item => item.id).indexOf(member.id) === index
   );
 
-  // all team images
+  // all team images and titles
   const team_images = team_members.map(
     ({
       member_info: {
+        title,
         card_image: { url }
       }
-    }) => ({ url })
+    }) => ({ url, title })
   );
   const {
     repo_btn: { name: repo_btn_name, url: repo_link },
@@ -84,6 +85,7 @@ const BatchPage = ({
               <img
                 src="/static/images/github.png"
                 className="inline mr-4 w-8 h-8"
+                alt="github logo icon"
               />
               {repo_btn_name}
             </Button>
@@ -101,6 +103,7 @@ const BatchPage = ({
               <img
                 src="/static/images/right-arrow.svg"
                 className="inline ml-4 w-6"
+                alt="arrow icon"
               />
             </Button>
           )}

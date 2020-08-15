@@ -13,7 +13,9 @@ export const ParagraphWithImageBeside = ({ data }) => {
         </div>
 
         <div className="w-2/12 flex-auto hidden md:flex justify-end items-center">
-          {image && <img src={image.url} />}
+          {image && (
+            <img src={image.url} alt="side icon for a more beautiful UI" />
+          )}
         </div>
       </div>
     );

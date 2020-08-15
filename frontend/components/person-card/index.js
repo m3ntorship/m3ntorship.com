@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion';
 
 // props list
 
@@ -27,10 +27,10 @@ const cardVaruants = {
     scale: 1,
     transition: {
       type: 'spring',
-      duration: .5
+      duration: 0.5
     }
   }
-}
+};
 
 const PersonCard = ({
   cardDetails,
@@ -43,7 +43,7 @@ const PersonCard = ({
   const [crdRef, cardInView] = useInView({
     threshold: 0.2,
     triggerOnce: true
-  })
+  });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
 
   return (
@@ -74,7 +74,7 @@ const PersonCard = ({
             >
               <img
                 src={card_image.url}
-                alt="title"
+                alt={title}
                 className={cn('object-cover mx-auto', {
                   'rounded-full': rounded,
                   'w-24 h-24': bgColord,
@@ -103,7 +103,7 @@ const PersonCard = ({
             <p
               className={`card__subtitle mb-5 text-center ${
                 roundedSmall ? 'text-sm' : 'text-base'
-                } font-normal text-c600`}
+              } font-normal text-c600`}
             >
               {sub_title}
             </p>

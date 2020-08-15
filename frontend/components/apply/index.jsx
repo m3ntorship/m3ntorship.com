@@ -121,7 +121,11 @@ const Apply = ({ data, inputFields }) => {
           </SectionHeader>
           <div className="mt-8 lg:w-1/2 hidden lg:block">
             {apply_side_image && (
-              <img src={apply_side_image.url} className="float-right w-32" />
+              <img
+                src={apply_side_image.url}
+                className="float-right w-32"
+                alt={'apply now with us'}
+              />
             )}
           </div>
         </div>
