@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
 import { motion } from 'framer-motion';
-import {useInView}  from 'react-intersection-observer';
+import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
 
 const sectionVariants = {
@@ -19,12 +19,24 @@ const sectionVariants = {
   }
 };
 
-const TeamGroupSection = ({ data }) => {
+const cardVariants = {
+  start: {
+    scale: 0
+  },
+  end: {
+    scale: 1,
+    transition: {
+      duration: 1,
+      type: 'spring'
+    }
+  }
+};
 
+const TeamGroupSection = ({ data }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
 
   const [sectionRef, inView] = useInView({
-    threshold: .1
+    threshold: 0.1
   });
 
   if (data) {
@@ -42,9 +54,9 @@ const TeamGroupSection = ({ data }) => {
     return (
       <motion.section
         ref={sectionRef}
-        variants={ isDesktop ? sectionVariants : ''}
+        variants={isDesktop ? sectionVariants : ''}
         initial="start"
-        animate={inView? 'end' : ''}
+        animate={inView ? 'end' : ''}
         className="text-center container"
       >
         {title && (
@@ -62,9 +74,12 @@ const TeamGroupSection = ({ data }) => {
           </Heading>
         )}
         {membersData && (
-          <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-40 gap-5">
+          <motion.div
+            variants={isDesktop ? cardVariants : ''}
+            className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-40 gap-5"
+          >
             {membersData}
-          </div>
+          </motion.div>
         )}
       </motion.section>
     );
