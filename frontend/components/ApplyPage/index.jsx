@@ -11,24 +11,17 @@ export const ApplyPage = ({ data, topBarData }) => {
   const [mentor, setMentor] = useState(false);
 
   if (data) {
-    const {
-      headerSectionData,
-      headerSectionData: {
-        menteeHeaderImage: { url: menteeUrl }
-      },
-      headerSectionData: {
-        mentorHeaderImage: { url: mentorUrl }
-      },
-      formData
-    } = data;
-
+    const { headerSectionData, formData } = data;
+    const { menteeHeaderImage, mentorHeaderImage } = headerSectionData
+      ? headerSectionData
+      : null;
     let menteeSectionHeaderData = {
       ...headerSectionData,
-      header_image: { url: menteeUrl }
+      header_image: menteeHeaderImage
     };
     let mentorSectionHeaderData = {
       ...headerSectionData,
-      header_image: { url: mentorUrl }
+      header_image: mentorHeaderImage
     };
     return (
       <>
