@@ -9,6 +9,7 @@ import { mentorshipAPI } from './../../clients/mentorship';
 import Error from '../../pages/_error';
 import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
+import checkingDataError from '../../helper/checkingDataError';
 
 const BatchPage = ({
   batchData,
@@ -23,7 +24,8 @@ const BatchPage = ({
     return <div>Loading...</div>;
   }
 
-  if (!batchData || batchData.length === 0) return <Error statusCode={404} />;
+  if (!batchData || batchData.statusCode === 404)
+    return <Error statusCode={404} />;
 
   //Destructring member all member teams and joining them in one array
   const team_members = [
@@ -101,35 +103,54 @@ const BatchPage = ({
 export default BatchPage;
 
 export async function getStaticPaths() {
-  const { data: batchesData } = await mentorshipAPI('/batches');
-  const paths = await batchesData.map(({ batch_slug }) => ({
-    params: { slug: batch_slug }
-  }));
-
-  return {
-    paths,
-    fallback: true
-  };
+  let paths = [];
+  return mentorshipAPI('/batches')
+    .then(({ data }) => {
+      paths = data.map(({ batch_slug }) => ({
+        params: { slug: batch_slug }
+      }));
+      return {
+        paths,
+        fallback: true
+      };
+    })
+    .catch(err => {
+      return {
+        paths: [],
+        fallback: true
+      };
+    });
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const { data: batchData } = await mentorshipAPI(
-    `/batches?batch_slug=${slug}`
+  const endPoints = [
+    mentorshipAPI(`/batches?batch_slug=${slug}`),
+    mentorshipAPI('/batch-header'),
+    mentorshipAPI('/batch-team'),
+    mentorshipAPI('/join-us-card'),
+    mentorshipAPI('/top-bar'),
+    mentorshipAPI('/footer')
+  ];
+  return Promise.all(checkingDataError(endPoints)).then(
+    ([
+      { data: batchData },
+      { data: sectionHeaderData },
+      { data: batchTeamData },
+      { data: joinUsData },
+      { data: topBarData },
+      { data: footerData }
+    ]) => {
+      return {
+        props: {
+          batchData,
+          sectionHeaderData,
+          batchTeamData,
+          joinUsData,
+          topBarData,
+          footerData
+        },
+        revalidate: 1
+      };
+    }
   );
-  const { data: topBarData } = await mentorshipAPI('/top-bar');
-  const { data: sectionHeaderData } = await mentorshipAPI('/batch-header');
-  const { data: batchTeamData } = await mentorshipAPI('/batch-team');
-  const { data: joinUsData } = await mentorshipAPI('/join-us-card');
-  const { data: footerData } = await mentorshipAPI('/footer');
-  return {
-    props: {
-      batchData,
-      sectionHeaderData,
-      batchTeamData,
-      joinUsData,
-      topBarData,
-      footerData
-    },
-    revalidate: 1
-  };
 }

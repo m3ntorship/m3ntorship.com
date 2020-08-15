@@ -1,8 +1,8 @@
 import React from 'react';
 import { ApplyPage } from '../components/ApplyPage';
 import { mentorshipAPI } from '../clients/index';
-import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
+import checkingDataError from '../helper/checkingDataError';
 
 const Apply = ({ data, data: { topBarData, footerData } }) => {
   return (
@@ -13,28 +13,14 @@ const Apply = ({ data, data: { topBarData, footerData } }) => {
   );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const endPoints = [
     mentorshipAPI('/apply-page-intro-section'),
     mentorshipAPI('/apply-page-form'),
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer')
   ];
-  return Promise.all(
-    endPoints.map(ep =>
-      ep.then(res => {
-        if (Object.keys(res.data).length) {
-          return res;
-        } else {
-          return {
-            data: {
-              statusCode: 404
-            }
-          };
-        }
-      })
-    )
-  ).then(
+  return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: headerSectionData },
       { data: formData },
