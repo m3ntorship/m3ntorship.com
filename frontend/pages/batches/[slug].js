@@ -11,6 +11,7 @@ import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
 
+import Head from 'next/head';
 const BatchPage = ({
   batchData,
   sectionHeaderData,
@@ -50,6 +51,21 @@ const BatchPage = ({
   } = sectionHeaderData;
   return (
     <>
+      <Head>
+        <meta
+          property="og:url"
+          content={`https://www.m3ntorship.com/batchs/${batchData[0].batch_slug}`}
+        />
+        <meta
+          property="og:title"
+          content={`M3ntorship Graduates ${batchData[0].batch_slug}`}
+        />
+        <meta property="og:image" content="http://m3ntorship.com/image.jpg" />
+        <meta property="og:description" content={batchData[0].description} />
+
+        <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
+        <meta name="description" content={batchData[0].description} />
+      </Head>
       <TopBar data={topBarData} />
       <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
         <SectionHeader

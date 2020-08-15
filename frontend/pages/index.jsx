@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
+import Head from 'next/head';
 
 export const Home = ({ data }) => {
   const {
@@ -24,6 +25,15 @@ export const Home = ({ data }) => {
   } = data;
   return (
     <>
+      <Head>
+        <meta name="description" content="m3ntorship description" />
+
+        <meta property="og:title" content="M3ntorship" />
+        <meta property="og:url" content="https://www.m3ntorship.com/" />
+        <meta property="og:image" content="https://m3ntorship.com/image.jpg" />
+        <meta property="og:description" content="Description Here" />
+        <title>M3ntorship | For smarter developer</title>
+      </Head>
       <TopBar data={topBarData} />
       <SectionHeaderComponent data={home_header} />
       <Goals data={goals} />
