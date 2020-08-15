@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
+import Link from 'next/link';
 
 const Footer = ({ data }) => {
   if (data) {
@@ -52,9 +53,9 @@ const Footer = ({ data }) => {
                 <p className=" text-xxs font-normal text-c700">
                   {description}
                   {url && (
-                    <a className="underline font-bold" href={url.url}>
-                      {url.name}
-                    </a>
+                    <Link href={url.url}>
+                      <a className="underline font-bold">{url.name}</a>
+                    </Link>
                   )}
                 </p>
               )}
