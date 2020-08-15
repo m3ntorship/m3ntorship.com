@@ -1,0 +1,48 @@
+
+name: m3ntorshipcom-fullstack-dev
+on:
+  push:
+    branches:
+      - playground-deployment-fullstack
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      shouldrun: ${{steps.check.outputs.triggered}}
+      parent_pr: ${{steps.get_pr_values.outputs.parent_pr}}
+      parent_pr_head: ${{steps.get_pr_values.outputs.parent_pr_head}}
+      parent_pr_number: ${{steps.get_pr_values.outputs.parent_pr_number}}
+      parent_pr_commits_count: ${{steps.get_pr_values.outputs.parent_pr_commits_count}}
+      parent_pr_version: ${{steps.get_pr_values.outputs.parent_pr_version}}
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '@m3ntorship/deploy'
+      - id: get_pr_values
+        if: steps.check.outputs.triggered == 'true'
+        run: |
+          TEMP_PR=$(curl ${{ github.event.issue.pull_request.url }})
+          TEMP_PR_HEAD=$(echo $TEMP_PR | jq -r '.head.sha')
+          TEMP_PR_NUMBER=$(echo $TEMP_PR | jq -r '.number')
+          TEMP_PR_COMMITS_COUNT=$(echo $TEMP_PR | jq -r '.commits')
+          mkdir temp && cd temp && git init && TEMP_VERSION=$(git rev-parse --short=4 $TEMP_PR_HEAD) && cd .. && rm -rf temp
+          echo ::set-output name=parent_pr::$(echo $TEMP_PR)
+          echo ::set-output name=parent_pr_head::$(echo $TEMP_PR_HEAD)
+          echo ::set-output name=parent_pr_number::$(echo $TEMP_PR_NUMBER)
+          echo ::set-output name=parent_pr_commits_count::$(echo $TEMP_PR_COMMITS_COUNT)
+          echo ::set-output name=parent_pr_version::$(echo $TEMP_VERSION)
+          echo "TEMP_PR_HEAD=$TEMP_PR_HEAD"
+          echo "TEMP_PR_NUMBER=$TEMP_PR_NUMBER"
+          echo "TEMP_PR_COMMITS_COUNT=$TEMP_PR_COMMITS_COUNT"
+          echo "TEMP_VERSION=$TEMP_VERSION"
+  nile_job:
+    needs: init
+    if: needs.init.outputs.shouldrun == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{needs.init.outputs.parent_pr_head}}
+      - run: cat $GITHUB_EVENT_PATH
+      - run: echo ${{needs.init.outputs.parent_pr_number}}-${{needs.init.outputs.parent_pr_commits_count}}-${{needs.init.outputs.parent_pr_version}}      

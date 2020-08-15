@@ -8,16 +8,23 @@ on:
       - playground-deployment-fullstack
 env:
   # fixed deployment envs
-  M3_IMAGE_FRONTEND: ${{ secrets.M3_DOCKER_HOST }}/m3ntorshipcom-frontend
-  M3_IMAGE_BACKEND: ${{ secrets.M3_DOCKER_HOST }}/m3ntorshipcom-backend
-  M3_IMAGE_STORYBOOK: ${{ secrets.M3_DOCKER_HOST }}/m3ntorshipcom-storybook
+  M3_IMAGE_FRONTEND: m3ntorshipcom/m3ntorshipcom-frontend
+  M3_IMAGE_BACKEND: m3ntorshipcom/m3ntorshipcom-backend
+  M3_IMAGE_STORYBOOK: m3ntorshipcom/m3ntorshipcom-storybook
   M3_DOCKER_FILE_FRONTEND: Dockerfile.playground.frontend
   M3_DOCKER_FILE_BACKEND: Dockerfile.playground.backend
   M3_DOCKER_FILE_STORYBOOK: Dockerfile.playground.storybook
 
 jobs:
-  build:
+  ayoub:
     runs-on: ubuntu-latest
-   
     steps:
-      - run: echo 'deploy cms to playground cluster'
+      - uses: actions/checkout@v2
+      - uses: azure/docker-login@v1
+        with:
+          username: ${{ secrets.M3_DOCKER_USERNAME }}
+          password: ${{ secrets.M3_DOCKER_PASSWORD }}
+      - run: |
+          docker build -t m3ntorship/m3ntorshipcom-frontend:0 -f $M3_DOCKER_FILE_FRONTEND .
+          docker push m3ntorship/m3ntorshipcom-frontend:0
+      
