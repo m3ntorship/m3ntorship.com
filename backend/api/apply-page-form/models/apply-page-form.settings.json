@@ -9,10 +9,11 @@
     "timestamps": true
   },
   "attributes": {
-    "heading": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "default": "You want to apply as?"
     },
-    "gradiendtText": {
+    "headingGradientText": {
       "type": "string"
     },
     "description": {
@@ -42,13 +43,24 @@
     },
     "MenteeButton": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "general.button"
     },
     "MentorButton": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "general.button"
+    },
+    "apply_side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

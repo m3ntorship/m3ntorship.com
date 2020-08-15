@@ -43,13 +43,29 @@ module.exports = {
         body: '1.2'
       },
       boxShadow: {
-        btn: '0px 4px 20px rgba(0, 0, 0, 0.1)'
+        btn: '0px 8px 20px 3px rgba(0, 0, 0, 0.08)',
+        card: '0 0 40px rgba(0, 0, 0, 0.1)'
+      },
+      spacing: {
+        '.5': '2px',
+        '72': '19rem'
+      },
+      inset: {
+        '12': '3rem',
+        '-12': '-3rem',
+        '1/2': '50%',
+        '-30': '-7.5rem'
+      },
+      zIndex: {
+        '-1': '-1'
       }
     }
   },
   corePlugins: {
     container: false
   },
-  variants: {},
+  variants: {
+    margin: ['responsive', 'group-hover', 'last']
+  },
   plugins: []
 };

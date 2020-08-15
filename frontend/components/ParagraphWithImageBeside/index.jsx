@@ -1,26 +1,23 @@
 import React from 'react';
 
-export const ParagraphWithImageBeside = ({
-  data: {
-    title,
-    sub_title,
-    image: { url }
-  }
-}) => {
-  return (
-    <div className="flex justify-between">
-      <div>
-        <p className="text-base text-center mb-4 md:text-left w-ful md:w-3/4 leading-normal">
-          {title}
-        </p>
-        <p className="text-base text-center  mb-4  md:text-left w-ful md:w-3/4 leading-normal">
-          {sub_title}
-        </p>
-      </div>
+export const ParagraphWithImageBeside = ({ data }) => {
+  if (data) {
+    const { title, sub_title, image } = data;
+    return (
+      <div className="flex justify-between items-center">
+        <div className="w-full md:w-8/12">
+          {title && <p className="text-center mb-4 md:text-left">{title}</p>}
+          {sub_title && (
+            <p className="text-center  mb-4  md:text-left">{sub_title}</p>
+          )}
+        </div>
 
-      <div className="w-56 hidden md:block">
-        {url && <img src={url}  className="w-full" />}
+        <div className="w-2/12 flex-auto hidden md:flex justify-end items-center">
+          {image && <img src={image.url} />}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };

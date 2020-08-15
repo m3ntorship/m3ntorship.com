@@ -10,41 +10,42 @@ export const Team = ({ data, team_members }) => {
       description
     } = data;
     return (
-      <div className="team relative">
-        <div className="text-center my-10 container">
-          <div className="absolute graph hidden lg:block">
-            <img src={url} />
-          </div>
-          {title && (
-            <Heading
-              type={HEADING_OPTIONS.TYPE.SECTION}
-              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-              textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
-            >
-              <GradientText text={title} />
-            </Heading>
-          )}
-          {description && (
-            <p className="my-10 mx-auto text-center text-xs md:text-base text-c600 lg:w-4/6">
-              {description}
-            </p>
-          )}
-          {team_members && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {team_members.map(({ member_info, id }) => {
-                return (
-                  <PersonCard
-                    key={id}
-                    cardDetails={member_info}
-                    bgColord={true}
-                    rounded={true}
-                  />
-                );
-              })}
-            </div>
-          )}
+      <section className="team relative text-center container">
+        <div className="absolute graph right-0 hidden xl:block">
+          <img src={url} />
         </div>
-      </div>
+        {title && (
+          <Heading
+            type={HEADING_OPTIONS.TYPE.SECTION}
+            fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+            textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+            textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+            as="h2"
+          >
+            <GradientText text={title} />
+          </Heading>
+        )}
+        {description && (
+          <p className="mb-16 mx-auto text-center text-base text-c600 lg:w-4/6">
+            {description}
+          </p>
+        )}
+        {team_members && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {team_members.map(({ member_info, id }) => {
+              return (
+                <PersonCard
+                  key={id}
+                  cardDetails={member_info}
+                  bgColord={true}
+                  rounded={true}
+                  roundedSmall={true}
+                />
+              );
+            })}
+          </div>
+        )}
+      </section>
     );
   }
 };

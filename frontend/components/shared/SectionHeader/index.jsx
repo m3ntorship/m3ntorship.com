@@ -1,6 +1,9 @@
 import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../Heading/index';
 import GenericParagrapgh from '../GenericParagrapgh/index';
+import { motion } from 'framer-motion';
+import cn from 'classnames';
+import { useInView } from 'react-intersection-observer';
 
 /**
  * Props List
@@ -11,7 +14,46 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
  *    children >> buttons
  */
 
-const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
+const sectionVariants = {
+  hidden: { opacity: 0, x: -400 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', duration: 0.3 }
+  }
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', duration: 0.3 }
+  }
+};
+
+const imageVarians = {
+  hidden: { opacity: 0, x: 400 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', duration: 0.3 }
+  }
+};
+
+const SectionHeader = ({
+  data,
+  headingtype,
+  children,
+  gradient_color,
+  headingFontWeight,
+  customClassName,
+  headingAs
+}) => {
+  const [headerRef, headerInView] = useInView({
+    threshold: 0.1
+  });
+
   const {
     title,
     header_image,
@@ -19,29 +61,40 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
     description,
     side_image
   } = data;
+
   return (
     <>
       {data && (
-        <section className="container flex items-center justify-center flex-col-reverse lg:flex-row my-20">
-          <div className="flex-1 lg:mr-6 justify-center">
+        <section
+          ref={headerRef}
+          className={cn(
+            'flex flex-col-reverse items-center lg:flex-row',
+            customClassName
+          )}
+        >
+          <motion.div
+            className="flex-1 lg:mr-6 justify-center w-full lg:w-1/2"
+            variants={sectionVariants}
+            initial="hidden"
+            animate={headerInView ? 'visible' : ''}
+          >
             <div className="flex items-start">
-              <div className="heading ">
-                {title && (
-                  <Heading
-                    type={headingtype}
-                    textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
-                  >
-                    {title}
-                    {headingGradientText && (
-                      <GradientText
-                        text={headingGradientText}
-                        gradientColor={gradient_color}
-                      ></GradientText>
-                    )}
-                  </Heading>
+              <Heading
+                type={headingtype}
+                fontWeight={headingFontWeight}
+                textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+                textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+                as={headingAs ? headingAs : 'h1'}
+                className="lg:text-left"
+              >
+                {title ? title : null}{' '}
+                {headingGradientText && (
+                  <GradientText
+                    text={headingGradientText}
+                    gradientColor={gradient_color}
+                  ></GradientText>
                 )}
-              </div>
-
+              </Heading>
               {side_image && (
                 <div className="hidden lg:block heading-image">
                   <img src={side_image.url} alt="" />
@@ -49,22 +102,27 @@ const SectionHeader = ({ data, headingtype, children, gradient_color }) => {
               )}
             </div>
             {description && (
-              <GenericParagrapgh
-                textColor="gray"
-                customClassName="text-base py-10"
-              >
+              <p className=" text-c600 text-center lg:text-left text-base mb-16">
                 {description}
-              </GenericParagrapgh>
+              </p>
             )}
-            <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
+            <motion.div
+              variants={childVariants}
+              className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center lg:justify-start"
+            >
               {children}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {header_image && (
-            <div className="flex-1 mb-16 md:mb-0">
-              <img src={header_image.url} alt="" />
-            </div>
+            <motion.div
+              variants={imageVarians}
+              initial="hidden"
+              animate={headerInView ? 'visible' : ''}
+              className="flex-1 mb-12 lg:mb-0 w-full lg:w-1/2"
+            >
+              <img src={header_image.url} className="mx-auto" alt="" />
+            </motion.div>
           )}
         </section>
       )}

@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import cn from 'classnames';
-import { Heading } from './../shared/Heading/index';
+import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 /**
  * Props List
@@ -16,18 +16,24 @@ import { Heading } from './../shared/Heading/index';
  */
 
 const PatchCard = ({ cardDetails, dashed }) => {
-  const { title, batch_mentees, description, link } = cardDetails;
+  const { title, batch_mentees, description, link, batch_slug } = cardDetails;
   return (
     <>
       {cardDetails && (
         <div
-          className={cn('card', 'py-6', 'px-8', {
+          className={cn('card', 'p-12', 'flex', 'flex-col', {
             'bg-c400': !dashed,
             'border-dashed border-4 border-black': dashed
           })}
         >
           {title && (
-            <Heading type="card" as="h3" className="card__title text-c800">
+            <Heading
+              type={HEADING_OPTIONS.TYPE.CARD_SMALL}
+              fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+              as="h3"
+              className="card__title text-c800"
+            >
               {title}
             </Heading>
           )}
@@ -37,10 +43,11 @@ const PatchCard = ({ cardDetails, dashed }) => {
                 'card__image',
                 'flex',
                 'mx-auto',
-                'py-4',
+                'mb-6',
                 'ml-0',
                 'flex-wrap',
-                'items-center'
+                'items-center',
+                'group'
               )}
             >
               {batch_mentees.map(
@@ -55,12 +62,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                     key={id}
                     src={url}
                     alt={name}
-                    className="rounded-full w-12 h-12 my-1"
-                    style={{
-                      objectFit: 'cover',
-                      marginLeft: '-.5rem',
-                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)'
-                    }}
+                    className="rounded-full w-16 h-16 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear group-hover:ml-0 group-hover:mr-1"
                   />
                 )
               )}
@@ -79,11 +81,18 @@ const PatchCard = ({ cardDetails, dashed }) => {
               {description}
             </p>
           )}
-
-          {link && (
+          {dashed ? (
             <Link href={link.url}>
-              <a className="font-bold text-sm underline">{link.name}</a>
+              <a className="font-bold text-sm underline mt-auto">{link.name}</a>
             </Link>
+          ) : (
+            link && (
+              <Link href={'/batches/[slug]'} as={`/batches/${batch_slug}`}>
+                <a className="font-bold text-sm underline mt-auto">
+                  {link.name}
+                </a>
+              </Link>
+            )
           )}
         </div>
       )}

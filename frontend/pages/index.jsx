@@ -5,71 +5,96 @@ import Goals from '../components/Goals';
 import HowItWork from '../components/how-it-work';
 import Patches from '../components/Patches';
 import { mentorshipAPI } from '../clients';
+import { HEADING_OPTIONS } from '../components/shared/Heading/index';
 import Link from 'next/link';
+import { TopBar } from '../components/TopBar';
+import Footer from '../components/footer';
+import checkingDataError from '../helper/checkingDataError';
+
 export const Home = ({ data }) => {
-  if (data) {
-    const { home_header, goals, steps, patches, contribute, batches } = data;
-    return (
-      <>
-        <SectionHeaderComponent data={home_header} />
-        <Goals data={goals} />
-        <HowItWork data={steps} />
-        <Patches data={patches} batchesCards={batches} />
-        <ContributeSection data={contribute} />
-      </>
-    );
-  } else {
-    return <h1>Loading....</h1>;
-  }
+  const {
+    home_header,
+    goals,
+    steps,
+    patches,
+    contribute,
+    batches,
+    topBarData,
+    footerData
+  } = data;
+  return (
+    <>
+      <TopBar data={topBarData} />
+      <SectionHeaderComponent data={home_header} />
+      <Goals data={goals} />
+      <HowItWork data={steps} />
+      <Patches data={patches} batchesCards={batches} />
+      <ContributeSection data={contribute} />
+      <Footer data={footerData} />
+    </>
+  );
 };
 
 // side components
 const SectionHeaderComponent = ({ data }) => {
+  const { apply_as_member, apply_as_mentor } = data;
   return (
-    <SectionHeader data={data}>
-      <Link href={'/apply'} passHref>
-        <Button
-          textColor="black"
-          bgColor="green"
-          btnPadding="small"
-          textSize="medium"
-          customClassName="uppercase"
-        >
-          {' '}
-          Apply As A Member{' '}
-        </Button>
-      </Link>
-      <Link href={'/apply'} passHref>
-        <Button
-          textColor="white"
-          bgColor="blue"
-          btnPadding="small"
-          textSize="medium"
-          customClassName="uppercase mt-2 md:ml-2 md:mt-0"
-        >
-          {' '}
-          Apply As A Mentor{' '}
-        </Button>
-      </Link>
+    <SectionHeader data={data} customClassName="container">
+      {apply_as_member && (
+        <Link href={`${apply_as_member.url}?as=mentee`} passHref>
+          <Button
+            textColor="black"
+            bgColor="green"
+            btnSize="large"
+            textSize="medium"
+            customClassName="uppercase"
+          >
+            {apply_as_member.name}
+          </Button>
+        </Link>
+      )}
+      {apply_as_mentor && (
+        <Link href={`${apply_as_mentor.url}?as=mentor`} passHref>
+          <Button
+            textColor="white"
+            bgColor="blue"
+            btnSize="large"
+            textSize="medium"
+            customClassName="uppercase mt-4 md:ml-4 md:mt-0"
+          >
+            {apply_as_mentor.name}
+          </Button>
+        </Link>
+      )}
     </SectionHeader>
   );
 };
 
 const ContributeSection = ({ data }) => {
+  const { btn } = data;
+
   return (
-    <SectionHeader data={data} gradient_color="blue" headingtype="section">
-      <Link href={'/apply'} passHref>
-        <Button
-          textColor="white"
-          bgColor="blue"
-          btnPadding="small"
-          textSize="medium"
-          customClassName="uppercase"
-        >
-          {' '}
-          Apply As a Mentor{' '}
-        </Button>
-      </Link>
+    <SectionHeader
+      data={data}
+      gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
+      headingtype={HEADING_OPTIONS.TYPE.SECTION}
+      headingFontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+      customClassName="container"
+      headingAs="h2"
+    >
+      {btn && (
+        <Link href={`${btn.url}?as=mentor`} passHref>
+          <Button
+            textColor="white"
+            bgColor="blue"
+            btnSize="large"
+            textSize="medium"
+            customClassName="uppercase"
+          >
+            {btn.name}
+          </Button>
+        </Link>
+      )}
     </SectionHeader>
   );
 };
@@ -81,38 +106,20 @@ export async function getStaticProps(context) {
     mentorshipAPI('/steps'),
     mentorshipAPI('/patches'),
     mentorshipAPI('/contribute'),
-    mentorshipAPI('/batches')
+    mentorshipAPI('/batches'),
+    mentorshipAPI('/top-bar'),
+    mentorshipAPI('/footer')
   ];
-  return Promise.all(
-    endPoints.map(ep =>
-      ep
-        .then(res => {
-          if (Object.keys(res.data).length) {
-            return res;
-          } else {
-            return {
-              data: {
-                statusCode: 404
-              }
-            };
-          }
-        })
-        .catch(err => {
-          return {
-            data: {
-              message: err.message
-            }
-          };
-        })
-    )
-  ).then(
+  return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: home_header },
       { data: goals },
       { data: steps },
       { data: patches },
       { data: contribute },
-      { data: batches }
+      { data: batches },
+      { data: topBarData },
+      { data: footerData }
     ]) => {
       return {
         props: {
@@ -122,7 +129,9 @@ export async function getStaticProps(context) {
             steps,
             patches,
             contribute,
-            batches
+            batches,
+            topBarData,
+            footerData
           }
         },
         revalidate: 1

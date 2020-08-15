@@ -16,10 +16,11 @@
       "default": "A job listings and job application app for working abroad.",
       "required": true
     },
-    "btn": {
+    "link": {
       "type": "component",
       "repeatable": false,
-      "component": "general.link"
+      "component": "general.link",
+      "required": true
     }
   }
 }

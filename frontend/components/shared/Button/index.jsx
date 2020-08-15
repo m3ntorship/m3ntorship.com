@@ -7,7 +7,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
     customClassName,
     textColor,
     bgColor,
-    btnPadding,
+    btnSize,
     borderColor,
     borderStyle,
     href,
@@ -24,7 +24,8 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
         ref={ref}
         target={extrnalLink && '_blank'}
         className={cn(
-          'global-btn inline-block text-center transition-all duration-200',
+          'flex items-center justify-center',
+          'global-btn inline-block text-center hover:shadow-btn transform hover:-translate-y-.5 transition-all duration-200 ',
           {
             // border
             'border-none': !borderStyle,
@@ -47,9 +48,11 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
             'bg-c1000': bgColor === 'gray',
 
             //spacing
-            'py-4 px-10': !btnPadding,
-            'py-6 px-16': btnPadding === 'small',
-            'py-6 px-24': btnPadding === 'medium',
+            ' w-48 h-20': !btnSize,
+            ' w-48 h-20': btnSize === 'small',
+            ' w-32 sm:w-64 h-16': btnSize === 'medium',
+            ' w-64 sm:w-72 h-16': btnSize === 'large',
+            ' w-64 sm:w-72 h-20': btnSize === 'largeTall',
 
             //font size
             'text-base': !textSize || textSize === 'large',
