@@ -13,6 +13,7 @@ const sectionVariants = {
   end: {
     opacity: 1,
     transition: {
+      duration: 1,
       type: 'spring',
       staggerChildren: 0.3
     }
@@ -36,7 +37,7 @@ const TeamGroupSection = ({ data }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
 
   const [sectionRef, inView] = useInView({
-    threshold: 0.1
+    threshold: 0.5
   });
 
   if (data) {
