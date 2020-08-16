@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export const TopBar = ({
-  data: { logo: logo_title, sub_text: sub_title, apply_btn },
+  data: { logo_link, sub_text: sub_title, apply_btn },
   button_color,
   bgColored
 }) => {
@@ -16,7 +16,11 @@ export const TopBar = ({
         transition={{ type: 'spring', duration: 0.5 }}
         className="container flex items-center"
       >
-        {logo_title && <div className="text-md md:text-lg">{logo_title}</div>}
+        {logo_link && (
+          <Link href={logo_link.url}>
+            <a className="text-md md:text-lg">{logo_link.name}</a>
+          </Link>
+        )}
         {sub_title && (
           <p className="uppercase font-normal text-sm text-c500 self-end ml-4 hidden md:inline">
             {sub_title}
