@@ -19,9 +19,9 @@ const Footer = ({ data }) => {
       threshold: 0.1
     });
     return (
-      <footer ref= {ref} className="container">
+      <footer ref= {ref} className="container overflow-hidden">
         <motion.div
-          initial={{ y: -200, opacity: 0 }}
+          initial={{ y: 200, opacity: 0 }}
           animate={inView ? { y: 0, opacity: 1 } : ''}
           transition={{ type: 'spring', duration: 0.5 }}
           className="grid lg:grid-cols-3 grid-cols-1"
