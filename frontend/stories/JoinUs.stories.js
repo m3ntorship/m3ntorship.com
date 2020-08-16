@@ -11,12 +11,24 @@ const data = {
   description: 'A job listings and job application app for working abroad.',
   mentorBtn: 'Apply as Mentor',
   memberBtn: 'Apply as Member',
-  left_img:
-    'https://s3-alpha-sig.figma.com/img/6ab3/7f82/5cedbb0153583a74429f439e480c8d2a?Expires=1596412800&Signature=OQHfF1fV7IspMfGtbXN6n0d6xjZJ~NSW8SJMsApIvve2nwawX9~2GVO3PkuSmrSFKJyoO958QrJlHKNdPl9wEnydQ2RNtu8IyRtsQNQ0hNesuLMUUF8m7KK42mIorUMMpSsCLU7GEK671lhAl1R4Iliyk~GBmMb197JXNCK4nspcieahLV5xnI-285IpU5mFx2JiOOjqKlcDkVKCGqOAvO0KAN80tywMwcEOisB5E7RqzZ0MQiAAi1gX1lXq~MfBLjaq1KpvKS~2XlxDTyuTgTmEIkwYZloeBIhVwgGULGVyzYfQy5IUzH5YFJ9-Nd-GIN5FWtlfsYBKnhz0eq6k0g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA',
-  right_img:
-    'https://s3-alpha-sig.figma.com/img/a1ba/aaf1/75daa654aef922b1f1ea60ae6d402855?Expires=1596412800&Signature=hlXZ9MIzIg0wynLj~xmoD4wSnquIIxJDhcfsVLG97RJXZpCSb1TAMi5bgkAG3JcVbylbkNcCHySe13XwVJCqsWMmIIlM8IynoanL3JBhujTtwOCefuiKpCk4I2fE57HgWSVDFatu0WWmarXwSPgjf6-VQiz5YFIF3oGylX1bSeY7bmZjcKP4dBCOgAwFRSjD2zjlzfyjM~N0H6nNfhiLUq-poUB~bbCgX9VUoTwDs446iB6Geq8kfohohOCvm-1hF~NSh2EUf9ENKWAOHCs7oVg6VvsZT3Kf9LJA8schQXwWL2JaYAs-krwFonkbCNAzJHtz-KZI0BsjrXQeftGHsw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
+  left_img: {
+    url:
+      'https://s3-alpha-sig.figma.com/img/6ab3/7f82/5cedbb0153583a74429f439e480c8d2a?Expires=1598227200&Signature=CvH8n9ytlqm~ljwRsjQGc6rngNTYhUVddTSE~WKgomaTnxKO21YQgfCdWNM2p3pLG7o~xbYdvZB0JC2xn8X7yJaIvgdAnUHdKLnsABce5ZiLjAiFKwkx9xRMitk3gqu6J12qNOIh-ZP~iNPh4LEetLsFnEFN64rQ7gv-ELJLDmLy96o-~P-Xg-uz2Br6j3kVNSrnYe9Hdj1PfXdGrpigz2h14WVNXPeRppmpeB~sn2YZTSVJ2kgBikXVueEuRiLrXCUAK5k4wp2RiHjhOeJLgu9DQlQip6~Xme-0P4a6~3JdTrQwCBcBkLJvyjJUh6NZThIsnYS31OpdX6LZsUIDAA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
+  },
+  right_img: {
+    url:
+      'https://s3-alpha-sig.figma.com/img/a1ba/aaf1/75daa654aef922b1f1ea60ae6d402855?Expires=1598227200&Signature=OwZKbPpk6YEKK3hfzFVFwJjITH3F7-HqGTHKMnoNWD~cBNs9CPYgSx6vzKp5XtRjaocmYURGH-cG2waQtLhpvnYhFvH55YPo0ivpzdG1ALom-OKNrjzWIyBTWKjFQYKXGzPa49pU9JznNwUiO6Wx8CQhZfKBRQN0AhnUvrTFuoDc4BcKozDS5-fNHzhLXk3oKUggC5wsY-uv4kyKl2ueXzhVDkg9cByHg~WCDyb805qGHiqgJYsHVs76VCmD1BTuix24RV0xf9Fe7sujd3cj8p9Bh5tDhZ083XIiV4v7DOSylRIp5VTwMn0zKAPKLWb0qHOqL3LCzIcchL9f7Di73g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'
+  }
 };
 
 export const JoinUsComponent = () => {
-  return <JoinUs data={data} />;
+  return (
+    <>
+      <div>
+        <div className="h-72"></div>
+        <div className="h-72"></div>
+        <JoinUs data={data} />
+      </div>
+    </>
+  );
 };
