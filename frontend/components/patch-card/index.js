@@ -16,12 +16,12 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
  */
 
 const PatchCard = ({ cardDetails, dashed }) => {
-  const { title, batch_mentees, description, link } = cardDetails;
+  const { title, batch_mentees, description, link, batch_slug } = cardDetails;
   return (
     <>
       {cardDetails && (
         <div
-          className={cn('card', 'p-12', 'h-full', {
+          className={cn('card', 'p-12', 'flex', 'flex-col', {
             'bg-c400': !dashed,
             'border-dashed border-4 border-black': dashed
           })}
@@ -81,11 +81,18 @@ const PatchCard = ({ cardDetails, dashed }) => {
               {description}
             </p>
           )}
-
-          {link && (
+          {dashed ? (
             <Link href={link.url}>
-              <a className="font-bold text-sm underline">{link.name}</a>
+              <a className="font-bold text-sm underline mt-auto">{link.name}</a>
             </Link>
+          ) : (
+            link && (
+              <Link href={'/batches/[slug]'} as={`/batches/${batch_slug}`}>
+                <a className="font-bold text-sm underline mt-auto">
+                  {link.name}
+                </a>
+              </Link>
+            )
           )}
         </div>
       )}

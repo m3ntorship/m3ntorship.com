@@ -3,33 +3,34 @@ import { UserProvider } from '../../context/UserContext';
 import SectionHeader from '../shared/SectionHeader';
 import Apply from '../apply/index';
 import { HEADING_OPTIONS } from '../shared/Heading';
-export const ApplyPage = ({ data }) => {
+import { useRouter } from 'next/router';
+import { TopBar } from '../TopBar';
+export const ApplyPage = ({ data, topBarData }) => {
+  const router = useRouter();
+  const { as } = router.query;
   const [mentor, setMentor] = useState(false);
 
   if (data) {
-    const {
-      headerSectionData,
-      headerSectionData: {
-        menteeHeaderImage: { url: menteeUrl }
-      },
-      headerSectionData: {
-        mentorHeaderImage: { url: mentorUrl }
-      },
-      formData
-    } = data;
-
+    const { headerSectionData, formData } = data;
+    const { menteeHeaderImage, mentorHeaderImage } = headerSectionData
+      ? headerSectionData
+      : null;
     let menteeSectionHeaderData = {
       ...headerSectionData,
-      header_image: { url: menteeUrl }
+      header_image: menteeHeaderImage
     };
     let mentorSectionHeaderData = {
       ...headerSectionData,
-      header_image: { url: mentorUrl }
+      header_image: mentorHeaderImage
     };
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
-          {mentor ? (
+          <TopBar
+            data={topBarData}
+            button_color={mentor || as === 'mentor' ? 'blue' : 'green'}
+          />
+          {mentor || as === 'mentor' ? (
             <SectionHeader
               data={mentorSectionHeaderData}
               gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
