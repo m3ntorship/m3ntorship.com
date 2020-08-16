@@ -9,13 +9,13 @@ const data = {
     url:
       'https://res.cloudinary.com/malngaawy/image/upload/v1595261682/Squiggles_Monochromatic_jwvct9.png'
   },
-  goals_lists: [
+  list_goals: [
     {
-      text: 'Help new developers gain real world experience',
+      goal: 'Help new developers gain real world experience',
       id: '5f15be11c8184a2250a760e2'
     },
     {
-      text: 'Help NGOs and small businesses build their online identity',
+      goal: 'Help NGOs and small businesses build their online identity',
       id: '5f15be24c8184a2250a760e3'
     }
   ],
@@ -23,5 +23,12 @@ const data = {
 };
 
 export const GoalsComponent = () => {
-  return <Goals data={data} />;
+  return (
+    <>
+      <div>
+        <div className="h-72"></div>
+        <Goals data={data} />
+      </div>
+    </>
+  );
 };
