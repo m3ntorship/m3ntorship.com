@@ -23,5 +23,12 @@ const data = {
 };
 
 export const GoalsComponent = () => {
-  return <Goals data={data} />;
+  return (
+    <>
+      <div>
+        <div className="h-72"></div>
+        <Goals data={data} />
+      </div>
+    </>
+  );
 };

@@ -48,5 +48,14 @@ const cards = [
   }
 ];
 export const PatchesComponent = () => {
-  return <Patches data={data} batchesCards={cards} />;
+  return (
+    <>
+      <div>
+        <div className="h-72"></div>
+        <div className="h-72"></div>
+        <div className="h-72"></div>
+        <Patches data={data} batchesCards={cards} />
+      </div>
+    </>
+  );
 };
