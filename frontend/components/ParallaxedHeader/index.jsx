@@ -18,6 +18,7 @@ export const ParallaxedHeader = ({ data }) => {
                   type="mainLarge"
                   textAlign="center"
                   textTransform="uppercase"
+                  as="h1"
                 >
                   {title}
                 </Heading>

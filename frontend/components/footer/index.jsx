@@ -19,7 +19,7 @@ const Footer = ({ data }) => {
         <div className="grid lg:grid-cols-3 grid-cols-1">
           <div className="my-4 md:my-0">
             {logo && (
-              <h2 className="font-black mb-6 text-xxlg">
+              <h5 className="font-black mb-6 text-xxlg">
                 {logo}
                 {side_image && (
                   <img
@@ -28,7 +28,7 @@ const Footer = ({ data }) => {
                     alt="footer"
                   />
                 )}
-              </h2>
+              </h5>
             )}
             {copy_right && (
               <p className="text-xxs font-normal text-c700">
@@ -44,7 +44,7 @@ const Footer = ({ data }) => {
                 <Heading
                   type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                   fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                  as="h3"
+                  as="h5"
                 >
                   {title}
                 </Heading>
@@ -66,7 +66,7 @@ const Footer = ({ data }) => {
               <Heading
                 type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                 fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                as="h3"
+                as="h5"
               >
                 {title_links}
               </Heading>
