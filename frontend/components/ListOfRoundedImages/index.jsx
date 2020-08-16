@@ -2,38 +2,43 @@ import React, { useState } from 'react';
 import randomPosition from '../../helper/randomPosition';
 import { motion } from 'framer-motion';
 
-const imageContainer = {
-  visible: {
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
-
-const image = {
-  hidden: {
-    scale: 0
-  },
-  visible: {
-    scale: 1,
-    transition: {
-      duration: 1,
-      type: 'spring'
-    }
-  }
-};
-
 export const ListOfRoundedImages = ({ data }) => {
   let cache = [];
+
+  //animation varitants
+  const imageContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const image = {
+    hidden: {
+      scale: 0
+    },
+    visible: {
+      scale: 1,
+      transition: {
+        type: 'spring'
+      }
+    }
+  };
+  const positionStyle = () => {
+    const position = randomPosition(95, cache);
+    return {
+      left: `${position.x}%`,
+      bottom: `${position.y}%`
+    };
+  };
   return (
     <motion.div
-      className="grid grid-cols-4 grid-rows-4 gap-5"
+      className="list-of-rounded-images flex flex-wrap items-center justify-center lg:block relative w-full h-full gap-5"
       variants={imageContainer}
       animate="visible"
       style={{
-        placeItems: 'center',
-        gridTemplateAreas:
-          "'g1 g2 g3 g4' 'g5 g6 g7 g8' 'g9 g10 g11 g12' 'g13 g14 g15 g16'"
+        placeItems: 'center'
       }}
     >
       {data &&
@@ -41,11 +46,12 @@ export const ListOfRoundedImages = ({ data }) => {
           return (
             <motion.div
               key={index}
-              style={{ gridArea: `g${randomPosition(16, cache)}` }}
-              className="w-24 h-24"
+              className="static lg:absolute w-24 h-24"
               variants={image}
               initial="hidden"
+              style={positionStyle()}
             >
+              {console.log(cache)}
               <img
                 src={url}
                 className="object-cover w-full h-full rounded-full"
