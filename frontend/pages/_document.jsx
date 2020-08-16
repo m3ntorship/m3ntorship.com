@@ -5,9 +5,9 @@ class MyDocument extends Document {
     return (
       <Html lang="en-US">
         <Head>
-          <meta charset="utf-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta charSet="utf-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 
           <meta property="og:site_name" content="M3ntorship" />
           <meta property="og:type" content="website" />

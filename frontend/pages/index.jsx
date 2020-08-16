@@ -34,12 +34,16 @@ export const Home = ({ data }) => {
         <meta property="og:description" content="Description Here" />
         <title>M3ntorship | For smarter developer</title>
       </Head>
+
       <TopBar data={topBarData} />
-      <SectionHeaderComponent data={home_header} />
-      <Goals data={goals} />
-      <HowItWork data={steps} />
-      <Patches data={patches} batchesCards={batches} />
-      <ContributeSection data={contribute} />
+
+      <main>
+        <SectionHeaderComponent data={home_header} />
+        <Goals data={goals} />
+        <HowItWork data={steps} />
+        <Patches data={patches} batchesCards={batches} />
+        <ContributeSection data={contribute} />
+      </main>
       <Footer data={footerData} />
     </>
   );

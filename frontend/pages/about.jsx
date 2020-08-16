@@ -28,12 +28,16 @@ const About = ({ data }) => {
           <title>About M3ntorship: What We Do and How We Got Here </title>
           <meta name="description" content="m3ntorship description" />
         </Head>
+
         <TopBar data={topBarData} bgColored={true} />
-        <ParallaxedHeader data={about_head} />
-        <section className="container">
-          <ParagraphWithImageBeside data={about_description} />
-        </section>
-        <TeamGroupSection data={teamGroupData} />
+
+        <main>
+          <ParallaxedHeader data={about_head} />
+          <section className="container">
+            <ParagraphWithImageBeside data={about_description} />
+          </section>
+          <TeamGroupSection data={teamGroupData} />
+        </main>
         <Footer data={footerData} />
       </>
     );

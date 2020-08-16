@@ -68,52 +68,54 @@ const BatchPage = ({
         <meta name="description" content={batchData[0].description} />
       </Head>
       <TopBar data={topBarData} />
-      <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
-        <SectionHeader
-          data={sectionHeaderData}
-          customClassName="py-0 order-2 lg:order-none"
-        >
-          {repo_link && repo_btn_name && (
-            <Button
-              textColor="white"
-              bgColor="black"
-              btnSize="largeTall"
-              extrnalLink={true}
-              href={repo_link}
-              customClassName="mb-6 md:mb-0 md:mr-6"
-            >
-              <img
-                src="/static/images/github.png"
-                className="inline mr-4 w-8 h-8"
-                alt="github logo icon"
-              />
-              {repo_btn_name}
-            </Button>
-          )}
-          {project_link && project_btn_name && (
-            <Button
-              textColor="black"
-              bgColor="gray"
-              btnSize="largeTall"
-              fontWeight="normal"
-              extrnalLink={true}
-              href={project_link}
-            >
-              <span className="uppercase underline">{project_btn_name}</span>
-              <img
-                src="/static/images/right-arrow.svg"
-                className="inline ml-4 w-6"
-                alt="arrow icon"
-              />
-            </Button>
-          )}
-        </SectionHeader>
-        <div className="order-1 lg:order-none">
-          <ListOfRoundedImages data={team_images} />
-        </div>
-      </section>
-      <Team data={batchTeamData} team_members={team_members} />
-      <JoinUs data={joinUsData} />
+      <main>
+        <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
+          <SectionHeader
+            data={sectionHeaderData}
+            customClassName="py-0 order-2 lg:order-none"
+          >
+            {repo_link && repo_btn_name && (
+              <Button
+                textColor="white"
+                bgColor="black"
+                btnSize="largeTall"
+                extrnalLink={true}
+                href={repo_link}
+                customClassName="mb-6 md:mb-0 md:mr-6"
+              >
+                <img
+                  src="/static/images/github.png"
+                  className="inline mr-4 w-8 h-8"
+                  alt="github logo icon"
+                />
+                {repo_btn_name}
+              </Button>
+            )}
+            {project_link && project_btn_name && (
+              <Button
+                textColor="black"
+                bgColor="gray"
+                btnSize="largeTall"
+                fontWeight="normal"
+                extrnalLink={true}
+                href={project_link}
+              >
+                <span className="uppercase underline">{project_btn_name}</span>
+                <img
+                  src="/static/images/right-arrow.svg"
+                  className="inline ml-4 w-6"
+                  alt="arrow icon"
+                />
+              </Button>
+            )}
+          </SectionHeader>
+          <div className="order-1 lg:order-none">
+            <ListOfRoundedImages data={team_images} />
+          </div>
+        </section>
+        <Team data={batchTeamData} team_members={team_members} />
+        <JoinUs data={joinUsData} />
+      </main>
       <Footer data={footerData} />
     </>
   );
