@@ -5,12 +5,64 @@ import {
   GradientText
 } from '../shared/Heading/index';
 import PatchCard from '../patch-card';
-
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 const Patches = ({ data, batchesCards }) => {
   const { title, description, dashed_card } = data;
+  const [containerRef, contianerInView] = useInView({
+    threshold: 0.1
+  });
+  const [cardsRef, cardsInView] = useInView({
+    threshold: 0.3
+  });
+  const containerVariants = {
+    initial: {
+      opacity: 0,
+      y: '50vh'
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+  const cardListVariants = {
+    initial: {
+      opacity: 0,
+      y: 150
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        when: 'beforeChildren',
+        staggerChildren: 0.4
+      }
+    }
+  };
+  const cardVariants = {
+    initial: {
+      scale: 0,
+      opacity: 0,
+      y: 150
+    },
+    animate: {
+      scale: 1,
+      opacity: 1,
+      y: 0
+    }
+  };
   if ((data, batchesCards)) {
     return (
-      <section className="patches container">
+      <motion.section
+        ref={containerRef}
+        className="patches container"
+        variants={containerVariants}
+        initial="initial"
+        animate={contianerInView ? 'animate' : ''}
+      >
         <div className="text-center">
           {title && (
             <Heading
@@ -28,16 +80,26 @@ const Patches = ({ data, batchesCards }) => {
           </p>
         )}
         {batchesCards[0] && (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10">
+          <motion.div
+            className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
+            variants={cardListVariants}
+            initial="initial"
+            animate={cardsInView ? 'animate' : ''}
+            ref={cardsRef}
+          >
             {batchesCards.map(card => {
               return (
-                <PatchCard key={card.id} cardDetails={card} dashed={false} />
+                <motion.div variants={cardVariants}>
+                  <PatchCard key={card.id} cardDetails={card} dashed={false} />
+                </motion.div>
               );
             })}
-            <PatchCard cardDetails={dashed_card} dashed={true} />
-          </div>
+            <motion.div variants={cardVariants}>
+              <PatchCard cardDetails={dashed_card} dashed={true} />
+            </motion.div>
+          </motion.div>
         )}
-      </section>
+      </motion.section>
     );
   }
 };
