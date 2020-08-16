@@ -1,11 +1,35 @@
 import React, { useState } from 'react';
 import randomPosition from '../../helper/randomPosition';
+import { motion } from 'framer-motion';
+
+const imageContainer = {
+  visible: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const image = {
+  hidden: {
+    scale: 0
+  },
+  visible: {
+    scale: 1,
+    transition: {
+      duration: 1,
+      type: 'spring'
+    }
+  }
+};
 
 export const ListOfRoundedImages = ({ data }) => {
   let cache = [];
   return (
-    <div
+    <motion.div
       className="grid grid-cols-4 grid-rows-4 gap-5"
+      variants={imageContainer}
+      animate="visible"
       style={{
         placeItems: 'center',
         gridTemplateAreas:
@@ -15,14 +39,20 @@ export const ListOfRoundedImages = ({ data }) => {
       {data &&
         data.map(({ url }, index) => {
           return (
-            <img
+            <motion.div
               key={index}
-              src={url}
-              className="object-cover w-24 h-24 rounded-full"
               style={{ gridArea: `g${randomPosition(16, cache)}` }}
-            />
+              className="w-24 h-24"
+              variants={image}
+              initial="hidden"
+            >
+              <img
+                src={url}
+                className="object-cover w-full h-full rounded-full"
+              />
+            </motion.div>
           );
         })}
-    </div>
+    </motion.div>
   );
 };
