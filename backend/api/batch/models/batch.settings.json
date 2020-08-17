@@ -34,6 +34,10 @@
       "type": "uid",
       "targetField": "title",
       "required": false
+    },
+    "projects": {
+      "via": "batches",
+      "collection": "project"
     }
   }
 }
