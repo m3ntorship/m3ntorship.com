@@ -5,7 +5,7 @@ import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 const RealProjects = ({ data }) => {
   if (data) {
     return (
-      <div className="real-projects">
+      <section className="real-projects">
         <div className="container">
           <div>
             <Heading
@@ -25,7 +25,7 @@ const RealProjects = ({ data }) => {
             <ProjectCard data="123" />
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 };
