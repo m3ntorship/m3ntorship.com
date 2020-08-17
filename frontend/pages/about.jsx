@@ -7,27 +7,29 @@ import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
 import Head from 'next/head';
 
-const About = ({ data }) => {
+const About = ({ websiteUrl, metaData, data }) => {
+  const {
+    seo: {
+      page_path,
+      meta_description,
+      page_title_tag,
+      page_open_graph_image: { url: image_url }
+    }
+  } = metaData[0];
+  const { website_url } = websiteUrl;
   if (data) {
     const { aboutData, teamGroupData, topBarData, footerData } = data;
     const { about_head, about_description } = aboutData;
     return (
       <>
         <Head>
-          <link rel="canonical" href="https://www.m3ntorship.com/apply" />
-          <meta property="og:url" content="https://www.m3ntorship.com/about" />
-          <meta property="og:title" content="M3ntorship read more about us" />
-          <meta
-            property="og:image"
-            content="https://m3ntorship.com/image.jpg"
-          />
-          <meta
-            property="og:description"
-            content="mentorship is Here for ........."
-          />
-
-          <title>About M3ntorship: What We Do and How We Got Here </title>
-          <meta name="description" content="m3ntorship description" />
+          <meta name="description" content={meta_description} />
+          <link rel="canonical" href={`${website_url}${page_path}`} />
+          <meta property="og:title" content={page_title_tag} />
+          <meta property="og:url" content={`${website_url}${page_path}`} />
+          <meta property="og:image" content={image_url} />
+          <meta property="og:description" content={meta_description} />
+          <title>{page_title_tag}</title>
         </Head>
 
         <TopBar data={topBarData} bgColored={true} />
@@ -52,14 +54,18 @@ export async function getStaticProps() {
     mentorshipAPI('/about-head'),
     mentorshipAPI('/organization-founders'),
     mentorshipAPI('/top-bar'),
-    mentorshipAPI('/footer')
+    mentorshipAPI('/footer'),
+    mentorshipAPI('/pages-seos?page_name=about'),
+    mentorshipAPI('/setting')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: aboutData },
       { data: teamGroupData },
       { data: topBarData },
-      { data: footerData }
+      { data: footerData },
+      { data: metaData },
+      { data: websiteUrl }
     ]) => {
       return {
         props: {
@@ -68,7 +74,9 @@ export async function getStaticProps() {
             teamGroupData,
             topBarData,
             footerData
-          }
+          },
+          metaData,
+          websiteUrl
         },
         revalidate: 1
       };

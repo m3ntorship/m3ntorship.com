@@ -21,18 +21,30 @@ export const Home = ({ data }) => {
     contribute,
     batches,
     topBarData,
-    footerData
+    footerData,
+    metaData,
+    websiteUrl
   } = data;
+  const { website_url } = websiteUrl;
+  const {
+    seo: {
+      page_path,
+      meta_description,
+      page_title_tag,
+      page_open_graph_image: { url: image_url }
+    }
+  } = metaData[0];
+
   return (
     <>
       <Head>
-        <meta name="description" content="m3ntorship description" />
-        <link rel="canonical" href="https://www.m3ntorship.com/" />
-        <meta property="og:title" content="M3ntorship" />
-        <meta property="og:url" content="https://www.m3ntorship.com/" />
-        <meta property="og:image" content="https://m3ntorship.com/image.jpg" />
-        <meta property="og:description" content="Description Here" />
-        <title>M3ntorship | For smarter developer</title>
+        <meta name="description" content={meta_description} />
+        <link rel="canonical" href={`${website_url}${page_path}`} />
+        <meta property="og:title" content={page_title_tag} />
+        <meta property="og:url" content={`${website_url}${page_path}`} />
+        <meta property="og:image" content={image_url} />
+        <meta property="og:description" content={meta_description} />
+        <title>{page_title_tag}</title>
       </Head>
 
       <TopBar data={topBarData} />
@@ -122,7 +134,9 @@ export async function getStaticProps(context) {
     mentorshipAPI('/contribute'),
     mentorshipAPI('/batches'),
     mentorshipAPI('/top-bar'),
-    mentorshipAPI('/footer')
+    mentorshipAPI('/footer'),
+    mentorshipAPI('/pages-seos?page_name=home'),
+    mentorshipAPI('/setting')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -133,7 +147,9 @@ export async function getStaticProps(context) {
       { data: contribute },
       { data: batches },
       { data: topBarData },
-      { data: footerData }
+      { data: footerData },
+      { data: metaData },
+      { data: websiteUrl }
     ]) => {
       return {
         props: {
@@ -145,7 +161,9 @@ export async function getStaticProps(context) {
             contribute,
             batches,
             topBarData,
-            footerData
+            footerData,
+            metaData,
+            websiteUrl
           }
         },
         revalidate: 1

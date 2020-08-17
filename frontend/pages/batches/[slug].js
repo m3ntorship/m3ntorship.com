@@ -18,8 +18,11 @@ const BatchPage = ({
   batchTeamData,
   joinUsData,
   topBarData,
-  footerData
+  footerData,
+  websiteUrl
 }) => {
+  const { website_url } = websiteUrl;
+
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -55,18 +58,18 @@ const BatchPage = ({
       <Head>
         <link
           rel="canonical"
-          href={`https://www.m3ntorship.com/batchs/${batchData[0].batch_slug}`}
+          href={`${website_url}/batchs/${batchData[0].batch_slug}`}
         />
 
         <meta
           property="og:url"
-          content={`https://www.m3ntorship.com/batchs/${batchData[0].batch_slug}`}
+          content={`${website_url}/batchs/${batchData[0].batch_slug}`}
         />
         <meta
           property="og:title"
           content={`M3ntorship Graduates ${batchData[0].batch_slug}`}
         />
-        <meta property="og:image" content="http://m3ntorship.com/image.jpg" />
+        <meta property="og:image" content={`${website_url}/image.jpg`} />
         <meta property="og:description" content={batchData[0].description} />
 
         <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
@@ -155,7 +158,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/batch-team'),
     mentorshipAPI('/join-us-card'),
     mentorshipAPI('/top-bar'),
-    mentorshipAPI('/footer')
+    mentorshipAPI('/footer'),
+    mentorshipAPI('/setting')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -164,7 +168,8 @@ export async function getStaticProps({ params: { slug } }) {
       { data: batchTeamData },
       { data: joinUsData },
       { data: topBarData },
-      { data: footerData }
+      { data: footerData },
+      { data: websiteUrl }
     ]) => {
       return {
         props: {
@@ -173,7 +178,8 @@ export async function getStaticProps({ params: { slug } }) {
           batchTeamData,
           joinUsData,
           topBarData,
-          footerData
+          footerData,
+          websiteUrl
         },
         revalidate: 1
       };
