@@ -1,6 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Heading } from '../shared/Heading';
-
+import { motion } from 'framer-motion';
+const sideImageVariant = {
+  start: {
+    opacity: 0,
+    scale: 0
+  },
+  end: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring'
+    }
+  }
+};
 export const ParallaxedHeader = ({ data }) => {
   if (data) {
     const { title, sub_title, image } = data;
@@ -9,28 +22,48 @@ export const ParallaxedHeader = ({ data }) => {
       <section className="pt-0">
         <div className="bg-c200 global-section-padding">
           <div className="container flex justify-center items-center">
-            <div className="hidden lg:block mr-auto w-56">
+            <motion.div
+              variants={sideImageVariant}
+              initial="start"
+              animate="end"
+              className="hidden lg:block mr-auto w-56"
+            >
               {image && <img src={image.url} />}
-            </div>
+            </motion.div>
             <div className="flex flex-col justify-center items-center mx-10">
-              {title && (
-                <Heading
-                  type="mainLarge"
-                  textAlign="center"
-                  textTransform="uppercase"
-                >
-                  {title}
-                </Heading>
-              )}
+              <motion.div
+                initial={{ scale: 0, opacity: 0, rotate: 180 }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                  rotate: 0,
+                  transition: { type: 'spring' }
+                }}
+              >
+                {title && (
+                  <Heading
+                    type="mainLarge"
+                    textAlign="center"
+                    textTransform="uppercase"
+                  >
+                    {title}
+                  </Heading>
+                )}
+              </motion.div>
               {sub_title && (
                 <p className="text-base md:text-md uppercase text-center">
                   {sub_title}
                 </p>
               )}
             </div>
-            <div className="hidden lg:block ml-auto w-56">
+            <motion.div
+              variants={sideImageVariant}
+              initial="start"
+              animate="end"
+              className="hidden lg:block ml-auto w-56"
+            >
               {image && <img src={image.url} />}
-            </div>
+            </motion.div>
           </div>
         </div>
         <div className="text-c200">
