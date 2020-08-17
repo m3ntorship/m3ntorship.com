@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings",
+  "info": {
+    "name": "setting"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "website_url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
