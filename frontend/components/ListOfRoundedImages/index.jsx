@@ -30,7 +30,7 @@ export const ListOfRoundedImages = ({ data }) => {
       animate="visible"
     >
       {data &&
-        data.map(({ url }, index) => {
+        data.map(({ url, title }, index) => {
           return (
             <motion.div
               key={index}
@@ -40,9 +40,11 @@ export const ListOfRoundedImages = ({ data }) => {
             >
               <img
                 src={url}
+                alt={title}
                 className="object-cover w-full h-full rounded-full "
               />
             </motion.div>
+
           );
         })}
     </motion.div>

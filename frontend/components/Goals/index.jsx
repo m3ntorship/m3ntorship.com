@@ -54,7 +54,7 @@ const Goals = ({ data }) => {
           className="absolute hidden xl:block -top-12 right-12"
           variants={sideImageVariants}
         >
-          {side_image && <img src={side_image.url} />}
+          {side_image && <img src={side_image.url} alt="side icon"/>}
         </motion.div>
         {title && (
           <Heading

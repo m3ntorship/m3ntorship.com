@@ -10,7 +10,7 @@ export const ParallaxedHeader = ({ data }) => {
         <div className="bg-c200 global-section-padding">
           <div className="container flex justify-center items-center">
             <div className="hidden lg:block mr-auto w-56">
-              {image && <img src={image.url} />}
+              {image && <img src={image.url} alt="side icon" />}
             </div>
             <div className="flex flex-col justify-center items-center mx-10">
               {title && (
@@ -18,6 +18,7 @@ export const ParallaxedHeader = ({ data }) => {
                   type="mainLarge"
                   textAlign="center"
                   textTransform="uppercase"
+                  as="h1"
                 >
                   {title}
                 </Heading>
@@ -29,7 +30,7 @@ export const ParallaxedHeader = ({ data }) => {
               )}
             </div>
             <div className="hidden lg:block ml-auto w-56">
-              {image && <img src={image.url} />}
+              {image && <img src={image.url} alt="side icon" />}
             </div>
           </div>
         </div>

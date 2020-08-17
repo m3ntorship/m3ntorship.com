@@ -74,7 +74,7 @@ const PersonCard = ({
             >
               <img
                 src={card_image.url}
-                alt="title"
+                alt={title}
                 className={cn('object-cover mx-auto', {
                   'rounded-full': rounded,
                   'w-24 h-24': bgColord,
