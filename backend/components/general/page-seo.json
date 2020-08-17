@@ -6,30 +6,20 @@
   },
   "options": {},
   "attributes": {
-    "page_path": {
+    "path": {
       "type": "string"
     },
-    "meta_description": {
+    "description": {
       "type": "text",
-      "minLength": 120,
-      "maxLength": 320
+      "minLength": 100,
+      "maxLength": 160
     },
-    "page_title_tag": {
+    "title": {
       "type": "string",
       "minLength": 30,
       "maxLength": 65
     },
-    "page_open_graph_desc": {
-      "type": "string",
-      "maxLength": 320,
-      "minLength": 120
-    },
-    "page_open_graph_title": {
-      "type": "string",
-      "maxLength": 65,
-      "minLength": 30
-    },
-    "page_open_graph_image": {
+    "open_graph_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
