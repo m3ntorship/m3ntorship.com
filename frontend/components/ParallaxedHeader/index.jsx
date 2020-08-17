@@ -1,19 +1,7 @@
 import React from 'react';
 import { Heading } from '../shared/Heading';
 import { motion } from 'framer-motion';
-const sideImageVariant = {
-  start: {
-    opacity: 0,
-    scale: 0
-  },
-  end: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: 'spring'
-    }
-  }
-};
+
 export const ParallaxedHeader = ({ data }) => {
   if (data) {
     const { title, sub_title, image } = data;
@@ -22,14 +10,9 @@ export const ParallaxedHeader = ({ data }) => {
       <section className="pt-0">
         <div className="bg-c200 global-section-padding">
           <div className="container flex justify-center items-center">
-            <motion.div
-              variants={sideImageVariant}
-              initial="start"
-              animate="end"
-              className="hidden lg:block mr-auto w-56"
-            >
+            <div className="hidden lg:block mr-auto w-56">
               {image && <img src={image.url} />}
-            </motion.div>
+            </div>
             <div className="flex flex-col justify-center items-center mx-10">
               <motion.div
                 initial={{ scale: 0, opacity: 0, rotate: 180 }}
@@ -56,14 +39,9 @@ export const ParallaxedHeader = ({ data }) => {
                 </p>
               )}
             </div>
-            <motion.div
-              variants={sideImageVariant}
-              initial="start"
-              animate="end"
-              className="hidden lg:block ml-auto w-56"
-            >
+            <div className="hidden lg:block ml-auto w-56">
               {image && <img src={image.url} />}
-            </motion.div>
+            </div>
           </div>
         </div>
         <div className="text-c200">
