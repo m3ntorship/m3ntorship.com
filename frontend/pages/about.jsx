@@ -10,10 +10,10 @@ import Head from 'next/head';
 const About = ({ websiteUrl, metaData, data }) => {
   const {
     seo: {
-      page_path,
-      meta_description,
-      page_title_tag,
-      page_open_graph_image: { url: image_url }
+      path,
+      description,
+      title,
+      open_graph_image: { url: image_url }
     }
   } = metaData[0];
   const { website_url } = websiteUrl;
@@ -23,13 +23,13 @@ const About = ({ websiteUrl, metaData, data }) => {
     return (
       <>
         <Head>
-          <meta name="description" content={meta_description} />
-          <link rel="canonical" href={`${website_url}${page_path}`} />
-          <meta property="og:title" content={page_title_tag} />
-          <meta property="og:url" content={`${website_url}${page_path}`} />
+          <meta name="description" content={description} />
+          <link rel="canonical" href={`${website_url}${path}`} />
+          <meta property="og:title" content={title} />
+          <meta property="og:url" content={`${website_url}${path}`} />
           <meta property="og:image" content={image_url} />
-          <meta property="og:description" content={meta_description} />
-          <title>{page_title_tag}</title>
+          <meta property="og:description" content={description} />
+          <title>{title}</title>
         </Head>
 
         <TopBar data={topBarData} bgColored={true} />
