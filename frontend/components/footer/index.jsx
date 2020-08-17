@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-
 const Footer = ({ data }) => {
   if (data) {
     const {
@@ -33,7 +32,7 @@ const Footer = ({ data }) => {
               <Heading
                 type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                 fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                as="h5"
+                as="p"
                 className="relative"
               >
                 {logo}
@@ -59,7 +58,7 @@ const Footer = ({ data }) => {
                 <Heading
                   type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                   fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                  as="h5"
+                  as="p"
                 >
                   {title}
                 </Heading>
@@ -81,7 +80,7 @@ const Footer = ({ data }) => {
               <Heading
                 type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                 fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                as="h5"
+                as="p"
               >
                 {title_links}
               </Heading>
