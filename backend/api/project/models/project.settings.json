@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "name": "project"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "overview": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "project_slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "project_page_nav": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
+    },
+    "batches": {
+      "collection": "batch",
+      "via": "projects",
+      "dominant": true
+    }
+  }
+}
