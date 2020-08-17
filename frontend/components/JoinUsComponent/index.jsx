@@ -76,15 +76,14 @@ const JoinUs = ({ data }) => {
     }
   };
   return (
-    <motion.section
-      className="container"
-      ref={ref}
-      variants={containerVariants}
-      initial="initial"
-      animate={inView ? 'animate' : ''}
-    >
+    <section className="container">
       <div className="border-4 py-20 border-dashed border-c100 flex justify-evenly items-center">
-        <motion.div className="w-1/6" variants={leftImageVariants}>
+        <motion.div
+          className="w-1/6"
+          variants={leftImageVariants}
+          initial="initial"
+          animate={inView ? 'animate' : ''}
+        >
           <img
             className="object-cover items-center hidden lg:block"
             src={left_image}
@@ -94,6 +93,8 @@ const JoinUs = ({ data }) => {
         <motion.div
           className="w-full md:w-72 flex flex-col justify-center"
           variants={innerContainerVariants}
+          initial="initial"
+          animate={inView ? 'animate' : ''}
         >
           <motion.div variants={innerItemsVariants}>
             <Heading
@@ -143,6 +144,8 @@ const JoinUs = ({ data }) => {
         <motion.div
           className="w-1/6 flex items-center"
           variants={rightImageVariants}
+          initial="initial"
+          animate={inView ? 'animate' : ''}
         >
           <img
             className="object-cover hidden lg:block"
@@ -151,7 +154,7 @@ const JoinUs = ({ data }) => {
           />
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 
