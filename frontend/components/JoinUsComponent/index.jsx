@@ -16,7 +16,8 @@ const JoinUs = ({ data }) => {
   const controls = useAnimation();
 
   const [containerRef, ContainerInView] = useInView({
-    threshold: 0.3
+    threshold: 0.3,
+    triggerOnce: true
   });
   useEffect(() => {
     if (ContainerInView) {
