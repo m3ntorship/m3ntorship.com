@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_general_page_seos",
+  "info": {
+    "name": "page_seo",
+    "icon": "magnet"
+  },
+  "options": {},
+  "attributes": {
+    "page_name": {
+      "type": "string"
+    },
+    "page_path": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string",
+      "minLength": 120,
+      "maxLength": 320
+    },
+    "page_title_tag": {
+      "type": "string",
+      "minLength": 30,
+      "maxLength": 65
+    },
+    "page_open_graph_desc": {
+      "type": "string",
+      "maxLength": 320,
+      "minLength": 120
+    },
+    "page_open_graph_title": {
+      "type": "string",
+      "maxLength": 65,
+      "minLength": 30
+    },
+    "page_open_graph_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

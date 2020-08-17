@@ -1,6 +1,9 @@
 import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 
 const Footer = ({ data }) => {
   if (data) {
@@ -14,21 +17,33 @@ const Footer = ({ data }) => {
     } = data;
 
     const { title, description, url } = footer_about ? footer_about : false;
+    const [ref, inView] = useInView({
+      threshold: 0.1
+    });
     return (
-      <footer className="container">
-        <div className="grid lg:grid-cols-3 grid-cols-1">
-          <div className="my-4 md:my-0">
+      <footer ref={ref} className="container overflow-hidden">
+        <motion.div
+          initial={{ y: 200, opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 1 } : ''}
+          transition={{ type: 'spring', duration: 0.5 }}
+          className="grid lg:grid-cols-3 grid-cols-1"
+        >
+          <div className="mb-10 lg:my-0">
             {logo && (
-              <h5 className="font-black mb-6 text-xxlg">
+              <Heading
+                type={HEADING_OPTIONS.TYPE.CARD_SMALL}
+                fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+                as="h5"
+                className="relative"
+              >
                 {logo}
                 {side_image && (
                   <img
-                    className="inline-block ml-6"
+                    className="absolute inline ml-6 transform -translate-y-1"
                     src={side_image.url}
-                    alt="footer"
                   />
                 )}
-              </h5>
+              </Heading>
             )}
             {copy_right && (
               <p className="text-xxs font-normal text-c700">
@@ -39,7 +54,7 @@ const Footer = ({ data }) => {
             )}
           </div>
           {footer_about && (
-            <div className="my-4 mr-4 md:my-0">
+            <div className="mb-10 mr-4 lg:my-0">
               {title && (
                 <Heading
                   type={HEADING_OPTIONS.TYPE.CARD_SMALL}
@@ -53,7 +68,7 @@ const Footer = ({ data }) => {
                 <p className=" text-xxs font-normal text-c700">
                   {description}
                   {url && (
-                    <Link href={url.url}>
+                    <Link href={url.url} passHref>
                       <a className="underline font-bold">{url.name}</a>
                     </Link>
                   )}
@@ -61,7 +76,7 @@ const Footer = ({ data }) => {
               )}
             </div>
           )}
-          <div className="my-4 md:my-0">
+          <div className="lg:my-0">
             {title_links && (
               <Heading
                 type={HEADING_OPTIONS.TYPE.CARD_SMALL}
@@ -78,7 +93,7 @@ const Footer = ({ data }) => {
                   return (
                     <li
                       key={id}
-                      className="mb-4 font-bold text-xxs underline w-1/2"
+                      className="mb-4 last:mb-0 font-bold text-xxs underline w-1/2"
                     >
                       <a href={url} target="_blank" rel="noopener noreferrer">
                         {name}
@@ -89,7 +104,7 @@ const Footer = ({ data }) => {
               </ul>
             )}
           </div>
-        </div>
+        </motion.div>
       </footer>
     );
   } else {
