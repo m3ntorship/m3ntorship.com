@@ -1,6 +1,8 @@
 import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const Footer = ({ data }) => {
   if (data) {
@@ -14,9 +16,17 @@ const Footer = ({ data }) => {
     } = data;
 
     const { title, description, url } = footer_about ? footer_about : false;
+    const [ref, inView] = useInView({
+      threshold: 0.1
+    });
     return (
-      <footer className="container">
-        <div className="grid lg:grid-cols-3 grid-cols-1">
+      <footer ref={ref} className="container overflow-hidden">
+        <motion.div
+          initial={{ y: 200, opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 1 } : ''}
+          transition={{ type: 'spring', duration: 0.5 }}
+          className="grid lg:grid-cols-3 grid-cols-1"
+        >
           <div className="mb-10 lg:my-0">
             {logo && (
               <Heading
@@ -93,7 +103,7 @@ const Footer = ({ data }) => {
               </ul>
             )}
           </div>
-        </div>
+        </motion.div>
       </footer>
     );
   } else {
