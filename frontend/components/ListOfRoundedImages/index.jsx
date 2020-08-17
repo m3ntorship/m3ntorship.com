@@ -25,6 +25,7 @@ export const ListOfRoundedImages = ({ data }) => {
       }
     }
   };
+
   const positionStyle = () => {
     const position = randomPosition(95, cache);
     return {
@@ -32,6 +33,7 @@ export const ListOfRoundedImages = ({ data }) => {
       bottom: `${position.y}%`
     };
   };
+
   return (
     <motion.div
       className="list-of-rounded-images flex flex-wrap items-center justify-center lg:block relative w-full h-full gap-5"
@@ -42,7 +44,7 @@ export const ListOfRoundedImages = ({ data }) => {
       }}
     >
       {data &&
-        data.map(({ url }, index) => {
+        data.map(({ url, title }, index) => {
           return (
             <motion.div
               key={index}

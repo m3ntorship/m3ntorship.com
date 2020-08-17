@@ -1,8 +1,45 @@
 import React from 'react';
 import { Heading, GradientText, HEADING_OPTIONS } from '../shared/Heading';
 import PersonCard from '../person-card';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import useMedia from '../../helper/useMedia';
+
+const sectionVariants = {
+  start: {
+    opacity: 0,
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+  },
+  end: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+      type: 'spring',
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const cardVariants = {
+  start: {
+    scale: 0
+  },
+  end: {
+    scale: 1,
+    transition: {
+      duration: 1,
+      type: 'spring'
+    }
+  }
+};
 
 const TeamGroupSection = ({ data }) => {
+  const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
+
+  const [sectionRef, inView] = useInView({
+    threshold: 0.5
+  });
+
   if (data) {
     const { title, member } = data;
     const membersData = member
@@ -16,7 +53,13 @@ const TeamGroupSection = ({ data }) => {
       : null;
 
     return (
-      <section className="text-center container">
+      <motion.section
+        ref={sectionRef}
+        variants={isDesktop ? sectionVariants : ''}
+        initial="start"
+        animate={inView ? 'end' : ''}
+        className="text-center container"
+      >
         {title && (
           <Heading
             type={HEADING_OPTIONS.TYPE.SECTION}
@@ -32,11 +75,14 @@ const TeamGroupSection = ({ data }) => {
           </Heading>
         )}
         {membersData && (
-          <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-40 gap-5">
+          <motion.div
+            variants={isDesktop ? cardVariants : ''}
+            className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-40 gap-5"
+          >
             {membersData}
-          </div>
+          </motion.div>
         )}
-      </section>
+      </motion.section>
     );
   } else {
     return null;

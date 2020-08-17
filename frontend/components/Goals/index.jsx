@@ -1,14 +1,61 @@
 import React from 'react';
 import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const Goals = ({ data }) => {
   const { title, list_goals, side_image } = data;
+  const [ref, inView] = useInView({
+    threshold: 0.1
+  });
+  const containerVariants = {
+    initial: {
+      opacity: 0,
+      y: '50vh'
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        when: 'beforeChildren'
+      }
+    }
+  };
+  const sideImageVariants = {
+    initial: {
+      opacity: 0,
+      x: '50vw'
+    },
+    animate: {
+      opacity: 1,
+      x: 0
+    }
+  };
+  const goalVariants = {
+    initial: {
+      opacity: 0,
+      x: '-50vw'
+    },
+    animate: {
+      opacity: 1,
+      x: 0
+    }
+  };
   if (data) {
     return (
-      <section className="text-center text-lg container relative">
-        <div className="absolute hidden xl:block -top-12 right-12">
-          {side_image && <img src={side_image.url} />}
-        </div>
+      <motion.section
+        ref={ref}
+        className="text-center text-lg container relative"
+        variants={containerVariants}
+        initial="initial"
+        animate={inView ? 'animate' : ''}
+      >
+        <motion.div
+          className="absolute hidden xl:block -top-12 right-12"
+          variants={sideImageVariants}
+        >
+          {side_image && <img src={side_image.url} alt="side icon"/>}
+        </motion.div>
         {title && (
           <Heading
             textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
@@ -24,17 +71,18 @@ const Goals = ({ data }) => {
           <div className="goals__goals-list">
             {list_goals.map(({ id, goal }) => {
               return (
-                <p
+                <motion.p
                   className="font-normal text-base md:text-xlg mb-10 last:mb-0"
                   key={id}
+                  variants={goalVariants}
                 >
                   {goal}
-                </p>
+                </motion.p>
               );
             })}
           </div>
         )}
-      </section>
+      </motion.section>
     );
   }
 };

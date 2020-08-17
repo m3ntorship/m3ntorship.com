@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_seos",
+  "info": {
+    "name": "pages_seo"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.page-seo"
+    },
+    "page_name": {
+      "type": "uid"
+    }
+  }
+}
