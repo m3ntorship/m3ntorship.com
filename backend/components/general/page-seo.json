@@ -6,14 +6,11 @@
   },
   "options": {},
   "attributes": {
-    "page_name": {
-      "type": "string"
-    },
     "page_path": {
       "type": "string"
     },
     "meta_description": {
-      "type": "string",
+      "type": "text",
       "minLength": 120,
       "maxLength": 320
     },
