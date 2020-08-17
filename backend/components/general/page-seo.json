@@ -13,19 +13,35 @@
       "type": "string"
     },
     "meta_description": {
-      "type": "string"
+      "type": "string",
+      "minLength": 120,
+      "maxLength": 320
     },
     "page_title_tag": {
-      "type": "string"
+      "type": "string",
+      "minLength": 30,
+      "maxLength": 65
     },
     "page_open_graph_desc": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 320,
+      "minLength": 120
     },
     "page_open_graph_title": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 65,
+      "minLength": 30
     },
     "page_open_graph_image": {
-      "type": "string"
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
