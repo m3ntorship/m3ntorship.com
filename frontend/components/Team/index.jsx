@@ -6,11 +6,11 @@ import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
 
 const textContainerVariant = {
-  hidden: {
+  initial: {
     opacity: 0,
     y: -50
   },
-  visible: {
+  shown: {
     y: 0,
     opacity: 1,
     transition: {
@@ -20,11 +20,11 @@ const textContainerVariant = {
 };
 
 const textVariant = {
-  hidden: {
+  initial: {
     y: -50,
     opacity: 0
   },
-  visible: {
+  shown: {
     y: 0,
     opacity: 1,
     transition: {
@@ -34,11 +34,11 @@ const textVariant = {
 };
 
 const cardsContainerVariant = {
-  hidden: {
+  initial: {
     scale: 0.2,
     opacity: 0
   },
-  visible: {
+  shown: {
     scale: 1,
     opacity: 1,
     transition: {
@@ -48,11 +48,11 @@ const cardsContainerVariant = {
 };
 
 const cardVariant = {
-  hidden: {
+  initial: {
     scale: 0.2,
     opacity: 0
   },
-  visible: {
+  shown: {
     scale: 1,
     opacity: 1,
     transition: {
@@ -64,10 +64,12 @@ const cardVariant = {
 export const Team = ({ data, team_members }) => {
   const isDesktop = useMedia(['(min-width: 1024px)'], [true], false);
   const [textContainerRef, textContainerInView] = useInView({
-    threshold: 0.7
+    threshold: 0.7,
+    triggerOnce: true
   });
   const [cardsRef, cardsInView] = useInView({
-    threshold: 0.2
+    threshold: 0.1,
+    triggerOnce: true
   });
 
   if (data) {
@@ -84,8 +86,8 @@ export const Team = ({ data, team_members }) => {
         <div ref={textContainerRef}>
           <motion.div
             variants={textContainerVariant}
-            initial="hidden"
-            animate={textContainerInView ? 'visible' : null}
+            initial="initial"
+            animate={textContainerInView ? 'shown' : null}
           >
             {title && (
               <motion.div variants={textVariant}>
@@ -115,14 +117,13 @@ export const Team = ({ data, team_members }) => {
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
               variants={cardsContainerVariant}
-              initial="hidden"
-              animate={cardsInView ? 'visible' : null}
+              initial="initial"
+              animate={cardsInView ? 'shown' : null}
             >
               {team_members.map(({ member_info, id }) => {
                 return (
-                  <motion.div variants={cardVariant}>
+                  <motion.div variants={cardVariant} key={id}>
                     <PersonCard
-                      key={id}
                       cardDetails={member_info}
                       bgColord={true}
                       rounded={true}

@@ -42,7 +42,7 @@ const PersonCard = ({
 }) => {
   const { card_image, title, sub_title, describe } = cardDetails;
   const [crdRef, cardInView] = useInView({
-    threshold: 0.2,
+    threshold: 0.3,
     triggerOnce: true
   });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
