@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_seos",
+  "info": {
+    "name": "pages_seo"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "seo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.page-seo"
+    }
+  }
+}

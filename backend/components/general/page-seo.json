@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_general_page_seos",
+  "info": {
+    "name": "page_seo",
+    "icon": "magnet"
+  },
+  "options": {},
+  "attributes": {
+    "page_name": {
+      "type": "string"
+    },
+    "page_path": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "string"
+    },
+    "page_title_tag": {
+      "type": "string"
+    },
+    "page_open_graph_desc": {
+      "type": "string"
+    },
+    "page_open_graph_title": {
+      "type": "string"
+    },
+    "page_open_graph_image": {
+      "type": "string"
+    }
+  }
+}
