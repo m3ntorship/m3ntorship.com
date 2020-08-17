@@ -1,19 +1,52 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export const ListOfRoundedImages = ({ data }) => {
+  //animation varitants
+  const imageContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const image = {
+    hidden: {
+      scale: 0
+    },
+    visible: {
+      scale: 1,
+      transition: {
+        type: 'spring'
+      }
+    }
+  };
+
   return (
-    <div className="flex justify-center flex-wrap">
+    <motion.div
+      className="flex justify-center flex-wrap"
+      variants={imageContainer}
+      animate="visible"
+    >
       {data &&
         data.map(({ url, title }, index) => {
           return (
-            <img
+            <motion.div
               key={index}
-              src={url}
-              className="object-cover w-24 h-24 rounded-full m-5 mt-3"
-              alt={title}
-            />
+              className="w-24 h-24 m-5 mt-3"
+              variants={image}
+              initial="hidden"
+            >
+              <img
+                src={url}
+                alt={title}
+                className="object-cover w-full h-full rounded-full "
+              />
+            </motion.div>
+
           );
         })}
-    </div>
+    </motion.div>
   );
 };

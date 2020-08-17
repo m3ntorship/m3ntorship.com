@@ -21,13 +21,14 @@ import { motion } from 'framer-motion';
 
 const cardVaruants = {
   scale: {
+    opacity: 0,
     scale: 0.2
   },
   unScale: {
+    opacity: 1,
     scale: 1,
     transition: {
-      type: 'spring',
-      duration: 0.5
+      type: 'spring'
     }
   }
 };
@@ -41,16 +42,15 @@ const PersonCard = ({
 }) => {
   const { card_image, title, sub_title, describe } = cardDetails;
   const [crdRef, cardInView] = useInView({
-    threshold: 0.2,
+    threshold: 0.3,
     triggerOnce: true
   });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
 
   return (
-    <>
+    <div ref={crdRef} className="h-full">
       {cardDetails && (
         <motion.div
-          ref={crdRef}
           variants={cardVaruants}
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
@@ -121,7 +121,7 @@ const PersonCard = ({
           )}
         </motion.div>
       )}
-    </>
+    </div>
   );
 };
 
