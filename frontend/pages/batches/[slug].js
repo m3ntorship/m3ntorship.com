@@ -53,6 +53,11 @@ const BatchPage = ({
   return (
     <>
       <Head>
+        <link
+          rel="canonical"
+          href={`https://www.m3ntorship.com/batchs/${batchData[0].batch_slug}`}
+        />
+
         <meta
           property="og:url"
           content={`https://www.m3ntorship.com/batchs/${batchData[0].batch_slug}`}

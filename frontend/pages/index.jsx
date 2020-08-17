@@ -27,7 +27,7 @@ export const Home = ({ data }) => {
     <>
       <Head>
         <meta name="description" content="m3ntorship description" />
-
+        <link rel="canonical" href="https://www.m3ntorship.com/" />
         <meta property="og:title" content="M3ntorship" />
         <meta property="og:url" content="https://www.m3ntorship.com/" />
         <meta property="og:image" content="https://m3ntorship.com/image.jpg" />

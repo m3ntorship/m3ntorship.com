@@ -14,6 +14,7 @@ const About = ({ data }) => {
     return (
       <>
         <Head>
+          <link rel="canonical" href="https://www.m3ntorship.com/apply" />
           <meta property="og:url" content="https://www.m3ntorship.com/about" />
           <meta property="og:title" content="M3ntorship read more about us" />
           <meta

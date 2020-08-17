@@ -14,7 +14,7 @@ const Apply = ({ data, data: { topBarData, footerData } }) => {
         <meta property="og:title" content="M3ntorship Apply With Us Now" />
         <meta property="og:image" content="https://m3ntorship.com/image.jpg" />
         <meta property="og:description" content="Apply as a mentor or mentee" />
-
+        <link rel="canonical" href="https://www.m3ntorship.com/apply" />
         <title>M3ntorship | Apply </title>
         <meta name="description" content="m3ntorship description" />
       </Head>
