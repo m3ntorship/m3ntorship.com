@@ -6,7 +6,7 @@ const ProjectCard = ({ data }) => {
   if (data) {
     return (
       <div className="project-card bg-c1200 p-8">
-        <div className="my-10 flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <Heading
             type={HEADING_OPTIONS.TYPE.CARD}
             fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
@@ -21,7 +21,7 @@ const ProjectCard = ({ data }) => {
             <img className="inline-block w-4" src={rightArrow}></img>
           </div>
         </div>
-        <p className="description my-10 text-sm text-c600">
+        <p className="description my-4 text-xs text-c700">
           A job listings and job application app for working abroad.
         </p>
       </div>
