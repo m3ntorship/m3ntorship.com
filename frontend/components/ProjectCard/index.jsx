@@ -15,10 +15,10 @@ const ProjectCard = ({ data }) => {
             Title
           </Heading>
           <div className="inline-block text-right w-1/2 mb-6">
-            <a href="#" className="font-bold inline-block mr-2">
+            <a href="#" className="font-bold inline-block">
               More
+              <img className="inline-block ml-2 w-4" src={rightArrow}></img>
             </a>
-            <img className="inline-block w-4" src={rightArrow}></img>
           </div>
         </div>
         <p className="description my-4 text-xs text-c700">
