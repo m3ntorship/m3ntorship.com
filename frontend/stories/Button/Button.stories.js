@@ -12,7 +12,7 @@ export const ButtonComponent = () => {
 };
 export const BlackBtn = () => {
   return (
-    <Link  href="https://twitter.com/home?lang=en" passHref>
+    <Link  href="https://twitter.com/home?lan=en" passHref>
       <Button
         textColor="white"
         bgColor="black"
