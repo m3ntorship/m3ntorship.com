@@ -11,8 +11,11 @@
   "attributes": {
     "seo": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "general.page-seo"
+    },
+    "page_name": {
+      "type": "uid"
     }
   }
 }
