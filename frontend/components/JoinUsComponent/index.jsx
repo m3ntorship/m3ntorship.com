@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Link from 'next/link';
 import Button from '../shared/Button';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 const JoinUs = ({ data }) => {
   const {
@@ -13,17 +13,25 @@ const JoinUs = ({ data }) => {
     left_img: { url: left_image },
     right_img: { url: right_image }
   } = data;
-  const [ref, inView] = useInView({
+  const controls = useAnimation();
+
+  const [containerRef, ContainerInView] = useInView({
     threshold: 0.3
   });
+  useEffect(() => {
+    if (ContainerInView) {
+      controls.start('animate');
+    } else {
+      controls.start('initial');
+    }
+  }, [controls, ContainerInView]);
   const containerVariants = {
     initial: {
-      opacity: 0,
-      y: '50vh'
+      opacity: 0
     },
     animate: {
       opacity: 1,
-      y: 0,
+
       transition: {
         when: 'beforeChildren'
       }
@@ -51,12 +59,11 @@ const JoinUs = ({ data }) => {
   };
   const innerContainerVariants = {
     initial: {
-      opacity: 0,
-      y: '50vh'
+      opacity: 0
     },
     animate: {
       opacity: 1,
-      y: 0,
+
       transition: {
         when: 'beforeChildren',
         staggerChildren: 0.3
@@ -67,7 +74,7 @@ const JoinUs = ({ data }) => {
     initial: {
       opacity: 0,
       scale: 0,
-      y: '50vh'
+      y: 100
     },
     animate: {
       opacity: 1,
@@ -76,25 +83,24 @@ const JoinUs = ({ data }) => {
     }
   };
   return (
-    <section className="container">
-      <div className="border-4 py-20 border-dashed border-c100 flex justify-evenly items-center">
-        <motion.div
-          className="w-1/6"
-          variants={leftImageVariants}
-          initial="initial"
-          animate={inView ? 'animate' : ''}
-        >
+    <section className="container" ref={containerRef}>
+      <motion.div
+        className="border-4 py-20 border-dashed border-c100 flex justify-evenly items-center"
+        variants={containerVariants}
+        initial="initial"
+        animate={controls}
+      >
+        <motion.div className="w-1/6" variants={leftImageVariants}>
           <img
             className="object-cover items-center hidden lg:block"
             src={left_image}
             alt=""
           />
         </motion.div>
+
         <motion.div
           className="w-full md:w-72 flex flex-col justify-center"
           variants={innerContainerVariants}
-          initial="initial"
-          animate={inView ? 'animate' : ''}
         >
           <motion.div variants={innerItemsVariants}>
             <Heading
@@ -141,11 +147,10 @@ const JoinUs = ({ data }) => {
             </Link>
           </motion.div>
         </motion.div>
+
         <motion.div
           className="w-1/6 flex items-center"
           variants={rightImageVariants}
-          initial="initial"
-          animate={inView ? 'animate' : ''}
         >
           <img
             className="object-cover hidden lg:block"
@@ -153,7 +158,7 @@ const JoinUs = ({ data }) => {
             alt=""
           />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
