@@ -11,6 +11,7 @@ import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
 import Head from 'next/head';
+import RealProjects from '../components/RealProjects';
 
 export const Home = ({ data }) => {
   const {
@@ -23,7 +24,9 @@ export const Home = ({ data }) => {
     topBarData,
     footerData,
     metaData,
-    websiteUrl
+    websiteUrl,
+    projectsInfoData,
+    projectsData
   } = data;
   const { website_url } = websiteUrl;
   const {
@@ -54,6 +57,7 @@ export const Home = ({ data }) => {
         <Goals data={goals} />
         <HowItWork data={steps} />
         <Patches data={patches} batchesCards={batches} />
+        <RealProjects projectsInfoData={projectsInfoData} projectsData={projectsData} />
         <ContributeSection data={contribute} />
       </main>
       <Footer data={footerData} />
@@ -136,7 +140,9 @@ export async function getStaticProps(context) {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/pages-seos?page_name=home'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/projects-info'),
+    mentorshipAPI('/projects')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -149,7 +155,9 @@ export async function getStaticProps(context) {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: projectsInfoData },
+      { data: projectsData }
     ]) => {
       return {
         props: {
@@ -163,7 +171,9 @@ export async function getStaticProps(context) {
             topBarData,
             footerData,
             metaData,
-            websiteUrl
+            websiteUrl,
+            projectsInfoData,
+            projectsData
           }
         },
         revalidate: 1
