@@ -32,15 +32,14 @@ const projectsCardVariants = {
   }
 };
 
-const dataTest = [0, 1, 2];
-
-const RealProjects = ({ data }) => {
+const RealProjects = ({ projectsInfoData, projectsData }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
   const [ref, inView] = useInView({
     threshold: isDesktop ? 0.1 : 0.05
   });
 
-  if (data) {
+  if (projectsInfoData && projectsData) {
+    const {projects_brief: {title, sub_title, image:{url}}} = projectsInfoData
     return (
       <section className="real-projects" ref={ref}>
         <motion.div
@@ -55,18 +54,17 @@ const RealProjects = ({ data }) => {
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
             >
-              <GradientText text="Real projects in Real teams" />
+              <GradientText text={title} />
             </Heading>
             <p className="text-center mx-auto text-base text-c600 md:w-2/3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie
-              aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.
+             {sub_title}
             </p>
           </div>
           <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {dataTest.map(project => {
+            {projectsData.map(project => {
               return (
                 <motion.div variants={projectsCardVariants}>
-                  <ProjectCard data='0' />
+                  <ProjectCard data={project} />
                 </motion.div>
               );
             })}
@@ -74,6 +72,8 @@ const RealProjects = ({ data }) => {
         </motion.div>
       </section>
     );
+  } else {
+    return "Genaric error"
   }
 };
 
