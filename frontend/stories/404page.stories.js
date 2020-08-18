@@ -1,11 +1,11 @@
 import React from 'react';
 import { TopBar } from '../components/TopBar';
-import BackToHomeWithTitleAndImage from '../components/BackToHomeWithTitleAndImage';
+// import BackToHomeWithTitleAndImage from '../components/BackToHomeWithTitleAndImage';
 import Footer from '../components/footer';
 
 export default {
   title: '404 page',
-  component: BackToHomeWithTitleAndImage
+  // component: BackToHomeWithTitleAndImage
 };
 
 const topBarData = {
@@ -46,12 +46,12 @@ export const Custom404Component = () => {
     <>
       <TopBar data={topBarData} />
       <div className="container pb-24 md:w-1/2">
-        <BackToHomeWithTitleAndImage
+        {/* <BackToHomeWithTitleAndImage
           imageUrl={imageUrl}
           title={title}
           description={description}
           btn={btn}
-        />
+        /> */}
       </div>
       <div className="container">
         <Footer data={footerData} />

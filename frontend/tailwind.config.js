@@ -22,7 +22,8 @@ module.exports = {
       c800: 'rgba(0, 0, 0, 0.96)',
       c900: '#0A0A0A',
       c1000: 'rgba(196, 196, 196, 0.29)',
-      c1100: 'rgba(238, 239, 240, 0.9)'
+      c1100: 'rgba(238, 239, 240, 0.9)',
+      c1200: '#F0FAF3' // project card bg
     },
     fontSize: {
       xxs: '0.875rem', //14px
