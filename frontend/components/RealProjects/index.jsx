@@ -47,7 +47,10 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
       }
     } = projectsInfoData;
     return (
-      <section className="real-projects" ref={ref}>
+      <section className="real-projects relative" ref={ref}>
+        <div className="absolute hidden lg:block top-12 right-12">
+          <img src={url} alt="sideImage" className='w-1/2 float-right' />
+        </div>
         <motion.div
           variants={projectsSectionVariants}
           initial="start"
