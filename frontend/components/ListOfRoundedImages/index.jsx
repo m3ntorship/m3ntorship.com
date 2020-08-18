@@ -27,7 +27,7 @@ export const ListOfRoundedImages = ({ data }) => {
   };
 
   const positionStyle = () => {
-    const position = randomPosition(95, cache);
+    const position = randomPosition(100, cache, 15);
     return {
       left: `${position.x}%`,
       bottom: `${position.y}%`
@@ -53,7 +53,6 @@ export const ListOfRoundedImages = ({ data }) => {
               initial="hidden"
               style={positionStyle()}
             >
-              {console.log(cache)}
               <img
                 src={url}
                 className="object-cover w-full h-full rounded-full"

@@ -23,13 +23,14 @@ export default function randomPosition(numberOfPositions, cache, margin = 0) {
     return randomPosition(numberOfPositions, cache);
   } else {
     for (let i = -margin; i <= margin; i++) {
-      for (let j = -margin; i <= margin; i++) {
+      for (let j = -margin; j <= margin; j++) {
         let pos = { x: position.x + i, y: position.y + j };
         if (!isObjectInArray(pos, cache)) {
           cache.push(pos);
         }
       }
     }
+    console.log(position);
     return position;
   }
 }
