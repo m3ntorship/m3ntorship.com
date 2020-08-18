@@ -10,6 +10,7 @@ import Error from '../../pages/_error';
 import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
+import RealProjects from '../../components/RealProjects';
 
 import Head from 'next/head';
 const BatchPage = ({
@@ -19,7 +20,8 @@ const BatchPage = ({
   joinUsData,
   topBarData,
   footerData,
-  websiteUrl
+  websiteUrl,
+  projectsInfoData
 }) => {
   const { website_url } = websiteUrl;
 
@@ -39,6 +41,9 @@ const BatchPage = ({
     (member, index, team_members) =>
       team_members.map(item => item.id).indexOf(member.id) === index
   );
+
+  // destructure Batch Projects
+  const batchProjects = batchData[0].projects;
 
   // all team images and titles
   const team_images = team_members.map(
@@ -122,6 +127,10 @@ const BatchPage = ({
           </div>
         </section>
         <Team data={batchTeamData} team_members={team_members} />
+        <RealProjects
+          projectsInfoData={projectsInfoData}
+          projectsData={batchProjects}
+        />
         <JoinUs data={joinUsData} />
       </main>
       <Footer data={footerData} />
@@ -159,7 +168,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/join-us-card'),
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/projects-info')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -169,7 +179,8 @@ export async function getStaticProps({ params: { slug } }) {
       { data: joinUsData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: projectsInfoData }
     ]) => {
       return {
         props: {
@@ -179,7 +190,8 @@ export async function getStaticProps({ params: { slug } }) {
           joinUsData,
           topBarData,
           footerData,
-          websiteUrl
+          websiteUrl,
+          projectsInfoData
         },
         revalidate: 1
       };
