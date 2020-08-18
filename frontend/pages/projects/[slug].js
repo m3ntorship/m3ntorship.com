@@ -1,15 +1,21 @@
 import React from 'react';
-import Head from 'next/head';
 import Error from '../../pages/_error';
 import { mentorshipAPI } from './../../clients/mentorship';
 import checkingDataError from '../../helper/checkingDataError';
 import { useRouter } from 'next/router';
 import Footer from './../../components/footer/index';
 import { TopBar } from './../../components/TopBar/index';
+import SectionHeader from './../../components/shared/SectionHeader/index';
+import Button from './../../components/shared/Button/index';
 
 const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
   const { website_url } = websiteUrl;
-
+  const {
+    project_head,
+    project_head: {
+      link: { name: repo_btn_name, url: repo_link }
+    }
+  } = projectData[0];
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -19,7 +25,31 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
   return (
     <>
       <TopBar data={topBarData} />
-      <main></main>
+      <main className="container">
+        <SectionHeader
+          data={project_head}
+          customClassName="py-0 order-2 lg:order-none"
+        >
+          {repo_link && repo_btn_name && (
+            <Button
+              textColor="white"
+              bgColor="black"
+              btnSize="largeTall"
+              extrnalLink={true}
+              href={repo_link}
+              customClassName="mb-6 md:mb-0 md:mr-6"
+            >
+              <img
+                src="/static/images/github.png"
+                className="inline mr-4 w-8 h-8"
+                alt="github logo icon"
+              />
+              {repo_btn_name}
+            </Button>
+          )}
+        </SectionHeader>
+      </main>
+
       <Footer data={footerData} />
     </>
   );
@@ -31,11 +61,9 @@ export async function getStaticPaths() {
   let paths = [];
   return mentorshipAPI('/projects')
     .then(({ data }) => {
-      console.log(data);
       paths = data.map(({ project_slug }) => ({
         params: { slug: project_slug }
       }));
-      console.log(paths);
       return {
         paths,
         fallback: true
