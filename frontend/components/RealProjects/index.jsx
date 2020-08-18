@@ -2,6 +2,8 @@ import React from 'react';
 import ProjectCard from '../ProjectCard';
 import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import useMedia from '../../helper/useMedia';
 
 const projectsSectionVariants = {
   start: {
@@ -33,13 +35,18 @@ const projectsCardVariants = {
 const dataTest = [0, 1, 2];
 
 const RealProjects = ({ data }) => {
+  const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
+  const [ref, inView] = useInView({
+    threshold: isDesktop ? 0.1 : 0.05
+  });
+
   if (data) {
     return (
-      <section className="real-projects">
+      <section className="real-projects" ref={ref}>
         <motion.div
           variants={projectsSectionVariants}
           initial="start"
-          animate="end"
+          animate={inView ? 'end' : ''}
           className="container"
         >
           <div>
@@ -59,7 +66,7 @@ const RealProjects = ({ data }) => {
             {dataTest.map(project => {
               return (
                 <motion.div variants={projectsCardVariants}>
-                  <ProjectCard data="0" />
+                  <ProjectCard data='0' />
                 </motion.div>
               );
             })}
