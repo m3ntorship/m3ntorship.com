@@ -1,49 +1,96 @@
 import React from 'react';
 import { Heading } from '../shared/Heading';
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+
+const titleContainerVariant = {
+  initial: {},
+  animate: {
+    transition: {
+      staggerChildren: 0.03
+    }
+  }
+};
+const titleVariant = {
+  initial: {
+    y: -100,
+    opacity: 0
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring'
+    }
+  }
+};
 
 export const ParallaxedHeader = ({ data }) => {
+  const { scrollY } = useViewportScroll();
+  const y1 = useTransform(scrollY, value => value / -6);
+
   if (data) {
     const { title, sub_title, image } = data;
 
     return (
       <section className="pt-0">
         <div className="bg-c200 global-section-padding">
-          <div className="container flex justify-center items-center">
-            <div className="hidden lg:block mr-auto w-56">
+          <motion.div
+            className="container flex justify-center items-center"
+            style={{ y: y1 }}
+          >
+            <motion.div
+              className="hidden lg:block mr-auto w-56"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: 'spring' }}
+            >
               {image && <img src={image.url} alt="side icon" />}
-            </div>
+            </motion.div>
             <div className="flex flex-col justify-center items-center mx-10">
-              <motion.div
-                initial={{ scale: 0, opacity: 0, rotate: 180 }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                  rotate: 0,
-                  transition: { type: 'spring' }
-                }}
-              >
-                {title && (
-                  <Heading
-                    type="mainLarge"
-                    textAlign="center"
-                    textTransform="uppercase"
-                    as="h1"
+              {title && (
+                <Heading
+                  type="mainLarge"
+                  textAlign="center"
+                  textTransform="uppercase"
+                  as="h1"
+                >
+                  <motion.span
+                    variants={titleContainerVariant}
+                    initial="initial"
+                    animate="animate"
+                    className="inline-block"
                   >
-                    {title}
-                  </Heading>
-                )}
-              </motion.div>
+                    {title.split('').map(letter => (
+                      <motion.span
+                        variants={titleVariant}
+                        className="inline-block"
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </motion.span>
+                </Heading>
+              )}
               {sub_title && (
-                <p className="text-base md:text-md uppercase text-center">
+                <motion.p
+                  className="text-base md:text-md uppercase text-center"
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, type: 'spring' }}
+                >
                   {sub_title}
-                </p>
+                </motion.p>
               )}
             </div>
-            <div className="hidden lg:block ml-auto w-56">
+            <motion.div
+              className="hidden lg:block ml-auto w-56"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: 'spring' }}
+            >
               {image && <img src={image.url} alt="side icon" />}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
         <div className="text-c200">
           {' '}

@@ -10,7 +10,9 @@ export const TopBar = ({
 }) => {
   return (
     <header
-      className={`py-16 text-center text-lg ${bgColored ? 'bg-c200' : ''}`}
+      className={`py-10 lg:py-16 text-center text-lg ${
+        bgColored ? 'bg-c200' : ''
+      }`}
     >
       <motion.div
         initial={{ y: -200, opacity: 0 }}
