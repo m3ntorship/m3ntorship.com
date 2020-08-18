@@ -11,6 +11,7 @@ const RealProjects = ({ data }) => {
             <Heading
               type={HEADING_OPTIONS.TYPE.SECTION}
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+              textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
             >
               <GradientText text="Real projects in Real teams" />
             </Heading>
