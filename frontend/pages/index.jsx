@@ -40,7 +40,9 @@ export const Home = ({ data }) => {
         <SectionHeaderComponent data={home_header} />
         <Goals data={goals} />
         <HowItWork data={steps} />
-        <Patches data={patches} batchesCards={batches} />
+        {!patches.statusCode && !batches.statusCode && (
+          <Patches data={patches} batchesCards={batches} />
+        )}
         <RealProjects projectsInfoData={projectsInfoData} projectsData={projectsData} />
         <ContributeSection data={contribute} />
       </main>
