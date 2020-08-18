@@ -53,7 +53,9 @@ export const Home = ({ data }) => {
         <SectionHeaderComponent data={home_header} />
         <Goals data={goals} />
         <HowItWork data={steps} />
-        <Patches data={patches} batchesCards={batches} />
+        {!patches.statusCode && !batches.statusCode && (
+          <Patches data={patches} batchesCards={batches} />
+        )}
         <ContributeSection data={contribute} />
       </main>
       <Footer data={footerData} />
