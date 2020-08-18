@@ -20,7 +20,7 @@
       "repeatable": false,
       "component": "general.link"
     },
-    "image": {
+    "header_image": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
