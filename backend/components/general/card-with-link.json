@@ -9,7 +9,7 @@
     "title": {
       "type": "string"
     },
-    "desciption": {
+    "description": {
       "type": "string"
     },
     "summary": {
