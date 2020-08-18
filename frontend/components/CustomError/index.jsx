@@ -7,7 +7,11 @@ export default function CustomError({ statusCode }) {
   return (
     <section className="flex flex-col justify-center items-center container lg:px-64">
       <div className="overflow-hidden rounded-full w-64 h-64 bg-c200 flex justify-center items-end">
-        <img src="/static/images/404.png" alt="" className="w-4/5 h-4/5" />
+        <img
+          src="/static/images/404.png"
+          alt="404 Error"
+          className="w-4/5 h-4/5"
+        />
       </div>
       <Heading
         type={HEADING_OPTIONS.TYPE.SECTION}

@@ -21,14 +21,13 @@ export const ParagraphWithImageBeside = ({ data }) => {
             <p className="text-center  mb-4  md:text-left">{sub_title}</p>
           )}
         </motion.div>
-
         <motion.div
           className="w-2/12 flex-auto hidden md:flex justify-end items-center"
           initial={{ x: 500, opacity: 0 }}
           animate={inView ? { x: 0, opacity: 1 } : ''}
           transition={{ type: 'spring' }}
         >
-          {image && <img src={image.url} />}
+          {image && <img src={image.url} alt="side icon for a more beautiful UI" />}
         </motion.div>
       </div>
     );

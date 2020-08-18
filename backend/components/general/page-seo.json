@@ -12,7 +12,7 @@
     "description": {
       "type": "text",
       "minLength": 100,
-      "maxLength": 160
+      "maxLength": 150
     },
     "title": {
       "type": "string",

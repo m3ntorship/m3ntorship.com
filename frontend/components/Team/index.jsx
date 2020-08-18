@@ -81,7 +81,7 @@ export const Team = ({ data, team_members }) => {
     return (
       <section className="team relative text-center container">
         <div className="absolute graph right-0 hidden xl:block">
-          <img src={url} />
+          <img src={url} alt="side icon" />
         </div>
         <div ref={textContainerRef}>
           <motion.div

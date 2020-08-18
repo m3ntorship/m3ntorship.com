@@ -11,14 +11,18 @@ import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
 
+import Head from 'next/head';
 const BatchPage = ({
   batchData,
   sectionHeaderData,
   batchTeamData,
   joinUsData,
   topBarData,
-  footerData
+  footerData,
+  websiteUrl
 }) => {
+  const { website_url } = websiteUrl;
+
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -36,13 +40,14 @@ const BatchPage = ({
       team_members.map(item => item.id).indexOf(member.id) === index
   );
 
-  // all team images
+  // all team images and titles
   const team_images = team_members.map(
     ({
       member_info: {
+        title,
         card_image: { url }
       }
-    }) => ({ url })
+    }) => ({ url, title })
   );
   const {
     repo_btn: { name: repo_btn_name, url: repo_link },
@@ -50,51 +55,75 @@ const BatchPage = ({
   } = sectionHeaderData;
   return (
     <>
+      <Head>
+        <link
+          rel="canonical"
+          href={`${website_url}/batchs/${batchData[0].batch_slug}`}
+        />
+
+        <meta
+          property="og:url"
+          content={`${website_url}/batchs/${batchData[0].batch_slug}`}
+        />
+        <meta
+          property="og:title"
+          content={`M3ntorship Graduates ${batchData[0].batch_slug}`}
+        />
+        <meta property="og:image" content={`${website_url}/image.jpg`} />
+        <meta property="og:description" content={batchData[0].description} />
+
+        <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
+        <meta name="description" content={batchData[0].description} />
+      </Head>
       <TopBar data={topBarData} />
-      <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
-        <SectionHeader
-          data={sectionHeaderData}
-          customClassName="py-0 order-2 lg:order-none"
-        >
-          {repo_link && repo_btn_name && (
-            <Button
-              textColor="white"
-              bgColor="black"
-              btnSize="largeTall"
-              extrnalLink={true}
-              href={repo_link}
-              customClassName="mb-6 md:mb-0 md:mr-6"
-            >
-              <img
-                src="/static/images/github.png"
-                className="inline mr-4 w-8 h-8"
-              />
-              {repo_btn_name}
-            </Button>
-          )}
-          {project_link && project_btn_name && (
-            <Button
-              textColor="black"
-              bgColor="gray"
-              btnSize="largeTall"
-              fontWeight="normal"
-              extrnalLink={true}
-              href={project_link}
-            >
-              <span className="uppercase underline">{project_btn_name}</span>
-              <img
-                src="/static/images/right-arrow.svg"
-                className="inline ml-4 w-6"
-              />
-            </Button>
-          )}
-        </SectionHeader>
-        <div className="order-1 lg:order-none">
-          <ListOfRoundedImages data={team_images} />
-        </div>
-      </section>
-      <Team data={batchTeamData} team_members={team_members} />
-      <JoinUs data={joinUsData} />
+      <main>
+        <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
+          <SectionHeader
+            data={sectionHeaderData}
+            customClassName="py-0 order-2 lg:order-none"
+          >
+            {repo_link && repo_btn_name && (
+              <Button
+                textColor="white"
+                bgColor="black"
+                btnSize="largeTall"
+                extrnalLink={true}
+                href={repo_link}
+                customClassName="mb-6 md:mb-0 md:mr-6"
+              >
+                <img
+                  src="/static/images/github.png"
+                  className="inline mr-4 w-8 h-8"
+                  alt="github logo icon"
+                />
+                {repo_btn_name}
+              </Button>
+            )}
+            {project_link && project_btn_name && (
+              <Button
+                textColor="black"
+                bgColor="gray"
+                btnSize="largeTall"
+                fontWeight="normal"
+                extrnalLink={true}
+                href={project_link}
+              >
+                <span className="uppercase underline">{project_btn_name}</span>
+                <img
+                  src="/static/images/right-arrow.svg"
+                  className="inline ml-4 w-6"
+                  alt="arrow icon"
+                />
+              </Button>
+            )}
+          </SectionHeader>
+          <div className="order-1 lg:order-none">
+            <ListOfRoundedImages data={team_images} />
+          </div>
+        </section>
+        <Team data={batchTeamData} team_members={team_members} />
+        <JoinUs data={joinUsData} />
+      </main>
       <Footer data={footerData} />
     </>
   );
@@ -129,7 +158,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/batch-team'),
     mentorshipAPI('/join-us-card'),
     mentorshipAPI('/top-bar'),
-    mentorshipAPI('/footer')
+    mentorshipAPI('/footer'),
+    mentorshipAPI('/setting')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -138,7 +168,8 @@ export async function getStaticProps({ params: { slug } }) {
       { data: batchTeamData },
       { data: joinUsData },
       { data: topBarData },
-      { data: footerData }
+      { data: footerData },
+      { data: websiteUrl }
     ]) => {
       return {
         props: {
@@ -147,7 +178,8 @@ export async function getStaticProps({ params: { slug } }) {
           batchTeamData,
           joinUsData,
           topBarData,
-          footerData
+          footerData,
+          websiteUrl
         },
         revalidate: 1
       };

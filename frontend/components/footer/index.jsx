@@ -32,7 +32,7 @@ const Footer = ({ data }) => {
               <Heading
                 type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                 fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                as="h3"
+                as="p"
                 className="relative"
               >
                 {logo}
@@ -58,7 +58,7 @@ const Footer = ({ data }) => {
                 <Heading
                   type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                   fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                  as="h3"
+                  as="p"
                 >
                   {title}
                 </Heading>
@@ -80,7 +80,7 @@ const Footer = ({ data }) => {
               <Heading
                 type={HEADING_OPTIONS.TYPE.CARD_SMALL}
                 fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
-                as="h3"
+                as="p"
               >
                 {title_links}
               </Heading>

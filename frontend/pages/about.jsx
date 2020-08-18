@@ -6,24 +6,44 @@ import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
 import { useViewportScroll, motion, useTransform } from 'framer-motion';
+import Head from 'next/head';
 
-const About = ({ data }) => {
+const About = ({ websiteUrl, metaData, data }) => {
   const { scrollY } = useViewportScroll();
   const y1 = useTransform(scrollY, [0, 900], [0, 150]);
-
+  const {
+    seo: {
+      path,
+      description,
+      title,
+      open_graph_image: { url: image_url }
+    }
+  } = metaData[0];
+  const { website_url } = websiteUrl;
   if (data) {
     const { aboutData, teamGroupData, topBarData, footerData } = data;
     const { about_head, about_description } = aboutData;
     return (
       <>
-        <motion.div style={{ y: y1 }}>
-          <TopBar data={topBarData} bgColored={true} />
-          <ParallaxedHeader data={about_head} />
-        </motion.div>
-        <section className="container">
-          <ParagraphWithImageBeside data={about_description} />
-        </section>
-        <TeamGroupSection data={teamGroupData} />
+        <Head>
+          <meta name="description" content={description} />
+          <link rel="canonical" href={`${website_url}${path}`} />
+          <meta property="og:title" content={title} />
+          <meta property="og:url" content={`${website_url}${path}`} />
+          <meta property="og:image" content={image_url} />
+          <meta property="og:description" content={description} />
+          <title>{title}</title>
+        </Head>
+        <main>
+          <motion.div style={{ y: y1 }}>
+            <TopBar data={topBarData} bgColored={true} />
+            <ParallaxedHeader data={about_head} />
+          </motion.div>
+          <section className="container">
+            <ParagraphWithImageBeside data={about_description} />
+          </section>
+          <TeamGroupSection data={teamGroupData} />
+        </main>
         <Footer data={footerData} />
       </>
     );
@@ -37,14 +57,18 @@ export async function getStaticProps() {
     mentorshipAPI('/about-head'),
     mentorshipAPI('/organization-founders'),
     mentorshipAPI('/top-bar'),
-    mentorshipAPI('/footer')
+    mentorshipAPI('/footer'),
+    mentorshipAPI('/pages-seos?page_name=about'),
+    mentorshipAPI('/setting')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: aboutData },
       { data: teamGroupData },
       { data: topBarData },
-      { data: footerData }
+      { data: footerData },
+      { data: metaData },
+      { data: websiteUrl }
     ]) => {
       return {
         props: {
@@ -53,7 +77,9 @@ export async function getStaticProps() {
             teamGroupData,
             topBarData,
             footerData
-          }
+          },
+          metaData,
+          websiteUrl
         },
         revalidate: 1
       };
