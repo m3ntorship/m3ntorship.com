@@ -39,9 +39,18 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
   });
 
   if (projectsInfoData && projectsData) {
-    const {projects_brief: {title, sub_title, image:{url}}} = projectsInfoData
+    const {
+      projects_brief: {
+        title,
+        sub_title,
+        image: { url }
+      }
+    } = projectsInfoData;
     return (
-      <section className="real-projects" ref={ref}>
+      <section className="real-projects relative" ref={ref}>
+        <div className="absolute hidden lg:block top-12 right-12">
+          <img src={url} alt="sideImage" className='w-1/2 float-right' />
+        </div>
         <motion.div
           variants={projectsSectionVariants}
           initial="start"
@@ -57,13 +66,16 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               <GradientText text={title} />
             </Heading>
             <p className="text-center mx-auto text-base text-c600 md:w-2/3">
-             {sub_title}
+              {sub_title}
             </p>
           </div>
           <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {projectsData.map(project => {
               return (
-                <motion.div variants={isDesktop ? projectsCardVariants : ''}>
+                <motion.div
+                  key={project.id}
+                  variants={isDesktop ? projectsCardVariants : ''}
+                >
                   <ProjectCard data={project} />
                 </motion.div>
               );
@@ -72,8 +84,6 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
         </motion.div>
       </section>
     );
-  } else {
-    return "Genaric error"
   }
 };
 
