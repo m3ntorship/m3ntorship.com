@@ -9,11 +9,6 @@
     "timestamps": true
   },
   "attributes": {
-    "project_nav_page": {
-      "type": "component",
-      "repeatable": false,
-      "component": "general.link"
-    },
     "project_slug": {
       "type": "uid",
       "targetField": "project_name"
@@ -23,25 +18,10 @@
       "via": "projects",
       "dominant": true
     },
-    "project_repo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "general.link"
-    },
-    "project_link_production": {
-      "type": "component",
-      "repeatable": false,
-      "component": "general.link"
-    },
     "batches_description": {
       "type": "component",
       "repeatable": false,
       "component": "general.mini-card"
-    },
-    "project_head": {
-      "type": "component",
-      "repeatable": false,
-      "component": "general.cards"
     },
     "join_next_project": {
       "type": "component",
@@ -55,6 +35,11 @@
     },
     "project_name": {
       "type": "string"
+    },
+    "project_head": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.card-with-link"
     }
   }
 }
