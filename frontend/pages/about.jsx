@@ -5,9 +5,12 @@ import { mentorshipAPI } from '../clients/mentorship';
 import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
+import { useViewportScroll, motion, useTransform } from 'framer-motion';
 import Head from 'next/head';
 
 const About = ({ websiteUrl, metaData, data }) => {
+  const { scrollY } = useViewportScroll();
+  const y1 = useTransform(scrollY, [0, 900], [0, 150]);
   const {
     seo: {
       path,
@@ -31,11 +34,11 @@ const About = ({ websiteUrl, metaData, data }) => {
           <meta property="og:description" content={description} />
           <title>{title}</title>
         </Head>
-
-        <TopBar data={topBarData} bgColored={true} />
-
         <main>
-          <ParallaxedHeader data={about_head} />
+          <motion.div style={{ y: y1 }}>
+            <TopBar data={topBarData} bgColored={true} />
+            <ParallaxedHeader data={about_head} />
+          </motion.div>
           <section className="container">
             <ParagraphWithImageBeside data={about_description} />
           </section>

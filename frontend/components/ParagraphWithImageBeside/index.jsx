@@ -12,9 +12,9 @@ export const ParagraphWithImageBeside = ({ data }) => {
       <div className="flex justify-between items-center" ref={ref}>
         <motion.div
           className="w-full md:w-8/12"
-          initial={{ x: -1000 }}
-          animate={inView ? { x: 0 } : ''}
-          transition={{ duration: 0.5, type: 'spring' }}
+          initial={{ x: -500, opacity: 0 }}
+          animate={inView ? { x: 0, opacity: 1 } : ''}
+          transition={{ type: 'spring' }}
         >
           {title && <p className="text-center mb-4 md:text-left">{title}</p>}
           {sub_title && (
@@ -23,9 +23,9 @@ export const ParagraphWithImageBeside = ({ data }) => {
         </motion.div>
         <motion.div
           className="w-2/12 flex-auto hidden md:flex justify-end items-center"
-          initial={{ x: 500 }}
-          animate={inView ? { x: 0 } : ''}
-          transition={{ duration: 0.5, type: 'spring' }}
+          initial={{ x: 500, opacity: 0 }}
+          animate={inView ? { x: 0, opacity: 1 } : ''}
+          transition={{ type: 'spring' }}
         >
           {image && <img src={image.url} alt="side icon for a more beautiful UI" />}
         </motion.div>
