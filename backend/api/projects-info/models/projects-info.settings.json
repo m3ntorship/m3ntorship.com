@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "projects_infos",
+  "info": {
+    "name": "projects_info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "projects_brief": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.mini-card"
+    }
+  }
+}
