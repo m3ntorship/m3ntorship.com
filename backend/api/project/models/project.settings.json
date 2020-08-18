@@ -11,7 +11,8 @@
   "attributes": {
     "project_slug": {
       "type": "uid",
-      "targetField": "project_name"
+      "targetField": "project_name",
+      "required": true
     },
     "batches": {
       "collection": "batch",
@@ -40,6 +41,10 @@
       "type": "component",
       "repeatable": false,
       "component": "general.card-with-link"
+    },
+    "nav_to_project_page_text": {
+      "type": "string",
+      "required": true
     }
   }
 }
