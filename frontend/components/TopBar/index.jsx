@@ -9,7 +9,9 @@ export const TopBar = ({
   bgColored
 }) => {
   return (
-    <section className={`text-center text-lg ${bgColored ? 'bg-c200' : ''}`}>
+    <header
+      className={`py-16 text-center text-lg ${bgColored ? 'bg-c200' : ''}`}
+    >
       <motion.div
         initial={{ y: -200, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -48,6 +50,6 @@ export const TopBar = ({
           </Link>
         )}
       </motion.div>
-    </section>
+    </header>
   );
 };

@@ -1,0 +1,5 @@
+Sitemap: https://m3ntorship.com/sitemap.xml
+Sitemap: https://m3ntorship.com/batches/sitemap.xml
+
+User-agent: *
+

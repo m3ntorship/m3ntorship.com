@@ -89,8 +89,8 @@ const Patches = ({ data, batchesCards }) => {
           >
             {batchesCards.map(card => {
               return (
-                <motion.div variants={cardVariants}>
-                  <PatchCard key={card.id} cardDetails={card} dashed={false} />
+                <motion.div key={card.id} variants={cardVariants}>
+                  <PatchCard cardDetails={card} dashed={false} />
                 </motion.div>
               );
             })}

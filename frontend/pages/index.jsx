@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
+import Head from 'next/head';
 
 export const Home = ({ data }) => {
   const {
@@ -20,16 +21,41 @@ export const Home = ({ data }) => {
     contribute,
     batches,
     topBarData,
-    footerData
+    footerData,
+    metaData,
+    websiteUrl
   } = data;
+  const { website_url } = websiteUrl;
+  const {
+    seo: {
+      path,
+      description,
+      title,
+      open_graph_image: { url: image_url }
+    }
+  } = metaData[0];
+
   return (
     <>
+      <Head>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={`${website_url}${path}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content={`${website_url}${path}`} />
+        <meta property="og:image" content={image_url} />
+        <meta property="og:description" content={description} />
+        <title>{title}</title>
+      </Head>
+
       <TopBar data={topBarData} />
-      <SectionHeaderComponent data={home_header} />
-      <Goals data={goals} />
-      <HowItWork data={steps} />
-      <Patches data={patches} batchesCards={batches} />
-      <ContributeSection data={contribute} />
+
+      <main>
+        <SectionHeaderComponent data={home_header} />
+        <Goals data={goals} />
+        <HowItWork data={steps} />
+        <Patches data={patches} batchesCards={batches} />
+        <ContributeSection data={contribute} />
+      </main>
       <Footer data={footerData} />
     </>
   );
@@ -108,7 +134,9 @@ export async function getStaticProps(context) {
     mentorshipAPI('/contribute'),
     mentorshipAPI('/batches'),
     mentorshipAPI('/top-bar'),
-    mentorshipAPI('/footer')
+    mentorshipAPI('/footer'),
+    mentorshipAPI('/pages-seos?page_name=home'),
+    mentorshipAPI('/setting')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -119,7 +147,9 @@ export async function getStaticProps(context) {
       { data: contribute },
       { data: batches },
       { data: topBarData },
-      { data: footerData }
+      { data: footerData },
+      { data: metaData },
+      { data: websiteUrl }
     ]) => {
       return {
         props: {
@@ -131,7 +161,9 @@ export async function getStaticProps(context) {
             contribute,
             batches,
             topBarData,
-            footerData
+            footerData,
+            metaData,
+            websiteUrl
           }
         },
         revalidate: 1
