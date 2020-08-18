@@ -25,6 +25,7 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
   return (
     <>
       <TopBar data={topBarData} />
+
       <main className="container">
         <SectionHeader
           data={project_head}
@@ -61,6 +62,7 @@ export async function getStaticPaths() {
   let paths = [];
   return mentorshipAPI('/projects')
     .then(({ data }) => {
+
       paths = data.map(({ project_slug }) => ({
         params: { slug: project_slug }
       }));
