@@ -1,6 +1,5 @@
 import React from 'react';
 import { HEADING_OPTIONS, Heading } from '../shared/Heading';
-import rightArrow from '../../public/static/images/right-arrow.svg';
 import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
@@ -51,7 +50,7 @@ const ProjectCard = ({ data }) => {
           <div className="inline-block text-right w-1/2 mb-6">
             <a href={project_slug} className="font-bold inline-block">
               {nav_to_project_page_text}
-              <img className="inline-block ml-2 w-4" src={rightArrow}></img>
+              <img className="inline-block ml-2 w-4" src='/static/images/right-arrow.svg'></img>
             </a>
           </div>
         </div>
