@@ -7,33 +7,18 @@ import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
 import { useViewportScroll, motion, useTransform } from 'framer-motion';
 import Head from 'next/head';
+import checkSeoData from '../helper/checkSeoData';
 
 const About = ({ websiteUrl, metaData, data }) => {
   const { scrollY } = useViewportScroll();
   const y1 = useTransform(scrollY, [0, 900], [0, 150]);
-  const {
-    seo: {
-      path,
-      description,
-      title,
-      open_graph_image: { url: image_url }
-    }
-  } = metaData[0];
-  const { website_url } = websiteUrl;
+
   if (data) {
     const { aboutData, teamGroupData, topBarData, footerData } = data;
     const { about_head, about_description } = aboutData;
     return (
       <>
-        <Head>
-          <meta name="description" content={description} />
-          <link rel="canonical" href={`${website_url}${path}`} />
-          <meta property="og:title" content={title} />
-          <meta property="og:url" content={`${website_url}${path}`} />
-          <meta property="og:image" content={image_url} />
-          <meta property="og:description" content={description} />
-          <title>{title}</title>
-        </Head>
+        <Head>{checkSeoData(metaData, websiteUrl)}</Head>
         <main>
           <motion.div style={{ y: y1 }}>
             <TopBar data={topBarData} bgColored={true} />

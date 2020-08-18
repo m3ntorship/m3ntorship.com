@@ -10,6 +10,8 @@ import Link from 'next/link';
 import { TopBar } from '../components/TopBar';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
+import checkSeoData from '../helper/checkSeoData';
+
 import Head from 'next/head';
 
 export const Home = ({ data }) => {
@@ -25,27 +27,9 @@ export const Home = ({ data }) => {
     metaData,
     websiteUrl
   } = data;
-  const { website_url } = websiteUrl;
-  const {
-    seo: {
-      path,
-      description,
-      title,
-      open_graph_image: { url: image_url }
-    }
-  } = metaData[0];
-
   return (
     <>
-      <Head>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={`${website_url}${path}`} />
-        <meta property="og:title" content={title} />
-        <meta property="og:url" content={`${website_url}${path}`} />
-        <meta property="og:image" content={image_url} />
-        <meta property="og:description" content={description} />
-        <title>{title}</title>
-      </Head>
+      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
 
       <TopBar data={topBarData} />
 
