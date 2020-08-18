@@ -74,7 +74,7 @@ export const ParallaxedHeader = ({ data }) => {
               {sub_title && (
                 <motion.p
                   className="text-base md:text-md uppercase text-center"
-                  initial={{ opacity: 0, y: 100 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, type: 'spring' }}
                 >
