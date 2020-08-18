@@ -27,12 +27,9 @@ export const Home = ({ data }) => {
     metaData,
     websiteUrl
   } = data;
-  console.log(metaData)
   return (
     <>
-      <Head>
-        <Head>{checkSeoData(metaData, websiteUrl)}</Head>
-      </Head>
+      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
 
       <TopBar data={topBarData} />
 
