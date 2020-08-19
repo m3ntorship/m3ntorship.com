@@ -66,6 +66,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
               fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              as="h2"
             >
               {title && <GradientText text={title} />}
             </Heading>
@@ -75,8 +76,9 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               </p>
             )}
           </div>
-          <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {! projectsData.statusCode && projectsData.map(project => {
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {!projectsData.statusCode &&
+              projectsData.map(project => {
                 return (
                   <motion.div
                     key={project.id}

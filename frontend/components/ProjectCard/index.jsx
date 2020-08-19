@@ -46,6 +46,7 @@ const ProjectCard = ({ data }) => {
             fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
             textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
             className="inline-block card-heading w-1/2"
+            as="h3"
           >
             {project_name}
           </Heading>

@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 export const ParagraphWithImageBeside = ({ data }) => {
   if (data) {
-    const { title, sub_title, image } = data;
+    const { title, description, image } = data;
     const [ref, inView] = useInView({
       threshold: 0.5,
       triggerOnce: true
@@ -18,8 +18,8 @@ export const ParagraphWithImageBeside = ({ data }) => {
           transition={{ type: 'spring' }}
         >
           {title && <p className="text-center mb-4 md:text-left">{title}</p>}
-          {sub_title && (
-            <p className="text-center  mb-4  md:text-left">{sub_title}</p>
+          {description && (
+            <p className="text-center md:text-left">{description}</p>
           )}
         </motion.div>
         <motion.div
