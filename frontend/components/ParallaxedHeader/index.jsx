@@ -60,10 +60,11 @@ export const ParallaxedHeader = ({ data }) => {
                     animate="animate"
                     className="inline-block whitespace-no-wrap"
                   >
-                    {title.split('').map(letter => (
+                    {title.split('').map((letter, index) => (
                       <motion.span
                         variants={titleVariant}
                         className="inline-block whitespace-no-wrap"
+                        key={index}
                       >
                         {letter}
                       </motion.span>

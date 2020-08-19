@@ -42,9 +42,11 @@ const ProjectCard = ({ data }) => {
       <div className="flex items-center justify-center">
         {project_name && (
           <Heading
-            type={HEADING_OPTIONS.TYPE.CARD}
+            type={HEADING_OPTIONS.TYPE.CARD_SMALL}
             fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+            textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
             className="inline-block card-heading w-1/2"
+            as="h3"
           >
             {project_name}
           </Heading>
