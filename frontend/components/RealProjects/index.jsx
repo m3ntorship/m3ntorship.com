@@ -49,7 +49,9 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
     return (
       <section className="real-projects relative" ref={ref}>
         <div className="absolute hidden lg:block top-12 right-12">
-          <img src={url} alt="sideImage" className="w-1/2 float-right" />
+          {url && (
+            <img src={url} alt="sideImage" className="w-1/2 float-right" />
+          )}
         </div>
         <motion.div
           variants={projectsSectionVariants}
@@ -63,23 +65,25 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
             >
-              <GradientText text={title} />
+              {title && <GradientText text={title} />}
             </Heading>
-            <p className="text-center mx-auto text-base text-c600 md:w-2/3">
-              {sub_title}
-            </p>
+            {sub_title && (
+              <p className="text-center mx-auto text-base text-c600 md:w-2/3">
+                {sub_title}
+              </p>
+            )}
           </div>
           <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {projectsData.map(project => {
-              return (
-                <motion.div
-                  key={project.id}
-                  variants={isDesktop ? projectsCardVariants : ''}
-                >
-                  <ProjectCard data={project} />
-                </motion.div>
-              );
-            })}
+            {! projectsData.statusCode && projectsData.map(project => {
+                return (
+                  <motion.div
+                    key={project.id}
+                    variants={isDesktop ? projectsCardVariants : ''}
+                  >
+                    <ProjectCard data={project} />
+                  </motion.div>
+                );
+              })}
           </div>
         </motion.div>
       </section>
