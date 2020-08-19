@@ -21,8 +21,6 @@ const BatchPage = ({
   footerData,
   websiteUrl
 }) => {
-  const { website_url } = websiteUrl;
-
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -53,6 +51,7 @@ const BatchPage = ({
     repo_btn: { name: repo_btn_name, url: repo_link },
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
+  const { website_url } = websiteUrl;
   return (
     <>
       <Head>
