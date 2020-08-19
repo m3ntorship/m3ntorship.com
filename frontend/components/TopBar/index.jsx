@@ -144,7 +144,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
               'flex',
               'flex-row',
               'capitalize',
-              mobile ? '' : 'transform hover:-translate-y-1'
+              mobile ? '' : 'duration-100 transform hover:-translate-y-1'
             )}
           >
             <p
