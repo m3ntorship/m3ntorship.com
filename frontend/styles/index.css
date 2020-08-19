@@ -7,3 +7,5 @@
 @import 'tailwindcss/utilities';
 /* import components styles */
 @import './heading.css';
+
+@import './cardStyle.css';
