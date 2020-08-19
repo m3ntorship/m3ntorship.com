@@ -2,6 +2,7 @@ import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
 import githubLogo from '../../public/static/images/github.png';
+import rightArrow from '../../public/static/images/right-arrow.svg';
 
 const CardItem = ({ subTitle, cardDesc }) => {
   return (
@@ -40,10 +41,7 @@ const CardItem = ({ subTitle, cardDesc }) => {
           >
             VIEW PROJECT
             <span className="ml-4 w-1/6">
-              <img
-                className="inline-block w-8 h-5"
-                src="../public/static/images/right-arrow.svg"
-              ></img>
+              <img className="inline-block w-8 h-5" src={rightArrow}></img>
             </span>
           </Button>
         </div>
