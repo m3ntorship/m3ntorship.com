@@ -1,17 +1,16 @@
 import React from 'react';
-import RepoCardItem from '../components/CardItemComponent';
+import CardItem from '../components/CardItemComponent';
 
 export default {
-  title: 'Repo Card Item',
-  component: RepoCardItem
+  title: 'Card Item',
+  component: CardItem
 };
 
-export const repoCardItem = () => {
+export const CardItemShowCase = () => {
   return (
-    <RepoCardItem
+    <CardItem
       subTitle="Front-End Project"
       cardDesc="A job listings and job application app for working abroad."
-      isHoverd={true}
     />
   );
 };
