@@ -6,9 +6,14 @@ body {
   width: 100%;
 }
 .container {
-  width: 92%;
-  max-width: 1328px;
+  max-width: 85%;
   margin: 0 auto;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1140px;
+  }
 }
 
 input {
