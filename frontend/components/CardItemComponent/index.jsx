@@ -14,8 +14,8 @@ const CardItem = ({ data }) => {
     subTitle
   } = data;
   return (
-    <div className="repo__card my-3 border border-c100">
-      <div className="m-12">
+    <div className="repo__card my-3 border py-10 px-4 md:px10 border-c100">
+      <div>
         {project_name && (
           <Heading
             as="h2"
@@ -34,8 +34,7 @@ const CardItem = ({ data }) => {
             <Button
               textColor="white"
               bgColor="black"
-              btnSize="large"
-              customClassName="sm:w-auto"
+              customClassName="m-auto sm:w-64 w-auto py-2"
             >
               <span className="mr-4">
                 <img className="inline-block" src={githubLogo}></img>
@@ -49,10 +48,9 @@ const CardItem = ({ data }) => {
             <Button
               textColor="black"
               bgColor="gray"
-              btnSize="large"
               customClassName="custom"
               fontWeight="normal"
-              customClassName="underline sm:w-auto"
+              customClassName="underline sm:w-64 w-auto m-auto py-3"
             >
               <Link
                 href="/projects/[slug]"
