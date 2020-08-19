@@ -20,27 +20,27 @@ const cardVaruants = {
 };
 
 const ProjectCard = ({ data }) => {
-  if (data) {
-    const {
-      project_overview: { summary },
-      project_name,
-      nav_to_project_page_text,
-      project_slug
-    } = data;
-    const [crdRef, cardInView] = useInView({
-      threshold: 0.3,
-      triggerOnce: true
-    });
-    const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
-    return (
-      <motion.div
-        ref={crdRef}
-        variants={cardVaruants}
-        initial={isMobile ? 'scale' : ''}
-        animate={isMobile && cardInView ? 'unScale' : ''}
-        className="project-card bg-c1200 p-8"
-      >
-        <div className="flex items-center justify-center">
+  const {
+    project_overview: { summary },
+    project_name,
+    nav_to_project_page_text,
+    project_slug
+  } = data;
+  const [crdRef, cardInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+  const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
+  return (
+    <motion.div
+      ref={crdRef}
+      variants={cardVaruants}
+      initial={isMobile ? 'scale' : ''}
+      animate={isMobile && cardInView ? 'unScale' : ''}
+      className="project-card bg-c1200 p-8"
+    >
+      <div className="flex items-center justify-center">
+        {project_name && (
           <Heading
             type={HEADING_OPTIONS.TYPE.CARD_SMALL}
             fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
@@ -49,6 +49,8 @@ const ProjectCard = ({ data }) => {
           >
             {project_name}
           </Heading>
+        )}
+        {project_slug && nav_to_project_page_text && (
           <div className="inline-block text-right w-1/2 mb-6">
             <Link
               href="/projects/[slug]"
@@ -64,11 +66,13 @@ const ProjectCard = ({ data }) => {
               </a>
             </Link>
           </div>
-        </div>
+        )}
+      </div>
+      {summary && (
         <p className="description my-4 text-xs text-c700">{summary}</p>
-      </motion.div>
-    );
-  }
+      )}
+    </motion.div>
+  );
 };
 
 export default ProjectCard;
