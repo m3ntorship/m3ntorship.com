@@ -7,7 +7,7 @@ import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import useMedia from '../../helper/useMedia';
 export const TopBar = ({ data, button_color, bgColored }) => {
   const {
-    logo: { url: logo_url, name: logo_name },
+    logo_link: { url: logo_url, name: logo_name },
     sub_text: sub_title,
     apply_btn: { url: apply_btn_url, name: apply_btn_name }
   } = data;
@@ -155,7 +155,68 @@ export const TopBar = ({ data, button_color, bgColored }) => {
         bgColored ? 'bg-c200' : ''
       }`}
     >
-      {!isTablet ? (
+      {isTablet ? (
+        <motion.div
+          initial={{ y: -200, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: 'spring', duration: 0.5 }}
+          className="container flex items-center"
+        >
+          <div className="flex flex-col">
+            {logo_url && (
+              <Link href={logo_url}>
+                <a className="text-md lg:text-lg font-black">{logo_name}</a>
+              </Link>
+            )}
+            {sub_title && (
+              <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
+                {sub_title}
+              </p>
+            )}
+          </div>
+
+          <div className="ml-auto flex flex-row">
+            <ul className="flex flex-row items-center">
+              {navlinks.map(nav => {
+                const { url, name } = nav;
+                return (
+                  <li
+                    className="mx-4 lg:mx-10 w-full"
+                    variants={navMenuItemVariants}
+                  >
+                    <NavLink
+                      url={url}
+                      name={name}
+                      active={router.pathname === url ? true : false}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+            {apply_btn_url && (
+              <Link href={apply_btn_url} passHref>
+                <Button
+                  btnSize={isDesktop ? 'medium' : 'small'}
+                  textSize={isDesktop ? 'medium' : 'small'}
+                  textColor={
+                    button_color
+                      ? button_color === 'blue'
+                        ? 'white'
+                        : 'black'
+                      : 'black'
+                  }
+                  customClassName={`mx-10 uppercase top-bar-btn ${
+                    bgColored ? 'shadow-btn' : ''
+                  }`}
+                  bgColor={button_color ? button_color : 'green'}
+                >
+                  {apply_btn_name}
+                </Button>
+              </Link>
+            )}
+          </div>
+        </motion.div>
+      ) : (
         <AnimateSharedLayout>
           <motion.div
             initial={{ y: -200, opacity: 0 }}
@@ -262,67 +323,6 @@ export const TopBar = ({ data, button_color, bgColored }) => {
             </AnimatePresence>
           </motion.div>
         </AnimateSharedLayout>
-      ) : (
-        <motion.div
-          initial={{ y: -200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', duration: 0.5 }}
-          className="container flex items-center"
-        >
-          <div className="flex flex-col">
-            {logo_url && (
-              <Link href={logo_url}>
-                <a className="text-md lg:text-lg font-black">{logo_name}</a>
-              </Link>
-            )}
-            {sub_title && (
-              <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
-                {sub_title}
-              </p>
-            )}
-          </div>
-
-          <div className="ml-auto flex flex-row">
-            <ul className="flex flex-row items-center">
-              {navlinks.map(nav => {
-                const { url, name } = nav;
-                return (
-                  <li
-                    className="mx-4 lg:mx-10 w-full"
-                    variants={navMenuItemVariants}
-                  >
-                    <NavLink
-                      url={url}
-                      name={name}
-                      active={router.pathname === url ? true : false}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-            {apply_btn_url && (
-              <Link href={apply_btn_url} passHref>
-                <Button
-                  btnSize={isDesktop ? 'medium' : 'small'}
-                  textSize={isDesktop ? 'medium' : 'small'}
-                  textColor={
-                    button_color
-                      ? button_color === 'blue'
-                        ? 'white'
-                        : 'black'
-                      : 'black'
-                  }
-                  customClassName={`mx-10 uppercase top-bar-btn ${
-                    bgColored ? 'shadow-btn' : ''
-                  }`}
-                  bgColor={button_color ? button_color : 'green'}
-                >
-                  {apply_btn_name}
-                </Button>
-              </Link>
-            )}
-          </div>
-        </motion.div>
       )}
     </header>
   );
