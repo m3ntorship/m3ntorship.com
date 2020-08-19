@@ -7,7 +7,7 @@ import '../../styles/cardStyle.css';
 
 const CardItem = ({ subTitle, cardDesc }) => {
   return (
-    <div className="repo__card my-3 border border-c100 ">
+    <div className="repo__card my-3 border border-c100">
       <div className="m-12">
         <Heading
           as="h2"
@@ -42,7 +42,7 @@ const CardItem = ({ subTitle, cardDesc }) => {
           >
             VIEW PROJECT
             <span className="ml-4 w-1/6">
-              <img className="inline-block w-3/4" src={rightArrowLogo}></img>
+              <img className="inline-block w-2/5" src={rightArrowLogo}></img>
             </span>
           </Button>
         </div>
