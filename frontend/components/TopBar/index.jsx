@@ -64,7 +64,8 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       height: 0,
       transition: {
         staggerChildren: 0.1,
-        staggerDirection: -1
+        staggerDirection: -1,
+        when: 'afterChildren'
       }
     }
   };
@@ -138,12 +139,17 @@ export const TopBar = ({ data, button_color, bgColored }) => {
     return (
       <Link href={active ? '#' : url}>
         <a>
-          <div className="flex flex-row capitalize">
+          <div
+            className={cn(
+              'flex',
+              'flex-row',
+              'capitalize',
+              mobile ? '' : 'transform hover:-translate-y-1'
+            )}
+          >
             <p
               className={cn(
-                mobile
-                  ? 'text-sm'
-                  : 'text-xxs font-black hover:text-c300 hover:underline',
+                mobile ? 'text-sm' : 'text-xxs font-black',
                 active ? 'text-c100' : 'text-c1300'
               )}
             >
