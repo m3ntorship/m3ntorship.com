@@ -5,4 +5,15 @@
  * to customize this controller
  */
 
-module.exports = {};
+module.exports = {
+  find: ctx => {
+    return strapi.query('project').find(ctx.query, [
+      {
+        path: 'batches',
+        populate: {
+          path: 'batch_mentees'
+        }
+      }
+    ]);
+  }
+};

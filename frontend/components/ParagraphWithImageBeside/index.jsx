@@ -6,7 +6,8 @@ export const ParagraphWithImageBeside = ({ data }) => {
   if (data) {
     const { title, sub_title, image } = data;
     const [ref, inView] = useInView({
-      threshold: 0.5
+      threshold: 0.5,
+      triggerOnce: true
     });
     return (
       <div className="flex justify-between items-center" ref={ref}>
@@ -27,7 +28,9 @@ export const ParagraphWithImageBeside = ({ data }) => {
           animate={inView ? { x: 0, opacity: 1 } : ''}
           transition={{ type: 'spring' }}
         >
-          {image && <img src={image.url} alt="side icon for a more beautiful UI" />}
+          {image && (
+            <img src={image.url} alt="side icon for a more beautiful UI" />
+          )}
         </motion.div>
       </div>
     );

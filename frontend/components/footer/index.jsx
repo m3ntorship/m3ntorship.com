@@ -17,7 +17,8 @@ const Footer = ({ data }) => {
 
     const { title, description, url } = footer_about ? footer_about : false;
     const [ref, inView] = useInView({
-      threshold: 0.1
+      threshold: 0.1,
+      triggerOnce: true
     });
     return (
       <footer ref={ref} className="container overflow-hidden">
