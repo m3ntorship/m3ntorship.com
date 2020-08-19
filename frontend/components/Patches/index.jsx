@@ -77,7 +77,7 @@ const Patches = ({ data, batchesCards }) => {
           )}
         </div>
         {description && (
-          <p className="mb-16 mx-auto text-center text-base text-c600 lg:w-4/6">
+          <p className="mb-10 mx-auto text-center text-base text-c600 lg:w-4/6">
             {description}
           </p>
         )}
@@ -96,9 +96,11 @@ const Patches = ({ data, batchesCards }) => {
                 </motion.div>
               );
             })}
-            <motion.div variants={cardVariants}>
-              <PatchCard cardDetails={dashed_card} dashed={true} />
-            </motion.div>
+            {dashed_card && (
+              <motion.div variants={cardVariants}>
+                <PatchCard cardDetails={dashed_card} dashed={true} />
+              </motion.div>
+            )}
           </motion.div>
         )}
       </motion.section>

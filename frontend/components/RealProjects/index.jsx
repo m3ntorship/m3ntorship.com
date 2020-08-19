@@ -70,7 +70,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               {sub_title}
             </p>
           </div>
-          <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {projectsData.map(project => {
               return (
                 <motion.div

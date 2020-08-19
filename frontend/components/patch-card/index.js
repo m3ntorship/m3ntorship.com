@@ -17,6 +17,7 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 const PatchCard = ({ cardDetails, dashed }) => {
   const { title, batch_mentees, description, link, batch_slug } = cardDetails;
+  console.log(batch_mentees);
   return (
     <>
       {cardDetails && (
