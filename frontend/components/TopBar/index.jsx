@@ -7,7 +7,6 @@ import {
   motion,
   AnimateSharedLayout,
   AnimatePresence,
-  useViewportScroll,
   useAnimation
 } from 'framer-motion';
 import useMedia from '../../helper/useMedia';
@@ -21,7 +20,6 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   const [lastYPos, setLastYPos] = useState(0);
   const [stickyMenu, setStickyMenu] = useState(false);
   const router = useRouter();
-  const isTablet = useMedia(['(max-width: 768px)'], [false], true);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [menu, setMenu] = useState(false);
   useEffect(() => {
@@ -51,30 +49,22 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   const navMenuListVariants = {
     initial: {
       opacity: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 250,
-        damping: 300,
-        mass: 1
-      }
+      height: 0
     },
     animate: {
       opacity: 1,
+      height: 'auto',
       transition: {
-        type: 'spring',
-        stiffness: 250,
-        damping: 30,
-        mass: 1,
         when: 'beforeChildren',
         staggerChildren: 0.1
       }
     },
     exit: {
       opacity: 0,
+      height: 0,
       transition: {
         staggerChildren: 0.1,
-        staggerDirection: -1,
-        when: 'afterChildren'
+        staggerDirection: -1
       }
     }
   };
@@ -82,33 +72,15 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   const navMenuItemVariants = {
     initial: {
       opacity: 0,
-      y: -15,
-      transition: {
-        type: 'spring',
-        stiffness: 700,
-        damping: 30,
-        mass: 1.5
-      }
+      y: -15
     },
     animate: {
       opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 700,
-        damping: 30,
-        mass: 1.5
-      }
+      y: 0
     },
     exit: {
       opacity: 0,
-      y: -15,
-      transition: {
-        type: 'spring',
-        stiffness: 700,
-        damping: 30,
-        mass: 1.5
-      }
+      y: -15
     }
   };
 
@@ -164,21 +136,23 @@ export const TopBar = ({ data, button_color, bgColored }) => {
 
   const NavLink = ({ url, name, active, mobile }) => {
     return (
-      <div className="flex flex-row capitalize">
-        <Link href={url}>
-          <a
-            className={cn(
-              mobile ? 'text-sm' : 'text-xxs',
-              active ? 'text-c100' : 'text-c1300'
+      <Link href={url}>
+        <a>
+          <div className="flex flex-row capitalize">
+            <p
+              className={cn(
+                mobile ? 'text-sm' : 'text-xxs font-black',
+                active ? 'text-c100' : 'text-c1300'
+              )}
+            >
+              {name}
+            </p>
+            {active && mobile && (
+              <hr className="border-c200 w-full my-auto border-1 ml-4" />
             )}
-          >
-            {name}
-          </a>
-        </Link>
-        {active && mobile && (
-          <hr className="border-c200 w-full my-auto border-1 ml-4" />
-        )}
-      </div>
+          </div>
+        </a>
+      </Link>
     );
   };
 
@@ -187,39 +161,131 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       animate={navAnimation}
       transition={{ duration: 0.5 }}
       className={cn(
-        'py-10',
+        'pt-10',
+        !menu ? 'pb-10' : '',
+        'md:py-10',
         'z-10',
+        'top-0',
         'w-full',
         'bg-c000',
         'lg:py-16',
         'text-center',
         'text-lg',
         bgColored ? 'bg-c200' : '',
-        stickyMenu ? 'fixed' : ''
+        stickyMenu ? 'fixed shadow-2xl' : ''
       )}
     >
-      {isTablet ? (
-        <div className="container flex items-center">
-          <div className="flex flex-col">
+      <AnimateSharedLayout>
+        <div className="container flex md:flex-row flex-col items-center">
+          <div className="flex md:flex-col flex-row flex-wrap w-full md:w-auto">
             {logo_url && (
               <Link href={logo_url}>
                 <a className="text-md lg:text-lg font-black">{logo_name}</a>
               </Link>
             )}
-            {sub_title && (
+            {sub_title && isDesktop && (
               <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
                 {sub_title}
               </p>
             )}
+            <div className="ml-auto pr-4">
+              {menu ? (
+                <motion.button
+                  layoutId="menu-button"
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 30
+                  }}
+                  className="w-10 h-10 block md:hidden"
+                  onClick={() => setMenu(!menu)}
+                >
+                  {xCircleSvg}
+                </motion.button>
+              ) : (
+                <motion.button
+                  layoutId="menu-button"
+                  initial={{ opacity: 0.5 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 500,
+                    damping: 30
+                  }}
+                  className="w-10 h-10 block md:hidden"
+                  onClick={() => setMenu(!menu)}
+                >
+                  {burgerSvg}
+                </motion.button>
+              )}
+            </div>
           </div>
-
-          <div className="ml-auto flex flex-row">
+          <AnimatePresence>
+            {menu && (
+              <div className="flex flex-col items-baseline w-full md:hidden">
+                <motion.ul
+                  className="flex flex-col w-full items-baseline pl-2"
+                  variants={navMenuListVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  {navlinks.map(nav => {
+                    const { url, name } = nav;
+                    return (
+                      <motion.li
+                        className="my-4 lg:my-10 w-full"
+                        variants={navMenuItemVariants}
+                        whileHover={{ x: 15 }}
+                      >
+                        <NavLink
+                          url={url}
+                          name={name}
+                          active={router.pathname === url ? true : false}
+                          mobile={true}
+                        />
+                      </motion.li>
+                    );
+                  })}
+                  {apply_btn_url && (
+                    <motion.li
+                      variants={navMenuItemVariants}
+                      className="w-full"
+                    >
+                      <Link href={apply_btn_url} passHref>
+                        <Button
+                          btnSize={isDesktop ? 'medium' : 'small'}
+                          textSize={isDesktop ? 'medium' : 'small'}
+                          textColor={
+                            button_color
+                              ? button_color === 'blue'
+                                ? 'white'
+                                : 'black'
+                              : 'black'
+                          }
+                          customClassName={`my-5 md:my-10 w-full uppercase top-bar-btn ${
+                            bgColored ? 'shadow-btn' : ''
+                          }`}
+                          bgColor={button_color ? button_color : 'green'}
+                        >
+                          {apply_btn_name}
+                        </Button>
+                      </Link>
+                    </motion.li>
+                  )}
+                </motion.ul>
+              </div>
+            )}
+          </AnimatePresence>
+          <div className="ml-auto hidden flex-row md:flex">
             <ul className="flex flex-row items-center">
               {navlinks.map(nav => {
                 const { url, name } = nav;
                 return (
                   <li
-                    className="mx-4 lg:mx-10 w-full"
+                    className="mx-4 lg:mx-5 w-full"
                     variants={navMenuItemVariants}
                   >
                     <NavLink
@@ -254,109 +320,109 @@ export const TopBar = ({ data, button_color, bgColored }) => {
             )}
           </div>
         </div>
-      ) : (
-        <AnimateSharedLayout>
-          <div className="container flex items-baseline flex-wrap flex-col">
-            <div className="flex flex-row flex-wrap w-full">
-              {logo_url && (
-                <Link href={logo_url}>
-                  <a className="text-md lg:text-lg font-black">{logo_name}</a>
-                </Link>
-              )}
+      </AnimateSharedLayout>
 
-              <div className="ml-auto pr-4">
-                {menu ? (
-                  <motion.button
-                    layoutId="menu-button"
-                    initial={{ opacity: 0.5 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 500,
-                      damping: 30
-                    }}
-                    className="w-10 h-10"
-                    onClick={() => setMenu(!menu)}
-                  >
-                    {xCircleSvg}
-                  </motion.button>
-                ) : (
-                  <motion.button
-                    layoutId="menu-button"
-                    initial={{ opacity: 0.5 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 500,
-                      damping: 30
-                    }}
-                    className="w-10 h-10"
-                    onClick={() => setMenu(!menu)}
-                  >
-                    {burgerSvg}
-                  </motion.button>
-                )}
-              </div>
-            </div>
-            <AnimatePresence>
-              {menu && (
-                <div className="flex flex-col items-baseline w-full">
-                  <motion.ul
-                    className="flex flex-col w-full items-baseline pl-2"
-                    variants={navMenuListVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                  >
-                    {navlinks.map(nav => {
-                      const { url, name } = nav;
-                      return (
-                        <motion.li
-                          className="my-4 lg:my-10 w-full"
-                          variants={navMenuItemVariants}
-                        >
-                          <NavLink
-                            url={url}
-                            name={name}
-                            active={router.pathname === url ? true : false}
-                            mobile={true}
-                          />
-                        </motion.li>
-                      );
-                    })}
-                    {apply_btn_url && (
-                      <motion.li
-                        variants={navMenuItemVariants}
-                        className="w-full"
-                      >
-                        <Link href={apply_btn_url} passHref>
-                          <Button
-                            btnSize={isDesktop ? 'medium' : 'small'}
-                            textSize={isDesktop ? 'medium' : 'small'}
-                            textColor={
-                              button_color
-                                ? button_color === 'blue'
-                                  ? 'white'
-                                  : 'black'
-                                : 'black'
-                            }
-                            customClassName={`my-10 w-full uppercase top-bar-btn ${
-                              bgColored ? 'shadow-btn' : ''
-                            }`}
-                            bgColor={button_color ? button_color : 'green'}
-                          >
-                            {apply_btn_name}
-                          </Button>
-                        </Link>
-                      </motion.li>
-                    )}
-                  </motion.ul>
-                </div>
-              )}
-            </AnimatePresence>
-          </div>
-        </AnimateSharedLayout>
-      )}
+      {/* // <AnimateSharedLayout>
+        //   <div className="container flex items-baseline flex-wrap flex-col">
+        //     <div className="flex flex-row flex-wrap w-full">
+        //       {logo_url && (
+        //         <Link href={logo_url}>
+        //           <a className="text-md lg:text-lg font-black">{logo_name}</a>
+        //         </Link>
+        //       )}
+
+        //       <div className="ml-auto pr-4">
+        //         {menu ? (
+        //           <motion.button
+        //             layoutId="menu-button"
+        //             initial={{ opacity: 0.5 }}
+        //             animate={{ opacity: 1 }}
+        //             transition={{
+        //               type: 'spring',
+        //               stiffness: 500,
+        //               damping: 30
+        //             }}
+        //             className="w-10 h-10"
+        //             onClick={() => setMenu(!menu)}
+        //           >
+        //             {xCircleSvg}
+        //           </motion.button>
+        //         ) : (
+        //           <motion.button
+        //             layoutId="menu-button"
+        //             initial={{ opacity: 0.5 }}
+        //             animate={{ opacity: 1 }}
+        //             transition={{
+        //               type: 'spring',
+        //               stiffness: 500,
+        //               damping: 30
+        //             }}
+        //             className="w-10 h-10"
+        //             onClick={() => setMenu(!menu)}
+        //           >
+        //             {burgerSvg}
+        //           </motion.button>
+        //         )}
+        //       </div>
+        //     </div>
+        //     <AnimatePresence>
+        //       {menu && (
+        //         <div className="flex flex-col items-baseline w-full">
+        //           <motion.ul
+        //             className="flex flex-col w-full items-baseline pl-2"
+        //             variants={navMenuListVariants}
+        //             initial="initial"
+        //             animate="animate"
+        //             exit="exit"
+        //           >
+        //             {navlinks.map(nav => {
+        //               const { url, name } = nav;
+        //               return (
+        //                 <motion.li
+        //                   className="my-4 lg:my-10 w-full"
+        //                   variants={navMenuItemVariants}
+        //                 >
+        //                   <NavLink
+        //                     url={url}
+        //                     name={name}
+        //                     active={router.pathname === url ? true : false}
+        //                     mobile={true}
+        //                   />
+        //                 </motion.li>
+        //               );
+        //             })}
+        //             {apply_btn_url && (
+        //               <motion.li
+        //                 variants={navMenuItemVariants}
+        //                 className="w-full"
+        //               >
+        //                 <Link href={apply_btn_url} passHref>
+        //                   <Button
+        //                     btnSize={isDesktop ? 'medium' : 'small'}
+        //                     textSize={isDesktop ? 'medium' : 'small'}
+        //                     textColor={
+        //                       button_color
+        //                         ? button_color === 'blue'
+        //                           ? 'white'
+        //                           : 'black'
+        //                         : 'black'
+        //                     }
+        //                     customClassName={`my-10 w-full uppercase top-bar-btn ${
+        //                       bgColored ? 'shadow-btn' : ''
+        //                     }`}
+        //                     bgColor={button_color ? button_color : 'green'}
+        //                   >
+        //                     {apply_btn_name}
+        //                   </Button>
+        //                 </Link>
+        //               </motion.li>
+        //             )}
+        //           </motion.ul>
+        //         </div>
+        //       )}
+        //     </AnimatePresence>
+        //   </div>
+        // </AnimateSharedLayout> */}
     </motion.header>
   );
 };
