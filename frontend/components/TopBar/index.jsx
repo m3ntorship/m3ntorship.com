@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../shared/Button';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import cn from 'classnames';
-import {
-  motion,
-  AnimateSharedLayout,
-  useAnimation,
-  AnimatePresence
-} from 'framer-motion';
+import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import useMedia from '../../helper/useMedia';
 export const TopBar = ({ data, button_color, bgColored }) => {
   const {
@@ -15,6 +11,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
     sub_text: sub_title,
     apply_btn: { url: apply_btn_url, name: apply_btn_name }
   } = data;
+  const router = useRouter();
   const isTablet = useMedia(['(max-width: 768px)'], [false], true);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [menu, setMenu] = useState(false);
@@ -119,8 +116,8 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   );
   const navlinks = [
     {
-      url: '/apply',
-      name: 'apply'
+      url: '/',
+      name: 'home'
     },
     {
       url: '/apply',
@@ -227,7 +224,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                           <NavLink
                             url={url}
                             name={name}
-                            active={true}
+                            active={router.pathname === url ? true : false}
                             mobile={true}
                           />
                         </motion.li>
@@ -294,7 +291,11 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                     className="mx-4 lg:mx-10 w-full"
                     variants={navMenuItemVariants}
                   >
-                    <NavLink url={url} name={name} active={true} />
+                    <NavLink
+                      url={url}
+                      name={name}
+                      active={router.pathname === url ? true : false}
+                    />
                   </li>
                 );
               })}
