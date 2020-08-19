@@ -12,7 +12,7 @@ import {
 import useMedia from '../../helper/useMedia';
 export const TopBar = ({ data, button_color, bgColored }) => {
   const {
-    logo_link: { url: logo_url, name: logo_name },
+    logo: { url: logo_url, name: logo_name },
     sub_text: sub_title,
     apply_btn: { url: apply_btn_url, name: apply_btn_name }
   } = data;
