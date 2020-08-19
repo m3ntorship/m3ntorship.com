@@ -3,8 +3,6 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
 import githubLogo from '../../public/static/images/github.png';
 
-import '../../styles/cardStyle.css';
-
 const CardItem = ({ subTitle, cardDesc }) => {
   return (
     <div className="repo__card my-3 border border-c100">
@@ -44,7 +42,7 @@ const CardItem = ({ subTitle, cardDesc }) => {
             <span className="ml-4 w-1/6">
               <img
                 className="inline-block w-8 h-5"
-                src="/static/images/right-arrow.svg"
+                src="../public/static/images/right-arrow.svg"
               ></img>
             </span>
           </Button>
