@@ -4,7 +4,7 @@ import Button from '../shared/Button';
 import githubLogo from '../../public/static/images/github.png';
 import rightArrow from '../../public/static/images/right-arrow.svg';
 import Link from 'next/link';
- 
+
 const CardItem = ({ data }) => {
   const {
     project_overview: { summary },
@@ -35,7 +35,7 @@ const CardItem = ({ data }) => {
               textColor="white"
               bgColor="black"
               btnSize="large"
-              customClassName="custom"
+              customClassName="sm:w-auto"
             >
               <span className="mr-4">
                 <img className="inline-block" src={githubLogo}></img>
@@ -52,7 +52,7 @@ const CardItem = ({ data }) => {
               btnSize="large"
               customClassName="custom"
               fontWeight="normal"
-              customClassName="underline"
+              customClassName="underline sm:w-auto"
             >
               <Link
                 href="/projects/[slug]"
@@ -61,7 +61,7 @@ const CardItem = ({ data }) => {
               >
                 VIEW PROJECT
               </Link>
-              <span className="ml-4 w-1/6">
+              <span className="ml-2 w-1/6">
                 <img className="inline-block w-8 h-5" src={rightArrow}></img>
               </span>
             </Button>
