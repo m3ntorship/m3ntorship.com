@@ -186,9 +186,17 @@ export const TopBar = ({ data, button_color, bgColored }) => {
     <motion.header
       animate={navAnimation}
       transition={{ duration: 0.5 }}
-      className={`py-10 z-10 w-full bg-c000 lg:py-16 text-center text-lg ${
-        bgColored ? 'bg-c200' : ''
-      } ${stickyMenu ? 'fixed' : ''}`}
+      className={cn(
+        'py-10',
+        'z-10',
+        'w-full',
+        'bg-c000',
+        'lg:py-16',
+        'text-center',
+        'text-lg',
+        bgColored ? 'bg-c200' : '',
+        stickyMenu ? 'fixed' : ''
+      )}
     >
       {isTablet ? (
         <div className="container flex items-center">
