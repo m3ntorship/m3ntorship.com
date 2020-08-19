@@ -19,90 +19,86 @@ const Patches = ({ data, batchesCards }) => {
   const containerVariants = {
     initial: {
       opacity: 0,
-      y: '50vh'
+      y: 100
     },
     animate: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.3
+        type: 'spring'
       }
     }
   };
   const cardListVariants = {
-    initial: {
-      opacity: 0,
-      y: 150
-    },
+    initial: {},
     animate: {
-      opacity: 1,
-      y: 0,
       transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.4
+        staggerChildren: 0.2
       }
     }
   };
   const cardVariants = {
     initial: {
-      scale: 0,
-      opacity: 0,
-      y: 150
+      scale: 0.2,
+      opacity: 0
     },
     animate: {
       scale: 1,
       opacity: 1,
-      y: 0
+      transition: {
+        type: 'spring'
+      }
     }
   };
   if ((data, batchesCards)) {
     const { title, description, dashed_card } = data;
     return (
       <motion.section
-        ref={containerRef}
         className="patches container"
         variants={containerVariants}
         initial="initial"
         animate={contianerInView ? 'animate' : ''}
       >
-        <div className="text-center">
-          {title && (
-            <Heading
-              as="h2"
-              type={HEADING_OPTIONS.TYPE.SECTION}
-              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
-            >
-              <GradientText text={title} className="uppercase font-bold" />
-            </Heading>
-          )}
-        </div>
-        {description && (
-          <p className="mb-10 mx-auto text-center text-base text-c600 lg:w-4/6">
-            {description}
-          </p>
-        )}
-        {batchesCards[0] && (
-          <motion.div
-            className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
-            variants={cardListVariants}
-            initial="initial"
-            animate={cardsInView ? 'animate' : ''}
-            ref={cardsRef}
-          >
-            {batchesCards.map(card => {
-              return (
-                <motion.div key={card.id} variants={cardVariants}>
-                  <PatchCard cardDetails={card} dashed={false} />
-                </motion.div>
-              );
-            })}
-            {dashed_card && (
-              <motion.div variants={cardVariants}>
-                <PatchCard cardDetails={dashed_card} dashed={true} />
-              </motion.div>
+        <div ref={containerRef}>
+          <div className="text-center">
+            {title && (
+              <Heading
+                as="h2"
+                type={HEADING_OPTIONS.TYPE.SECTION}
+                textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+              >
+                <GradientText text={title} className="uppercase font-bold" />
+              </Heading>
             )}
-          </motion.div>
-        )}
+          </div>
+          {description && (
+            <p className="mb-10 mx-auto text-center text-base text-c600 lg:w-4/6">
+              {description}
+            </p>
+          )}
+          {batchesCards[0] && (
+            <motion.div
+              className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
+              variants={cardListVariants}
+              initial="initial"
+              animate={cardsInView ? 'animate' : ''}
+              ref={cardsRef}
+            >
+              {batchesCards.map(card => {
+                return (
+                  <motion.div key={card.id} variants={cardVariants}>
+                    <PatchCard cardDetails={card} dashed={false} />
+                  </motion.div>
+                );
+              })}
+              {dashed_card && (
+                <motion.div variants={cardVariants}>
+                  <PatchCard cardDetails={dashed_card} dashed={true} />
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+        </div>{' '}
       </motion.section>
     );
   }

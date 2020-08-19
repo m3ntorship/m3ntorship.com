@@ -17,12 +17,11 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 
 const PatchCard = ({ cardDetails, dashed }) => {
   const { title, batch_mentees, description, link, batch_slug } = cardDetails;
-  console.log(batch_mentees);
   return (
     <>
       {cardDetails && (
         <div
-          className={cn('card', 'p-12', 'flex', 'flex-col', {
+          className={cn('card', 'p-12', 'flex', 'flex-col', 'h-full', {
             'bg-c400': !dashed,
             'border-dashed border-4 border-black': dashed
           })}
