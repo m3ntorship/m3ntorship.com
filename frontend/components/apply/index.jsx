@@ -49,7 +49,6 @@ const Apply = ({ data, inputFields }) => {
                     }}
                     borderStyle="solid"
                     borderColor="black"
-                    btnSize="small"
                     customClassName="text-c100 mr-6 mt-6 lg:mt-0 font-black"
                   >
                     {MenteeButton.text}
@@ -57,7 +56,6 @@ const Apply = ({ data, inputFields }) => {
                 ) : (
                   <Button
                     bgColor={MenteeButton.textColor}
-                    btnSize="small"
                     customClassName="mr-6 mt-6 lg:mt-0 font-black"
                     onClick={e => {
                       e.preventDefault();
@@ -78,7 +76,6 @@ const Apply = ({ data, inputFields }) => {
                   <Button
                     textColor="white"
                     bgColor={MentorButton.textColor}
-                    btnSize="small"
                     customClassName="font-black mt-6 lg:mt-0"
                     onClick={e => {
                       e.preventDefault();
@@ -109,7 +106,6 @@ const Apply = ({ data, inputFields }) => {
                       );
                     }}
                     borderStyle="solid"
-                    btnSize="small"
                     borderColor={MentorButton.textColor}
                     customClassName="text-c300 font-black mt-6 lg:mt-0"
                   >
