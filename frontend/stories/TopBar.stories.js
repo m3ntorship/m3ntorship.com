@@ -8,7 +8,7 @@ export default {
   decorators: [withKnobs]
 };
 const data = {
-  logo: { url: '/', name: 'M3ntorship' },
+  logo_link: { url: '/', name: 'M3ntorship' },
   sub_text: 'Level-up your tech skills',
   apply_btn: { url: '/apply', name: 'APPLY NOW' }
 };
