@@ -38,7 +38,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
     threshold: isDesktop ? 0.1 : 0.05
   });
 
-  if (projectsInfoData && projectsData) {
+  if (projectsInfoData.projects_brief && projectsData) {
     const {
       projects_brief: {
         title,
@@ -49,7 +49,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
     return (
       <section className="real-projects relative" ref={ref}>
         <div className="absolute hidden lg:block top-12 right-12">
-          <img src={url} alt="sideImage" className='w-1/2 float-right' />
+          <img src={url} alt="sideImage" className="w-1/2 float-right" />
         </div>
         <motion.div
           variants={projectsSectionVariants}
@@ -84,6 +84,8 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
         </motion.div>
       </section>
     );
+  } else {
+    return null;
   }
 };
 
