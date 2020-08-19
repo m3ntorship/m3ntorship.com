@@ -7,29 +7,50 @@ import Footer from './../../components/footer/index';
 import { TopBar } from './../../components/TopBar/index';
 import SectionHeader from './../../components/shared/SectionHeader/index';
 import Button from './../../components/shared/Button/index';
+import Head from 'next/head';
 
 const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
-  const { website_url } = websiteUrl;
-  const {
-    project_head,
-    project_head: {
-      link: { name: repo_btn_name, url: repo_link }
-    }
-  } = projectData[0];
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
   if (!projectData || projectData.statusCode === 404)
     return <Error statusCode={404} />;
+
+  const {
+    project_head,
+    project_head: {
+      link: { name: repo_btn_name, url: repo_link }
+    }
+  } = projectData[0];
+  const { website_url } = websiteUrl;
   return (
     <>
-      <TopBar data={topBarData} />
+      <Head>
+        <link
+          rel="canonical"
+          href={`${website_url}/projects/${projectData[0].project_slug}`}
+        />
 
+        <meta
+          property="og:url"
+          content={`${website_url}/projects/${projectData[0].project_slug}`}
+        />
+        <meta
+          property="og:title"
+          content={`M3ntorship Projects ${projectData[0].project_slug}`}
+        />
+        <meta property="og:image" content={`${website_url}/image.jpg`} />
+        <meta property="og:description" content={projectData[0].description} />
+
+        <title>{`M3ntorship Projects - ${projectData[0].project_slug}`} </title>
+        <meta name="description" content={projectData[0].description} />
+      </Head>
+      <TopBar data={topBarData} />
       <main className="container">
         <SectionHeader
           data={project_head}
-          customClassName="py-0 order-2 lg:order-none"
+          customClassName="order-2 lg:order-none"
         >
           {repo_link && repo_btn_name && (
             <Button
@@ -62,7 +83,6 @@ export async function getStaticPaths() {
   let paths = [];
   return mentorshipAPI('/projects')
     .then(({ data }) => {
-
       paths = data.map(({ project_slug }) => ({
         params: { slug: project_slug }
       }));

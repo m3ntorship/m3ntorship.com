@@ -3,6 +3,7 @@ import { HEADING_OPTIONS, Heading } from '../shared/Heading';
 import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const cardVaruants = {
   scale: {
@@ -50,13 +51,19 @@ const ProjectCard = ({ data }) => {
         )}
         {project_slug && nav_to_project_page_text && (
           <div className="inline-block text-right w-1/2 mb-6">
-            <a href={project_slug} className="font-bold inline-block">
-              {nav_to_project_page_text}
-              <img
-                className="inline-block ml-2 w-4"
-                src="/static/images/right-arrow.svg"
-              ></img>
-            </a>
+            <Link
+              href="/projects/[slug]"
+              as={`/projects/${project_slug}`}
+              passHref
+            >
+              <a className="font-bold inline-block">
+                {nav_to_project_page_text}
+                <img
+                  className="inline-block ml-2 w-4"
+                  src="/static/images/right-arrow.svg"
+                ></img>
+              </a>
+            </Link>
           </div>
         )}
       </div>
