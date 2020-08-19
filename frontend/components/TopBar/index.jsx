@@ -31,7 +31,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
         navAnimation.start({ y: 0, opacity: 1 });
       } else {
         setStickyMenu(false);
-        navAnimation.start({ y: -50, opacity: 0 });
+        navAnimation.start({ y: -50 });
       }
 
       console.log(yPos, lastYPos);
