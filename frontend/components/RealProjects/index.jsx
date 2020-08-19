@@ -35,7 +35,8 @@ const projectsCardVariants = {
 const RealProjects = ({ projectsInfoData, projectsData }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
   const [ref, inView] = useInView({
-    threshold: isDesktop ? 0.1 : 0.05
+    threshold: isDesktop ? 0.1 : 0.05,
+    triggerOnce: true
   });
 
   if (projectsInfoData.projects_brief && projectsData) {

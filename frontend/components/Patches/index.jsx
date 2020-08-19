@@ -8,12 +8,13 @@ import PatchCard from '../patch-card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 const Patches = ({ data, batchesCards }) => {
-  const { title, description, dashed_card } = data;
   const [containerRef, contianerInView] = useInView({
-    threshold: 0.1
+    threshold: 0.1,
+    triggerOnce: true
   });
   const [cardsRef, cardsInView] = useInView({
-    threshold: 0.3
+    threshold: 0.3,
+    triggerOnce: true
   });
   const containerVariants = {
     initial: {
@@ -55,6 +56,7 @@ const Patches = ({ data, batchesCards }) => {
     }
   };
   if ((data, batchesCards)) {
+    const { title, description, dashed_card } = data;
     return (
       <motion.section
         ref={containerRef}
