@@ -26,20 +26,18 @@ export const TopBar = ({ data, button_color, bgColored }) => {
     const handleScroll = () => {
       const yPos = window.scrollY;
       const isScollingUp = lastYPos > yPos;
+      const isScrollingDown = yPos > lastYPos;
       if (isScollingUp) {
         setStickyMenu(true);
         navAnimation.start({
           y: 0,
-          opacity: 1,
           transition: {
             duration: 0.5
           }
         });
-      } else {
-        setStickyMenu(false);
+      } else if (isScrollingDown) {
         navAnimation.start({ y: -500 });
       }
-
       console.log(yPos, lastYPos);
       setLastYPos(yPos);
       if (yPos == 0) {
@@ -50,7 +48,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll, false);
     };
-  }, [lastYPos]);
+  }, [lastYPos, router.pathname]);
 
   const navMenuListVariants = {
     initial: {
@@ -172,6 +170,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
 
   return (
     <motion.header
+      initial={{ y: 0, opacity: 1 }}
       animate={navAnimation}
       transition={{ duration: 0.5 }}
       className={cn(
