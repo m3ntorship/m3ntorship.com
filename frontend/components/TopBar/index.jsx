@@ -28,10 +28,16 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       const isScollingUp = lastYPos > yPos;
       if (isScollingUp) {
         setStickyMenu(true);
-        navAnimation.start({ y: 0, opacity: 1 });
+        navAnimation.start({
+          y: 0,
+          opacity: 1,
+          transition: {
+            duration: 0.5
+          }
+        });
       } else {
         setStickyMenu(false);
-        navAnimation.start({ y: -50 });
+        navAnimation.start({ y: -500 });
       }
 
       console.log(yPos, lastYPos);
