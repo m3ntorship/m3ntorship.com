@@ -15,15 +15,10 @@ const CardItem = ({ subTitle, cardDesc }) => {
         >
           Chairty
         </Heading>
-        <span className="mt-6  text-c700 text-base">{subTitle}</span>
+        <span className="mt-6 text-c700 text-base">{subTitle}</span>
         <p className="mt-6 text-sm">{cardDesc}</p>
         <div className="mt-6">
-          <Button
-            textColor="white"
-            bgColor="black"
-            btnSize="large"
-            customClassName="custom"
-          >
+          <Button textColor="white" bgColor="black" btnSize="large">
             <span className="mr-4">
               <img className="inline-block" src={githubLogo}></img>
             </span>
@@ -35,7 +30,6 @@ const CardItem = ({ subTitle, cardDesc }) => {
             textColor="black"
             bgColor="gray"
             btnSize="large"
-            customClassName="custom"
             fontWeight="normal"
             customClassName="underline"
           >
