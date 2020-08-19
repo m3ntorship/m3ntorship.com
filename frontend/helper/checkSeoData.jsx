@@ -1,4 +1,4 @@
-export default (seoData,setting) => {
+const checkSeoData = (seoData, setting) => {
   if (seoData.length && setting.website_url) {
     const {
       seo: {
@@ -8,7 +8,7 @@ export default (seoData,setting) => {
         open_graph_image: { url: image_url }
       }
     } = seoData[0];
-    const {website_url} = setting;
+    const { website_url } = setting;
 
     return (
       <>
@@ -24,3 +24,5 @@ export default (seoData,setting) => {
   }
   return <></>;
 };
+
+export default checkSeoData;

@@ -37,7 +37,8 @@ const TeamGroupSection = ({ data }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
 
   const [sectionRef, inView] = useInView({
-    threshold: 0.5
+    threshold: 0.5,
+    triggerOnce: true
   });
 
   if (data) {
