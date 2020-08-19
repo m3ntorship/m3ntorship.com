@@ -50,7 +50,8 @@ const CardItem = ({ data }) => {
               bgColor="gray"
               customClassName="custom"
               fontWeight="normal"
-              customClassName="underline sm:w-64 w-auto m-auto py-3"
+              customClassName="underline sm:w-64 w-auto m-auto py-4"
+              textSize='medium'
             >
               <Link
                 href="/projects/[slug]"
