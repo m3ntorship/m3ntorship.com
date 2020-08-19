@@ -6,7 +6,8 @@ import { useInView } from 'react-intersection-observer';
 const Goals = ({ data }) => {
   const { title, list_goals, side_image } = data;
   const [ref, inView] = useInView({
-    threshold: 0.1
+    threshold: 0.1,
+    triggerOnce: true
   });
   const containerVariants = {
     initial: {
@@ -54,7 +55,7 @@ const Goals = ({ data }) => {
           className="absolute hidden xl:block -top-12 right-12"
           variants={sideImageVariants}
         >
-          {side_image && <img src={side_image.url} alt="side icon"/>}
+          {side_image && <img src={side_image.url} alt="side icon" />}
         </motion.div>
         {title && (
           <Heading

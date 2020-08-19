@@ -51,7 +51,8 @@ const SectionHeader = ({
   headingAs
 }) => {
   const [headerRef, headerInView] = useInView({
-    threshold: 0.1
+    threshold: 0.1,
+    triggerOnce: true
   });
 
   const {
