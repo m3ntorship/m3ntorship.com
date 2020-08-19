@@ -57,12 +57,12 @@ const BatchPage = ({
       <Head>
         <link
           rel="canonical"
-          href={`${website_url}/batchs/${batchData[0].batch_slug}`}
+          href={`${website_url}/batches/${batchData[0].batch_slug}`}
         />
 
         <meta
           property="og:url"
-          content={`${website_url}/batchs/${batchData[0].batch_slug}`}
+          content={`${website_url}/batches/${batchData[0].batch_slug}`}
         />
         <meta
           property="og:title"
