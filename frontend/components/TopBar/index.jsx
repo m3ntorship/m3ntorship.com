@@ -3,7 +3,13 @@ import Button from '../shared/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
+import {
+  motion,
+  AnimateSharedLayout,
+  AnimatePresence,
+  useViewportScroll,
+  useAnimation
+} from 'framer-motion';
 import useMedia from '../../helper/useMedia';
 export const TopBar = ({ data, button_color, bgColored }) => {
   const {
@@ -11,10 +17,37 @@ export const TopBar = ({ data, button_color, bgColored }) => {
     sub_text: sub_title,
     apply_btn: { url: apply_btn_url, name: apply_btn_name }
   } = data;
+  const navAnimation = useAnimation();
+  const [lastYPos, setLastYPos] = useState(0);
+  const [stickyMenu, setStickyMenu] = useState(false);
   const router = useRouter();
   const isTablet = useMedia(['(max-width: 768px)'], [false], true);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [menu, setMenu] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const yPos = window.scrollY;
+      const isScollingUp = lastYPos > yPos;
+      if (isScollingUp) {
+        setStickyMenu(true);
+        navAnimation.start({ y: 0, opacity: 1 });
+      } else {
+        setStickyMenu(false);
+        navAnimation.start({ y: -50, opacity: 0 });
+      }
+
+      console.log(yPos, lastYPos);
+      setLastYPos(yPos);
+      if (yPos == 0) {
+        setStickyMenu(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, false);
+    return () => {
+      window.removeEventListener('scroll', handleScroll, false);
+    };
+  }, [lastYPos]);
+
   const navMenuListVariants = {
     initial: {
       opacity: 0,
@@ -150,18 +183,15 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   };
 
   return (
-    <header
-      className={`py-10 lg:py-16 text-center text-lg ${
+    <motion.header
+      animate={navAnimation}
+      transition={{ duration: 0.5 }}
+      className={`py-10 z-10 w-full bg-c000 lg:py-16 text-center text-lg ${
         bgColored ? 'bg-c200' : ''
-      }`}
+      } ${stickyMenu ? 'fixed' : ''}`}
     >
       {isTablet ? (
-        <motion.div
-          initial={{ y: -200, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', duration: 0.5 }}
-          className="container flex items-center"
-        >
+        <div className="container flex items-center">
           <div className="flex flex-col">
             {logo_url && (
               <Link href={logo_url}>
@@ -215,15 +245,10 @@ export const TopBar = ({ data, button_color, bgColored }) => {
               </Link>
             )}
           </div>
-        </motion.div>
+        </div>
       ) : (
         <AnimateSharedLayout>
-          <motion.div
-            initial={{ y: -200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ type: 'spring', duration: 0.5 }}
-            className="container flex items-baseline flex-wrap flex-col"
-          >
+          <div className="container flex items-baseline flex-wrap flex-col">
             <div className="flex flex-row flex-wrap w-full">
               {logo_url && (
                 <Link href={logo_url}>
@@ -321,9 +346,9 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                 </div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </AnimateSharedLayout>
       )}
-    </header>
+    </motion.header>
   );
 };
