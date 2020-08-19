@@ -163,14 +163,12 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       animate={navAnimation}
       transition={{ duration: 0.5 }}
       className={cn(
-        'pt-10',
-        !menu ? 'pb-10' : '',
-        'md:py-10',
+        stickyMenu ? 'md:py-4 lg:py-8' : 'pt-10 md:py-10 lg:py-16',
+        menu ? '' : 'pb-10',
         'z-10',
         'top-0',
         'w-full',
         'bg-c000',
-        'lg:py-16',
         'text-center',
         'text-lg',
         bgColored ? 'bg-c200' : '',
@@ -281,7 +279,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
               </nav>
             )}
           </AnimatePresence>
-          <div className="ml-auto hidden flex-row md:flex">
+          <nav className="ml-auto hidden flex-row md:flex">
             <ul className="flex flex-row items-center">
               {navlinks.map(nav => {
                 const { url, name } = nav;
@@ -302,8 +300,8 @@ export const TopBar = ({ data, button_color, bgColored }) => {
             {apply_btn_url && (
               <Link href={apply_btn_url} passHref>
                 <Button
-                  btnSize={ 'small'}
-                  textSize={ 'small'}
+                  btnSize={'small'}
+                  textSize={'small'}
                   textColor={
                     button_color
                       ? button_color === 'blue'
@@ -320,7 +318,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                 </Button>
               </Link>
             )}
-          </div>
+          </nav>
         </div>
       </AnimateSharedLayout>
 
