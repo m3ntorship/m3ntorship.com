@@ -59,6 +59,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       opacity: 1,
       height: 'auto',
       transition: {
+        duration: 0.05,
         when: 'beforeChildren',
         staggerChildren: 0.1
       }
