@@ -12,7 +12,7 @@ const CardItem = ({ data }) => {
     project_head: { link },
     project_slug,
     subTitle
-  } = data[0];
+  } = data;
   return (
     <div className="repo__card my-3 border border-c100">
       <div className="m-12">
