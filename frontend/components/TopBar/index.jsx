@@ -136,12 +136,14 @@ export const TopBar = ({ data, button_color, bgColored }) => {
 
   const NavLink = ({ url, name, active, mobile }) => {
     return (
-      <Link href={url}>
+      <Link href={active ? '#' : url}>
         <a>
           <div className="flex flex-row capitalize">
             <p
               className={cn(
-                mobile ? 'text-sm' : 'text-xxs font-black',
+                mobile
+                  ? 'text-sm'
+                  : 'text-xxs font-black hover:text-c300 hover:underline',
                 active ? 'text-c100' : 'text-c1300'
               )}
             >
@@ -224,7 +226,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
           </div>
           <AnimatePresence>
             {menu && (
-              <div className="flex flex-col items-baseline w-full md:hidden">
+              <nav className="flex flex-col items-baseline w-full md:hidden">
                 <motion.ul
                   className="flex flex-col w-full items-baseline pl-2"
                   variants={navMenuListVariants}
@@ -256,8 +258,8 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                     >
                       <Link href={apply_btn_url} passHref>
                         <Button
-                          btnSize={isDesktop ? 'medium' : 'small'}
-                          textSize={isDesktop ? 'medium' : 'small'}
+                          btnSize={'medium'}
+                          textSize={'medium'}
                           textColor={
                             button_color
                               ? button_color === 'blue'
@@ -276,7 +278,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                     </motion.li>
                   )}
                 </motion.ul>
-              </div>
+              </nav>
             )}
           </AnimatePresence>
           <div className="ml-auto hidden flex-row md:flex">
@@ -300,8 +302,8 @@ export const TopBar = ({ data, button_color, bgColored }) => {
             {apply_btn_url && (
               <Link href={apply_btn_url} passHref>
                 <Button
-                  btnSize={isDesktop ? 'medium' : 'small'}
-                  textSize={isDesktop ? 'medium' : 'small'}
+                  btnSize={ 'small'}
+                  textSize={ 'small'}
                   textColor={
                     button_color
                       ? button_color === 'blue'
