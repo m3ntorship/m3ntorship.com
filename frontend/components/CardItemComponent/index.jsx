@@ -2,11 +2,12 @@ import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
 import githubLogo from '../../public/static/images/github.png';
-import './style.css';
+import rightArrowLogo from '../../public/static/images/rightArrow.png';
+import '../../styles/cardStyle.css';
 
-const RepoCardItem = ({ subTitle, cardDesc, isHoverd }) => {
+const RepoCardItem = ({ subTitle, cardDesc }) => {
   return (
-    <div className="repo__card my-3 border border-c100 max-w-sm">
+    <div className="repo__card my-3 border border-c100 ">
       <div className="m-12">
         <Heading
           as="h2"
@@ -24,7 +25,7 @@ const RepoCardItem = ({ subTitle, cardDesc, isHoverd }) => {
             btnSize="large"
             customClassName="custom"
           >
-            <span className="mr-5">
+            <span className="mr-4">
               <img className="inline-block" src={githubLogo}></img>
             </span>
             REPOSITRY
@@ -40,8 +41,8 @@ const RepoCardItem = ({ subTitle, cardDesc, isHoverd }) => {
             customClassName="underline"
           >
             VIEW PROJECT
-            <span className="mr-5">
-              <img className="inline-block" src={githubLogo}></img>
+            <span className="ml-4 w-1/6">
+              <img className="inline-block" src={rightArrowLogo}></img>
             </span>
           </Button>
         </div>

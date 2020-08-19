@@ -1,5 +1,5 @@
 import React from 'react';
-import RepoCardItem from '../components/RepoCardItem';
+import RepoCardItem from '../components/CardItemComponent';
 
 export default {
   title: 'Repo Card Item',
