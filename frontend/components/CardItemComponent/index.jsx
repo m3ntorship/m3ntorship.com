@@ -42,7 +42,7 @@ const CardItem = ({ subTitle, cardDesc }) => {
           >
             VIEW PROJECT
             <span className="ml-4 w-1/6">
-              <img className="inline-block w-2/5" src={rightArrowLogo}></img>
+              <img className="inline-block w-8 h-5" src={rightArrowLogo}></img>
             </span>
           </Button>
         </div>
