@@ -306,6 +306,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                       </li>
                     );
                   }
+                  return menu;
                 }, [])}
               </ul>
               {apply_btn_url && (
