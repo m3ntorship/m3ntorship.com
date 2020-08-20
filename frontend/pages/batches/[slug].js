@@ -20,7 +20,6 @@ const BatchPage = ({
   topBarData,
   footerData,
   websiteUrl,
-  projectsInfoData,
   pagesData,
   batchProjectsDesc
 }) => {
@@ -172,7 +171,6 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/setting'),
-    mentorshipAPI('/projects-info'),
     mentorshipAPI('/pages'),
     mentorshipAPI('/batch-projects-description')
   ];
@@ -184,7 +182,6 @@ export async function getStaticProps({ params: { slug } }) {
       { data: topBarData },
       { data: footerData },
       { data: websiteUrl },
-      { data: projectsInfoData },
       { data: pagesData },
       { data: batchProjectsDesc }
     ]) => {
@@ -196,7 +193,6 @@ export async function getStaticProps({ params: { slug } }) {
           topBarData,
           footerData,
           websiteUrl,
-          projectsInfoData,
           pagesData,
           batchProjectsDesc
         },
