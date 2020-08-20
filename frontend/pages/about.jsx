@@ -19,9 +19,10 @@ const About = ({ websiteUrl, metaData, data }) => {
     return (
       <>
         <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+        <TopBar data={topBarData} bgColored={true} />
         <main>
           <motion.div style={{ y: y1 }}>
-            <TopBar data={topBarData} bgColored={true} />
+            <div className="h-24 md:h-48 w-full bg-c200"></div>
             <ParallaxedHeader data={about_head} />
           </motion.div>
           <section className="container">
