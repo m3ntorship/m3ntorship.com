@@ -14,12 +14,22 @@ const About = ({ websiteUrl, metaData, data }) => {
   const y1 = useTransform(scrollY, [0, 900], [0, 150]);
 
   if (data) {
-    const { aboutData, teamGroupData, topBarData, footerData } = data;
+    const {
+      aboutData,
+      teamGroupData,
+      topBarData,
+      footerData,
+      pagesData
+    } = data;
     const { about_head, about_description } = aboutData;
     return (
       <>
         <Head>{checkSeoData(metaData, websiteUrl)}</Head>
-        <TopBar data={topBarData} bgColored={true} />
+        <TopBar
+          data={topBarData}
+          bgColored={true}
+          navigationLinks={pagesData}
+        />
         <main>
           <motion.div style={{ y: y1 }}>
             <div className="h-24 md:h-48 w-full bg-c200"></div>
@@ -45,7 +55,8 @@ export async function getStaticProps() {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/pages-seos?page_name=about'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/pages')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -54,7 +65,8 @@ export async function getStaticProps() {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: pagesData }
     ]) => {
       return {
         props: {
@@ -62,7 +74,8 @@ export async function getStaticProps() {
             aboutData,
             teamGroupData,
             topBarData,
-            footerData
+            footerData,
+            pagesData
           },
           metaData,
           websiteUrl

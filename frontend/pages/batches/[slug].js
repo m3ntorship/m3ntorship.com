@@ -21,7 +21,8 @@ const BatchPage = ({
   topBarData,
   footerData,
   websiteUrl,
-  projectsInfoData
+  projectsInfoData,
+  pagesData
 }) => {
   const router = useRouter();
   if (router.isFallback) {
@@ -79,7 +80,7 @@ const BatchPage = ({
         <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
         <meta name="description" content={batchData[0].description} />
       </Head>
-      <TopBar data={topBarData} />
+      <TopBar data={topBarData} navigationLinks={pagesData} />
       <main>
         <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
           <SectionHeader
@@ -168,7 +169,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/setting'),
-    mentorshipAPI('/projects-info')
+    mentorshipAPI('/projects-info'),
+    mentorshipAPI('/pages')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -179,7 +181,8 @@ export async function getStaticProps({ params: { slug } }) {
       { data: topBarData },
       { data: footerData },
       { data: websiteUrl },
-      { data: projectsInfoData }
+      { data: projectsInfoData },
+      { data: pagesData }
     ]) => {
       return {
         props: {
@@ -190,7 +193,8 @@ export async function getStaticProps({ params: { slug } }) {
           topBarData,
           footerData,
           websiteUrl,
-          projectsInfoData
+          projectsInfoData,
+          pagesData
         },
         revalidate: 1
       };
