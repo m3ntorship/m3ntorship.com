@@ -12,7 +12,7 @@ const Goals = ({ data }) => {
   const containerVariants = {
     initial: {
       opacity: 0,
-      y: '50vh'
+      y: '100px'
     },
     animate: {
       opacity: 1,
@@ -25,7 +25,7 @@ const Goals = ({ data }) => {
   const sideImageVariants = {
     initial: {
       opacity: 0,
-      x: '50vw'
+      x: '400px'
     },
     animate: {
       opacity: 1,
@@ -35,7 +35,7 @@ const Goals = ({ data }) => {
   const goalVariants = {
     initial: {
       opacity: 0,
-      x: '-50vw'
+      x: '-400px'
     },
     animate: {
       opacity: 1,
