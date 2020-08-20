@@ -11,10 +11,10 @@ const CardItem = ({ data }) => {
     project_name,
     project_head: { link },
     project_slug,
-    subTitle
+    project_stack
   } = data;
   return (
-    <div className="repo__card my-3 border py-10 px-4 md:px10 border-c100">
+    <div className="repo__card my-3 border py-10 px-6 md:px-12 border-c100">
       <div>
         {project_name && (
           <Heading
@@ -25,8 +25,8 @@ const CardItem = ({ data }) => {
             {project_name}
           </Heading>
         )}
-        {subTitle && (
-          <span className="mt-6  text-c700 text-base">{subTitle}</span>
+        {project_stack && (
+          <span className="mt-6  text-c700 text-base">{project_stack}</span>
         )}
         {summary && <p className="mt-6 text-sm">{summary}</p>}
         <div className="mt-6">
@@ -34,7 +34,7 @@ const CardItem = ({ data }) => {
             <Button
               textColor="white"
               bgColor="black"
-              customClassName="m-auto sm:w-64 w-auto py-2"
+              customClassName="m-auto py-2"
             >
               <span className="mr-4">
                 <img className="inline-block" src={githubLogo}></img>
@@ -50,7 +50,7 @@ const CardItem = ({ data }) => {
               bgColor="gray"
               customClassName="custom"
               fontWeight="normal"
-              customClassName="underline sm:w-64 w-auto m-auto py-4"
+              customClassName="underline m-auto py-4"
               textSize='medium'
             >
               <Link
