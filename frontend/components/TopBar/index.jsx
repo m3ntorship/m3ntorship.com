@@ -181,7 +181,9 @@ export const TopBar = ({ data, button_color, bgColored }) => {
         animate={navAnimation}
         transition={{ duration: 0.5 }}
         className={cn(
-          stickyMenu ? 'md:py-4 lg:py-8 pt-4' : 'pt-10 md:py-10 lg:py-16',
+          stickyMenu
+            ? 'md:py-4 lg:py-8 pt-4 shadow-2xl'
+            : 'pt-10 md:py-10 lg:py-16',
           menu ? '' : 'pb-10',
           'z-10',
           'top-0',
@@ -190,8 +192,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
           'text-center',
           'text-lg',
           'fixed',
-          bgColored ? 'bg-c200' : '',
-          stickyMenu ? 'shadow-2xl' : ''
+          bgColored ? 'bg-c200' : ''
         )}
       >
         <AnimateSharedLayout>
