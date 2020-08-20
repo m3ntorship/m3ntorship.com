@@ -121,14 +121,14 @@ const BatchPage = ({
               </Button>
             )}
           </SectionHeader>
-          <BatchProjects
-            projectsInfoData={batchProjectsDesc}
-            projectsData={batchProjects}
-          />
           <div className="order-1 lg:order-none">
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
+        <BatchProjects
+          projectsInfoData={batchProjectsDesc}
+          projectsData={batchProjects}
+        />
         <Team data={batchTeamData} team_members={team_members} />
         <JoinUs data={joinUsData} />
       </main>
