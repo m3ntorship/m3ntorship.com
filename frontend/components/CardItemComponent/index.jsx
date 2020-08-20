@@ -30,46 +30,44 @@ const CardItem = ({ data }) => {
         <div className="mt-6">
           {link && (
             <Button
+              href={link.url}
               textColor="white"
               bgColor="black"
               customClassName="m-auto py-2 h-20"
               btnSize="large"
             >
               <span className="mr-4">
-                <img
-                  className="inline-block"
-                  src="../static/images/github.png"
-                ></img>
+                <img className="w-8" src="/static/images/github.png" />
               </span>
-              <a href={link.url}>{link.name}</a>
+              {link.name}
             </Button>
           )}
         </div>
         <div className="mt-6">
           {project_slug && (
-            <Button
-              textColor="black"
-              bgColor="gray"
-              customClassName="custom"
-              fontWeight="normal"
-              customClassName="underline m-auto py-4  h-20"
-              textSize="medium"
-              btnSize="large"
+            <Link
+              href="/projects/[slug]"
+              as={`/projects/${project_slug}`}
+              passHref
             >
-              <Link
-                href="/projects/[slug]"
-                as={`/projects/${project_slug}`}
-                passHref
+              <Button
+                textColor="black"
+                bgColor="gray"
+                customClassName="custom"
+                fontWeight="normal"
+                customClassName="underline m-auto py-4  h-20"
+                textSize="medium"
+                btnSize="large"
               >
                 VIEW PROJECT
-              </Link>
-              <span className="ml-2 w-1/6">
-                <img
-                  className="inline-block w-8 h-5"
-                  src="../static/images/right-arrow.svg"
-                ></img>
-              </span>
-            </Button>
+                <span className="ml-2 w-1/6">
+                  <img
+                    className="inline-block w-8 h-5"
+                    src="/static/images/right-arrow.svg"
+                  />
+                </span>
+              </Button>
+            </Link>
           )}
         </div>
       </div>
