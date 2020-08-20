@@ -80,7 +80,9 @@ const BatchPage = ({
         <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
         <meta name="description" content={batchData[0].description} />
       </Head>
-      <TopBar data={topBarData} navigationLinks={pagesData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <main>
         <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
           <SectionHeader

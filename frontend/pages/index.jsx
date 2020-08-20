@@ -35,7 +35,9 @@ export const Home = ({ data }) => {
     <>
       <Head>{checkSeoData(metaData, websiteUrl)}</Head>
 
-      <TopBar data={topBarData} navigationLinks={pagesData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
 
       <main>
         <SectionHeaderComponent data={home_header} />

@@ -57,7 +57,9 @@ const Projects = ({
         <title>{`M3ntorship Projects - ${projectData[0].project_slug}`} </title>
         <meta name="description" content={projectData[0].description} />
       </Head>
-      <TopBar data={topBarData} navigationLinks={pagesData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <main className="container">
         <SectionHeader
           data={project_head}

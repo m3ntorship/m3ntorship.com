@@ -25,11 +25,13 @@ const About = ({ websiteUrl, metaData, data }) => {
     return (
       <>
         <Head>{checkSeoData(metaData, websiteUrl)}</Head>
-        <TopBar
-          data={topBarData}
-          bgColored={true}
-          navigationLinks={pagesData}
-        />
+        {!topBarData.statusCode && !pagesData.statusCode && (
+          <TopBar
+            data={topBarData}
+            bgColored={true}
+            navigationLinks={pagesData}
+          />
+        )}
         <main>
           <motion.div style={{ y: y1 }}>
             <div className="h-24 md:h-48 w-full bg-c200"></div>
