@@ -10,19 +10,19 @@ import Error from '../../pages/_error';
 import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
-import RealProjects from '../../components/RealProjects';
+import BatchProjects from '../../components/BatchProjects';
 
 import Head from 'next/head';
 const BatchPage = ({
   batchData,
-  sectionHeaderData,
   batchTeamData,
   joinUsData,
   topBarData,
   footerData,
   websiteUrl,
   projectsInfoData,
-  pagesData
+  pagesData,
+  batchProjectsDesc
 }) => {
   const router = useRouter();
   if (router.isFallback) {
@@ -53,11 +53,13 @@ const BatchPage = ({
       }
     }) => ({ url, title })
   );
+  const { batch_header: sectionHeaderData } = batchData[0];
   const {
     repo_btn: { name: repo_btn_name, url: repo_link },
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
   const { website_url } = websiteUrl;
+
   return (
     <>
       <Head>
@@ -128,11 +130,11 @@ const BatchPage = ({
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
-        <Team data={batchTeamData} team_members={team_members} />
-        <RealProjects
-          projectsInfoData={projectsInfoData}
+        <BatchProjects
+          projectsInfoData={batchProjectsDesc}
           projectsData={batchProjects}
         />
+        <Team data={batchTeamData} team_members={team_members} />
         <JoinUs data={joinUsData} />
       </main>
       <Footer data={footerData} />
@@ -165,38 +167,38 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const endPoints = [
     mentorshipAPI(`/batches?batch_slug=${slug}`),
-    mentorshipAPI('/batch-header'),
     mentorshipAPI('/batch-team'),
     mentorshipAPI('/join-us-card'),
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/setting'),
     mentorshipAPI('/projects-info'),
-    mentorshipAPI('/pages')
+    mentorshipAPI('/pages'),
+    mentorshipAPI('/batch-projects-description')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: batchData },
-      { data: sectionHeaderData },
       { data: batchTeamData },
       { data: joinUsData },
       { data: topBarData },
       { data: footerData },
       { data: websiteUrl },
       { data: projectsInfoData },
-      { data: pagesData }
+      { data: pagesData },
+      { data: batchProjectsDesc }
     ]) => {
       return {
         props: {
           batchData,
-          sectionHeaderData,
           batchTeamData,
           joinUsData,
           topBarData,
           footerData,
           websiteUrl,
           projectsInfoData,
-          pagesData
+          pagesData,
+          batchProjectsDesc
         },
         revalidate: 1
       };
