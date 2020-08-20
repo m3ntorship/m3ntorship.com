@@ -59,6 +59,8 @@ const BatchPage = ({
   } = sectionHeaderData;
   const { website_url } = websiteUrl;
 
+  console.log(batchProjectsDesc);
+
   return (
     <>
       <Head>
@@ -129,7 +131,7 @@ const BatchPage = ({
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
-        {batchProjects.length < 1 && (
+        {batchProjects.length > 1 && batchProjectsDesc && (
           <BatchProjects
             projectsInfoData={batchProjectsDesc}
             projectsData={batchProjects}
