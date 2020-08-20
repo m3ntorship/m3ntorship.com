@@ -39,14 +39,8 @@ const BatchProjects = ({ projectsInfoData, projectsData }) => {
     triggerOnce: true
   });
 
-  if (projectsInfoData.projects_brief && projectsData) {
-    const {
-      projects_brief: {
-        title,
-        sub_title,
-        image: { url }
-      }
-    } = projectsInfoData;
+  if (projectsInfoData && projectsData) {
+    const { title, description } = projectsInfoData;
     return (
       <section className="real-projects" ref={ref}>
         <motion.div
@@ -65,9 +59,9 @@ const BatchProjects = ({ projectsInfoData, projectsData }) => {
             >
               {title && <GradientText text={title} />}
             </Heading>
-            {sub_title && (
+            {description && (
               <p className="text-center mx-auto text-base text-c600 md:w-2/3">
-                {sub_title}
+                {description}
               </p>
             )}
           </div>
@@ -87,8 +81,6 @@ const BatchProjects = ({ projectsInfoData, projectsData }) => {
         </motion.div>
       </section>
     );
-  } else {
-    return null;
   }
 };
 
