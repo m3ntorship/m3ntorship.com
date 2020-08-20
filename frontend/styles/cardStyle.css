@@ -1,7 +1,7 @@
 .repo__card {
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow: 10px 10px rgba(0, 0, 0, 1);
 }
 
 .repo__card:hover {
-  box-shadow: 10px 10px 5px 0px rgba(102, 242, 141, 0.61);
+  box-shadow: 10px 10px rgba(102, 242, 141, 0.61);
 }
