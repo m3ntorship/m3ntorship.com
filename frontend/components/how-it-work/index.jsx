@@ -77,7 +77,11 @@ const HowItWork = ({ data }) => {
                     index + 1
                   }`}</span>
                   <div className="z-10 bg-c000 h-full">
-                    <PersonCard cardDetails={el} boxShadow={true} />
+                    <PersonCard
+                      cardDetails={el}
+                      boxShadow={true}
+                      isImageFull={true}
+                    />
                   </div>
                 </motion.div>
               );
