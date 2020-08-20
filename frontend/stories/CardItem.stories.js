@@ -19,7 +19,8 @@ const data = {
   },
   project_slug: 'ghiras',
   project_name: 'ghiras',
-  id: '5f3b0603e637bff57e1fe49d'
+  id: '5f3b0603e637bff57e1fe49d',
+  project_stack: 'Front-end project'
 };
 
 export const CardItemShowCase = () => {
