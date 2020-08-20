@@ -20,7 +20,6 @@ const BatchPage = ({
   topBarData,
   footerData,
   websiteUrl,
-  projectsInfoData,
   pagesData,
   batchProjectsDesc
 }) => {
@@ -60,6 +59,8 @@ const BatchPage = ({
   } = sectionHeaderData;
   const { website_url } = websiteUrl;
 
+  console.log(batchProjectsDesc);
+
   return (
     <>
       <Head>
@@ -91,7 +92,7 @@ const BatchPage = ({
             data={sectionHeaderData}
             customClassName="py-0 order-2 lg:order-none"
           >
-            {repo_link && repo_btn_name && (
+            {repo_link && repo_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="white"
                 bgColor="black"
@@ -108,7 +109,7 @@ const BatchPage = ({
                 {repo_btn_name}
               </Button>
             )}
-            {project_link && project_btn_name && (
+            {project_link && project_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="black"
                 bgColor="gray"
@@ -130,10 +131,12 @@ const BatchPage = ({
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
-        <BatchProjects
-          projectsInfoData={batchProjectsDesc}
-          projectsData={batchProjects}
-        />
+        {batchProjects.length > 1 && batchProjectsDesc && (
+          <BatchProjects
+            projectsInfoData={batchProjectsDesc}
+            projectsData={batchProjects}
+          />
+        )}
         <Team data={batchTeamData} team_members={team_members} />
         <JoinUs data={joinUsData} />
       </main>
@@ -172,7 +175,6 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/setting'),
-    mentorshipAPI('/projects-info'),
     mentorshipAPI('/pages'),
     mentorshipAPI('/batch-projects-description')
   ];
@@ -184,7 +186,6 @@ export async function getStaticProps({ params: { slug } }) {
       { data: topBarData },
       { data: footerData },
       { data: websiteUrl },
-      { data: projectsInfoData },
       { data: pagesData },
       { data: batchProjectsDesc }
     ]) => {
@@ -196,7 +197,6 @@ export async function getStaticProps({ params: { slug } }) {
           topBarData,
           footerData,
           websiteUrl,
-          projectsInfoData,
           pagesData,
           batchProjectsDesc
         },
