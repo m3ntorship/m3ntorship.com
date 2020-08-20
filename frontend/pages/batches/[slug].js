@@ -15,7 +15,6 @@ import RealProjects from '../../components/RealProjects';
 import Head from 'next/head';
 const BatchPage = ({
   batchData,
-  sectionHeaderData,
   batchTeamData,
   joinUsData,
   topBarData,
@@ -52,11 +51,13 @@ const BatchPage = ({
       }
     }) => ({ url, title })
   );
+  const { batch_header: sectionHeaderData } = batchData[0];
   const {
     repo_btn: { name: repo_btn_name, url: repo_link },
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
   const { website_url } = websiteUrl;
+
   return (
     <>
       <Head>
@@ -162,7 +163,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const endPoints = [
     mentorshipAPI(`/batches?batch_slug=${slug}`),
-    mentorshipAPI('/batch-header'),
     mentorshipAPI('/batch-team'),
     mentorshipAPI('/join-us-card'),
     mentorshipAPI('/top-bar'),
@@ -173,7 +173,6 @@ export async function getStaticProps({ params: { slug } }) {
   return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: batchData },
-      { data: sectionHeaderData },
       { data: batchTeamData },
       { data: joinUsData },
       { data: topBarData },
@@ -184,7 +183,6 @@ export async function getStaticProps({ params: { slug } }) {
       return {
         props: {
           batchData,
-          sectionHeaderData,
           batchTeamData,
           joinUsData,
           topBarData,
