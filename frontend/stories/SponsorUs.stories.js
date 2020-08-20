@@ -6,24 +6,38 @@ export default {
   component: SponsorUs
 };
 
-const data = {
-  sponsorsLogos: [
-    { sponsorLogo: 'https://i.imgur.com/eBzT4Jy.png' },
-    { sponsorLogo: 'https://i.imgur.com/eCX9g0r.png' },
-    { sponsorLogo: 'https://i.imgur.com/46NXC9K.png' },
-    { sponsorLogo: 'https://i.imgur.com/J9AcZjP.png' },
-    { sponsorLogo: 'https://i.imgur.com/UhSvBgy.png' },
-    { sponsorLogo: 'https://i.imgur.com/k58X0Fy.png' }
-  ]
+const sponserUsData = {
+  title: 'Sponsor Us',
+  sub_title:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie',
+  sponsers_link: {
+    name: 'Sponsor Now',
+    url: '/sponerus'
+  }
 };
+
+const sponsersData = [
+  {
+    logo: {
+      url: 'https://s3.m3ntorship.net:443/m3ntorshipcom/Vector_1_acab9fca02.png'
+    },
+    id: '5f3e9a0e60028b62501e0846'
+  },
+  {
+    logo: {
+      url: 'https://s3.m3ntorship.net:443/m3ntorshipcom/Vector_1_acab9fca02.png'
+    },
+    id: '5f3e9a0e60028b62501e0846'
+  }
+];
 
 export const SponsorusShowCase = () => {
   return (
     <SponsorUs
-      cardDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie"
+      sponsersData={sponsersData}
+      sponserUsData={sponserUsData}
       withBtn={true}
       withIcons={true}
-      data={data}
     />
   );
 };
