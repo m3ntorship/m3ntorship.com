@@ -294,22 +294,19 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                   } = nav;
                   if (is_shown) {
                     menu.push(
-                      <motion.li
-                        className="my-4 lg:my-10 w-full"
+                      <li
+                        className="mx-4 lg:mx-5 w-full"
                         variants={navMenuItemVariants}
-                        whileHover={{ x: 15 }}
                       >
                         <NavLink
                           url={url}
                           name={name}
                           active={router.pathname === url ? true : false}
-                          mobile={true}
                         />
-                      </motion.li>
+                      </li>
                     );
                   }
-                  return menu;
-                }, [])}
+                })}
               </ul>
               {apply_btn_url && (
                 <Link href={apply_btn_url} passHref>
