@@ -41,7 +41,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
       } else if (isScrollingDown) {
         navAnimation.start({ y: -500 });
       }
-      console.log(yPos, lastYPos);
+
       setLastYPos(yPos);
       if (yPos == 0) {
         setFixed(false);
