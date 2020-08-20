@@ -58,9 +58,6 @@ const BatchPage = ({
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
   const { website_url } = websiteUrl;
-
-  console.log(batchProjectsDesc);
-
   return (
     <>
       <Head>
