@@ -19,6 +19,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   const navAnimation = useAnimation();
   const [lastYPos, setLastYPos] = useState(0);
   const [stickyMenu, setStickyMenu] = useState(false);
+  const [fixed, setFixed] = useState(false);
   const router = useRouter();
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [menu, setMenu] = useState(false);
@@ -28,6 +29,8 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       const isScollingUp = lastYPos > yPos;
       const isScrollingDown = yPos > lastYPos;
       if (isScollingUp) {
+        setMenu(false);
+        setFixed(true);
         setStickyMenu(true);
         navAnimation.start({
           y: 0,
@@ -41,6 +44,7 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       console.log(yPos, lastYPos);
       setLastYPos(yPos);
       if (yPos == 0) {
+        setFixed(false);
         setStickyMenu(false);
       }
     };
@@ -170,271 +174,178 @@ export const TopBar = ({ data, button_color, bgColored }) => {
   };
 
   return (
-    <motion.header
-      initial={{ y: 0, opacity: 1 }}
-      animate={navAnimation}
-      transition={{ duration: 0.5 }}
-      className={cn(
-        stickyMenu ? 'md:py-4 lg:py-8' : 'pt-10 md:py-10 lg:py-16',
-        menu ? '' : 'pb-10',
-        'z-10',
-        'top-0',
-        'w-full',
-        'bg-c000',
-        'text-center',
-        'text-lg',
-        bgColored ? 'bg-c200' : '',
-        stickyMenu ? 'fixed shadow-2xl' : ''
-      )}
-    >
-      <AnimateSharedLayout>
-        <div className="container flex md:flex-row flex-col items-center">
-          <div className="flex md:flex-col flex-row flex-wrap w-full md:w-auto">
-            {logo_url && (
-              <Link href={logo_url}>
-                <a className="text-md lg:text-lg font-black">{logo_name}</a>
-              </Link>
-            )}
-            {sub_title && isDesktop && (
-              <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
-                {sub_title}
-              </p>
-            )}
-            <div className="ml-auto pr-4">
-              {menu ? (
-                <motion.button
-                  layoutId="menu-button"
-                  initial={{ opacity: 0.5 }}
-                  animate={{ opacity: 1 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 500,
-                    damping: 30
-                  }}
-                  className="w-10 h-10 block md:hidden"
-                  onClick={() => setMenu(!menu)}
-                >
-                  {xCircleSvg}
-                </motion.button>
-              ) : (
-                <motion.button
-                  layoutId="menu-button"
-                  initial={{ opacity: 0.5 }}
-                  animate={{ opacity: 1 }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 500,
-                    damping: 30
-                  }}
-                  className="w-10 h-10 block md:hidden"
-                  onClick={() => setMenu(!menu)}
-                >
-                  {burgerSvg}
-                </motion.button>
+    <div className={cn(bgColored ? 'bg-c200' : '')}>
+      <motion.header
+        id="header"
+        initial={{ y: 0, opacity: 1 }}
+        animate={navAnimation}
+        transition={{ duration: 0.5 }}
+        className={cn(
+          stickyMenu ? 'md:py-4 lg:py-8 pt-4' : 'pt-10 md:py-10 lg:py-16',
+          menu ? '' : 'pb-10',
+          'z-10',
+          'top-0',
+          'w-full',
+          'bg-c000',
+          'text-center',
+          'text-lg',
+          'fixed',
+          bgColored ? 'bg-c200' : '',
+          stickyMenu ? 'shadow-2xl' : ''
+        )}
+      >
+        <AnimateSharedLayout>
+          <div className="container flex md:flex-row flex-col items-center">
+            <div className="flex md:flex-col flex-row flex-wrap w-full md:w-auto">
+              {logo_url && (
+                <Link href={logo_url}>
+                  <a className="text-md lg:text-lg font-black">{logo_name}</a>
+                </Link>
               )}
-            </div>
-          </div>
-          <AnimatePresence>
-            {menu && (
-              <nav className="flex flex-col items-baseline w-full md:hidden">
-                <motion.ul
-                  className="flex flex-col w-full items-baseline pl-2"
-                  variants={navMenuListVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                >
-                  {navlinks.map(nav => {
-                    const { url, name } = nav;
-                    return (
-                      <motion.li
-                        className="my-4 lg:my-10 w-full"
-                        variants={navMenuItemVariants}
-                        whileHover={{ x: 15 }}
-                      >
-                        <NavLink
-                          url={url}
-                          name={name}
-                          active={router.pathname === url ? true : false}
-                          mobile={true}
-                        />
-                      </motion.li>
-                    );
-                  })}
-                  {apply_btn_url && (
-                    <motion.li
-                      variants={navMenuItemVariants}
-                      className="w-full"
-                    >
-                      <Link href={apply_btn_url} passHref>
-                        <Button
-                          btnSize={'medium'}
-                          textSize={'medium'}
-                          textColor={
-                            button_color
-                              ? button_color === 'blue'
-                                ? 'white'
-                                : 'black'
-                              : 'black'
-                          }
-                          customClassName={`my-5 md:my-10 w-full uppercase top-bar-btn ${
-                            bgColored ? 'shadow-btn' : ''
-                          }`}
-                          bgColor={button_color ? button_color : 'green'}
-                        >
-                          {apply_btn_name}
-                        </Button>
-                      </Link>
-                    </motion.li>
-                  )}
-                </motion.ul>
-              </nav>
-            )}
-          </AnimatePresence>
-          <nav className="ml-auto hidden flex-row md:flex">
-            <ul className="flex flex-row items-center">
-              {navlinks.map(nav => {
-                const { url, name } = nav;
-                return (
-                  <li
-                    className="mx-4 lg:mx-5 w-full"
-                    variants={navMenuItemVariants}
+              {sub_title && isDesktop && (
+                <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
+                  {sub_title}
+                </p>
+              )}
+              <div className="ml-auto pr-4">
+                {menu ? (
+                  <motion.button
+                    layoutId="menu-button"
+                    initial={{ opacity: 0.5 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 500,
+                      damping: 30
+                    }}
+                    className="w-10 h-10 block md:hidden"
+                    onClick={() => setMenu(!menu)}
                   >
-                    <NavLink
-                      url={url}
-                      name={name}
-                      active={router.pathname === url ? true : false}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-            {apply_btn_url && (
-              <Link href={apply_btn_url} passHref>
-                <Button
-                  btnSize={'small'}
-                  textSize={'small'}
-                  textColor={
-                    button_color
-                      ? button_color === 'blue'
-                        ? 'white'
+                    {xCircleSvg}
+                  </motion.button>
+                ) : (
+                  <motion.button
+                    layoutId="menu-button"
+                    initial={{ opacity: 0.5 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      type: 'spring',
+                      stiffness: 500,
+                      damping: 30
+                    }}
+                    className="w-10 h-10 block md:hidden"
+                    onClick={() => setMenu(!menu)}
+                  >
+                    {burgerSvg}
+                  </motion.button>
+                )}
+              </div>
+            </div>
+            <AnimatePresence>
+              {menu && (
+                <nav className="flex flex-col items-baseline w-full md:hidden">
+                  <motion.ul
+                    className="flex flex-col w-full items-baseline pl-2"
+                    variants={navMenuListVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    {navlinks.map(nav => {
+                      const { url, name } = nav;
+                      return (
+                        <motion.li
+                          className="my-4 lg:my-10 w-full"
+                          variants={navMenuItemVariants}
+                          whileHover={{ x: 15 }}
+                        >
+                          <NavLink
+                            url={url}
+                            name={name}
+                            active={router.pathname === url ? true : false}
+                            mobile={true}
+                          />
+                        </motion.li>
+                      );
+                    })}
+                    {apply_btn_url && (
+                      <motion.li
+                        variants={navMenuItemVariants}
+                        className="w-full"
+                      >
+                        <Link href={apply_btn_url} passHref>
+                          <Button
+                            btnSize={'medium'}
+                            textSize={'medium'}
+                            textColor={
+                              button_color
+                                ? button_color === 'blue'
+                                  ? 'white'
+                                  : 'black'
+                                : 'black'
+                            }
+                            customClassName={`my-5 md:my-10 w-full uppercase top-bar-btn ${
+                              bgColored ? 'shadow-btn' : ''
+                            }`}
+                            bgColor={button_color ? button_color : 'green'}
+                          >
+                            {apply_btn_name}
+                          </Button>
+                        </Link>
+                      </motion.li>
+                    )}
+                  </motion.ul>
+                </nav>
+              )}
+            </AnimatePresence>
+            <nav className="ml-auto hidden flex-row md:flex">
+              <ul className="flex flex-row items-center">
+                {navlinks.map(nav => {
+                  const { url, name } = nav;
+                  return (
+                    <li
+                      className="mx-4 lg:mx-5 w-full"
+                      variants={navMenuItemVariants}
+                    >
+                      <NavLink
+                        url={url}
+                        name={name}
+                        active={router.pathname === url ? true : false}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+              {apply_btn_url && (
+                <Link href={apply_btn_url} passHref>
+                  <Button
+                    btnSize={'small'}
+                    textSize={'small'}
+                    textColor={
+                      button_color
+                        ? button_color === 'blue'
+                          ? 'white'
+                          : 'black'
                         : 'black'
-                      : 'black'
-                  }
-                  customClassName={`mx-10 uppercase top-bar-btn ${
-                    bgColored ? 'shadow-btn' : ''
-                  }`}
-                  bgColor={button_color ? button_color : 'green'}
-                >
-                  {apply_btn_name}
-                </Button>
-              </Link>
-            )}
-          </nav>
-        </div>
-      </AnimateSharedLayout>
-
-      {/* // <AnimateSharedLayout>
-        //   <div className="container flex items-baseline flex-wrap flex-col">
-        //     <div className="flex flex-row flex-wrap w-full">
-        //       {logo_url && (
-        //         <Link href={logo_url}>
-        //           <a className="text-md lg:text-lg font-black">{logo_name}</a>
-        //         </Link>
-        //       )}
-
-        //       <div className="ml-auto pr-4">
-        //         {menu ? (
-        //           <motion.button
-        //             layoutId="menu-button"
-        //             initial={{ opacity: 0.5 }}
-        //             animate={{ opacity: 1 }}
-        //             transition={{
-        //               type: 'spring',
-        //               stiffness: 500,
-        //               damping: 30
-        //             }}
-        //             className="w-10 h-10"
-        //             onClick={() => setMenu(!menu)}
-        //           >
-        //             {xCircleSvg}
-        //           </motion.button>
-        //         ) : (
-        //           <motion.button
-        //             layoutId="menu-button"
-        //             initial={{ opacity: 0.5 }}
-        //             animate={{ opacity: 1 }}
-        //             transition={{
-        //               type: 'spring',
-        //               stiffness: 500,
-        //               damping: 30
-        //             }}
-        //             className="w-10 h-10"
-        //             onClick={() => setMenu(!menu)}
-        //           >
-        //             {burgerSvg}
-        //           </motion.button>
-        //         )}
-        //       </div>
-        //     </div>
-        //     <AnimatePresence>
-        //       {menu && (
-        //         <div className="flex flex-col items-baseline w-full">
-        //           <motion.ul
-        //             className="flex flex-col w-full items-baseline pl-2"
-        //             variants={navMenuListVariants}
-        //             initial="initial"
-        //             animate="animate"
-        //             exit="exit"
-        //           >
-        //             {navlinks.map(nav => {
-        //               const { url, name } = nav;
-        //               return (
-        //                 <motion.li
-        //                   className="my-4 lg:my-10 w-full"
-        //                   variants={navMenuItemVariants}
-        //                 >
-        //                   <NavLink
-        //                     url={url}
-        //                     name={name}
-        //                     active={router.pathname === url ? true : false}
-        //                     mobile={true}
-        //                   />
-        //                 </motion.li>
-        //               );
-        //             })}
-        //             {apply_btn_url && (
-        //               <motion.li
-        //                 variants={navMenuItemVariants}
-        //                 className="w-full"
-        //               >
-        //                 <Link href={apply_btn_url} passHref>
-        //                   <Button
-        //                     btnSize={isDesktop ? 'medium' : 'small'}
-        //                     textSize={isDesktop ? 'medium' : 'small'}
-        //                     textColor={
-        //                       button_color
-        //                         ? button_color === 'blue'
-        //                           ? 'white'
-        //                           : 'black'
-        //                         : 'black'
-        //                     }
-        //                     customClassName={`my-10 w-full uppercase top-bar-btn ${
-        //                       bgColored ? 'shadow-btn' : ''
-        //                     }`}
-        //                     bgColor={button_color ? button_color : 'green'}
-        //                   >
-        //                     {apply_btn_name}
-        //                   </Button>
-        //                 </Link>
-        //               </motion.li>
-        //             )}
-        //           </motion.ul>
-        //         </div>
-        //       )}
-        //     </AnimatePresence>
-        //   </div>
-        // </AnimateSharedLayout> */}
-    </motion.header>
+                    }
+                    customClassName={`mx-10 uppercase top-bar-btn ${
+                      bgColored ? 'shadow-btn' : ''
+                    }`}
+                    bgColor={button_color ? button_color : 'green'}
+                  >
+                    {apply_btn_name}
+                  </Button>
+                </Link>
+              )}
+            </nav>
+          </div>
+        </AnimateSharedLayout>
+      </motion.header>
+      {!bgColored && (
+        <div
+          className={cn('h-24 md:h-48 w-full', bgColored ? 'bg-c200' : '')}
+        ></div>
+      )}
+    </div>
   );
 };
