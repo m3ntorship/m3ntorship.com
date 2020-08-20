@@ -16,6 +16,10 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
     sub_text: sub_title,
     apply_btn: { url: apply_btn_url, name: apply_btn_name }
   } = data;
+  let sortedNavigationLinks = navigationLinks.sort(
+    (a, b) => a.piriority - b.piriority
+  );
+
   const navAnimation = useAnimation();
   const [lastYPos, setLastYPos] = useState(0);
   const [stickyMenu, setStickyMenu] = useState(false);
@@ -232,7 +236,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                     animate="animate"
                     exit="exit"
                   >
-                    {navigationLinks.reduce((menu, nav) => {
+                    {sortedNavigationLinks.reduce((menu, nav) => {
                       const {
                         is_shown,
                         page_link: { url, name }
@@ -287,7 +291,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
             </AnimatePresence>
             <nav className="ml-auto hidden flex-row md:flex">
               <ul className="flex flex-row items-center">
-                {navigationLinks.reduce((menu, nav) => {
+                {sortedNavigationLinks.reduce((menu, nav) => {
                   const {
                     is_shown,
                     page_link: { url, name }
