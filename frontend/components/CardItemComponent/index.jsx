@@ -1,8 +1,6 @@
 import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
-import githubLogo from '../../public/static/images/github.png';
-import rightArrow from '../../public/static/images/right-arrow.svg';
 import Link from 'next/link';
 
 const CardItem = ({ data }) => {
@@ -37,7 +35,7 @@ const CardItem = ({ data }) => {
               customClassName="m-auto py-2"
             >
               <span className="mr-4">
-                <img className="inline-block" src={githubLogo}></img>
+                <img className="inline-block" src='../static/images/github.png'></img>
               </span>
               <a href={link.url}>{link.name}</a>
             </Button>
@@ -61,7 +59,7 @@ const CardItem = ({ data }) => {
                 VIEW PROJECT
               </Link>
               <span className="ml-2 w-1/6">
-                <img className="inline-block w-8 h-5" src={rightArrow}></img>
+                <img className="inline-block w-8 h-5" src='../static/images/right-arrow.svg'></img>
               </span>
             </Button>
           )}
