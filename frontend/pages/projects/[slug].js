@@ -9,6 +9,7 @@ import SectionHeader from './../../components/shared/SectionHeader/index';
 import Button from './../../components/shared/Button/index';
 import Head from 'next/head';
 import Patches from '../../components/Patches';
+import Overview from '../../components/Overview';
 
 const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
   const router = useRouter();
@@ -24,7 +25,8 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
       link: { name: repo_btn_name, url: repo_link }
     },
     batches: batchCards,
-    batches_description
+    batches_description,
+    project_overview
   } = projectData[0];
   const { website_url } = websiteUrl;
   return (
@@ -74,6 +76,7 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
           )}
         </SectionHeader>
         <Patches data={batches_description} batchesCards={batchCards} />
+        <Overview data={project_overview} />
       </main>
 
       <Footer data={footerData} />
