@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "batch_projects_descriptions",
+  "info": {
+    "name": "batch_projects_description"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
