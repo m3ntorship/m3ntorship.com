@@ -109,9 +109,9 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
       <path
         d="M1.62915 21.3679H28.2958M1.62915 1.36792H28.2958H1.62915ZM1.62915 11.3679H28.2958H1.62915Z"
         stroke="black"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -127,9 +127,9 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
       <path
         d="M10 14L12 12L10 14ZM12 12L14 10L12 12ZM12 12L10 10L12 12ZM12 12L14 14L12 12ZM21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z"
         stroke="black"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
@@ -187,7 +187,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                   <a className="text-md lg:text-lg font-black">{logo_name}</a>
                 </Link>
               )}
-              {sub_title && isDesktop && (
+              {sub_title && (
                 <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
                   {sub_title}
                 </p>
@@ -244,6 +244,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                       if (is_shown) {
                         menu.push(
                           <motion.li
+                            key={url}
                             className="my-4 lg:my-10 w-full"
                             variants={navMenuItemVariants}
                             whileHover={{ x: 15 }}
@@ -299,6 +300,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                   if (is_shown) {
                     menu.push(
                       <li
+                        key={url}
                         className="mx-4 lg:mx-5 w-full"
                         variants={navMenuItemVariants}
                       >

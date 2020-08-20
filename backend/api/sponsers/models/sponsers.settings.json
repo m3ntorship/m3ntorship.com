@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sponsers",
+  "info": {
+    "name": "sponsers"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
