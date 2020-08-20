@@ -26,11 +26,9 @@ export const ApplyPage = ({ data, topBarData, pagesData }) => {
     return (
       <>
         <UserProvider value={{ mentor, setMentor }}>
-          <TopBar
-            data={topBarData}
-            navigationLinks={pagesData}
-            button_color={mentor || as === 'mentor' ? 'blue' : 'green'}
-          />
+          {!topBarData.statusCode && !pagesData.statusCode && (
+            <TopBar data={topBarData} navigationLinks={pagesData} />
+          )}
           <main>
             {mentor || as === 'mentor' ? (
               <SectionHeader
