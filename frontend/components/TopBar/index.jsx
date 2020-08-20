@@ -10,7 +10,7 @@ import {
   useAnimation
 } from 'framer-motion';
 import useMedia from '../../helper/useMedia';
-export const TopBar = ({ data, button_color, bgColored }) => {
+export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
   const {
     logo_link: { url: logo_url, name: logo_name },
     sub_text: sub_title,
@@ -129,20 +129,6 @@ export const TopBar = ({ data, button_color, bgColored }) => {
       />
     </svg>
   );
-  const navlinks = [
-    {
-      url: '/',
-      name: 'home'
-    },
-    {
-      url: '/apply',
-      name: 'apply'
-    },
-    {
-      url: '/apply',
-      name: 'apply'
-    }
-  ];
 
   const NavLink = ({ url, name, active, mobile }) => {
     return (
@@ -246,23 +232,29 @@ export const TopBar = ({ data, button_color, bgColored }) => {
                     animate="animate"
                     exit="exit"
                   >
-                    {navlinks.map(nav => {
-                      const { url, name } = nav;
-                      return (
-                        <motion.li
-                          className="my-4 lg:my-10 w-full"
-                          variants={navMenuItemVariants}
-                          whileHover={{ x: 15 }}
-                        >
-                          <NavLink
-                            url={url}
-                            name={name}
-                            active={router.pathname === url ? true : false}
-                            mobile={true}
-                          />
-                        </motion.li>
-                      );
-                    })}
+                    {navigationLinks.reduce((menu, nav) => {
+                      const {
+                        is_shown,
+                        page_link: { url, name }
+                      } = nav;
+                      if (is_shown) {
+                        menu.push(
+                          <motion.li
+                            className="my-4 lg:my-10 w-full"
+                            variants={navMenuItemVariants}
+                            whileHover={{ x: 15 }}
+                          >
+                            <NavLink
+                              url={url}
+                              name={name}
+                              active={router.pathname === url ? true : false}
+                              mobile={true}
+                            />
+                          </motion.li>
+                        );
+                      }
+                      return menu;
+                    }, [])}
                     {apply_btn_url && (
                       <motion.li
                         variants={navMenuItemVariants}
@@ -295,21 +287,29 @@ export const TopBar = ({ data, button_color, bgColored }) => {
             </AnimatePresence>
             <nav className="ml-auto hidden flex-row md:flex">
               <ul className="flex flex-row items-center">
-                {navlinks.map(nav => {
-                  const { url, name } = nav;
-                  return (
-                    <li
-                      className="mx-4 lg:mx-5 w-full"
-                      variants={navMenuItemVariants}
-                    >
-                      <NavLink
-                        url={url}
-                        name={name}
-                        active={router.pathname === url ? true : false}
-                      />
-                    </li>
-                  );
-                })}
+                {navigationLinks.reduce((menu, nav) => {
+                  const {
+                    is_shown,
+                    page_link: { url, name }
+                  } = nav;
+                  if (is_shown) {
+                    menu.push(
+                      <motion.li
+                        className="my-4 lg:my-10 w-full"
+                        variants={navMenuItemVariants}
+                        whileHover={{ x: 15 }}
+                      >
+                        <NavLink
+                          url={url}
+                          name={name}
+                          active={router.pathname === url ? true : false}
+                          mobile={true}
+                        />
+                      </motion.li>
+                    );
+                  }
+                  return menu;
+                }, [])}
               </ul>
               {apply_btn_url && (
                 <Link href={apply_btn_url} passHref>
