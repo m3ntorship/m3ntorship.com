@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/batch-projects-description",
+      "handler": "batch-projects-description.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/batch-projects-description",
+      "handler": "batch-projects-description.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/batch-projects-description",
+      "handler": "batch-projects-description.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

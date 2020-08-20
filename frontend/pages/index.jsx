@@ -28,13 +28,16 @@ export const Home = ({ data }) => {
     metaData,
     websiteUrl,
     projectsInfoData,
-    projectsData
+    projectsData,
+    pagesData
   } = data;
   return (
     <>
       <Head>{checkSeoData(metaData, websiteUrl)}</Head>
 
-      <TopBar data={topBarData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
 
       <main>
         <SectionHeaderComponent data={home_header} />
@@ -43,7 +46,10 @@ export const Home = ({ data }) => {
         {!patches.statusCode && !batches.statusCode && (
           <Patches data={patches} batchesCards={batches} />
         )}
-        <RealProjects projectsInfoData={projectsInfoData} projectsData={projectsData} />
+        <RealProjects
+          projectsInfoData={projectsInfoData}
+          projectsData={projectsData}
+        />
         <ContributeSection data={contribute} />
       </main>
       <Footer data={footerData} />
@@ -128,7 +134,8 @@ export async function getStaticProps(context) {
     mentorshipAPI('/pages-seos?page_name=home'),
     mentorshipAPI('/setting'),
     mentorshipAPI('/projects-info'),
-    mentorshipAPI('/projects')
+    mentorshipAPI('/projects'),
+    mentorshipAPI('/pages')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -143,7 +150,8 @@ export async function getStaticProps(context) {
       { data: metaData },
       { data: websiteUrl },
       { data: projectsInfoData },
-      { data: projectsData }
+      { data: projectsData },
+      { data: pagesData }
     ]) => {
       return {
         props: {
@@ -159,7 +167,8 @@ export async function getStaticProps(context) {
             metaData,
             websiteUrl,
             projectsInfoData,
-            projectsData
+            projectsData,
+            pagesData
           }
         },
         revalidate: 1

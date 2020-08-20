@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "sponser_uses",
+  "info": {
+    "name": "sponser_us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "sub_title": {
+      "type": "string"
+    },
+    "sponsers_link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
+    }
+  }
+}

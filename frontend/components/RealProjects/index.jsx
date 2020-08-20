@@ -35,7 +35,7 @@ const projectsCardVariants = {
 const RealProjects = ({ projectsInfoData, projectsData }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
   const [ref, inView] = useInView({
-    threshold: isDesktop ? 0.1 : 0.05,
+    threshold: isDesktop ? 0.2 : 0.1,
     triggerOnce: true
   });
 
@@ -65,6 +65,8 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               type={HEADING_OPTIONS.TYPE.SECTION}
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
               textTransform={HEADING_OPTIONS.TEXT_TRANSFORM.UPPERCASE}
+              fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              as="h2"
             >
               {title && <GradientText text={title} />}
             </Heading>
@@ -74,8 +76,9 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
               </p>
             )}
           </div>
-          <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {! projectsData.statusCode && projectsData.map(project => {
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {!projectsData.statusCode &&
+              projectsData.map(project => {
                 return (
                   <motion.div
                     key={project.id}

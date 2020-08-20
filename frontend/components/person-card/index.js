@@ -38,7 +38,8 @@ const PersonCard = ({
   bgColord,
   rounded,
   roundedSmall,
-  boxShadow
+  boxShadow,
+  isImageFull
 }) => {
   const { card_image, title, sub_title, describe } = cardDetails;
   const [crdRef, cardInView] = useInView({
@@ -66,19 +67,17 @@ const PersonCard = ({
                 'person__card__image',
                 'mx-auto',
                 'mb-8',
-                'text-center',
-                {
-                  'w-56': !rounded
-                }
+                'text-center'
               )}
             >
               <img
                 src={card_image.url}
                 alt={title}
-                className={cn('object-cover mx-auto', {
+                className={cn('object-contain mx-auto', {
                   'rounded-full': rounded,
                   'w-24 h-24': bgColord,
-                  'lg:w-48 lg:h-48 w-32 h-32': !bgColord
+                  'lg:w-48 lg:h-48 w-32 h-32': !bgColord && !isImageFull,
+                  'w-full h-auto': isImageFull
                 })}
               />
             </div>

@@ -9,8 +9,15 @@ import SectionHeader from './../../components/shared/SectionHeader/index';
 import Button from './../../components/shared/Button/index';
 import Head from 'next/head';
 import Patches from '../../components/Patches';
+import Overview from '../../components/Overview';
 
-const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
+const Projects = ({
+  projectData,
+  topBarData,
+  footerData,
+  websiteUrl,
+  pagesData
+}) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -24,7 +31,8 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
       link: { name: repo_btn_name, url: repo_link }
     },
     batches: batchCards,
-    batches_description
+    batches_description,
+    project_overview
   } = projectData[0];
   const { website_url } = websiteUrl;
   return (
@@ -49,7 +57,9 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
         <title>{`M3ntorship Projects - ${projectData[0].project_slug}`} </title>
         <meta name="description" content={projectData[0].description} />
       </Head>
-      <TopBar data={topBarData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <main className="container">
         <SectionHeader
           data={project_head}
@@ -74,6 +84,7 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
           )}
         </SectionHeader>
         <Patches data={batches_description} batchesCards={batchCards} />
+        <Overview data={project_overview} />
       </main>
 
       <Footer data={footerData} />
@@ -108,7 +119,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI(`/projects?project_slug=${slug}`),
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/pages')
   ];
 
   return Promise.all(checkingDataError(endPoints)).then(
@@ -116,14 +128,16 @@ export async function getStaticProps({ params: { slug } }) {
       { data: projectData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: pagesData }
     ]) => {
       return {
         props: {
           projectData,
           topBarData,
           footerData,
-          websiteUrl
+          websiteUrl,
+          pagesData
         },
         revalidate: 1
       };

@@ -33,12 +33,7 @@ export default function CustomError({ statusCode }) {
           : 'We are sorry for the inconvenience'}
       </p>
       <Link href="/" passHref>
-        <Button
-          textColor="white"
-          bgColor="black"
-          customClassName="uppercase"
-          btnSize="small"
-        >
+        <Button textColor="white" bgColor="black" customClassName="uppercase">
           Go To Home
         </Button>
       </Link>

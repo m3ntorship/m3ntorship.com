@@ -41,7 +41,7 @@ const JoinUs = ({ data }) => {
   const leftImageVariants = {
     initial: {
       opacity: 0,
-      x: '50vw'
+      x: '400px'
     },
     animate: {
       opacity: 1,
@@ -51,7 +51,7 @@ const JoinUs = ({ data }) => {
   const rightImageVariants = {
     initial: {
       opacity: 0,
-      x: '-50vw'
+      x: '-400px'
     },
     animate: {
       opacity: 1,

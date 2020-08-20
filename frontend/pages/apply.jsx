@@ -10,12 +10,12 @@ const Apply = ({
   websiteUrl,
   metaData,
   data,
-  data: { topBarData, footerData }
+  data: { topBarData, footerData, pagesData }
 }) => {
   return (
     <>
-      <Head>{checkSeoData(metaData,websiteUrl)}</Head>
-      <ApplyPage data={data} topBarData={topBarData} />
+      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+      <ApplyPage data={data} topBarData={topBarData} pagesData={pagesData} />
       <Footer data={footerData} />
     </>
   );
@@ -28,7 +28,8 @@ export async function getStaticProps() {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/pages-seos?page_name=apply'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/pages')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -37,7 +38,8 @@ export async function getStaticProps() {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: pagesData }
     ]) => {
       return {
         props: {
@@ -45,7 +47,8 @@ export async function getStaticProps() {
             headerSectionData,
             formData,
             topBarData,
-            footerData
+            footerData,
+            pagesData
           },
           metaData,
           websiteUrl

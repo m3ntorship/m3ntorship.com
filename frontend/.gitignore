@@ -116,4 +116,4 @@ dist
 storybook-static
 
 # ignore sitemap file
-public/sitemap
+public/sitemap.xml
