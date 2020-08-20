@@ -33,7 +33,7 @@ const CardItem = ({ data }) => {
               href={link.url}
               textColor="white"
               bgColor="black"
-              customClassName="m-auto py-2 h-20"
+              customClassName="m-auto py-2 h-20 uppercase"
               btnSize="large"
             >
               <span className="mr-4">
