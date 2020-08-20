@@ -10,7 +10,7 @@ import Error from '../../pages/_error';
 import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
-import RealProjects from '../../components/RealProjects';
+import BatchProjects from '../../components/BatchProjects';
 
 import Head from 'next/head';
 const BatchPage = ({
@@ -21,7 +21,7 @@ const BatchPage = ({
   topBarData,
   footerData,
   websiteUrl,
-  projectsInfoData
+  batchProjectsDesc
 }) => {
   const router = useRouter();
   if (router.isFallback) {
@@ -121,15 +121,15 @@ const BatchPage = ({
               </Button>
             )}
           </SectionHeader>
+          <BatchProjects
+            projectsInfoData={batchProjectsDesc}
+            projectsData={batchProjects}
+          />
           <div className="order-1 lg:order-none">
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
         <Team data={batchTeamData} team_members={team_members} />
-        <RealProjects
-          projectsInfoData={projectsInfoData}
-          projectsData={batchProjects}
-        />
         <JoinUs data={joinUsData} />
       </main>
       <Footer data={footerData} />
@@ -168,7 +168,7 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/setting'),
-    mentorshipAPI('/projects-info')
+    mentorshipAPI('/batch-projects-description')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -179,7 +179,7 @@ export async function getStaticProps({ params: { slug } }) {
       { data: topBarData },
       { data: footerData },
       { data: websiteUrl },
-      { data: projectsInfoData }
+      { data: batchProjectsDesc }
     ]) => {
       return {
         props: {
@@ -190,7 +190,7 @@ export async function getStaticProps({ params: { slug } }) {
           topBarData,
           footerData,
           websiteUrl,
-          projectsInfoData
+          batchProjectsDesc
         },
         revalidate: 1
       };
