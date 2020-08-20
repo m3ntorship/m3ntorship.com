@@ -32,10 +32,14 @@ const CardItem = ({ data }) => {
             <Button
               textColor="white"
               bgColor="black"
-              customClassName="m-auto py-2"
+              customClassName="m-auto py-2 h-20"
+              btnSize="large"
             >
               <span className="mr-4">
-                <img className="inline-block" src='../static/images/github.png'></img>
+                <img
+                  className="inline-block"
+                  src="../static/images/github.png"
+                ></img>
               </span>
               <a href={link.url}>{link.name}</a>
             </Button>
@@ -48,8 +52,9 @@ const CardItem = ({ data }) => {
               bgColor="gray"
               customClassName="custom"
               fontWeight="normal"
-              customClassName="underline m-auto py-4"
-              textSize='medium'
+              customClassName="underline m-auto py-4  h-20"
+              textSize="medium"
+              btnSize="large"
             >
               <Link
                 href="/projects/[slug]"
@@ -59,7 +64,10 @@ const CardItem = ({ data }) => {
                 VIEW PROJECT
               </Link>
               <span className="ml-2 w-1/6">
-                <img className="inline-block w-8 h-5" src='../static/images/right-arrow.svg'></img>
+                <img
+                  className="inline-block w-8 h-5"
+                  src="../static/images/right-arrow.svg"
+                ></img>
               </span>
             </Button>
           )}
