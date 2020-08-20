@@ -90,7 +90,7 @@ const BatchPage = ({
             data={sectionHeaderData}
             customClassName="py-0 order-2 lg:order-none"
           >
-            {repo_link && repo_btn_name && (
+            {repo_link && repo_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="white"
                 bgColor="black"
@@ -107,7 +107,7 @@ const BatchPage = ({
                 {repo_btn_name}
               </Button>
             )}
-            {project_link && project_btn_name && (
+            {project_link && project_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="black"
                 bgColor="gray"
@@ -129,10 +129,12 @@ const BatchPage = ({
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
-        <BatchProjects
-          projectsInfoData={batchProjectsDesc}
-          projectsData={batchProjects}
-        />
+        {batchProjects.length < 1 && (
+          <BatchProjects
+            projectsInfoData={batchProjectsDesc}
+            projectsData={batchProjects}
+          />
+        )}
         <Team data={batchTeamData} team_members={team_members} />
         <JoinUs data={joinUsData} />
       </main>
