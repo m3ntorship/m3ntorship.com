@@ -11,7 +11,13 @@ import Head from 'next/head';
 import Patches from '../../components/Patches';
 import Overview from '../../components/Overview';
 
-const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
+const Projects = ({
+  projectData,
+  topBarData,
+  footerData,
+  websiteUrl,
+  pagesData
+}) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -51,7 +57,9 @@ const Projects = ({ projectData, topBarData, footerData, websiteUrl }) => {
         <title>{`M3ntorship Projects - ${projectData[0].project_slug}`} </title>
         <meta name="description" content={projectData[0].description} />
       </Head>
-      <TopBar data={topBarData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <main className="container">
         <SectionHeader
           data={project_head}
@@ -111,7 +119,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI(`/projects?project_slug=${slug}`),
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/pages')
   ];
 
   return Promise.all(checkingDataError(endPoints)).then(
@@ -119,14 +128,16 @@ export async function getStaticProps({ params: { slug } }) {
       { data: projectData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: pagesData }
     ]) => {
       return {
         props: {
           projectData,
           topBarData,
           footerData,
-          websiteUrl
+          websiteUrl,
+          pagesData
         },
         revalidate: 1
       };

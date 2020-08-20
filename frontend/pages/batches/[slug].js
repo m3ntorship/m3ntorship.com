@@ -20,6 +20,8 @@ const BatchPage = ({
   topBarData,
   footerData,
   websiteUrl,
+  projectsInfoData,
+  pagesData,
   batchProjectsDesc
 }) => {
   const router = useRouter();
@@ -80,7 +82,9 @@ const BatchPage = ({
         <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
         <meta name="description" content={batchData[0].description} />
       </Head>
-      <TopBar data={topBarData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <main>
         <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
           <SectionHeader
@@ -168,6 +172,8 @@ export async function getStaticProps({ params: { slug } }) {
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
     mentorshipAPI('/setting'),
+    mentorshipAPI('/projects-info'),
+    mentorshipAPI('/pages'),
     mentorshipAPI('/batch-projects-description')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
@@ -178,6 +184,8 @@ export async function getStaticProps({ params: { slug } }) {
       { data: topBarData },
       { data: footerData },
       { data: websiteUrl },
+      { data: projectsInfoData },
+      { data: pagesData },
       { data: batchProjectsDesc }
     ]) => {
       return {
@@ -188,6 +196,8 @@ export async function getStaticProps({ params: { slug } }) {
           topBarData,
           footerData,
           websiteUrl,
+          projectsInfoData,
+          pagesData,
           batchProjectsDesc
         },
         revalidate: 1
