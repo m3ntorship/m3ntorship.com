@@ -306,7 +306,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                       </li>
                     );
                   }
-                })}
+                }, [])}
               </ul>
               {apply_btn_url && (
                 <Link href={apply_btn_url} passHref>
