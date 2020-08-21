@@ -8841,10 +8841,10 @@ strapi-provider-upload-local@3.0.6:
   resolved "https://registry.yarnpkg.com/strapi-provider-upload-local/-/strapi-provider-upload-local-3.0.6.tgz#cce78d0ed14886c22d25d2a649dccf561f58d2d7"
   integrity sha512-ol4BVh/rGaoklUu4Xzwe0tixQ/U1jKWjjZ8Am3wgzA2zJ0+RlhxgLNAgVebUbkwBrA6SNkLdMGx04pkD0zHW+w==
 
-strapi-provider-upload-m3-minio@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/strapi-provider-upload-m3-minio/-/strapi-provider-upload-m3-minio-1.0.1.tgz#2f399b9bbfd89507d0093507d1462d1f5614e701"
-  integrity sha512-V3DQNkJNGMYR+VU0Af5Diw7ZF3G8rNnzzmv04wvnsdebVaHa+npJi9kNfujGudeVCP+iTePwBa81P2O/gOo48g==
+strapi-provider-upload-m3-minio@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/strapi-provider-upload-m3-minio/-/strapi-provider-upload-m3-minio-1.0.2.tgz#70520b528fe361d4203fdcbf14def7e650cfd44f"
+  integrity sha512-tPVWwe+70TRBRVqFLf/M5w6So2KYe03OcTX1V4zwxR+5tvRIZOqkE3zydf3nEfS2mHsCUduGljaHPeCYMnPWYQ==
   dependencies:
     minio "^7.0.1"
 
