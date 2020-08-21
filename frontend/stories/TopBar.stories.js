@@ -8,12 +8,9 @@ export default {
   decorators: [withKnobs]
 };
 const data = {
-  logo_title: 'M3ntorship',
-  sub_title: 'lever up your tech skills',
-  link: {
-    link_url: '/apply',
-    link_text: 'Apply Now'
-  }
+  logo_link: { url: '/', name: 'M3ntorship' },
+  sub_text: 'Level-up your tech skills',
+  apply_btn: { url: '/apply', name: 'APPLY NOW' }
 };
 export const TopBarComponent = () => {
   return (

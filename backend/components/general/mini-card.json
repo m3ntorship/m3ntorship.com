@@ -9,7 +9,7 @@
     "title": {
       "type": "string"
     },
-    "sub_title": {
+    "description": {
       "type": "string"
     },
     "image": {

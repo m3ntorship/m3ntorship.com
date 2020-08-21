@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_general_batch_headers",
+  "info": {
+    "name": "batch_header",
+    "icon": "bookmark"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "repo_btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    },
+    "project_btn": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "name": "project"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "project_slug": {
+      "type": "uid",
+      "targetField": "project_name",
+      "required": true
+    },
+    "batches": {
+      "via": "projects",
+      "collection": "batch",
+      "dominant": true
+    },
+    "batches_description": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.mini-card"
+    },
+    "join_next_project": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.dashed-card"
+    },
+    "project_overview": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.card-with-link"
+    },
+    "project_name": {
+      "type": "string"
+    },
+    "project_head": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.card-with-link"
+    },
+    "nav_to_project_page_text": {
+      "type": "string",
+      "required": true
+    },
+    "project_stack": {
+      "type": "string"
+    },
+    "live_site_link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link"
+    }
+  }
+}

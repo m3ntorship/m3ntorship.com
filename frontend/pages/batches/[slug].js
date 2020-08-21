@@ -10,19 +10,19 @@ import Error from '../../pages/_error';
 import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
+import BatchProjects from '../../components/BatchProjects';
 
 import Head from 'next/head';
 const BatchPage = ({
   batchData,
-  sectionHeaderData,
   batchTeamData,
   joinUsData,
   topBarData,
   footerData,
-  websiteUrl
+  websiteUrl,
+  pagesData,
+  batchProjectsDesc
 }) => {
-  const { website_url } = websiteUrl;
-
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -40,6 +40,9 @@ const BatchPage = ({
       team_members.map(item => item.id).indexOf(member.id) === index
   );
 
+  // destructure Batch Projects
+  const batchProjects = batchData[0].projects;
+
   // all team images and titles
   const team_images = team_members.map(
     ({
@@ -49,21 +52,23 @@ const BatchPage = ({
       }
     }) => ({ url, title })
   );
+  const { batch_header: sectionHeaderData } = batchData[0];
   const {
     repo_btn: { name: repo_btn_name, url: repo_link },
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
+  const { website_url } = websiteUrl;
   return (
     <>
       <Head>
         <link
           rel="canonical"
-          href={`${website_url}/batchs/${batchData[0].batch_slug}`}
+          href={`${website_url}/batches/${batchData[0].batch_slug}`}
         />
 
         <meta
           property="og:url"
-          content={`${website_url}/batchs/${batchData[0].batch_slug}`}
+          content={`${website_url}/batches/${batchData[0].batch_slug}`}
         />
         <meta
           property="og:title"
@@ -75,14 +80,16 @@ const BatchPage = ({
         <title>{`M3ntorship Graduates - ${batchData[0].batch_slug}`} </title>
         <meta name="description" content={batchData[0].description} />
       </Head>
-      <TopBar data={topBarData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <main>
         <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
           <SectionHeader
             data={sectionHeaderData}
             customClassName="py-0 order-2 lg:order-none"
           >
-            {repo_link && repo_btn_name && (
+            {repo_link && repo_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="white"
                 bgColor="black"
@@ -99,7 +106,7 @@ const BatchPage = ({
                 {repo_btn_name}
               </Button>
             )}
-            {project_link && project_btn_name && (
+            {project_link && project_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="black"
                 bgColor="gray"
@@ -121,6 +128,12 @@ const BatchPage = ({
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
+        {batchProjects.length > 1 && batchProjectsDesc && (
+          <BatchProjects
+            projectsInfoData={batchProjectsDesc}
+            projectsData={batchProjects}
+          />
+        )}
         <Team data={batchTeamData} team_members={team_members} />
         <JoinUs data={joinUsData} />
       </main>
@@ -154,32 +167,35 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const endPoints = [
     mentorshipAPI(`/batches?batch_slug=${slug}`),
-    mentorshipAPI('/batch-header'),
     mentorshipAPI('/batch-team'),
     mentorshipAPI('/join-us-card'),
     mentorshipAPI('/top-bar'),
     mentorshipAPI('/footer'),
-    mentorshipAPI('/setting')
+    mentorshipAPI('/setting'),
+    mentorshipAPI('/pages'),
+    mentorshipAPI('/batch-projects-description')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
       { data: batchData },
-      { data: sectionHeaderData },
       { data: batchTeamData },
       { data: joinUsData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl }
+      { data: websiteUrl },
+      { data: pagesData },
+      { data: batchProjectsDesc }
     ]) => {
       return {
         props: {
           batchData,
-          sectionHeaderData,
           batchTeamData,
           joinUsData,
           topBarData,
           footerData,
-          websiteUrl
+          websiteUrl,
+          pagesData,
+          batchProjectsDesc
         },
         revalidate: 1
       };

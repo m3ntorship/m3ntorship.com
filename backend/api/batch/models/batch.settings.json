@@ -34,6 +34,15 @@
       "type": "uid",
       "targetField": "title",
       "required": false
+    },
+    "projects": {
+      "collection": "project",
+      "via": "batches"
+    },
+    "batch_header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.batch-header"
     }
   }
 }

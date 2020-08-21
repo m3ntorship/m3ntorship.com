@@ -37,7 +37,8 @@ const cardVariants = {
 const HowItWork = ({ data }) => {
   const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
   const [ref, inView] = useInView({
-    threshold: isDesktop ? 0.1 : 0.05
+    threshold: isDesktop ? 0.1 : 0.05,
+    triggerOnce: true
   });
   const { title, description, cards } = data;
   if (data) {
@@ -76,7 +77,11 @@ const HowItWork = ({ data }) => {
                     index + 1
                   }`}</span>
                   <div className="z-10 bg-c000 h-full">
-                    <PersonCard cardDetails={el} boxShadow={true} />
+                    <PersonCard
+                      cardDetails={el}
+                      boxShadow={true}
+                      isImageFull={true}
+                    />
                   </div>
                 </motion.div>
               );
