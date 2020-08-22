@@ -42,7 +42,7 @@ const ListOfRoundedImages = ({ data }) => {
   };
 
   const positionStyle = url => {
-    const position = randomPosition(140, 100, 10, cache, 1, data.length);
+    const position = randomPosition(120, 100, 10, cache, 1, data.length);
     return {
       left: `${position.x}%`,
       bottom: `${position.y}%`,
@@ -52,8 +52,6 @@ const ListOfRoundedImages = ({ data }) => {
     };
   };
 
-  const constraintsRef = useRef(null);
-
   return (
     <motion.div
       className="list-of-rounded-images flex flex-wrap items-center justify-center lg:block relative w-full h-full gap-5"
@@ -62,7 +60,6 @@ const ListOfRoundedImages = ({ data }) => {
       style={{
         placeItems: 'center'
       }}
-      ref={constraintsRef}
     >
       <motion.div
         variants={splash}
