@@ -42,7 +42,7 @@ const BatchProjects = ({ projectsInfoData, projectsData }) => {
   if (projectsInfoData && projectsData) {
     const { title, description } = projectsInfoData;
     return (
-      <section className="real-projects" ref={ref}>
+      <section className="real-projects lg:pt-40" ref={ref}>
         <motion.div
           variants={projectsSectionVariants}
           initial="start"
