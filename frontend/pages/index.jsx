@@ -14,6 +14,7 @@ import checkSeoData from '../helper/checkSeoData';
 
 import Head from 'next/head';
 import RealProjects from '../components/RealProjects';
+import SponsorUs from '../components/SponsorSection';
 
 export const Home = ({ data }) => {
   const {
@@ -29,8 +30,11 @@ export const Home = ({ data }) => {
     websiteUrl,
     projectsInfoData,
     projectsData,
-    pagesData
+    pagesData,
+    sponsersData,
+    sponserUsData
   } = data;
+
   return (
     <>
       <Head>{checkSeoData(metaData, websiteUrl)}</Head>
@@ -41,6 +45,16 @@ export const Home = ({ data }) => {
 
       <main>
         <SectionHeaderComponent data={home_header} />
+
+        {!sponsersData.statusCode && !sponserUsData.statusCode && (
+          <SponsorUs
+            withBtn={true}
+            withIcons={true}
+            sponsersData={sponsersData}
+            sponserUsData={sponserUsData}
+          />
+        )}
+
         <Goals data={goals} />
         <HowItWork data={steps} />
         {!patches.statusCode && !batches.statusCode && (
@@ -135,7 +149,9 @@ export async function getStaticProps(context) {
     mentorshipAPI('/setting'),
     mentorshipAPI('/projects-info'),
     mentorshipAPI('/projects'),
-    mentorshipAPI('/pages')
+    mentorshipAPI('/pages'),
+    mentorshipAPI('/sponsers'),
+    mentorshipAPI('/sponser-us')
   ];
   return Promise.all(checkingDataError(endPoints)).then(
     ([
@@ -151,7 +167,9 @@ export async function getStaticProps(context) {
       { data: websiteUrl },
       { data: projectsInfoData },
       { data: projectsData },
-      { data: pagesData }
+      { data: pagesData },
+      { data: sponsersData },
+      { data: sponserUsData }
     ]) => {
       return {
         props: {
@@ -168,7 +186,9 @@ export async function getStaticProps(context) {
             websiteUrl,
             projectsInfoData,
             projectsData,
-            pagesData
+            pagesData,
+            sponsersData,
+            sponserUsData
           }
         },
         revalidate: 1

@@ -1,0 +1,6 @@
+.sponsors__logo {
+  filter: grayscale(100%);
+}
+.sponsors__logo:hover {
+  filter: grayscale(0);
+}
