@@ -1,5 +1,5 @@
 import React from 'react';
-import Resources from '../components/resources/indes';
+import Resources from '../components/resources';
 
 export default {
   title: 'Resources',
