@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
-import dynamic from 'next/dynamic';
 import randomPosition from '../../helper/randomPosition';
-import { motion, useDragControls } from 'framer-motion';
-import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const ListOfRoundedImages = ({ data }) => {
   let cache = [];
@@ -46,9 +44,7 @@ const ListOfRoundedImages = ({ data }) => {
     return {
       left: `${position.x}%`,
       bottom: `${position.y}%`,
-      cursor: 'grab',
-      background: `url(${url})`,
-      backgroundSize: 'cover'
+      cursor: 'grab'
     };
   };
 
@@ -70,18 +66,21 @@ const ListOfRoundedImages = ({ data }) => {
         <img src="/static/images/splashes.png" alt="" />
       </motion.div>
       {data &&
-        data.map(({ url }, index) => {
+        data.map(({ url, title }, index) => {
           return (
-            <motion.div
+            <motion.img
               key={index}
-              className="static lg:absolute w-24 h-24 rounded-full shadow-img"
+              className="static lg:absolute w-24 h-24 rounded-full shadow-img object-cover"
               variants={image}
               initial="hidden"
-              style={positionStyle(url)}
+              style={positionStyle()}
               drag
               whileTap={{ cursor: 'grabbing' }}
+              src={url}
               dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-            ></motion.div>
+              title={title}
+              alt={title}
+            />
           );
         })}
     </motion.div>
