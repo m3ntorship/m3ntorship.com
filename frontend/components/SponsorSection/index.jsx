@@ -10,7 +10,11 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
     return (
       <li key={logo.id} className="mx-10 mt-16">
         <a target="_blank" rel="noreferrer noopener" href={logo.link}>
-          <img className="min-w-full min-h-full" src={logo.logo.url} alt="" />
+          <img
+            className="min-w-full min-h-full sponsors__logo"
+            src={logo.logo.url}
+            alt=""
+          />
         </a>
       </li>
     );

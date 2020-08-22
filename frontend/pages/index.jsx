@@ -45,12 +45,16 @@ export const Home = ({ data }) => {
 
       <main>
         <SectionHeaderComponent data={home_header} />
-        <SponsorUs
-          withBtn={true}
-          withIcons={true}
-          sponsersData={sponsersData}
-          sponserUsData={sponserUsData}
-        />
+
+        {!sponsersData.statusCode && !sponserUsData.statusCode && (
+          <SponsorUs
+            withBtn={true}
+            withIcons={true}
+            sponsersData={sponsersData}
+            sponserUsData={sponserUsData}
+          />
+        )}
+
         <Goals data={goals} />
         <HowItWork data={steps} />
         {!patches.statusCode && !batches.statusCode && (
