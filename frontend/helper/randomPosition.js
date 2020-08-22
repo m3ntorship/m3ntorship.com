@@ -1,5 +1,5 @@
 //Generating random number between and including min and max
-const rng = (min, max) => {
+const randomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
@@ -12,8 +12,8 @@ export default function randomPosition(
   margin = 0
 ) {
   let position = {
-    x: rng(radius, maxX - radius),
-    y: rng(radius, maxY - radius)
+    x: randomNumber(radius, maxX - radius),
+    y: randomNumber(radius, maxY - radius)
   };
   if (cache.length > 0) {
     for (let i = 0; i < cache.length; i++) {
@@ -23,8 +23,8 @@ export default function randomPosition(
       );
       if (distance < 2 * radius + margin) {
         position = {
-          x: rng(radius, maxX - radius),
-          y: rng(radius, maxY - radius)
+          x: randomNumber(radius, maxX - radius),
+          y: randomNumber(radius, maxY - radius)
         };
         i = -1;
       }
