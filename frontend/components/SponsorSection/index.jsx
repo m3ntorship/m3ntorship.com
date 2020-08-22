@@ -6,20 +6,6 @@ import Link from 'next/link';
 const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
   const { title, sub_title, sponsers_link } = sponserUsData;
 
-  const logosList = sponsersData.map(logo => {
-    return (
-      <li key={logo.id} className="mx-10 mt-16">
-        <a target="_blank" rel="noreferrer noopener" href={logo.link}>
-          <img
-            className="min-w-full min-h-full sponsors__logo"
-            src={logo.logo.url}
-            alt=""
-          />
-        </a>
-      </li>
-    );
-  });
-
   return (
     <section className="container">
       <div className="py-20 border border-c400 bg-c1200">
@@ -53,7 +39,19 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
         )}
         {withIcons && (
           <ul className="flex items-center justify-center px-32 mx-auto flex-wrap">
-            {logosList}
+            {sponsersData.map(({ id, link, logo: { url } }) => {
+              return (
+                <li key={id} className="mx-10 mt-16">
+                  <a target="_blank" rel="noreferrer noopener" href={link}>
+                    <img
+                      className="min-w-full min-h-full sponsors__logo"
+                      src={url}
+                      alt=""
+                    />
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
