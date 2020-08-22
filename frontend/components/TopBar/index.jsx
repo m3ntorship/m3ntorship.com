@@ -175,7 +175,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
           stickyMenu
             ? 'md:py-4 lg:py-8 pt-10 shadow-2xl'
             : 'pt-10 md:py-10 lg:py-16',
-          menu ? '' : 'pb-10',
+          menu ? 'shadow-2xl' : 'pb-10',
           bgColored ? 'bg-c200' : ''
         )}
       >
