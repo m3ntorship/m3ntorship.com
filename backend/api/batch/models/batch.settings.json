@@ -36,8 +36,8 @@
       "required": false
     },
     "projects": {
-      "collection": "project",
-      "via": "batches"
+      "via": "batches",
+      "collection": "project"
     },
     "batch_header": {
       "type": "component",

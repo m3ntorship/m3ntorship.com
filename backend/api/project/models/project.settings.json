@@ -15,8 +15,8 @@
       "required": true
     },
     "batches": {
-      "via": "projects",
       "collection": "batch",
+      "via": "projects",
       "dominant": true
     },
     "batches_description": {
@@ -53,6 +53,16 @@
       "type": "component",
       "repeatable": false,
       "component": "general.link"
+    },
+    "resources_title": {
+      "type": "string",
+      "required": true,
+      "default": "RESOURCES"
+    },
+    "project_resources": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.resources"
     }
   }
 }
