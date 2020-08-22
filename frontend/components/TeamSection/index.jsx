@@ -34,7 +34,7 @@ const cardVariants = {
 };
 
 const TeamGroupSection = ({ data }) => {
-  const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
+  const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
 
   const [sectionRef, inView] = useInView({
     threshold: 0.5,
@@ -78,7 +78,7 @@ const TeamGroupSection = ({ data }) => {
         {membersData && (
           <motion.div
             variants={isDesktop ? cardVariants : ''}
-            className="grid md:grid-cols-2 sm:grid-cols-1 lg:px-40 gap-5"
+            className="grid md:grid-cols-2 sm:grid-cols-1 xl:px-40 gap-5"
           >
             {membersData}
           </motion.div>
