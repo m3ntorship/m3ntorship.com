@@ -62,7 +62,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                     key={id}
                     src={url}
                     alt={name}
-                    className="rounded-full w-16 h-16 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear group-hover:ml-0 group-hover:mr-1"
+                    className="rounded-full w-12 h-12 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear group-hover:ml-0 group-hover:mr-1"
                   />
                 )
               )}

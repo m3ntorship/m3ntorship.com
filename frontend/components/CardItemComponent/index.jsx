@@ -12,7 +12,7 @@ const CardItem = ({ data }) => {
     project_stack
   } = data;
   return (
-    <div className="repo__card my-3 border py-10 px-6 md:px-12 border-c100">
+    <div className="repo__card my-3 border py-10 px-6 xl:px-12 border-c100">
       <div>
         {project_name && (
           <Heading
@@ -33,7 +33,7 @@ const CardItem = ({ data }) => {
               href={link.url}
               textColor="white"
               bgColor="black"
-              customClassName="m-auto py-2 h-20 uppercase"
+              customClassName="m-auto py-2 h-20 uppercase w-full"
               btnSize="large"
             >
               <span className="mr-4">
@@ -55,7 +55,7 @@ const CardItem = ({ data }) => {
                 bgColor="gray"
                 customClassName="custom"
                 fontWeight="normal"
-                customClassName="underline m-auto py-4  h-20"
+                customClassName="underline m-auto py-4 h-20 w-full"
                 textSize="medium"
                 btnSize="large"
               >
