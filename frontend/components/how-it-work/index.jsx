@@ -35,7 +35,7 @@ const cardVariants = {
 };
 
 const HowItWork = ({ data }) => {
-  const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
+  const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({
     threshold: isDesktop ? 0.3 : 0.05,
     triggerOnce: true

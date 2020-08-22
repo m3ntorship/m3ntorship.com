@@ -34,7 +34,7 @@ const cardVariants = {
 };
 
 const TeamGroupSection = ({ data }) => {
-  const isDesktop = useMedia(['(max-width: 1025px)'], [false], true);
+  const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
 
   const [sectionRef, inView] = useInView({
     threshold: 0.5,
