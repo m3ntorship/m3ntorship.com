@@ -28,7 +28,7 @@ const globby = require('globby');
                             }
                           
                             <priority>${
-                              path === '/batches/sitemap.xml' ? '0.5' : '0.9'
+                              path === '/cohorts/sitemap.xml' ? '0.5' : '0.9'
                             }</priority>
                         </url>`;
               })

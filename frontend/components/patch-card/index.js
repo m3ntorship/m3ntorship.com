@@ -87,7 +87,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
             </Link>
           ) : (
             link && (
-              <Link href={'/batches/[slug]'} as={`/batches/${batch_slug}`}>
+              <Link href={'/cohorts/[slug]'} as={`/cohorts/${batch_slug}`}>
                 <a className="font-bold text-sm underline mt-auto">
                   {link.name}
                 </a>

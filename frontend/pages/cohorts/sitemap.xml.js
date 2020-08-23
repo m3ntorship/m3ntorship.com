@@ -22,7 +22,7 @@ const createSitemap = batches => {
           .map(({ batch_slug, updatedAt }) => {
             return `
                     <url>
-                        <loc>${`https://m3ntorship.com/batches/${batch_slug}`}</loc>
+                        <loc>${`https://m3ntorship.com/cohorts/${batch_slug}`}</loc>
                         <lastmod>${updatedAt}</lastmod>
                     </url>
                 `;
