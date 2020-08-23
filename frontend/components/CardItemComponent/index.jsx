@@ -33,7 +33,7 @@ const CardItem = ({ data }) => {
               href={link.url}
               textColor="white"
               bgColor="black"
-              customClassName="m-auto py-2 h-20 uppercase w-full"
+              customClassName="m-auto py-2 h-20 uppercase w-full sm:w-full"
               btnSize="large"
             >
               <span className="mr-4">
@@ -55,7 +55,7 @@ const CardItem = ({ data }) => {
                 bgColor="gray"
                 customClassName="custom"
                 fontWeight="normal"
-                customClassName="underline m-auto py-4 h-20 w-full"
+                customClassName="underline m-auto py-4 h-20 w-full sm:w-full"
                 textSize="medium"
                 btnSize="large"
               >
