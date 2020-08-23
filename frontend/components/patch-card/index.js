@@ -62,7 +62,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                     key={id}
                     src={url}
                     alt={name}
-                    className="rounded-full w-12 h-12 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear md:group-hover:ml-0 md:group-hover:mr-1 -mb-2 md:group-hover:mb-1"
+                    className="rounded-full w-12 h-12 -ml-2 transition-all shadow-btn bg-cover duration-200 ease-linear lg:group-hover:ml-0 md:group-hover:mr-1 -mb-2 lg:group-hover:mb-1"
                   />
                 )
               )}
@@ -87,7 +87,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
             </Link>
           ) : (
             link && (
-              <Link href={'/batches/[slug]'} as={`/batches/${batch_slug}`}>
+              <Link href={'/cohorts/[slug]'} as={`/cohorts/${batch_slug}`}>
                 <a className="font-bold text-sm underline mt-auto">
                   {link.name}
                 </a>

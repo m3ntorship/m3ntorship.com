@@ -1,5 +1,5 @@
 Sitemap: https://m3ntorship.com/sitemap.xml
-Sitemap: https://m3ntorship.com/batches/sitemap.xml
+Sitemap: https://m3ntorship.com/cohorts/sitemap.xml
 
 User-agent: *
 
