@@ -1,11 +1,11 @@
 import React from 'react';
-import SectionHeader from './../../components/shared/SectionHeader/index';
+import SectionHeader from '../../components/shared/SectionHeader/index';
 import Button from '../../components/shared/Button';
 import { Team } from '../../components/Team';
 import JoinUs from '../../components/JoinUsComponent';
 import { useRouter } from 'next/router';
-import { mentorshipAPI } from './../../clients/mentorship';
-import Error from '../../pages/_error';
+import { mentorshipAPI } from '../../clients/mentorship';
+import Error from '../_error';
 import { TopBar } from '../../components/TopBar';
 import Footer from '../../components/footer';
 import checkingDataError from '../../helper/checkingDataError';
@@ -67,12 +67,12 @@ const BatchPage = ({
       <Head>
         <link
           rel="canonical"
-          href={`${website_url}/batches/${batchData[0].batch_slug}`}
+          href={`${website_url}/cohorts/${batchData[0].batch_slug}`}
         />
 
         <meta
           property="og:url"
-          content={`${website_url}/batches/${batchData[0].batch_slug}`}
+          content={`${website_url}/cohorts/${batchData[0].batch_slug}`}
         />
         <meta
           property="og:title"
