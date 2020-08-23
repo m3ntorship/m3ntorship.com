@@ -93,7 +93,7 @@ const BatchPage = ({
             data={sectionHeaderData}
             customClassName="py-0 order-2 lg:order-none"
           >
-            {repo_link && repo_btn_name && batchProjects.length == 1 && (
+            {/* {repo_link && repo_btn_name && batchProjects.length == 1 && (
               <Button
                 textColor="white"
                 bgColor="black"
@@ -126,13 +126,13 @@ const BatchPage = ({
                   alt="arrow icon"
                 />
               </Button>
-            )}
+            )} */}
           </SectionHeader>
           <div className="order-1 lg:order-none">
             <ListOfRoundedImages data={team_images} />
           </div>
         </section>
-        {batchProjects.length > 1 && batchProjectsDesc && (
+        {batchProjects && batchProjectsDesc && (
           <BatchProjects
             projectsInfoData={batchProjectsDesc}
             projectsData={batchProjects}
