@@ -188,7 +188,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                 </Link>
               )}
               {sub_title && (
-                <p className="font-normal text-xxs lg:text-xs mt-2 text-c500  hidden md:block">
+                <p className="font-normal text-xxs lg:text-xs mt-2 text-c500 text-left hidden md:block">
                   {sub_title}
                 </p>
               )}
