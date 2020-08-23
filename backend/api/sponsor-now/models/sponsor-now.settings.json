@@ -1,8 +1,8 @@
 {
   "kind": "singleType",
-  "collectionName": "sponsor_uses",
+  "collectionName": "sponsor_nows",
   "info": {
-    "name": "sponsor_us"
+    "name": "sponsor_now"
   },
   "options": {
     "increments": true,

@@ -2,24 +2,24 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/sponsor-us",
-      "handler": "sponsor-us.find",
+      "path": "/sponsor-now",
+      "handler": "sponsor-now.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/sponsor-us",
-      "handler": "sponsor-us.update",
+      "path": "/sponsor-now",
+      "handler": "sponsor-now.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/sponsor-us",
-      "handler": "sponsor-us.delete",
+      "path": "/sponsor-now",
+      "handler": "sponsor-now.delete",
       "config": {
         "policies": []
       }
