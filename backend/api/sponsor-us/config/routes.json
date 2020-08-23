@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/sponsor-us",
+      "handler": "sponsor-us.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/sponsor-us",
+      "handler": "sponsor-us.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/sponsor-us",
+      "handler": "sponsor-us.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

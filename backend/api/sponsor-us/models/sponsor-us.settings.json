@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "sponsor_uses",
+  "info": {
+    "name": "sponsor_us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

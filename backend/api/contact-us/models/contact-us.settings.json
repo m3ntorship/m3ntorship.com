@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_uses",
+  "info": {
+    "name": "contact_us"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
