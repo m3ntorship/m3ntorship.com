@@ -6,12 +6,16 @@ import {
   GradientText,
   HEADING_OPTIONS
 } from '../shared/Heading/index';
-
 import Button from '../shared/Button/index';
 import SectionHeader from '../shared/SectionHeader';
-
 import { useRouter } from 'next/router';
+import { useInView } from 'react-intersection-observer';
+
 const Apply = ({ data, inputFields }) => {
+  const [ref, inView] = useInView({
+    threshold: 0,
+    triggerOnce: true
+  });
   const router = useRouter();
   const { as } = router.query;
   if (data) {
@@ -127,24 +131,30 @@ const Apply = ({ data, inputFields }) => {
         </div>
         {mentor || as === 'mentor' ? (
           <div
+            ref={ref}
             style={{ height: '30rem' }}
             className="ExampleWidget mentor relative my-8"
           >
-            <ReactTypeformEmbed
-              popup={false}
-              url="https://m3ntorshipcom.typeform.com/to/F9BNbwS2"
-            />
+            {inView && (
+              <ReactTypeformEmbed
+                popup={false}
+                url="https://m3ntorshipcom.typeform.com/to/F9BNbwS2"
+              />
+            )}
           </div>
         ) : (
           <div
+            ref={ref}
             style={{ height: '30rem' }}
             className="ExampleWidget mentee relative my-8"
           >
             <div className="hidden"></div>
-            <ReactTypeformEmbed
-              popup={false}
-              url="https://m3ntorshipcom.typeform.com/to/yj7E4NEG"
-            />
+            {inView && (
+              <ReactTypeformEmbed
+                popup={false}
+                url="https://m3ntorshipcom.typeform.com/to/yj7E4NEG"
+              />
+            )}
           </div>
         )}
       </>
