@@ -4,6 +4,7 @@ import { mentorshipAPI } from './../../clients/mentorship';
 import checkingDataError from '../../helper/checkingDataError';
 import { useRouter } from 'next/router';
 import Footer from './../../components/footer/index';
+import Resources from '../../components/resources';
 import { TopBar } from './../../components/TopBar/index';
 import SectionHeader from './../../components/shared/SectionHeader/index';
 import Button from './../../components/shared/Button/index';
@@ -32,7 +33,9 @@ const Projects = ({
     },
     batches: batchCards,
     batches_description,
-    project_overview
+    project_overview,
+    project_resources,
+    resources_title
   } = projectData[0];
   const { website_url } = websiteUrl;
   return (
@@ -84,6 +87,7 @@ const Projects = ({
           )}
         </SectionHeader>
         <Patches data={batches_description} batchesCards={batchCards} />
+        <Resources title={resources_title} resourcesCards={project_resources} />
         <Overview data={project_overview} />
       </main>
 

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import randomPosition from '../../helper/randomPosition';
 import { motion } from 'framer-motion';
 
-export const ListOfRoundedImages = ({ data }) => {
+const ListOfRoundedImages = ({ data }) => {
+  let cache = [];
+
   //animation varitants
   const imageContainer = {
     visible: {
@@ -22,31 +25,66 @@ export const ListOfRoundedImages = ({ data }) => {
       }
     }
   };
+  const splash = {
+    hidden: {
+      x: 400,
+      opacity: 0
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring'
+      }
+    }
+  };
+
+  const positionStyle = url => {
+    const position = randomPosition(120, 100, 10, cache, 1, data.length);
+    return {
+      left: `${position.x}%`,
+      bottom: `${position.y}%`,
+      cursor: 'grab'
+    };
+  };
 
   return (
     <motion.div
-      className="flex justify-center flex-wrap"
+      className="list-of-rounded-images flex flex-wrap items-center justify-center lg:block relative w-full h-full gap-5"
       variants={imageContainer}
       animate="visible"
+      style={{
+        placeItems: 'center'
+      }}
     >
+      <motion.div
+        variants={splash}
+        initial="hidden"
+        className="absolute hidden lg:block left-0"
+        style={{ width: '135%', top: '-10%' }}
+      >
+        <img src="/static/images/splashes.png" alt="" />
+      </motion.div>
       {data &&
         data.map(({ url, title }, index) => {
           return (
-            <motion.div
+            <motion.img
               key={index}
-              className="w-24 h-24 m-5 mt-3"
+              className="static lg:absolute w-24 h-24 rounded-full shadow-img object-cover"
               variants={image}
               initial="hidden"
-            >
-              <img
-                src={url}
-                alt={title}
-                className="object-cover w-full h-full rounded-full "
-              />
-            </motion.div>
-
+              style={positionStyle()}
+              drag
+              whileTap={{ cursor: 'grabbing' }}
+              src={url}
+              dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+              title={title}
+              alt={title}
+            />
           );
         })}
     </motion.div>
   );
 };
+
+export default ListOfRoundedImages;
