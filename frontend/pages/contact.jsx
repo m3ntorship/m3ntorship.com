@@ -20,7 +20,10 @@ const Contact = ({
 }) => {
   return (
     <>
-      <TopBar data={topBarData} navigationLinks={pagesData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
+
       <Head>{checkSeoData(metaData, websiteUrl)}</Head>
       <div>
         <Heading

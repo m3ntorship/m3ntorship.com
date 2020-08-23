@@ -11,11 +11,18 @@ const Sponsors = ({
   websiteUrl,
   metaData,
   data,
-  data: { topBarData, footerData, pagesData, sponsorsData : {title, description} }
+  data: {
+    topBarData,
+    footerData,
+    pagesData,
+    sponsorsData: { title, description }
+  }
 }) => {
   return (
     <>
-      <TopBar data={topBarData} navigationLinks={pagesData} />
+      {!topBarData.statusCode && !pagesData.statusCode && (
+        <TopBar data={topBarData} navigationLinks={pagesData} />
+      )}
       <Head>{checkSeoData(metaData, websiteUrl)}</Head>
       <div>
         <Heading
@@ -24,9 +31,12 @@ const Sponsors = ({
         >
           {title}
         </Heading>
-        <p className='text-center text-c500 my-10 mx-auto w-3/4'> {description} </p>
+        <p className="text-center text-c500 my-10 mx-auto w-3/4">
+          {' '}
+          {description}{' '}
+        </p>
       </div>
-      <Footer data={footerData} />
+      {!footerData.statusCode && <Footer data={footerData} />}
     </>
   );
 };
