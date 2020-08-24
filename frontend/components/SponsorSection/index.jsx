@@ -38,13 +38,13 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
           </div>
         )}
         {withIcons && (
-          <ul className="flex items-center justify-center px-32 mx-auto flex-wrap">
+          <ul className="flex items-center justify-center  mx-auto flex-wrap">
             {sponsersData.map(({ id, link, logo: { url } }) => {
               return (
                 <li key={id} className="mx-10 mt-16">
-                  <a target="_blank" rel="noreferrer noopener" href={link}>
+                  <a target="_blank" rel="noreferrer noopener" className ="w-40 inline-block" href={link}>
                     <img
-                      className="min-w-full min-h-full sponsors__logo"
+                      className="m-auto sponsors__logo"
                       src={url}
                       alt=""
                     />
