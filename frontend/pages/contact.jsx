@@ -25,7 +25,7 @@ const Contact = ({
       )}
 
       <Head>{checkSeoData(metaData, websiteUrl)}</Head>
-      <div>
+      <div className='my-10 md:my-0'>
         <Heading
           type={HEADING_OPTIONS.TYPE.MAIN_LARGE}
           textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
