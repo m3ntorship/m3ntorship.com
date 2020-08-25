@@ -16,6 +16,15 @@ class MyDocument extends Document {
             type="image/svg"
             href="../../static/favicon/favicon.ico"
           ></link>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-175933629-1"
+          ></script>
+          <script>
+            window.dataLayer = window.dataLayer || []; function gtag()
+            {dataLayer.push(arguments)}
+            gtag('js', new Date()); gtag('config', 'UA-175933629-1');
+          </script>
         </Head>
         <body className="font-body leading-body">
           <Main />
