@@ -48,7 +48,7 @@ export const Home = ({ data }) => {
         <Goals data={goals} />
         <HowItWork data={steps} settings={settings} />
         {!patches.statusCode && !batches.statusCode && (
-          <Patches data={patches} batchesCards={batches} />
+          <Patches data={patches} batchesCards={batches} settings={settings} />
         )}
         <RealProjects
           projectsInfoData={projectsInfoData}
