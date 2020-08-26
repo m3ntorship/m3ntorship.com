@@ -96,7 +96,7 @@ export default function resources({ title, resourcesCards }) {
           </AnimatePresence>
         </div>
 
-        <p className="text-c600 text-xxs leading-6 ml-10 self-end flex-none order-1">
+        <p className="text-c600 text-xxs leading-6 ml-10  flex-none order-1">
           {description}
         </p>
       </div>
