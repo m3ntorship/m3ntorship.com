@@ -22,21 +22,6 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
             <p className="text-base text-center">{sub_title}</p>
           </div>
         </div>
-        {withBtn && (
-          <div className="mt-6">
-            <Link href={sponsers_link.url}>
-              <Button
-                textColor="black"
-                bgColor="green"
-                btnSize="large"
-                textSize="medium"
-                customClassName="mx-auto"
-              >
-                {sponsers_link.name}
-              </Button>
-            </Link>
-          </div>
-        )}
         {withIcons && (
           <ul className="flex items-center justify-center  md:px-32 mx-auto flex-wrap">
             {sponsersData.map(({ id, link, logo: { url } }) => {
@@ -54,6 +39,21 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
               );
             })}
           </ul>
+        )}
+        {withBtn && (
+          <div className="mt-6">
+            <Link href={sponsers_link.url}>
+              <Button
+                textColor="black"
+                bgColor="green"
+                btnSize="large"
+                textSize="medium"
+                customClassName="mx-auto"
+              >
+                {sponsers_link.name}
+              </Button>
+            </Link>
+          </div>
         )}
       </div>
     </section>
