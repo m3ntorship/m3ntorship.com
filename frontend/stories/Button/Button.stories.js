@@ -12,14 +12,14 @@ export const ButtonComponent = () => {
 };
 export const BlackBtn = () => {
   return (
-    <Link  href="https://twitter.com/home?lang=en" passHref>
+    <Link href="https://twitter.com/home?lang=en" passHref>
       <Button
         textColor="white"
         bgColor="black"
         borderStyle="solid"
         btnPadding="small"
         customClassName="custom"
-        extrnalLink = {false}
+        externalLink={false}
       >
         <span>
           <img className="inline-block" src={githubLogo}></img>
@@ -37,7 +37,7 @@ export const BlueBtn = () => {
       bgColor="blue"
       btnPadding="medium"
       customClassName="custom"
-      extrnalLink = {true}
+      externalLink={true}
     >
       Apply now
     </Button>
@@ -46,11 +46,7 @@ export const BlueBtn = () => {
 
 export const GreenBtn = () => {
   return (
-    <Button
-      textColor="black"
-      bgColor="green"
-      customClassName="custom"
-    >
+    <Button textColor="black" bgColor="green" customClassName="custom">
       Apply now
     </Button>
   );

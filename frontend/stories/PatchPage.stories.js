@@ -126,7 +126,7 @@ export const PatchPageComponent = () => {
             <Button
               textColor="white"
               bgColor="black"
-              extrnalLink={true}
+              externalLink={true}
               customClassName="my-6 md:mr-6"
             >
               <img
@@ -140,7 +140,7 @@ export const PatchPageComponent = () => {
               bgColor="gray"
               fontWeight="normal"
               customClassName="py-6"
-              extrnalLink={true}
+              externalLink={true}
             >
               <span className="uppercase underline">View Project</span>
             </Button>
