@@ -8,7 +8,7 @@ import { TopBar } from '../components/TopBar';
 import { HEADING_OPTIONS, Heading } from '../components/shared/Heading';
 
 const Sponsors = ({
-  websiteUrl,
+  settings,
   metaData,
   data,
   data: {
@@ -23,7 +23,7 @@ const Sponsors = ({
       {!topBarData.statusCode && !pagesData.statusCode && (
         <TopBar data={topBarData} navigationLinks={pagesData} />
       )}
-      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+      <Head>{checkSeoData(metaData, settings)}</Head>
       <div className='my-10 md:my-0'>
         <Heading
           type={HEADING_OPTIONS.TYPE.MAIN_LARGE}
@@ -56,7 +56,7 @@ export async function getStaticProps() {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData }
     ]) => {
       return {
@@ -68,7 +68,7 @@ export async function getStaticProps() {
             pagesData
           },
           metaData,
-          websiteUrl
+          settings
         },
         revalidate: 1
       };

@@ -23,7 +23,7 @@ const BatchPage = ({
   joinUsData,
   topBarData,
   footerData,
-  websiteUrl,
+  settings,
   pagesData,
   batchProjectsDesc
 }) => {
@@ -61,7 +61,7 @@ const BatchPage = ({
     repo_btn: { name: repo_btn_name, url: repo_link },
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
-  const { website_url } = websiteUrl;
+  const { website_url } = settings;
   return (
     <>
       <Head>
@@ -151,7 +151,7 @@ export async function getStaticProps({ params: { slug } }) {
       { data: joinUsData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData },
       { data: batchProjectsDesc }
     ]) => {
@@ -162,7 +162,7 @@ export async function getStaticProps({ params: { slug } }) {
           joinUsData,
           topBarData,
           footerData,
-          websiteUrl,
+          settings,
           pagesData,
           batchProjectsDesc
         },

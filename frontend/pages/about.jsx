@@ -9,7 +9,7 @@ import { useViewportScroll, motion, useTransform } from 'framer-motion';
 import Head from 'next/head';
 import checkSeoData from '../helper/checkSeoData';
 
-const About = ({ websiteUrl, metaData, data }) => {
+const About = ({ settings, metaData, data }) => {
   const { scrollY } = useViewportScroll();
   const y1 = useTransform(scrollY, [0, 900], [0, 150]);
 
@@ -24,7 +24,7 @@ const About = ({ websiteUrl, metaData, data }) => {
     const { about_head, about_description } = aboutData;
     return (
       <>
-        <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+        <Head>{checkSeoData(metaData, settings)}</Head>
         {!topBarData.statusCode && !pagesData.statusCode && (
           <TopBar
             data={topBarData}
@@ -67,7 +67,7 @@ export async function getStaticProps() {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData }
     ]) => {
       return {
@@ -80,7 +80,7 @@ export async function getStaticProps() {
             pagesData
           },
           metaData,
-          websiteUrl
+          settings
         },
         revalidate: 1
       };
