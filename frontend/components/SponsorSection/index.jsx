@@ -18,10 +18,28 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
           >
             {title}
           </Heading>
-          <div className="p-2">
+          <div className="p-2 w-3/4 mx-auto mt-6">
             <p className="text-base text-center">{sub_title}</p>
           </div>
         </div>
+        {withIcons && (
+          <ul className="flex items-center justify-center  md:px-32 mx-auto flex-wrap">
+            {sponsersData.map(({ id, link, logo: { url } }) => {
+              return (
+                <li key={id} className="mx-10 my-6">
+                  <a
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className=" max-w-xxs inline-block"
+                    href={link}
+                  >
+                    <img className="m-auto sponsors__logo" src={url} alt="" />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        )}
         {withBtn && (
           <div className="mt-6">
             <Link href={sponsers_link.url}>
@@ -36,24 +54,6 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
               </Button>
             </Link>
           </div>
-        )}
-        {withIcons && (
-          <ul className="flex items-center justify-center  md:px-32 mx-auto flex-wrap">
-            {sponsersData.map(({ id, link, logo: { url } }) => {
-              return (
-                <li key={id} className="mx-10 mt-16">
-                  <a
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className=" max-w-xxs inline-block"
-                    href={link}
-                  >
-                    <img className="m-auto sponsors__logo" src={url} alt="" />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
         )}
       </div>
     </section>
