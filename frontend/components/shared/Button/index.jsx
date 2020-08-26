@@ -12,7 +12,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
     borderStyle,
     href,
     onClick,
-    extrnalLink,
+    externalLink,
     textSize,
     fontWeight
   } = props;
@@ -22,7 +22,7 @@ const Button = React.forwardRef(({ children, ...props }, ref) => {
         onClick={onClick}
         href={`${href ? href : ''}`}
         ref={ref}
-        target={extrnalLink && '_blank'}
+        target={externalLink && '_blank'}
         className={cn(
           'flex items-center justify-center',
           'global-btn inline-block text-center hover:shadow-btn transform hover:-translate-y-.5 transition-all duration-200 ',

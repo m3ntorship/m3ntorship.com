@@ -36,7 +36,7 @@ export const SectionHeaderContainer = () => {
           bgColor="blue"
           btnPadding="small"
           customClassName=""
-          extrnalLink={true}
+          externalLink={true}
         >
           Apply now
         </Button>

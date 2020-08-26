@@ -73,7 +73,7 @@ const Projects = ({
               textColor="white"
               bgColor="black"
               btnSize="largeTall"
-              extrnalLink={true}
+              externalLink={true}
               href={repo_link}
               customClassName="mb-6 md:mb-0 md:mr-6"
             >
