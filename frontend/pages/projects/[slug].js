@@ -16,7 +16,7 @@ const Projects = ({
   projectData,
   topBarData,
   footerData,
-  websiteUrl,
+  settings,
   pagesData
 }) => {
   const router = useRouter();
@@ -37,7 +37,7 @@ const Projects = ({
     project_resources,
     resources_title
   } = projectData[0];
-  const { website_url } = websiteUrl;
+  const { website_url } = settings;
   return (
     <>
       <Head>
@@ -86,7 +86,11 @@ const Projects = ({
             </Button>
           )}
         </SectionHeader>
-        <Patches data={batches_description} batchesCards={batchCards} />
+        <Patches
+          data={batches_description}
+          batchesCards={batchCards}
+          settings={settings}
+        />
         <Resources title={resources_title} resourcesCards={project_resources} />
         <Overview data={project_overview} />
       </main>
@@ -132,7 +136,7 @@ export async function getStaticProps({ params: { slug } }) {
       { data: projectData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData }
     ]) => {
       return {
@@ -140,7 +144,7 @@ export async function getStaticProps({ params: { slug } }) {
           projectData,
           topBarData,
           footerData,
-          websiteUrl,
+          settings,
           pagesData
         },
         revalidate: 1
