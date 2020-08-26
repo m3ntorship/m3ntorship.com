@@ -26,7 +26,7 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
           <ul className="flex items-center justify-center  md:px-32 mx-auto flex-wrap">
             {sponsersData.map(({ id, link, logo: { url } }) => {
               return (
-                <li key={id} className="mx-10 mt-16">
+                <li key={id} className="mx-10 my-6">
                   <a
                     target="_blank"
                     rel="noreferrer noopener"
