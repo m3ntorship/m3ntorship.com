@@ -1,4 +1,4 @@
-import React from 'react';
+import useMedia from './useMedia';
 
 const useMobileAnimation = (settings, componentId) => {
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
