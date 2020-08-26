@@ -18,7 +18,7 @@ const SponsorUs = ({ sponsersData, sponserUsData, withBtn, withIcons }) => {
           >
             {title}
           </Heading>
-          <div className="p-2">
+          <div className="p-2 w-3/4 mx-auto mt-6">
             <p className="text-base text-center">{sub_title}</p>
           </div>
         </div>
