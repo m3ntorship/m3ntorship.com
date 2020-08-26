@@ -12,7 +12,13 @@ import {
 import useMedia from '../../helper/useMedia';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 
-export const TopBar = ({ data, navigationLinks, button_color, bgColored, settings }) => {
+export const TopBar = ({
+  data,
+  navigationLinks,
+  button_color,
+  bgColored,
+  settings
+}) => {
   const {
     logo_link: { url: logo_url, name: logo_name },
     sub_text: sub_title,
@@ -23,7 +29,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored, setting
   );
 
   const componentId = 'top-bar';
-  const animateOnMobile = useMobileAnimation(settings, componentId)
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const navAnimation = useAnimation();
   const [lastYPos, setLastYPos] = useState(0);
   const [stickyMenu, setStickyMenu] = useState(false);
