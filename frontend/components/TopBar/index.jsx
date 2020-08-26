@@ -10,7 +10,9 @@ import {
   useAnimation
 } from 'framer-motion';
 import useMedia from '../../helper/useMedia';
-export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
+import useMobileAnimation from '../../helper/useMobileAnimation';
+
+export const TopBar = ({ data, navigationLinks, button_color, bgColored, settings }) => {
   const {
     logo_link: { url: logo_url, name: logo_name },
     sub_text: sub_title,
@@ -20,6 +22,8 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
     (a, b) => a.piriority - b.piriority
   );
 
+  const componentId = 'top-bar';
+  const animateOnMobile = useMobileAnimation(settings, componentId)
   const navAnimation = useAnimation();
   const [lastYPos, setLastYPos] = useState(0);
   const [stickyMenu, setStickyMenu] = useState(false);
@@ -167,7 +171,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
     <div className={cn(bgColored ? 'bg-c200' : '')}>
       <motion.header
         id="header"
-        initial={{ y: 0, opacity: 1 }}
+        initial={animateOnMobile && { y: 0, opacity: 1 }}
         animate={navAnimation}
         transition={{ duration: 0.5 }}
         className={cn(
@@ -196,7 +200,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                 {menu ? (
                   <motion.button
                     layoutId="menu-button"
-                    initial={{ opacity: 0.5 }}
+                    initial={animateOnMobile && { opacity: 0.5 }}
                     animate={{ opacity: 1 }}
                     transition={{
                       type: 'spring',
@@ -211,7 +215,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                 ) : (
                   <motion.button
                     layoutId="menu-button"
-                    initial={{ opacity: 0.5 }}
+                    initial={animateOnMobile && { opacity: 0.5 }}
                     animate={{ opacity: 1 }}
                     transition={{
                       type: 'spring',
@@ -231,7 +235,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                 <nav className="flex flex-col items-baseline w-full md:hidden">
                   <motion.ul
                     className="flex flex-col w-full items-baseline pl-2"
-                    variants={navMenuListVariants}
+                    variants={animateOnMobile && navMenuListVariants}
                     initial="initial"
                     animate="animate"
                     exit="exit"
@@ -246,7 +250,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                           <motion.li
                             key={url}
                             className="my-4 lg:my-10 w-full"
-                            variants={navMenuItemVariants}
+                            variants={animateOnMobile && navMenuItemVariants}
                             whileHover={{ x: 15 }}
                           >
                             <NavLink
@@ -262,7 +266,7 @@ export const TopBar = ({ data, navigationLinks, button_color, bgColored }) => {
                     }, [])}
                     {apply_btn_url && (
                       <motion.li
-                        variants={navMenuItemVariants}
+                        variants={animateOnMobile && navMenuItemVariants}
                         className="w-full"
                       >
                         <Link href={apply_btn_url} passHref>
