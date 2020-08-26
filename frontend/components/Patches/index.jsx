@@ -7,7 +7,7 @@ import {
 import PatchCard from '../patch-card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-const Patches = ({ data, batchesCards }) => {
+const Patches = ({ data, batchesCards, settings:{animate_at_mobile} }) => {
   const [containerRef, contianerInView] = useInView({
     threshold: 0.1,
     triggerOnce: true
@@ -86,7 +86,7 @@ const Patches = ({ data, batchesCards }) => {
             >
               {batchesCards.map(card => {
                 return (
-                  <motion.div key={card.id} variants={cardVariants}>
+                  <motion.div key={card.id} variants={animate_at_mobile ? cardVariants : ''}>
                     <PatchCard cardDetails={card} dashed={false} />
                   </motion.div>
                 );
