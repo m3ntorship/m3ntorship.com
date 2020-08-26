@@ -5,7 +5,7 @@ import Apply from '../apply/index';
 import { HEADING_OPTIONS } from '../shared/Heading';
 import { useRouter } from 'next/router';
 import { TopBar } from '../TopBar';
-export const ApplyPage = ({ data, topBarData, pagesData }) => {
+export const ApplyPage = ({ data, topBarData, pagesData, settings }) => {
   const router = useRouter();
   const { as } = router.query;
   const [mentor, setMentor] = useState(false);
@@ -27,7 +27,7 @@ export const ApplyPage = ({ data, topBarData, pagesData }) => {
       <>
         <UserProvider value={{ mentor, setMentor }}>
           {!topBarData.statusCode && !pagesData.statusCode && (
-            <TopBar data={topBarData} navigationLinks={pagesData} />
+            <TopBar data={topBarData} navigationLinks={pagesData} settings={settings} />
           )}
           <main>
             {mentor || as === 'mentor' ? (

@@ -85,7 +85,11 @@ const BatchPage = ({
         <meta name="description" content={batchData[0].description} />
       </Head>
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar
+          data={topBarData}
+          navigationLinks={pagesData}
+          settings={settings}
+        />
       )}
       <main>
         <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">

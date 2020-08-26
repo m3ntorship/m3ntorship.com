@@ -40,7 +40,7 @@ export const Home = ({ data }) => {
       <Head>{checkSeoData(metaData, settings)}</Head>
 
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar data={topBarData} navigationLinks={pagesData} settings={settings} />
       )}
 
       <main>

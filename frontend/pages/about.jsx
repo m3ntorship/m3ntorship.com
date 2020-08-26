@@ -30,6 +30,7 @@ const About = ({ settings, metaData, data }) => {
             data={topBarData}
             bgColored={true}
             navigationLinks={pagesData}
+            settings={settings}
           />
         )}
         <main>

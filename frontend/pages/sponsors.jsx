@@ -21,7 +21,7 @@ const Sponsors = ({
   return (
     <>
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar data={topBarData} navigationLinks={pagesData} settings={settings} />
       )}
       <Head>{checkSeoData(metaData, settings)}</Head>
       <div className='my-10 md:my-0'>
