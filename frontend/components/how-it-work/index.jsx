@@ -34,7 +34,7 @@ const cardVariants = {
   }
 };
 
-const HowItWork = ({ data }) => {
+const HowItWork = ({ data, settings:{animate_at_mobile} }) => {
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({
     threshold: isDesktop ? 0.3 : 0.05,
@@ -81,6 +81,7 @@ const HowItWork = ({ data }) => {
                       cardDetails={el}
                       boxShadow={true}
                       isImageFull={true}
+                      animate_at_mobile={animate_at_mobile}
                     />
                   </div>
                 </motion.div>

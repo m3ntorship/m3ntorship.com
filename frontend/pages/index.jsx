@@ -46,7 +46,7 @@ export const Home = ({ data }) => {
       <main>
         <SectionHeaderComponent data={home_header} />
         <Goals data={goals} />
-        <HowItWork data={steps} />
+        <HowItWork data={steps} settings={settings} />
         {!patches.statusCode && !batches.statusCode && (
           <Patches data={patches} batchesCards={batches} />
         )}
