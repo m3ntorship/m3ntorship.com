@@ -39,8 +39,7 @@ const PersonCard = ({
   rounded,
   roundedSmall,
   boxShadow,
-  isImageFull,
-  animate_at_mobile
+  isImageFull
 }) => {
   const { card_image, title, sub_title, describe } = cardDetails;
   const [crdRef, cardInView] = useInView({
@@ -53,7 +52,7 @@ const PersonCard = ({
     <div ref={crdRef} className="h-full">
       {cardDetails && (
         <motion.div
-          variants={animate_at_mobile ? cardVaruants : ''}
+          variants={cardVaruants}
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
