@@ -27,7 +27,7 @@ export const Home = ({ data }) => {
     topBarData,
     footerData,
     metaData,
-    websiteUrl,
+    settings,
     projectsInfoData,
     projectsData,
     pagesData,
@@ -37,7 +37,7 @@ export const Home = ({ data }) => {
 
   return (
     <>
-      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+      <Head>{checkSeoData(metaData, settings)}</Head>
 
       {!topBarData.statusCode && !pagesData.statusCode && (
         <TopBar data={topBarData} navigationLinks={pagesData} />
@@ -162,7 +162,7 @@ export async function getStaticProps(context) {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl },
+      { data: settings },
       { data: projectsInfoData },
       { data: projectsData },
       { data: pagesData },
@@ -181,7 +181,7 @@ export async function getStaticProps(context) {
             topBarData,
             footerData,
             metaData,
-            websiteUrl,
+            settings,
             projectsInfoData,
             projectsData,
             pagesData,
