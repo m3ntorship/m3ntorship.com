@@ -10,7 +10,6 @@ import { HEADING_OPTIONS, Heading } from '../components/shared/Heading';
 const Sponsors = ({
   settings,
   metaData,
-  data,
   data: {
     topBarData,
     footerData,
@@ -21,10 +20,14 @@ const Sponsors = ({
   return (
     <>
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} settings={settings} />
+        <TopBar
+          data={topBarData}
+          navigationLinks={pagesData}
+          settings={settings}
+        />
       )}
       <Head>{checkSeoData(metaData, settings)}</Head>
-      <div className='my-10 md:my-0'>
+      <div className="my-10 md:my-0">
         <Heading
           type={HEADING_OPTIONS.TYPE.MAIN_LARGE}
           textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
@@ -36,7 +39,9 @@ const Sponsors = ({
           {description}{' '}
         </p>
       </div>
-      {!footerData.statusCode && <Footer data={footerData} />}
+      {!footerData.statusCode && (
+        <Footer data={footerData} settings={settings} />
+      )}
     </>
   );
 };
