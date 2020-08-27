@@ -19,7 +19,7 @@ import { motion } from 'framer-motion';
  * boxShadow
  */
 
-const cardVaruants = {
+const cardVariants = {
   scale: {
     opacity: 0,
     scale: 0.2
@@ -47,16 +47,22 @@ const PersonCard = ({
     triggerOnce: true
   });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
-
+  let mentor = false;
+  if (sub_title == 'Mentor') {
+    mentor = true;
+  } else {
+    mentor = false;
+  }
   return (
     <div ref={crdRef} className="h-full">
       {cardDetails && (
         <motion.div
-          variants={cardVaruants}
+          variants={cardVariants}
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
-            'bg-c400': bgColord,
+            'bg-c400': bgColord && !mentor,
+            'bg-c300': mentor,
             'text-center p-12': rounded,
             'shadow-card': boxShadow
           })}
