@@ -159,7 +159,7 @@ export const TopBar = ({
             <p
               className={cn(
                 mobile ? 'text-sm' : 'text-xxs font-black',
-                active ? 'text-c100' : 'text-c1300'
+                active ? 'text-c100' : 'text-c600'
               )}
             >
               {name}

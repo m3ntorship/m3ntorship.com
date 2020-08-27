@@ -24,7 +24,7 @@ module.exports = {
       c1000: 'rgba(196, 196, 196, 0.29)',
       c1100: 'rgba(238, 239, 240, 0.9)',
       c1200: '#F0FAF3', // project card bg
-      c1300: 'rgba(0, 0, 0, 0.51)' // Nav items Color
+      c1300: '#A4B6F9' // Mentor Card Bg
     },
     fontSize: {
       xxs: '0.875rem', //14px
@@ -51,10 +51,10 @@ module.exports = {
       },
       spacing: {
         '.5': '2px',
-        '72': '19rem'
+        72: '19rem'
       },
       inset: {
-        '12': '3rem',
+        12: '3rem',
         '-12': '-3rem',
         '1/2': '50%',
         '-30': '-7.5rem'

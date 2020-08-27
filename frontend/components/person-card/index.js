@@ -20,7 +20,7 @@ import useMobileAnimation from '../../helper/useMobileAnimation';
  * boxShadow
  */
 
-const cardVaruants = {
+const cardVariants = {
   scale: {
     opacity: 0,
     scale: 0.2
@@ -51,16 +51,24 @@ const PersonCard = ({
     triggerOnce: true
   });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
+  const isMentor = () => {
+    if (sub_title == 'Mentor' || sub_title == 'mentor') {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <div ref={crdRef} className="h-full">
       {cardDetails && (
         <motion.div
-          variants={animateOnMobile && cardVaruants}
+          variants={animateOnMobile && cardVariants}
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
-            'bg-c400': bgColord,
+            'bg-c400': bgColord && !isMentor(),
+            'bg-c1300': isMentor(),
             'text-center p-12': rounded,
             'shadow-card': boxShadow
           })}
