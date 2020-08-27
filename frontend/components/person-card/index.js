@@ -62,7 +62,7 @@ const PersonCard = ({
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
             'bg-c400': bgColord && !mentor,
-            'bg-c300': mentor,
+            'bg-c1300': mentor,
             'text-center p-12': rounded,
             'shadow-card': boxShadow
           })}
