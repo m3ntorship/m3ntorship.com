@@ -23,7 +23,7 @@ const BatchPage = ({
   joinUsData,
   topBarData,
   footerData,
-  websiteUrl,
+  settings,
   pagesData,
   batchProjectsDesc
 }) => {
@@ -61,7 +61,7 @@ const BatchPage = ({
     repo_btn: { name: repo_btn_name, url: repo_link },
     project_btn: { name: project_btn_name, url: project_link }
   } = sectionHeaderData;
-  const { website_url } = websiteUrl;
+  const { website_url } = settings;
   return (
     <>
       <Head>
@@ -85,28 +85,38 @@ const BatchPage = ({
         <meta name="description" content={batchData[0].description} />
       </Head>
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar
+          data={topBarData}
+          navigationLinks={pagesData}
+          settings={settings}
+        />
       )}
       <main>
         <section className="container grid grid-cols-1 lg:grid-cols-2 row-gap-10">
           <SectionHeader
             data={sectionHeaderData}
             customClassName="py-0 order-2 lg:order-none"
+            settings={settings}
           ></SectionHeader>
           <div className="order-1 lg:order-none">
-            <ListOfRoundedImages data={team_images} />
+            <ListOfRoundedImages data={team_images} settings={settings} />
           </div>
         </section>
         {batchProjects && batchProjectsDesc && (
           <BatchProjects
             projectsInfoData={batchProjectsDesc}
             projectsData={batchProjects}
+            settings={settings}
           />
         )}
-        <Team data={batchTeamData} team_members={team_members} />
-        <JoinUs data={joinUsData} />
+        <Team
+          data={batchTeamData}
+          team_members={team_members}
+          settings={settings}
+        />
+        <JoinUs data={joinUsData} settings={settings} />
       </main>
-      <Footer data={footerData} />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
@@ -151,7 +161,7 @@ export async function getStaticProps({ params: { slug } }) {
       { data: joinUsData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData },
       { data: batchProjectsDesc }
     ]) => {
@@ -162,7 +172,7 @@ export async function getStaticProps({ params: { slug } }) {
           joinUsData,
           topBarData,
           footerData,
-          websiteUrl,
+          settings,
           pagesData,
           batchProjectsDesc
         },

@@ -3,8 +3,9 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
-const Footer = ({ data }) => {
+const Footer = ({ data, settings }) => {
   if (data) {
     const {
       logo,
@@ -15,6 +16,8 @@ const Footer = ({ data }) => {
       title_links
     } = data;
 
+    const componentId = 'footer';
+    const animateOnMobile = useMobileAnimation(settings, componentId);
     const { title, description, url } = footer_about ? footer_about : false;
     const [ref, inView] = useInView({
       threshold: 0.1,
@@ -23,7 +26,7 @@ const Footer = ({ data }) => {
     return (
       <footer ref={ref} className="container overflow-hidden">
         <motion.div
-          initial={{ y: 200, opacity: 0 }}
+          initial={animateOnMobile && { y: 200, opacity: 0 }}
           animate={inView ? { y: 0, opacity: 1 } : ''}
           transition={{ type: 'spring', duration: 0.5 }}
           className="grid lg:grid-cols-3 grid-cols-1"

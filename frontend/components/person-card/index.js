@@ -4,6 +4,7 @@ import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 // props list
 
@@ -39,8 +40,11 @@ const PersonCard = ({
   rounded,
   roundedSmall,
   boxShadow,
-  isImageFull
+  isImageFull,
+  settings
 }) => {
+  const componentId = 'person-card';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const { card_image, title, sub_title, describe } = cardDetails;
   const [crdRef, cardInView] = useInView({
     threshold: 0.3,
@@ -59,7 +63,7 @@ const PersonCard = ({
     <div ref={crdRef} className="h-full">
       {cardDetails && (
         <motion.div
-          variants={cardVariants}
+          variants={animateOnMobile && cardVariants}
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
