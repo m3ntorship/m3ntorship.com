@@ -11,7 +11,7 @@ import SectionHeader from '../shared/SectionHeader';
 import { useRouter } from 'next/router';
 import { useInView } from 'react-intersection-observer';
 
-const Apply = ({ data, inputFields }) => {
+const Apply = ({ data, inputFields, settings }) => {
   const [ref, inView] = useInView({
     threshold: 0,
     triggerOnce: true
@@ -25,6 +25,7 @@ const Apply = ({ data, inputFields }) => {
       <>
         <div className="flex">
           <SectionHeader
+          settings={settings}
             data={data}
             gradient_color={
               mentor || as === 'mentor'

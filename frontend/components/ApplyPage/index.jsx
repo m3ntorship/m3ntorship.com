@@ -5,6 +5,7 @@ import Apply from '../apply/index';
 import { HEADING_OPTIONS } from '../shared/Heading';
 import { useRouter } from 'next/router';
 import { TopBar } from '../TopBar';
+
 export const ApplyPage = ({ data, topBarData, pagesData, settings }) => {
   const router = useRouter();
   const { as } = router.query;
@@ -27,7 +28,11 @@ export const ApplyPage = ({ data, topBarData, pagesData, settings }) => {
       <>
         <UserProvider value={{ mentor, setMentor }}>
           {!topBarData.statusCode && !pagesData.statusCode && (
-            <TopBar data={topBarData} navigationLinks={pagesData} settings={settings} />
+            <TopBar
+              data={topBarData}
+              navigationLinks={pagesData}
+              settings={settings}
+            />
           )}
           <main>
             {mentor || as === 'mentor' ? (
@@ -36,6 +41,7 @@ export const ApplyPage = ({ data, topBarData, pagesData, settings }) => {
                 gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
                 headingtype={HEADING_OPTIONS.TYPE.MAIN}
                 customClassName="container"
+                settings={settings}
               />
             ) : (
               <SectionHeader
@@ -43,10 +49,11 @@ export const ApplyPage = ({ data, topBarData, pagesData, settings }) => {
                 gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.GREEN}
                 headingtype={HEADING_OPTIONS.TYPE.MAIN}
                 customClassName="container"
+                settings={settings}
               />
             )}
             <section className="container">
-              <Apply data={formData} />
+              <Apply data={formData} settings={settings} />
             </section>
           </main>
         </UserProvider>

@@ -15,8 +15,13 @@ const Apply = ({
   return (
     <>
       <Head>{checkSeoData(metaData, settings)}</Head>
-      <ApplyPage data={data} topBarData={topBarData} pagesData={pagesData} settings={settings} />
-      <Footer data={footerData} />
+      <ApplyPage
+        data={data}
+        topBarData={topBarData}
+        pagesData={pagesData}
+        settings={settings}
+      />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
