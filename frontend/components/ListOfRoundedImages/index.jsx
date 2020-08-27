@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const ListOfRoundedImages = ({ data, settings }) => {
-  const componentId = 'list-of-random-images';
+  const componentId = 'list_of_random_images';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   let cache = [];
   //animation varitants

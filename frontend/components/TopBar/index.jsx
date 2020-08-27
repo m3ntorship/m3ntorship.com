@@ -28,7 +28,7 @@ export const TopBar = ({
     (a, b) => a.piriority - b.piriority
   );
 
-  const componentId = 'top-bar';
+  const componentId = 'top_bar';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const navAnimation = useAnimation();
   const [lastYPos, setLastYPos] = useState(0);

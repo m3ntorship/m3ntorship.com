@@ -63,7 +63,7 @@ const cardVariant = {
 };
 
 export const Team = ({ data, team_members, settings }) => {
-  const componentId = 'cohort-team';
+  const componentId = 'cohort_team';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const [textContainerRef, textContainerInView] = useInView({
     threshold: 0.7,

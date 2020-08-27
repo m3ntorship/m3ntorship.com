@@ -34,7 +34,7 @@ const projectsCardVariants = {
 };
 
 const BatchProjects = ({ projectsInfoData, projectsData, settings }) => {
-  const componentId = 'batch-projects';
+  const componentId = 'batch_projects';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({
