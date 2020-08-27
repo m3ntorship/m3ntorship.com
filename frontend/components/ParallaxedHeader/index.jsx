@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading } from '../shared/Heading';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const titleContainerVariant = {
   initial: {},
@@ -24,7 +25,9 @@ const titleVariant = {
   }
 };
 
-export const ParallaxedHeader = ({ data }) => {
+export const ParallaxedHeader = ({ data, settings }) => {
+  const componentId = 'parallaxed-header';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const { scrollY } = useViewportScroll();
   const y1 = useTransform(scrollY, value => value / -6);
 
@@ -40,7 +43,7 @@ export const ParallaxedHeader = ({ data }) => {
           >
             <motion.div
               className="hidden lg:block mr-auto w-56"
-              initial={{ x: -100, opacity: 0 }}
+              initial={animateOnMobile && { x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
             >
@@ -55,14 +58,14 @@ export const ParallaxedHeader = ({ data }) => {
                   as="h1"
                 >
                   <motion.span
-                    variants={titleContainerVariant}
+                    variants={animateOnMobile && titleContainerVariant}
                     initial="initial"
                     animate="animate"
                     className="inline-block whitespace-no-wrap"
                   >
                     {title.split('').map((letter, index) => (
                       <motion.span
-                        variants={titleVariant}
+                        variants={animateOnMobile && titleVariant}
                         className="inline-block whitespace-no-wrap"
                         key={index}
                       >
@@ -75,7 +78,7 @@ export const ParallaxedHeader = ({ data }) => {
               {sub_title && (
                 <motion.p
                   className="text-base md:text-md uppercase text-center"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={animateOnMobile && { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, type: 'spring' }}
                 >
@@ -85,7 +88,7 @@ export const ParallaxedHeader = ({ data }) => {
             </div>
             <motion.div
               className="hidden lg:block ml-auto w-56"
-              initial={{ x: 100, opacity: 0 }}
+              initial={animateOnMobile && { x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
             >

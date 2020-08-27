@@ -33,9 +33,8 @@ const cardVariants = {
   }
 };
 
-const TeamGroupSection = ({ data }) => {
+const TeamGroupSection = ({ data, settings }) => {
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
-
   const [sectionRef, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true
@@ -47,7 +46,7 @@ const TeamGroupSection = ({ data }) => {
       ? member.map(cardData => {
           return (
             <div key={cardData.id} className="border border-c1100">
-              <PersonCard cardDetails={cardData} rounded={true} />
+              <PersonCard cardDetails={cardData} rounded={true} settings={settings} />
             </div>
           );
         })
