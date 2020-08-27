@@ -96,21 +96,27 @@ const BatchPage = ({
           <SectionHeader
             data={sectionHeaderData}
             customClassName="py-0 order-2 lg:order-none"
+            settings={settings}
           ></SectionHeader>
           <div className="order-1 lg:order-none">
-            <ListOfRoundedImages data={team_images} />
+            <ListOfRoundedImages data={team_images} settings={settings} />
           </div>
         </section>
         {batchProjects && batchProjectsDesc && (
           <BatchProjects
             projectsInfoData={batchProjectsDesc}
             projectsData={batchProjects}
+            settings={settings}
           />
         )}
-        <Team data={batchTeamData} team_members={team_members} />
-        <JoinUs data={joinUsData} />
+        <Team
+          data={batchTeamData}
+          team_members={team_members}
+          settings={settings}
+        />
+        <JoinUs data={joinUsData} settings={settings} />
       </main>
-      <Footer data={footerData} />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };

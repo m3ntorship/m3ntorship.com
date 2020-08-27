@@ -4,6 +4,7 @@ import PersonCard from '../person-card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const textContainerVariant = {
   initial: {
@@ -61,8 +62,9 @@ const cardVariant = {
   }
 };
 
-export const Team = ({ data, team_members }) => {
-  const isDesktop = useMedia(['(min-width: 1024px)'], [true], false);
+export const Team = ({ data, team_members, settings }) => {
+  const componentId = 'cohort-team';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const [textContainerRef, textContainerInView] = useInView({
     threshold: 0.7,
     triggerOnce: true
@@ -85,12 +87,12 @@ export const Team = ({ data, team_members }) => {
         </div>
         <div ref={textContainerRef}>
           <motion.div
-            variants={textContainerVariant}
+            variants={animateOnMobile && textContainerVariant}
             initial="initial"
             animate={textContainerInView ? 'shown' : null}
           >
             {title && (
-              <motion.div variants={textVariant}>
+              <motion.div variants={animateOnMobile && textVariant}>
                 <Heading
                   type={HEADING_OPTIONS.TYPE.SECTION}
                   fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
@@ -104,7 +106,7 @@ export const Team = ({ data, team_members }) => {
             )}
             {description && (
               <motion.p
-                variants={textVariant}
+                variants={animateOnMobile && textVariant}
                 className="mb-16 mx-auto text-center text-base text-c600 lg:w-4/6"
               >
                 {description}
@@ -116,18 +118,22 @@ export const Team = ({ data, team_members }) => {
           <div ref={cardsRef}>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-              variants={cardsContainerVariant}
+              variants={animateOnMobile && cardsContainerVariant}
               initial="initial"
               animate={cardsInView ? 'shown' : null}
             >
               {team_members.map(({ member_info, id }) => {
                 return (
-                  <motion.div variants={cardVariant} key={id}>
+                  <motion.div
+                    variants={animateOnMobile && cardVariant}
+                    key={id}
+                  >
                     <PersonCard
                       cardDetails={member_info}
                       bgColord={true}
                       rounded={true}
                       roundedSmall={true}
+                      settings={settings}
                     />
                   </motion.div>
                 );

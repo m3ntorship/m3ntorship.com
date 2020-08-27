@@ -52,7 +52,6 @@ const SectionHeader = ({
   headingAs,
   settings
 }) => {
-
   const componentId = 'section-header';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const [headerRef, headerInView] = useInView({

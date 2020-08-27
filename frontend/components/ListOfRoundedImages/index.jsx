@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import randomPosition from '../../helper/randomPosition';
 import { motion } from 'framer-motion';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
-const ListOfRoundedImages = ({ data }) => {
+const ListOfRoundedImages = ({ data, settings }) => {
+  const componentId = 'list-of-random-images';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   let cache = [];
-
   //animation varitants
   const imageContainer = {
     visible: {
@@ -51,14 +53,14 @@ const ListOfRoundedImages = ({ data }) => {
   return (
     <motion.div
       className="list-of-rounded-images flex flex-wrap items-center justify-center lg:block relative w-full h-full gap-5"
-      variants={imageContainer}
+      variants={animateOnMobile && imageContainer}
       animate="visible"
       style={{
         placeItems: 'center'
       }}
     >
       <motion.div
-        variants={splash}
+        variants={animateOnMobile && splash}
         initial="hidden"
         className="absolute hidden lg:block left-0"
         style={{ width: '135%', top: '-10%' }}
@@ -71,7 +73,7 @@ const ListOfRoundedImages = ({ data }) => {
             <motion.img
               key={index}
               className="static lg:absolute w-24 h-24 rounded-full shadow-img object-cover"
-              variants={image}
+              variants={animateOnMobile && image}
               initial="hidden"
               style={positionStyle()}
               drag

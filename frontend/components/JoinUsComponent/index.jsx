@@ -4,7 +4,9 @@ import Link from 'next/link';
 import Button from '../shared/Button';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-const JoinUs = ({ data }) => {
+import useMobileAnimation from '../../helper/useMobileAnimation';
+
+const JoinUs = ({ data, settings }) => {
   const {
     title,
     description,
@@ -14,7 +16,8 @@ const JoinUs = ({ data }) => {
     right_img: { url: right_image }
   } = data;
   const controls = useAnimation();
-
+  const componentId = 'cohort-team';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const [containerRef, ContainerInView] = useInView({
     threshold: 0.3,
     triggerOnce: true
@@ -87,11 +90,11 @@ const JoinUs = ({ data }) => {
     <section className="container" ref={containerRef}>
       <motion.div
         className="border-4 py-20 border-dashed border-c100 flex justify-evenly items-center"
-        variants={containerVariants}
+        variants={animateOnMobile && containerVariants}
         initial="initial"
         animate={controls}
       >
-        <motion.div className="w-1/6" variants={leftImageVariants}>
+        <motion.div className="w-1/6" variants={animateOnMobile && leftImageVariants}>
           <img
             className="object-cover items-center hidden lg:block"
             src={left_image}
@@ -101,9 +104,9 @@ const JoinUs = ({ data }) => {
 
         <motion.div
           className="w-full md:w-72 flex flex-col justify-center"
-          variants={innerContainerVariants}
+          variants={animateOnMobile && innerContainerVariants}
         >
-          <motion.div variants={innerItemsVariants}>
+          <motion.div variants={animateOnMobile && innerItemsVariants}>
             <Heading
               type={HEADING_OPTIONS.TYPE.CARD}
               textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
@@ -116,11 +119,11 @@ const JoinUs = ({ data }) => {
           </motion.div>
           <motion.p
             className="join-us-description text-center text-xs font-light text-c700"
-            variants={innerItemsVariants}
+            variants={animateOnMobile && innerItemsVariants}
           >
             {description}
           </motion.p>
-          <motion.div variants={innerItemsVariants}>
+          <motion.div variants={animateOnMobile && innerItemsVariants}>
             <Link href={`${memberBtnUrl}?as=mentee`} passHref>
               <Button
                 customClassName="uppercase mt-10 mx-auto"
@@ -133,7 +136,7 @@ const JoinUs = ({ data }) => {
               </Button>
             </Link>
           </motion.div>
-          <motion.div variants={innerItemsVariants}>
+          <motion.div variants={animateOnMobile && innerItemsVariants}>
             <Link href={`${mentorBtnUrl}?as=mentor`} passHref>
               <Button
                 customClassName="uppercase mt-5 mx-auto"
@@ -151,7 +154,7 @@ const JoinUs = ({ data }) => {
 
         <motion.div
           className="w-1/6 flex items-center"
-          variants={rightImageVariants}
+          variants={animateOnMobile && rightImageVariants}
         >
           <img
             className="object-cover hidden lg:block"
