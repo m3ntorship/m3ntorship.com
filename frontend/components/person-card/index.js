@@ -47,12 +47,14 @@ const PersonCard = ({
     triggerOnce: true
   });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
-  let mentor = false;
-  if (sub_title == 'Mentor') {
-    mentor = true;
-  } else {
-    mentor = false;
-  }
+  const isMentor = () => {
+    if (sub_title == 'Mentor' || sub_title == 'mentor') {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <div ref={crdRef} className="h-full">
       {cardDetails && (
@@ -61,8 +63,8 @@ const PersonCard = ({
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
-            'bg-c400': bgColord && !mentor,
-            'bg-c1300': mentor,
+            'bg-c400': bgColord && !isMentor(),
+            'bg-c1300': isMentor(),
             'text-center p-12': rounded,
             'shadow-card': boxShadow
           })}
