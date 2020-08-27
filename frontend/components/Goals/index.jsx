@@ -2,8 +2,11 @@ import React from 'react';
 import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
-const Goals = ({ data }) => {
+const Goals = ({ data, settings }) => {
+  const componentId = 'goals'
+  const animateOnMobile = useMobileAnimation(settings, componentId)
   const { title, list_goals, side_image } = data;
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -47,13 +50,13 @@ const Goals = ({ data }) => {
       <motion.section
         ref={ref}
         className="text-center text-lg container relative"
-        variants={containerVariants}
+        variants={animateOnMobile && containerVariants}
         initial="initial"
         animate={inView ? 'animate' : ''}
       >
         <motion.div
           className="absolute hidden xl:block -top-12 right-12"
-          variants={sideImageVariants}
+          variants={animateOnMobile && sideImageVariants}
         >
           {side_image && <img src={side_image.url} alt="side icon" />}
         </motion.div>
@@ -75,7 +78,7 @@ const Goals = ({ data }) => {
                 <motion.p
                   className="font-normal text-base md:text-xlg mb-10 last:mb-0"
                   key={id}
-                  variants={goalVariants}
+                  variants={animateOnMobile && goalVariants}
                 >
                   {goal}
                 </motion.p>
