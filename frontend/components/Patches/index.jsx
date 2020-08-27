@@ -7,7 +7,13 @@ import {
 import PatchCard from '../patch-card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-const Patches = ({ data, batchesCards}) => {
+import useMobileAnimation from '../../helper/useMobileAnimation';
+
+
+const Patches = ({ data, batchesCards, settings}) => {
+  const componentId = 'cohorts'
+  const animateOnMobile = useMobileAnimation(settings, componentId)
+
   const [containerRef, contianerInView] = useInView({
     threshold: 0.1,
     triggerOnce: true
@@ -55,7 +61,7 @@ const Patches = ({ data, batchesCards}) => {
     return (
       <motion.section
         className="patches container"
-        variants={containerVariants}
+        variants={animateOnMobile && containerVariants}
         initial="initial"
         animate={contianerInView ? 'animate' : ''}
       >
@@ -79,20 +85,20 @@ const Patches = ({ data, batchesCards}) => {
           {batchesCards[0] && (
             <motion.div
               className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-10"
-              variants={cardListVariants}
+              variants={animateOnMobile && cardListVariants}
               initial="initial"
               animate={cardsInView ? 'animate' : ''}
               ref={cardsRef}
             >
               {batchesCards.map(card => {
                 return (
-                  <motion.div key={card.id} variants={cardVariants}>
+                  <motion.div key={card.id} variants={animateOnMobile && cardVariants}>
                     <PatchCard cardDetails={card} dashed={false} />
                   </motion.div>
                 );
               })}
               {dashed_card && (
-                <motion.div variants={cardVariants}>
+                <motion.div variants={animateOnMobile && cardVariants}>
                   <PatchCard cardDetails={dashed_card} dashed={true} />
                 </motion.div>
               )}
