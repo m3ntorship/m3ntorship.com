@@ -49,7 +49,7 @@ export const Home = ({ data }) => {
 
       <main>
         <SectionHeaderComponent data={home_header} settings={settings} />
-        <Goals data={goals} />
+        <Goals data={goals} settings={settings} />
         <HowItWork data={steps} settings={settings} />
         {!patches.statusCode && !batches.statusCode && (
           <Patches data={patches} batchesCards={batches} settings={settings} />
@@ -57,6 +57,7 @@ export const Home = ({ data }) => {
         <RealProjects
           projectsInfoData={projectsInfoData}
           projectsData={projectsData}
+          settings={settings}
         />
         {!sponsersData.statusCode && !sponserUsData.statusCode && (
           <SponsorUs
@@ -64,11 +65,12 @@ export const Home = ({ data }) => {
             withIcons={true}
             sponsersData={sponsersData}
             sponserUsData={sponserUsData}
+            settings={settings}
           />
         )}
         <ContributeSection data={contribute} settings={settings} />
       </main>
-      <Footer data={footerData} />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
