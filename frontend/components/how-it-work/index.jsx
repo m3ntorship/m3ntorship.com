@@ -84,6 +84,7 @@ const HowItWork = ({ data, settings }) => {
                       cardDetails={el}
                       boxShadow={true}
                       isImageFull={true}
+                      settings={settings}
                     />
                   </div>
                 </motion.div>
