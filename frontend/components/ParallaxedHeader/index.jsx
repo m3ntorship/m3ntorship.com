@@ -26,7 +26,7 @@ const titleVariant = {
 };
 
 export const ParallaxedHeader = ({ data, settings }) => {
-  const componentId = 'parallaxed-header';
+  const componentId = 'parallaxed_header';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const { scrollY } = useViewportScroll();
   const y1 = useTransform(scrollY, value => value / -6);

@@ -16,7 +16,7 @@ const JoinUs = ({ data, settings }) => {
     right_img: { url: right_image }
   } = data;
   const controls = useAnimation();
-  const componentId = 'cohort-team';
+  const componentId = 'cohort_team';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const [containerRef, ContainerInView] = useInView({
     threshold: 0.3,

@@ -21,7 +21,7 @@ const cardVaruants = {
 };
 
 const ProjectCard = ({ data, settings }) => {
-  const componentId = 'project-card'
+  const componentId = 'project_card'
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const {
     project_overview: { summary },

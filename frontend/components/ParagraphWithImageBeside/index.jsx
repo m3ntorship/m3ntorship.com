@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 
 export const ParagraphWithImageBeside = ({ data, settings }) => {
-  const componentId = 'par-with-img-side';
+  const componentId = 'par_with_img_side';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   if (data) {
     const { title, description, image } = data;

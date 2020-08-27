@@ -52,7 +52,7 @@ const SectionHeader = ({
   headingAs,
   settings
 }) => {
-  const componentId = 'section-header';
+  const componentId = 'section_header';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const [headerRef, headerInView] = useInView({
     threshold: 0.1,

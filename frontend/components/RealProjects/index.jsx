@@ -34,7 +34,7 @@ const projectsCardVariants = {
 };
 
 const RealProjects = ({ projectsInfoData, projectsData, settings }) => {
-  const componentId = 'homepage-real-projects';
+  const componentId = 'homepage_real_projects';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({

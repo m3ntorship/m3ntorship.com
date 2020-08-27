@@ -43,7 +43,7 @@ const PersonCard = ({
   isImageFull,
   settings
 }) => {
-  const componentId = 'person-card';
+  const componentId = 'person_card';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const { card_image, title, sub_title, describe } = cardDetails;
   const [crdRef, cardInView] = useInView({
