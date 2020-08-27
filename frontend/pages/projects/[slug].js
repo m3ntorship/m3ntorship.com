@@ -61,12 +61,17 @@ const Projects = ({
         <meta name="description" content={projectData[0].description} />
       </Head>
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar
+          data={topBarData}
+          navigationLinks={pagesData}
+          settings={settings}
+        />
       )}
       <main className="container">
         <SectionHeader
           data={project_head}
           customClassName="order-2 lg:order-none"
+          settings={settings}
         >
           {repo_link && repo_btn_name && (
             <Button
@@ -91,11 +96,15 @@ const Projects = ({
           batchesCards={batchCards}
           settings={settings}
         />
-        <Resources title={resources_title} resourcesCards={project_resources} />
-        <Overview data={project_overview} />
+        <Resources
+          title={resources_title}
+          resourcesCards={project_resources}
+          settings={settings}
+        />
+        <Overview data={project_overview} settings={settings} />
       </main>
 
-      <Footer data={footerData} />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
