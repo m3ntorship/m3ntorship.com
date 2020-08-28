@@ -58,9 +58,7 @@ export const TopBar = ({
       }
       lastYPos = yPos;
       if (yPos == 0) {
-        if (stickyMenu) {
-          setStickyMenu(false);
-        }
+        setStickyMenu(false);
       }
     };
     window.addEventListener('scroll', handleScroll, false);
@@ -68,6 +66,7 @@ export const TopBar = ({
       window.removeEventListener('scroll', handleScroll, false);
     };
   }, []);
+  console.log('hi');
   const navMenuListVariants = {
     initial: {
       opacity: 0,
@@ -352,7 +351,7 @@ export const TopBar = ({
       </motion.header>
       {!bgColored && (
         <div
-          className={cn('h-24 md:h-48 w-full', bgColored ? 'bg-c200' : '')}
+          className={cn('h-24 lg:h-48 w-full', bgColored ? 'bg-c200' : '')}
         ></div>
       )}
     </div>
