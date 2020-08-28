@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
 import CardItem from '../CardItemComponent';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const projectsSectionVariants = {
   start: {
@@ -32,7 +33,9 @@ const projectsCardVariants = {
   }
 };
 
-const BatchProjects = ({ projectsInfoData, projectsData }) => {
+const BatchProjects = ({ projectsInfoData, projectsData, settings }) => {
+  const componentId = 'batch_projects';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({
     threshold: isDesktop ? 0.2 : 0.1,
@@ -44,7 +47,7 @@ const BatchProjects = ({ projectsInfoData, projectsData }) => {
     return (
       <section className="real-projects lg:pt-40" ref={ref}>
         <motion.div
-          variants={projectsSectionVariants}
+          variants={animateOnMobile && projectsSectionVariants}
           initial="start"
           animate={inView ? 'end' : ''}
           className="container"

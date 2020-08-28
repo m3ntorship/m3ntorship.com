@@ -4,6 +4,7 @@ import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const projectsSectionVariants = {
   start: {
@@ -32,7 +33,9 @@ const projectsCardVariants = {
   }
 };
 
-const RealProjects = ({ projectsInfoData, projectsData }) => {
+const RealProjects = ({ projectsInfoData, projectsData, settings }) => {
+  const componentId = 'homepage_real_projects';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({
     threshold: isDesktop ? 0.5 : 0.1,
@@ -43,7 +46,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
     const {
       projects_brief: {
         title,
-        sub_title,
+        description,
         image: { url }
       }
     } = projectsInfoData;
@@ -55,7 +58,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
           )}
         </div>
         <motion.div
-          variants={projectsSectionVariants}
+          variants={animateOnMobile && projectsSectionVariants}
           initial="start"
           animate={inView ? 'end' : ''}
           className="container"
@@ -70,9 +73,9 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
             >
               {title && <GradientText text={title} />}
             </Heading>
-            {sub_title && (
+            {description && (
               <p className="text-center mx-auto text-base text-c600 md:w-2/3">
-                {sub_title}
+                {description}
               </p>
             )}
           </div>
@@ -84,7 +87,7 @@ const RealProjects = ({ projectsInfoData, projectsData }) => {
                     key={project.id}
                     variants={isDesktop ? projectsCardVariants : ''}
                   >
-                    <ProjectCard data={project} />
+                    <ProjectCard data={project} settings={settings} />
                   </motion.div>
                 );
               })}

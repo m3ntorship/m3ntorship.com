@@ -4,6 +4,7 @@ import PersonCard from '../person-card';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const sectionVariants = {
   hidden: {
@@ -34,7 +35,9 @@ const cardVariants = {
   }
 };
 
-const HowItWork = ({ data }) => {
+const HowItWork = ({ data, settings }) => {
+  const componentId = 'how_it_work'
+  const animateOnMobile = useMobileAnimation(settings, componentId)
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [ref, inView] = useInView({
     threshold: isDesktop ? 0.3 : 0.05,
@@ -46,7 +49,7 @@ const HowItWork = ({ data }) => {
       <motion.section
         className="text-center container relative"
         ref={ref}
-        variants={sectionVariants}
+        variants={animateOnMobile && sectionVariants }
         initial="hidden"
         animate={inView ? 'visible' : ''}
       >
@@ -69,7 +72,7 @@ const HowItWork = ({ data }) => {
             {cards.map((el, index) => {
               return (
                 <motion.div
-                  variants={isDesktop ? cardVariants : ''}
+                  variants={isDesktop && cardVariants}
                   className="relative h-full"
                   key={el.id}
                 >
@@ -81,6 +84,7 @@ const HowItWork = ({ data }) => {
                       cardDetails={el}
                       boxShadow={true}
                       isImageFull={true}
+                      settings={settings}
                     />
                   </div>
                 </motion.div>

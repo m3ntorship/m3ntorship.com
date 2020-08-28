@@ -9,7 +9,7 @@ import { useViewportScroll, motion, useTransform } from 'framer-motion';
 import Head from 'next/head';
 import checkSeoData from '../helper/checkSeoData';
 
-const About = ({ websiteUrl, metaData, data }) => {
+const About = ({ settings, metaData, data }) => {
   const { scrollY } = useViewportScroll();
   const y1 = useTransform(scrollY, [0, 900], [0, 150]);
 
@@ -24,25 +24,26 @@ const About = ({ websiteUrl, metaData, data }) => {
     const { about_head, about_description } = aboutData;
     return (
       <>
-        <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+        <Head>{checkSeoData(metaData, settings)}</Head>
         {!topBarData.statusCode && !pagesData.statusCode && (
           <TopBar
             data={topBarData}
             bgColored={true}
             navigationLinks={pagesData}
+            settings={settings}
           />
         )}
         <main>
           <motion.div style={{ y: y1 }}>
             <div className="h-24 md:h-48 w-full bg-c200"></div>
-            <ParallaxedHeader data={about_head} />
+            <ParallaxedHeader data={about_head} settings={settings} />
           </motion.div>
           <section className="container">
-            <ParagraphWithImageBeside data={about_description} />
+            <ParagraphWithImageBeside data={about_description} settings={settings} />
           </section>
-          <TeamGroupSection data={teamGroupData} />
+          <TeamGroupSection data={teamGroupData} settings={settings} />
         </main>
-        <Footer data={footerData} />
+        <Footer data={footerData} settings={settings} />
       </>
     );
   } else {
@@ -67,7 +68,7 @@ export async function getStaticProps() {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData }
     ]) => {
       return {
@@ -80,7 +81,7 @@ export async function getStaticProps() {
             pagesData
           },
           metaData,
-          websiteUrl
+          settings
         },
         revalidate: 1
       };

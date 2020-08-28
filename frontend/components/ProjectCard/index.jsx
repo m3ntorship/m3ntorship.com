@@ -4,6 +4,7 @@ import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 const cardVaruants = {
   scale: {
@@ -19,7 +20,9 @@ const cardVaruants = {
   }
 };
 
-const ProjectCard = ({ data }) => {
+const ProjectCard = ({ data, settings }) => {
+  const componentId = 'project_card'
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const {
     project_overview: { summary },
     project_name,
@@ -34,7 +37,7 @@ const ProjectCard = ({ data }) => {
   return (
     <motion.div
       ref={crdRef}
-      variants={cardVaruants}
+      variants={animateOnMobile && cardVaruants}
       initial={isMobile ? 'scale' : ''}
       animate={isMobile && cardInView ? 'unScale' : ''}
       className="project-card bg-c1200 p-8"

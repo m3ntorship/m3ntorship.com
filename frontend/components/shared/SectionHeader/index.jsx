@@ -4,6 +4,7 @@ import GenericParagrapgh from '../GenericParagrapgh/index';
 import { motion } from 'framer-motion';
 import cn from 'classnames';
 import { useInView } from 'react-intersection-observer';
+import useMobileAnimation from '../../../helper/useMobileAnimation';
 
 /**
  * Props List
@@ -48,8 +49,11 @@ const SectionHeader = ({
   gradient_color,
   headingFontWeight,
   customClassName,
-  headingAs
+  headingAs,
+  settings
 }) => {
+  const componentId = 'section_header';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const [headerRef, headerInView] = useInView({
     threshold: 0.1,
     triggerOnce: true
@@ -75,7 +79,7 @@ const SectionHeader = ({
         >
           <motion.div
             className="flex-1 lg:mr-6 justify-center w-full lg:w-1/2"
-            variants={sectionVariants}
+            variants={animateOnMobile && sectionVariants}
             initial="hidden"
             animate={headerInView ? 'visible' : ''}
           >
@@ -108,7 +112,7 @@ const SectionHeader = ({
               </p>
             )}
             <motion.div
-              variants={childVariants}
+              variants={animateOnMobile && childVariants}
               className="flex flex-wrap lg:flex-no-wrap flex-col md:flex-row items-center justify-center lg:justify-start"
             >
               {children}
@@ -117,7 +121,7 @@ const SectionHeader = ({
 
           {header_image && (
             <motion.div
-              variants={imageVarians}
+              variants={animateOnMobile && imageVarians}
               initial="hidden"
               animate={headerInView ? 'visible' : ''}
               className="flex-1 mb-12 lg:mb-0 w-full lg:w-1/2"

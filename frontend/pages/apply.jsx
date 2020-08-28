@@ -7,16 +7,21 @@ import checkSeoData from '../helper/checkSeoData';
 import Head from 'next/head';
 
 const Apply = ({
-  websiteUrl,
+  settings,
   metaData,
   data,
   data: { topBarData, footerData, pagesData }
 }) => {
   return (
     <>
-      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
-      <ApplyPage data={data} topBarData={topBarData} pagesData={pagesData} />
-      <Footer data={footerData} />
+      <Head>{checkSeoData(metaData, settings)}</Head>
+      <ApplyPage
+        data={data}
+        topBarData={topBarData}
+        pagesData={pagesData}
+        settings={settings}
+      />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
@@ -38,7 +43,7 @@ export async function getStaticProps() {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData }
     ]) => {
       return {
@@ -51,7 +56,7 @@ export async function getStaticProps() {
             pagesData
           },
           metaData,
-          websiteUrl
+          settings
         },
         revalidate: 1
       };

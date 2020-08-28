@@ -3,11 +3,11 @@ import { Heading, GradientText, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-// Project_overview :{
-//   title,summary,link,header_image,description
-// }
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
-const Overview = ({ data }) => {
+const Overview = ({ data, settings }) => {
+  const componentId = 'overview';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
   const [btnRef, btnInView] = useInView({
     threshold: 0.5,
     triggerOnce: true
@@ -35,7 +35,7 @@ const Overview = ({ data }) => {
           <motion.span
             ref={titleRef}
             className="inline-block"
-            initial={{ y: -100, opacity: 0 }}
+            initial={animateOnMobile && { y: -100, opacity: 0 }}
             animate={titleInView ? { y: 0, opacity: 1 } : {}}
             transition={{ type: 'spring' }}
           >
@@ -43,10 +43,10 @@ const Overview = ({ data }) => {
           </motion.span>
         </Heading>
         <div className="mb-8">
-          <ParagraphWithImageBeside data={paragraphData} />
+          <ParagraphWithImageBeside data={paragraphData} settings={settings} />
         </div>
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
+          initial={animateOnMobile && { y: 100, opacity: 0 }}
           animate={btnInView ? { y: 0, opacity: 1 } : {}}
           transition={{ type: 'spring' }}
         >

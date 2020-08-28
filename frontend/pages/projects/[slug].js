@@ -16,7 +16,7 @@ const Projects = ({
   projectData,
   topBarData,
   footerData,
-  websiteUrl,
+  settings,
   pagesData
 }) => {
   const router = useRouter();
@@ -37,7 +37,7 @@ const Projects = ({
     project_resources,
     resources_title
   } = projectData[0];
-  const { website_url } = websiteUrl;
+  const { website_url } = settings;
   return (
     <>
       <Head>
@@ -61,12 +61,17 @@ const Projects = ({
         <meta name="description" content={projectData[0].description} />
       </Head>
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar
+          data={topBarData}
+          navigationLinks={pagesData}
+          settings={settings}
+        />
       )}
       <main className="container">
         <SectionHeader
           data={project_head}
           customClassName="order-2 lg:order-none"
+          settings={settings}
         >
           {repo_link && repo_btn_name && (
             <Button
@@ -86,12 +91,20 @@ const Projects = ({
             </Button>
           )}
         </SectionHeader>
-        <Patches data={batches_description} batchesCards={batchCards} />
-        <Resources title={resources_title} resourcesCards={project_resources} />
-        <Overview data={project_overview} />
+        <Patches
+          data={batches_description}
+          batchesCards={batchCards}
+          settings={settings}
+        />
+        <Resources
+          title={resources_title}
+          resourcesCards={project_resources}
+          settings={settings}
+        />
+        <Overview data={project_overview} settings={settings} />
       </main>
 
-      <Footer data={footerData} />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
@@ -132,7 +145,7 @@ export async function getStaticProps({ params: { slug } }) {
       { data: projectData },
       { data: topBarData },
       { data: footerData },
-      { data: websiteUrl },
+      { data: settings },
       { data: pagesData }
     ]) => {
       return {
@@ -140,7 +153,7 @@ export async function getStaticProps({ params: { slug } }) {
           projectData,
           topBarData,
           footerData,
-          websiteUrl,
+          settings,
           pagesData
         },
         revalidate: 1

@@ -27,7 +27,7 @@ export const Home = ({ data }) => {
     topBarData,
     footerData,
     metaData,
-    websiteUrl,
+    settings,
     projectsInfoData,
     projectsData,
     pagesData,
@@ -37,22 +37,27 @@ export const Home = ({ data }) => {
 
   return (
     <>
-      <Head>{checkSeoData(metaData, websiteUrl)}</Head>
+      <Head>{checkSeoData(metaData, settings)}</Head>
 
       {!topBarData.statusCode && !pagesData.statusCode && (
-        <TopBar data={topBarData} navigationLinks={pagesData} />
+        <TopBar
+          data={topBarData}
+          navigationLinks={pagesData}
+          settings={settings}
+        />
       )}
 
       <main>
-        <SectionHeaderComponent data={home_header} />
-        <Goals data={goals} />
-        <HowItWork data={steps} />
+        <SectionHeaderComponent data={home_header} settings={settings} />
+        <Goals data={goals} settings={settings} />
+        <HowItWork data={steps} settings={settings} />
         {!patches.statusCode && !batches.statusCode && (
-          <Patches data={patches} batchesCards={batches} />
+          <Patches data={patches} batchesCards={batches} settings={settings} />
         )}
         <RealProjects
           projectsInfoData={projectsInfoData}
           projectsData={projectsData}
+          settings={settings}
         />
         {!sponsersData.statusCode && !sponserUsData.statusCode && (
           <SponsorUs
@@ -60,20 +65,21 @@ export const Home = ({ data }) => {
             withIcons={true}
             sponsersData={sponsersData}
             sponserUsData={sponserUsData}
+            settings={settings}
           />
         )}
-        <ContributeSection data={contribute} />
+        <ContributeSection data={contribute} settings={settings} />
       </main>
-      <Footer data={footerData} />
+      <Footer data={footerData} settings={settings} />
     </>
   );
 };
 
 // side components
-const SectionHeaderComponent = ({ data }) => {
+const SectionHeaderComponent = ({ data, settings }) => {
   const { apply_as_member, apply_as_mentor } = data;
   return (
-    <SectionHeader data={data} customClassName="container">
+    <SectionHeader data={data} settings={settings} customClassName="container">
       {apply_as_member && (
         <Link href={`${apply_as_member.url}?as=mentee`} passHref>
           <Button
@@ -104,12 +110,13 @@ const SectionHeaderComponent = ({ data }) => {
   );
 };
 
-const ContributeSection = ({ data }) => {
+const ContributeSection = ({ data, settings }) => {
   const { btn } = data;
 
   return (
     <SectionHeader
       data={data}
+      settings={settings}
       gradient_color={HEADING_OPTIONS.GRADIENT_COLOR.BLUE}
       headingtype={HEADING_OPTIONS.TYPE.SECTION}
       headingFontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
@@ -162,7 +169,7 @@ export async function getStaticProps(context) {
       { data: topBarData },
       { data: footerData },
       { data: metaData },
-      { data: websiteUrl },
+      { data: settings },
       { data: projectsInfoData },
       { data: projectsData },
       { data: pagesData },
@@ -181,7 +188,7 @@ export async function getStaticProps(context) {
             topBarData,
             footerData,
             metaData,
-            websiteUrl,
+            settings,
             projectsInfoData,
             projectsData,
             pagesData,

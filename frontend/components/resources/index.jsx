@@ -6,8 +6,12 @@ import {
 } from '../shared/Heading/index';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-export default function resources({ title, resourcesCards }) {
-  const ResourceCard = ({ title, url, description }) => {
+import useMobileAnimation from '../../helper/useMobileAnimation';
+
+export default function resources({ title, resourcesCards, settings }) {
+  const componentId = 'resources';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
+  const ResourceCard = ({ title, url, description, settings }) => {
     const [copy, setCopy] = useState(false);
     const [copySuccess, setCopySuccess] = useState(false);
 
@@ -69,9 +73,11 @@ export default function resources({ title, resourcesCards }) {
           <div className="flex flex-row my-4 self-start flex-none ">
             <div className="self-center order-none">{linkSvg}</div>
             <motion.h4
-              whileHover={{
-                textDecoration: 'underline'
-              }}
+              whileHover={
+                animateOnMobile && {
+                  textDecoration: 'underline'
+                }
+              }
               className="text-xs uppercase leading-6 self-center order-0 md:order-1 mx-4"
             >
               {title}
@@ -81,7 +87,7 @@ export default function resources({ title, resourcesCards }) {
             {copy && (
               <motion.div
                 whileHover={{ opacity: 1 }}
-                initial={{ opacity: 0 }}
+                initial={animateOnMobile && { opacity: 0 }}
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
                 className="opacity-50 my-4 ml-auto pr-4"
@@ -151,7 +157,7 @@ export default function resources({ title, resourcesCards }) {
   return (
     <motion.section
       className="container"
-      variants={containerVariants}
+      variants={animateOnMobile && containerVariants}
       initial="initial"
       animate={contianerInView ? 'animate' : ''}
     >
@@ -169,7 +175,7 @@ export default function resources({ title, resourcesCards }) {
         </div>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
-          variants={cardListVariants}
+          variants={animateOnMobile && cardListVariants}
           initial="initial"
           animate={cardsInView ? 'animate' : ''}
           ref={cardsRef}
@@ -177,11 +183,12 @@ export default function resources({ title, resourcesCards }) {
           {resourcesCards.map(card => {
             const { title, url, description } = card;
             return (
-              <motion.div variants={cardVariants}>
+              <motion.div variants={animateOnMobile && cardVariants}>
                 <ResourceCard
                   title={title}
                   url={url}
                   description={description}
+                  settings={settings}
                 />
               </motion.div>
             );
