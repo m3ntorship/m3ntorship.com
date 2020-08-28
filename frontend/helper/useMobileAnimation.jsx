@@ -1,6 +1,11 @@
 import useMedia from './useMedia';
-
+import { isSSR } from "./utils";
 const useMobileAnimation = (settings, componentId) => {
+
+  if(isSSR()){
+    return true;
+  }
+
   const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   // if we are in mobile
   if (!isDesktop) {
