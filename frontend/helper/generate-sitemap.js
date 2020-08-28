@@ -41,7 +41,6 @@ const globby = require('globby');
     'public/**/*.xml',
     '!public/**/{,sitemap.xml}'
   ]);
-  console.log(await pages);
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             ${pages
