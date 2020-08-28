@@ -41,8 +41,8 @@ const ListOfRoundedImages = ({ data, settings }) => {
     }
   };
 
-  const positionStyle = url => {
-    const position = randomPosition(120, 100, 10, cache, 1, data.length);
+  const positionStyle = () => {
+    const position = randomPosition(120, 100, 14, cache, 1);
     return {
       left: `${position.x}%`,
       bottom: `${position.y}%`,
