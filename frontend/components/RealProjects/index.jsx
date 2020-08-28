@@ -46,7 +46,7 @@ const RealProjects = ({ projectsInfoData, projectsData, settings }) => {
     const {
       projects_brief: {
         title,
-        sub_title,
+        description,
         image: { url }
       }
     } = projectsInfoData;
@@ -73,9 +73,9 @@ const RealProjects = ({ projectsInfoData, projectsData, settings }) => {
             >
               {title && <GradientText text={title} />}
             </Heading>
-            {sub_title && (
+            {description && (
               <p className="text-center mx-auto text-base text-c600 md:w-2/3">
-                {sub_title}
+                {description}
               </p>
             )}
           </div>
