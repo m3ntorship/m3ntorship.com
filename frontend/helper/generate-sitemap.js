@@ -33,30 +33,29 @@ const globby = require('globby');
         </urlset>`;
 
   fs.writeFileSync('public/sitemap_static.xml', sitemap);
-})();
+  return (async () => {
+    const pages = await globby([
+      'pages/**/*.xml.js',
+      'public/**/*.xml',
+      '!public/**/{,sitemap.xml}'
+    ]);
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+              ${pages
+                .map(page => {
+                  const path = page
+                    .replace('pages', '')
+                    .replace('public', '')
+                    .replace('.js', '');
+                  const route = path === '/index' ? '' : path;
 
-(async () => {
-  const pages = await globby([
-    'pages/**/*.xml.js',
-    'public/**/*.xml',
-    '!public/**/{,sitemap.xml}'
-  ]);
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-            ${pages
-              .map(page => {
-                const path = page
-                  .replace('pages', '')
-                  .replace('public', '')
-                  .replace('.js', '');
-                const route = path === '/index' ? '' : path;
+                  return `<sitemap>
+                  <loc>${`https://m3ntorship.com${route}`}</loc>
+                  </sitemap>`;
+                })
+                .join('')}
+                </sitemapindex>`;
 
-                return `<sitemap>
-                <loc>${`https://m3ntorship.com${route}`}</loc>
-                </sitemap>`;
-              })
-              .join('')}
-              </sitemapindex>`;
-
-  fs.writeFileSync('public/sitemap.xml', sitemap);
+    fs.writeFileSync('public/sitemap.xml', sitemap);
+  })();
 })();
