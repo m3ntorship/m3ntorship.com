@@ -66,7 +66,6 @@ export const TopBar = ({
       window.removeEventListener('scroll', handleScroll, false);
     };
   }, []);
-  console.log('hi');
   const navMenuListVariants = {
     initial: {
       opacity: 0,
