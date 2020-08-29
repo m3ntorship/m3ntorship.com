@@ -181,9 +181,9 @@ export default function resources({ title, resourcesCards, settings }) {
           ref={cardsRef}
         >
           {resourcesCards.map(card => {
-            const { title, url, description } = card;
+            const { title, url, description, id } = card;
             return (
-              <motion.div variants={animateOnMobile && cardVariants}>
+              <motion.div key={id} variants={animateOnMobile && cardVariants}>
                 <ResourceCard
                   title={title}
                   url={url}
