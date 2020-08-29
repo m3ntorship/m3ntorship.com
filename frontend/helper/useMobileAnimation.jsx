@@ -1,7 +1,7 @@
 import useMedia from './useMedia';
-import { isSSR } from "./utils";
-const useMobileAnimation = (settings, componentId) => {
+import { isSSR } from './utils';
 
+const useMobileAnimation = (settings, componentId) => {
   if(isSSR()){
     return false;
   }
