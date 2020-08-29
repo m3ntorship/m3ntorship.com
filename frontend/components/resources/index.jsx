@@ -70,7 +70,11 @@ export default function resources({ title, resourcesCards, settings }) {
             setCopy(false), setCopySuccess(false);
           }}
         >
-          <div className="flex flex-row my-4 self-start flex-none ">
+          <a
+            href={url}
+            target="_blank"
+            className="flex flex-row my-4 self-start flex-none "
+          >
             <div className="self-center order-none">{linkSvg}</div>
             <motion.h4
               whileHover={
@@ -82,7 +86,7 @@ export default function resources({ title, resourcesCards, settings }) {
             >
               {title}
             </motion.h4>
-          </div>
+          </a>
           <AnimatePresence>
             {copy && (
               <motion.div
