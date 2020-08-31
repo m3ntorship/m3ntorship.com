@@ -1,5 +1,6 @@
 name: deploy storybook to playground cluster
 
+# trigger
 on:
   push:
     branches:
@@ -16,7 +17,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       # dynamic deployment envs
       - name: set templating envs
         id: version
@@ -37,7 +38,7 @@ jobs:
     steps:
       # checkout the code commit
       - name: checkout the code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       # Installing dependencies
       - name: installing dependencies
@@ -67,7 +68,7 @@ jobs:
     env:
       M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: azure/setup-kubectl@v1
       - name: Kubectl configuration
         shell: bash
