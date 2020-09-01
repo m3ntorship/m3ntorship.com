@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "sponsor_nows",
+  "info": {
+    "name": "sponsor_now"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

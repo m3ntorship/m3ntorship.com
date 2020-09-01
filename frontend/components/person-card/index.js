@@ -1,72 +1,138 @@
 import React from 'react';
 import cn from 'classnames';
+import { Heading, HEADING_OPTIONS } from '../shared/Heading';
+import useMedia from '../../helper/useMedia';
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
+import useMobileAnimation from '../../helper/useMobileAnimation';
 
 // props list
 
 /**
  * cardDetails
- *  // image
+ *  // card_image
  *  // title
- *  // subtitle
- *  // description
+ *  // sub_title
+ *  // describe
  *
  * bgColord
  * rounded
  * boxShadow
  */
 
-const PersonCard = ({ cardDetails, bgColord, rounded, boxShadow }) => {
-  const { image, title, subtitle, description } = cardDetails;
+const cardVariants = {
+  scale: {
+    opacity: 0,
+    scale: 0.2
+  },
+  unScale: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: 'spring'
+    }
+  }
+};
+
+const PersonCard = ({
+  cardDetails,
+  bgColord,
+  rounded,
+  roundedSmall,
+  boxShadow,
+  isImageFull,
+  settings
+}) => {
+  const componentId = 'person_card';
+  const animateOnMobile = useMobileAnimation(settings, componentId);
+  const { card_image, title, sub_title, describe } = cardDetails;
+  const [crdRef, cardInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+  const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
+  const isMentor = () => {
+    if (sub_title == 'Mentor' || sub_title == 'mentor') {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
-    <>
+    <div ref={crdRef} className="h-full">
       {cardDetails && (
-        <div
-          style={{ boxShadow: boxShadow && '0 0 40px rgba(0, 0, 0, 0.1)' }}
-          className={cn('card', 'overflow-hidden', 'px-4', 'py-8', {
-            'bg-c400': bgColord,
-            'text-center': rounded
+        <motion.div
+          variants={animateOnMobile && cardVariants}
+          initial={isMobile ? 'scale' : ''}
+          animate={isMobile && cardInView ? 'unScale' : ''}
+          className={cn('card h-full', 'overflow-hidden', 'p-10', {
+            'bg-c400': bgColord && !isMentor(),
+            'bg-c1300': isMentor(),
+            'text-center p-12': rounded,
+            'shadow-card': boxShadow
           })}
         >
-          {image && (
+          {card_image && (
             <div
-              className={cn('card__image', 'mx-auto', 'pb-4', {
-                'w-56': !rounded,
-                'w-32': rounded
-              })}
+              className={cn(
+                'person__card__image',
+                'mx-auto',
+                'mb-8',
+                'text-center'
+              )}
             >
               <img
-                src={image}
-                alt="title"
-                className={cn({ 'rounded-full': rounded })}
-                style={{ objectFit: 'cover' }}
+                src={card_image.url}
+                alt={title}
+                className={cn('object-contain mx-auto', {
+                  'rounded-full': rounded,
+                  'w-24 h-24': bgColord,
+                  'lg:w-48 lg:h-48 w-32 h-32': !bgColord && !isImageFull,
+                  'w-full h-auto': isImageFull
+                })}
               />
             </div>
           )}
           {title && (
-            <p className="card__title text-c800 font-bold text-md pb-4 text-center">
+            <Heading
+              type={
+                rounded
+                  ? roundedSmall
+                    ? HEADING_OPTIONS.TYPE.CARD_SMALL
+                    : HEADING_OPTIONS.TYPE.CARD
+                  : HEADING_OPTIONS.TYPE.CARD_SMALL
+              }
+              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+              fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              as="h3"
+            >
               {title}
-            </p>
+            </Heading>
           )}
-          {subtitle && (
-            <p className="card__subtitle pb-2 text-center text-base text-c700">
-              {subtitle}
+          {sub_title && (
+            <p
+              className={`card__subtitle mb-5 text-center ${
+                roundedSmall ? 'text-sm' : 'text-base'
+              } font-normal text-c600`}
+            >
+              {sub_title}
             </p>
           )}
 
-          {description && (
+          {describe && (
             <p
-              className={cn('card__description', 'text-sm', 'pb-2', {
+              className={cn('card__description', 'text-sm', 'font-normal', {
                 'text-c600': !rounded,
                 'text-c800': rounded
               })}
             >
-              {description}
+              {describe}
             </p>
           )}
-        </div>
+        </motion.div>
       )}
-    </>
+    </div>
   );
 };
 

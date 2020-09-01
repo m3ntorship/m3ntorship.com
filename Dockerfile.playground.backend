@@ -1,0 +1,27 @@
+FROM node:12.16-alpine3.11 AS build
+
+ARG STRAPI_ADMIN_PATH
+
+ENV NODE_ENV production
+
+WORKDIR /m3ntorshipcom-cms
+COPY ./backend/package.json ./
+COPY ./backend/yarn.lock ./
+
+COPY ./backend/build ./build
+COPY ./backend/api ./api
+COPY ./backend/components ./components
+COPY ./backend/config ./config
+COPY ./backend/extensions ./extensions
+COPY ./backend/public ./public
+COPY ./backend/favicon.ico ./favicon.ico
+
+RUN yarn install
+
+FROM node:12.16-alpine3.11
+WORKDIR /m3ntorshipcom-cms
+COPY --from=build /m3ntorshipcom-cms .
+
+EXPOSE 1337
+
+CMD ["yarn", "start"]

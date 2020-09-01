@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "goals",
+  "info": {
+    "name": "goals"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Goals",
+      "required": true
+    },
+    "side_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "list_goals": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.one-line-paragraph",
+      "required": true
+    }
+  }
+}

@@ -1,7 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@100;300;400;500;700;900&display=swap');
 
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
 .container {
-  width: 92%;
-  max-width: 1327px;
+  max-width: 85%;
   margin: 0 auto;
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: solid theme('colors.c100') 1px;
+}
+input[type='submit'] {
+  background-color: theme('colors.c100');
+  color: theme('colors.c000');
+  cursor: pointer;
+}
+
+.global-section-padding {
+  @apply py-10;
+}
+
+@media (min-width: 1024px) {
+  .global-section-padding {
+    @apply py-16;
+  }
+}
+
+section,
+footer {
+  @extend .global-section-padding;
+}
+
+p {
+  @apply font-light leading-normal text-base;
+}
+
+#nprogress .bar {
+  background: #66f28d !important;
+  height: 4px !important;
 }

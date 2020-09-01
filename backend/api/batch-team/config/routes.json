@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/batch-team",
+      "handler": "batch-team.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/batch-team",
+      "handler": "batch-team.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/batch-team",
+      "handler": "batch-team.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

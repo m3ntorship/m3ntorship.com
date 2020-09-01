@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_general_page_seos",
+  "info": {
+    "name": "page_seo",
+    "icon": "magnet"
+  },
+  "options": {},
+  "attributes": {
+    "path": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "minLength": 100,
+      "maxLength": 150
+    },
+    "title": {
+      "type": "string",
+      "minLength": 30,
+      "maxLength": 65
+    },
+    "open_graph_image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

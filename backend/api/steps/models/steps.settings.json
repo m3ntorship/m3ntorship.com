@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "steps",
+  "info": {
+    "name": "Steps"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "How It Working ?",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie aliquam iaculis facilisis sit pharetra pellentesque ullamcorper.",
+      "required": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.cards",
+      "required": true
+    }
+  }
+}

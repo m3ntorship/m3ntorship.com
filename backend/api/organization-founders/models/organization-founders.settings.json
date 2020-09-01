@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "organization_founders",
+  "info": {
+    "name": "organization_founders"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "title",
+      "required": true
+    },
+    "member": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general.cards"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+FROM node:12.16.3-alpine3.11
+
+# create application directory
+
+WORKDIR /m3ntorshipcom-frontend
+
+
+# copy application files
+COPY ./frontend/public ./public
+COPY ./frontend/.next ./.next
+COPY ./frontend/yarn.lock ./frontend/package.json ./
+# install dependencies
+RUN yarn
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_general_dashed_cards",
+  "info": {
+    "name": "dashed_card",
+    "icon": "align-center"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "JOIN NEXT PATCH",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "default": "A job listings and job application app for working abroad.",
+      "required": true
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "general.link",
+      "required": true
+    }
+  }
+}

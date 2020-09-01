@@ -1,0 +1,8 @@
+Sitemap: https://m3ntorship.com/sitemap.xml
+Sitemap: https://m3ntorship.com/sitemap_static.xml
+Sitemap: https://m3ntorship.com/cohorts/sitemap.xml
+Sitemap: https://m3ntorship.com/projects/sitemap.xml
+
+
+User-agent: *
+
