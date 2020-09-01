@@ -5,7 +5,7 @@ metadata:
   namespace: 'default'
   labels:
     project: '{{{M3_PROJECT}}}'
-    environment: '{{{{{{M3_ENVIRONMENT}}}}}}'
+    environment: '{{{M3_ENVIRONMENT}}}'
     componenet: '{{{M3_COMPONENET}}}'
     application: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
     version: '{{{M3_VERSION}}}'

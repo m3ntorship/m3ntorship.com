@@ -27,6 +27,7 @@ jobs:
         echo "::set-output name=version::$(git rev-parse --short=4 HEAD)"
   
   build_frontend:
+    if: false
     needs: [prepare]
     runs-on: ubuntu-latest
 
@@ -51,6 +52,7 @@ jobs:
         dockerfile: ${{needs.prepare.outputs.dockerfile_frontend}}
         tags: ${{needs.prepare.outputs.version}}
   build_backend:
+    if: false
     needs: [prepare]
     runs-on: ubuntu-latest
 
@@ -77,8 +79,9 @@ jobs:
     # DELETE OLD TAGS https://hub.docker.com/v2/repositories/amd64/ubuntu/tags?page_size=5000
   deploy:
     needs: 
-      - build_frontend
-      - build_backend 
+      - prepare
+      # - build_frontend
+      # - build_backend 
     runs-on: ubuntu-latest
     env:
       M3_VERSION: ${{needs.prepare.outputs.version}}
