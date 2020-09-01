@@ -107,7 +107,7 @@ jobs:
           M3_REPLICAS: '1'
           M3_PORT_FRONTEND: '3000'
           M3_PORT_BACKEND: '1337'
-          M3_VERSION: develop
+          M3_VERSION: develop #hardcoded here until checking passing job env issue
           M3_SHA: ${{needs.prepare.outputs.sha}}
         run: |
           echo $M3_VERSION
