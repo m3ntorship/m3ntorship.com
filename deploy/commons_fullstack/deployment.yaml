@@ -11,7 +11,7 @@ metadata:
     version: '{{{M3_VERSION}}}'
     sha: '{{{M3_SHA}}}'
 spec:
-  replicas: 1
+  replicas: {{{M3_REPLICAS}}}
   selector:
     matchLabels:
       application: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
