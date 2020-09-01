@@ -27,7 +27,6 @@ jobs:
         echo "::set-output name=version::$(git rev-parse --short=4 HEAD)"
   
   build_frontend:
-    if: false
     needs: [prepare]
     runs-on: ubuntu-latest
 
@@ -52,7 +51,6 @@ jobs:
         dockerfile: ${{needs.prepare.outputs.dockerfile_frontend}}
         tags: ${{needs.prepare.outputs.version}}
   build_backend:
-    if: false
     needs: [prepare]
     runs-on: ubuntu-latest
 
@@ -79,9 +77,8 @@ jobs:
     # DELETE OLD TAGS https://hub.docker.com/v2/repositories/amd64/ubuntu/tags?page_size=5000
   deploy:
     needs: 
-      - prepare
-      # - build_frontend
-      # - build_backend 
+      - build_frontend
+      - build_backend 
     runs-on: ubuntu-latest
     env:
       M3_VERSION: ${{needs.prepare.outputs.version}}
@@ -117,3 +114,16 @@ jobs:
           mkdir -p $TEMP_DIR
           for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
           kubectl apply -f $TEMP_DIR
+      - name: wait-for-success-deployment
+        env:
+          M3_PROJECT: m3ntorshipcom
+          M3_COMPONENET: fullstack
+          M3_ENVIRONMENT: dev
+        run: |
+          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://$M3_PROJECT-$M3_COMPONENET-$M3_ENVIRONMENT-fe.m3ntorship.net)" != "200" ]]; do sleep 5; done
+          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://$M3_PROJECT-$M3_COMPONENET-$M3_ENVIRONMENT-be.m3ntorship.net)" != "200" ]]; do sleep 5; done
+      - name: force-nextjs-incremental-build
+        run: |
+          curl https://$M3_PROJECT-$M3_COMPONENET-$M3_ENVIRONMENT-fe.m3ntorship.net
+          sleep 10
+          curl https://$M3_PROJECT-$M3_COMPONENET-$M3_ENVIRONMENT-fe.m3ntorship.net
