@@ -31,34 +31,33 @@ export const TopBar = ({
   const componentId = 'top_bar';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const navAnimation = useAnimation();
-  const [lastYPos, setLastYPos] = useState(0);
   const [stickyMenu, setStickyMenu] = useState(false);
-  const [fixed, setFixed] = useState(false);
   const router = useRouter();
-  const isDesktop = useMedia(['(max-width: 1024px)'], [false], true);
   const [menu, setMenu] = useState(false);
   useEffect(() => {
+    let lastYPos = 0;
     const handleScroll = () => {
       const yPos = window.scrollY;
       const isScollingUp = lastYPos > yPos;
       const isScrollingDown = yPos > lastYPos;
       if (isScollingUp) {
-        setMenu(false);
-        setFixed(true);
-        setStickyMenu(true);
+        if (menu) {
+          setMenu(false);
+        }
+        if (!stickyMenu) {
+          setStickyMenu(true);
+        }
         navAnimation.start({
           y: 0,
           transition: {
-            duration: 0.5
+            duration: 0.1
           }
         });
       } else if (isScrollingDown) {
         navAnimation.start({ y: -500 });
       }
-
-      setLastYPos(yPos);
+      lastYPos = yPos;
       if (yPos == 0) {
-        setFixed(false);
         setStickyMenu(false);
       }
     };
@@ -66,8 +65,7 @@ export const TopBar = ({
     return () => {
       window.removeEventListener('scroll', handleScroll, false);
     };
-  }, [lastYPos, router.pathname]);
-
+  }, []);
   const navMenuListVariants = {
     initial: {
       opacity: 0,
@@ -79,14 +77,14 @@ export const TopBar = ({
       transition: {
         duration: 0.05,
         when: 'beforeChildren',
-        staggerChildren: 0.1
+        staggerChildren: 0.05
       }
     },
     exit: {
       opacity: 0,
       height: 0,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
         staggerDirection: -1,
         when: 'afterChildren'
       }
@@ -352,7 +350,7 @@ export const TopBar = ({
       </motion.header>
       {!bgColored && (
         <div
-          className={cn('h-24 md:h-48 w-full', bgColored ? 'bg-c200' : '')}
+          className={cn('h-24 lg:h-48 w-full', bgColored ? 'bg-c200' : '')}
         ></div>
       )}
     </div>
