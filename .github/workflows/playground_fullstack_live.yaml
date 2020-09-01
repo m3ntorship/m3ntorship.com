@@ -1,10 +1,9 @@
-name: DEV
+name: LIVE
 
 on:
   push:
     branches:
-      - develop
-      - deployment-fullstack-workflows
+      - master
 
 jobs:
   
@@ -14,7 +13,7 @@ jobs:
     outputs:
       sha: ${{ steps.prepare.outputs.sha }}
       # version: ${{ steps.prepare.outputs.version }}
-      version: develop
+      version: master
       image_frontend: m3ntorshipci/m3ntorshipcom-frontend
       image_backend: m3ntorshipci/m3ntorshipcom-backend
       dockerfile_frontend: Dockerfile.playground.frontend
@@ -105,8 +104,8 @@ jobs:
           M3_NAMESPACE: default
           M3_PROJECT: m3ntorshipcom
           M3_COMPONENET: fullstack
-          M3_ENVIRONMENT: dev
-          M3_REPLICAS: "1"
+          M3_ENVIRONMENT: live
+          M3_REPLICAS: "3"
           M3_PORT_FRONTEND: "3000"
           M3_PORT_BACKEND: "1337"
           M3_SHA: ${{needs.prepare.outputs.sha}}
@@ -115,15 +114,11 @@ jobs:
           for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
           kubectl apply -f $TEMP_DIR
       - name: wait-for-success-deployment
-        env:
-          M3_PROJECT: m3ntorshipcom
-          M3_COMPONENET: fullstack
-          M3_ENVIRONMENT: dev
         run: |
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://m3ntorshipcom-fullstack-dev-fe.m3ntorship.net)" != "200" ]]; do sleep 5; done
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://m3ntorshipcom-fullstack-dev-be.m3ntorship.net)" != "200" ]]; do sleep 5; done
+          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://m3ntorship.net)" != "200" ]]; do sleep 5; done
+          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://be.m3ntorship.net)" != "200" ]]; do sleep 5; done
       - name: force-nextjs-incremental-build
         run: |
-          curl https://m3ntorshipcom-fullstack-dev-fe.m3ntorship.net
+          curl https://m3ntorship.net
           sleep 10
-          curl https://m3ntorshipcom-fullstack-dev-fe.m3ntorship.net
+          curl https://m3ntorship.net
