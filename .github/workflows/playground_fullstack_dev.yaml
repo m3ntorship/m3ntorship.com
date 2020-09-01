@@ -78,7 +78,7 @@ jobs:
   deploy:
     needs: 
       - build_frontend
-      - build_backend 
+      - build_backend
     runs-on: ubuntu-latest
     env:
       M3_VERSION: ${{needs.prepare.outputs.version}}
@@ -111,6 +111,7 @@ jobs:
           M3_PORT_BACKEND: "1337"
           M3_SHA: ${{needs.prepare.outputs.sha}}
         run: |
+          echo $M3_VERSION
           mkdir -p $TEMP_DIR
           for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
           kubectl apply -f $TEMP_DIR
