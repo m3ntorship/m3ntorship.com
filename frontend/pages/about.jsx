@@ -41,7 +41,6 @@ const About = ({ settings, metaData, data }) => {
           <section className="container">
             <ParagraphWithImageBeside data={about_description} settings={settings} />
           </section>
-          <TeamGroupSection data={teamGroupData} settings={settings} />
         </main>
         <Footer data={footerData} settings={settings} />
       </>
