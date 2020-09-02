@@ -24,7 +24,7 @@ class MyDocument extends Document {
         <body className="font-body leading-body">
           <noscript
             dangerouslySetInnerHTML={{
-              __html: `<iframe rel="prelaod" src="https://www.googletagmanager.com/ns.html?id=GTM-PPFCWPB"height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPFCWPB"height="0" width="0" style="display:none;visibility:hidden"></iframe>`
             }}
           ></noscript>
           <Main />
