@@ -1,4 +1,7 @@
 const HtmlCriticalPlugin = require('html-critical-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 module.exports = {
   webpack: (config, { isServer, webpack }) => {
     // Perform customizations to webpack config
@@ -10,7 +13,7 @@ module.exports = {
         inject: true
       })
     );
-    config.module.push(
+    config.plugins.push(
       new MiniCssExtractPlugin({
         //chunkFilename: "[id].css"
       })
@@ -23,8 +26,8 @@ module.exports = {
         inline: true,
         minify: true,
         extract: true,
-        width: 375,
-        height: 565,
+        width: 1300,
+        height: 900,
         penthouse: {
           blockJSRequests: false
         }
