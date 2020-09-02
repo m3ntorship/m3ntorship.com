@@ -102,7 +102,7 @@ const SectionHeader = ({
               </Heading>
               {side_image && (
                 <div className="hidden lg:block heading-image">
-                  <img src={side_image.url} alt="" />
+                  <img loading ="lazy" src={side_image.url} alt="" />
                 </div>
               )}
             </div>
