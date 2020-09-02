@@ -5,6 +5,7 @@ import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import Link from 'next/link';
 
 // props list
 
@@ -41,7 +42,8 @@ const PersonCard = ({
   roundedSmall,
   boxShadow,
   isImageFull,
-  settings
+  settings,
+  index
 }) => {
   const componentId = 'person_card';
   const animateOnMobile = useMobileAnimation(settings, componentId);
@@ -94,7 +96,25 @@ const PersonCard = ({
               />
             </div>
           )}
-          {title && (
+          {title && index === 0 && (
+            <Heading
+              type={
+                rounded
+                  ? roundedSmall
+                    ? HEADING_OPTIONS.TYPE.CARD_SMALL
+                    : HEADING_OPTIONS.TYPE.CARD
+                  : HEADING_OPTIONS.TYPE.CARD_SMALL
+              }
+              textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+              fontWeight={HEADING_OPTIONS.FONT_WEIGHT.BOLD}
+              as="h3"
+            >
+              <Link href="/apply" passHref>
+                <a>{title}</a>
+              </Link>
+            </Heading>
+          )}
+          {title && index != 0 && (
             <Heading
               type={
                 rounded
