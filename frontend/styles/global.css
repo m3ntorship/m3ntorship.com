@@ -59,17 +59,18 @@ p {
   font-style: normal;
   font-weight: 400;
   src: local('Noto Sans HK Regular'), local('NotoSansHK-Regular'),
-       url('../fonts/noto-sans-hk-v5-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/noto-sans-hk-v5-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
+
 /* noto-sans-hk-300 - latin */
 @font-face {
   font-family: 'Noto Sans HK';
   font-style: normal;
   font-weight: 300;
   src: local('Noto Sans HK Light'), local('NotoSansHK-Light'),
-       url('../fonts/noto-sans-hk-v5-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/noto-sans-hk-v5-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* noto-sans-hk-700 - latin */
 @font-face {
@@ -77,8 +78,8 @@ p {
   font-style: normal;
   font-weight: 700;
   src: local('Noto Sans HK Bold'), local('NotoSansHK-Bold'),
-       url('../fonts/noto-sans-hk-v5-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/noto-sans-hk-v5-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* noto-sans-hk-900 - latin */
 @font-face {
@@ -86,6 +87,6 @@ p {
   font-style: normal;
   font-weight: 900;
   src: local('Noto Sans HK Black'), local('NotoSansHK-Black'),
-       url('../fonts/noto-sans-hk-v5-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('../fonts/noto-sans-hk-v5-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../public/static/fonts/noto-sans-hk-v5-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
