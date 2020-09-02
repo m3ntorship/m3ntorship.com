@@ -27,12 +27,12 @@ class MyDocument extends Document {
           ></link>
         </Head>
         <body className="font-body leading-body">
+          <Main />
           <noscript
             dangerouslySetInnerHTML={{
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPFCWPB"height="0" width="0" style="display:none;visibility:hidden"></iframe>`
             }}
           ></noscript>
-          <Main />
           <NextScript />
         </body>
       </Html>
