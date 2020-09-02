@@ -83,6 +83,7 @@ const PersonCard = ({
               )}
             >
               <img
+                loading="lazy"
                 src={card_image.url}
                 alt={title}
                 className={cn('object-contain mx-auto', {

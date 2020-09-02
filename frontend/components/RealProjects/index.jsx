@@ -54,7 +54,7 @@ const RealProjects = ({ projectsInfoData, projectsData, settings }) => {
       <section className="real-projects relative" ref={ref}>
         <div className="absolute hidden lg:block top-12 right-12">
           {url && (
-            <img src={url} alt="sideImage" className="w-1/2 float-right" />
+            <img  loading ="lazy" src={url} alt="sideImage" className="w-1/2 float-right" />
           )}
         </div>
         <motion.div

@@ -47,7 +47,7 @@ export const ParallaxedHeader = ({ data, settings }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
             >
-              {image && <img src={image.url} alt="side icon" />}
+              {image && <img loading ="lazy" src={image.url} alt="side icon" />}
             </motion.div>
             <div className="flex flex-col justify-center items-center mx-10">
               {title && (
@@ -92,7 +92,7 @@ export const ParallaxedHeader = ({ data, settings }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
             >
-              {image && <img src={image.url} alt="side icon" />}
+              {image && <img loading ="lazy" src={image.url} alt="side icon" />}
             </motion.div>
           </motion.div>
         </div>

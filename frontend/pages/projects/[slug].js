@@ -83,6 +83,7 @@ const Projects = ({
               customClassName="mb-6 md:mb-0 md:mr-6"
             >
               <img
+                loading="lazy"
                 src="/static/images/github.png"
                 className="inline mr-4 w-8 h-8"
                 alt="github logo icon"

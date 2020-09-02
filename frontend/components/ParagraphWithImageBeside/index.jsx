@@ -32,7 +32,7 @@ export const ParagraphWithImageBeside = ({ data, settings }) => {
           transition={{ type: 'spring' }}
         >
           {image && (
-            <img src={image.url} alt="side icon for a more beautiful UI" />
+            <img loading= "lazy" src={image.url} alt="side icon for a more beautiful UI" />
           )}
         </motion.div>
       </div>

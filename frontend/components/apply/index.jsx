@@ -126,6 +126,7 @@ const Apply = ({ data, inputFields, settings }) => {
                 src={apply_side_image.url}
                 className="float-right w-32"
                 alt={'apply now with us'}
+                loading = "lazy"
               />
             )}
           </div>

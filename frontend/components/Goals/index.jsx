@@ -58,7 +58,7 @@ const Goals = ({ data, settings }) => {
           className="absolute hidden xl:block -top-12 right-12"
           variants={animateOnMobile && sideImageVariants}
         >
-          {side_image && <img src={side_image.url} alt="side icon" />}
+          {side_image && <img loading="lazy" src={side_image.url} alt="side icon" />}
         </motion.div>
         {title && (
           <Heading

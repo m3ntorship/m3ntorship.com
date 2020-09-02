@@ -37,7 +37,7 @@ const CardItem = ({ data }) => {
               btnSize="large"
             >
               <span className="mr-4">
-                <img className="w-8" src="/static/images/github.png" />
+                <img loading = "lazy" className="w-8" src="/static/images/github.png" />
               </span>
               {link.name}
             </Button>
@@ -64,6 +64,7 @@ const CardItem = ({ data }) => {
                   <img
                     className="inline-block w-8 h-5"
                     src="/static/images/right-arrow.svg"
+                    loading ="lazy"
                   />
                 </span>
               </Button>

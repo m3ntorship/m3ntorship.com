@@ -43,7 +43,7 @@ const Form = ({ inputFields, sideImg }) => {
           </form>
         </div>
         <div className="px-10 mx-10 hidden md:block">
-          <img src={sideImg} alt="" className="mx-auto" />
+          <img loading ="lazy" src={sideImg} alt="" className="mx-auto" />
         </div>
       </div>
     </>

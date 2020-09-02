@@ -59,6 +59,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                   name
                 }) => (
                   <img
+                    loading ="lazy"
                     key={id}
                     src={url}
                     alt={name}

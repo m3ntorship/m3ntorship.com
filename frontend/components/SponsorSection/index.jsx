@@ -86,7 +86,7 @@ const SponsorUs = ({
                     className=" max-w-xxs inline-block"
                     href={link}
                   >
-                    <img className="m-auto sponsors__logo" src={url} alt="" />
+                    <img loading ="lazy" className="m-auto sponsors__logo" src={url} alt="" />
                   </a>
                 </motion.li>
               );

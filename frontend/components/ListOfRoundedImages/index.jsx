@@ -65,7 +65,7 @@ const ListOfRoundedImages = ({ data, settings }) => {
         className="absolute hidden lg:block left-0"
         style={{ width: '135%', top: '-10%' }}
       >
-        <img src="/static/images/splashes.png" alt="" />
+        <img loading= "lazy" src="/static/images/splashes.png" alt="" />
       </motion.div>
       {data &&
         data.map(({ url, title }, index) => {

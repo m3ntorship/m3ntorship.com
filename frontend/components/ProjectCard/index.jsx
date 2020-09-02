@@ -66,6 +66,7 @@ const ProjectCard = ({ data, settings }) => {
                 <img
                   className="inline-block ml-2 w-4"
                   src="/static/images/right-arrow.svg"
+                  loading = "lazy"
                 ></img>
               </a>
             </Link>

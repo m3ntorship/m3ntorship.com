@@ -11,6 +11,7 @@ export default function CustomError({ statusCode }) {
           src="/static/images/404.png"
           alt="404 Error"
           className="w-4/5 h-4/5"
+          loading ="lazy"
         />
       </div>
       <Heading

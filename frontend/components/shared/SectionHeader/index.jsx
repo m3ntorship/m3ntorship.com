@@ -126,7 +126,7 @@ const SectionHeader = ({
               animate={headerInView ? 'visible' : ''}
               className="flex-1 mb-12 lg:mb-0 w-full lg:w-1/2"
             >
-              <img src={header_image.url} className="mx-auto" alt="" />
+              <img loading ="lazy" src={header_image.url} className="mx-auto" alt="" />
             </motion.div>
           )}
         </section>
