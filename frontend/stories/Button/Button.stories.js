@@ -22,7 +22,7 @@ export const BlackBtn = () => {
         externalLink={false}
       >
         <span>
-          <imgclassName="inline-block" src={githubLogo}></img>
+          <img className="inline-block" src={githubLogo}></img>
         </span>
         Apply now
       </Button>
