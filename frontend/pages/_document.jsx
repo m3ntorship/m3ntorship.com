@@ -6,12 +6,9 @@ class MyDocument extends Document {
       <Html lang="en-US" style={{ fontSize: '14px' }}>
         <Head>
           <script
+            rel="preconnect"
             dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PPFCWPB');`
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPFCWPB');`
             }}
           />
           <meta charSet="utf-8" />
@@ -20,7 +17,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <meta property="og:site_name" content="M3ntorship" />
           <meta property="og:type" content="website" />
           <link
-            rel="shortcut icon"
+            rel="preload"
+            as="image"
             type="image/svg"
             href="../../static/favicon/favicon.ico"
           ></link>
@@ -28,8 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <body className="font-body leading-body">
           <noscript
             dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPFCWPB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe>`
+              __html: `<iframe rel="prelaod" src="https://www.googletagmanager.com/ns.html?id=GTM-PPFCWPB"height="0" width="0" style="display:none;visibility:hidden"></iframe>`
             }}
           ></noscript>
           <Main />
