@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
 class MyDocument extends Document {
   render() {
     return (
@@ -17,8 +16,7 @@ class MyDocument extends Document {
           <meta property="og:site_name" content="M3ntorship" />
           <meta property="og:type" content="website" />
           <link
-            rel="preload"
-            as="image"
+            rel="shortcut icon"
             type="image/svg"
             href="../../static/favicon/favicon.ico"
           ></link>
