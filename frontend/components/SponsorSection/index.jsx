@@ -94,7 +94,7 @@ const SponsorUs = ({
                     <LazyImage
                       className="m-auto sponsors__logo"
                       src={url}
-                      alt=""
+                      alt="sponsor logo"
                     />
                   </a>
                 </motion.li>

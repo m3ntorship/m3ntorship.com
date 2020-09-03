@@ -4,10 +4,9 @@ import Button from '../shared/Button';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-const LazyImage = dynamic(
-() => import('../../helper/lazy-image'),
-{ ssr: false }
-);
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const CardItem = ({ data }) => {
   const {
@@ -43,7 +42,11 @@ const CardItem = ({ data }) => {
               btnSize="large"
             >
               <span className="mr-4">
-                <LazyImage className="w-8" src="/static/images/github.png" />
+                <LazyImage
+                  className="w-8"
+                  src="/static/images/github.png"
+                  alt="github logo"
+                />
               </span>
               {link.name}
             </Button>
@@ -70,6 +73,7 @@ const CardItem = ({ data }) => {
                   <LazyImage
                     className="inline-block w-8 h-5"
                     src="/static/images/right-arrow.svg"
+                    alt="right arrow"
                   />
                 </span>
               </Button>
