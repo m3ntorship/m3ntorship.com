@@ -48,7 +48,6 @@ const Footer = ({ data, settings }) => {
                 {logo}
                 {side_image && (
                   <LazyImage
-                    loading="lazy"
                     className="absolute inline ml-6 transform -translate-y-1"
                     src={side_image.url}
                   />

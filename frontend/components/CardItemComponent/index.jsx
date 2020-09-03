@@ -70,7 +70,6 @@ const CardItem = ({ data }) => {
                   <LazyImage
                     className="inline-block w-8 h-5"
                     src="/static/images/right-arrow.svg"
-                    loading ="lazy"
                   />
                 </span>
               </Button>

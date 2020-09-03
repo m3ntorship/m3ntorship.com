@@ -7,7 +7,7 @@ const Logo = ({ data }) => {
   } = data;
   return (
     <div>
-      <img src={url} alt="" loading ="lazy" />
+      <img src={url} alt="" />
     </div>
   );
 };

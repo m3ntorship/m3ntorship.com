@@ -101,7 +101,7 @@ const JoinUs = ({ data, settings }) => {
         animate={controls}
       >
         <motion.div className="w-1/6" variants={animateOnMobile && leftImageVariants}>
-          <LazyImage loading ="lazy"
+          <LazyImage
             className="object-cover items-center hidden lg:block"
             src={left_image}
             alt=""
@@ -162,7 +162,7 @@ const JoinUs = ({ data, settings }) => {
           className="w-1/6 flex items-center"
           variants={animateOnMobile && rightImageVariants}
         >
-          <LazyImage loading ="lazy"
+          <LazyImage
             className="object-cover hidden lg:block"
             src={right_image}
             alt=""
