@@ -3,6 +3,12 @@ import { GradientText, Heading, HEADING_OPTIONS } from '../shared/Heading';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(
+() => import('../../helper/lazy-image'),
+{ ssr: false }
+);
 
 const Goals = ({ data, settings }) => {
   const componentId = 'goals'
@@ -58,7 +64,7 @@ const Goals = ({ data, settings }) => {
           className="absolute hidden xl:block -top-12 right-12"
           variants={animateOnMobile && sideImageVariants}
         >
-          {side_image && <img loading="lazy" src={side_image.url} alt="side icon" />}
+          {side_image && <LazyImage src={side_image.url} alt="side icon" />}
         </motion.div>
         {title && (
           <Heading

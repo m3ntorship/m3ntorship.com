@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
 import GenericParagrapgh from '../shared/GenericParagrapgh/index';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
+
 const Form = ({ inputFields, sideImg }) => {
   const createData = () => {
     let temp = {};
@@ -43,7 +49,7 @@ const Form = ({ inputFields, sideImg }) => {
           </form>
         </div>
         <div className="px-10 mx-10 hidden md:block">
-          <img loading ="lazy" src={sideImg} alt="" className="mx-auto" />
+          <LazyImage src={sideImg} alt="" className="mx-auto" />
         </div>
       </div>
     </>

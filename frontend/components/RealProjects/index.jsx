@@ -5,6 +5,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(
+() => import('../../helper/lazy-image'),
+{ ssr: false }
+);
 
 const projectsSectionVariants = {
   start: {
@@ -54,7 +60,7 @@ const RealProjects = ({ projectsInfoData, projectsData, settings }) => {
       <section className="real-projects relative" ref={ref}>
         <div className="absolute hidden lg:block top-12 right-12">
           {url && (
-            <img  loading ="lazy" src={url} alt="sideImage" className="w-1/2 float-right" />
+            <LazyImage src={url} alt="sideImage" className="w-1/2 float-right" />
           )}
         </div>
         <motion.div

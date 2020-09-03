@@ -5,6 +5,12 @@ import useMedia from '../../helper/useMedia';
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(
+() => import('../../helper/lazy-image'),
+{ ssr: false }
+);
 
 // props list
 
@@ -82,8 +88,7 @@ const PersonCard = ({
                 'text-center'
               )}
             >
-              <img
-                loading="lazy"
+              <LazyImage
                 src={card_image.url}
                 alt={title}
                 className={cn('object-contain mx-auto', {

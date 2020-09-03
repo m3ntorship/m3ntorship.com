@@ -10,6 +10,11 @@ import Button from '../shared/Button/index';
 import SectionHeader from '../shared/SectionHeader';
 import { useRouter } from 'next/router';
 import { useInView } from 'react-intersection-observer';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const Apply = ({ data, inputFields, settings }) => {
   const [ref, inView] = useInView({
@@ -25,7 +30,7 @@ const Apply = ({ data, inputFields, settings }) => {
       <>
         <div className="flex">
           <SectionHeader
-          settings={settings}
+            settings={settings}
             data={data}
             gradient_color={
               mentor || as === 'mentor'
@@ -122,11 +127,11 @@ const Apply = ({ data, inputFields, settings }) => {
           </SectionHeader>
           <div className="mt-8 lg:w-1/2 hidden lg:block">
             {apply_side_image && (
-              <img
+              <LazyImage
                 src={apply_side_image.url}
                 className="float-right w-32"
                 alt={'apply now with us'}
-                loading = "lazy"
+                loading="lazy"
               />
             )}
           </div>

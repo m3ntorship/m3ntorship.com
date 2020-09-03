@@ -2,6 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 export const ParagraphWithImageBeside = ({ data, settings }) => {
   const componentId = 'par_with_img_side';
@@ -32,7 +37,10 @@ export const ParagraphWithImageBeside = ({ data, settings }) => {
           transition={{ type: 'spring' }}
         >
           {image && (
-            <img loading= "lazy" src={image.url} alt="side icon for a more beautiful UI" />
+            <LazyImage
+              src={image.url}
+              alt="side icon for a more beautiful UI"
+            />
           )}
         </motion.div>
       </div>

@@ -11,6 +11,11 @@ import Button from './../../components/shared/Button/index';
 import Head from 'next/head';
 import Patches from '../../components/Patches';
 import Overview from '../../components/Overview';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const Projects = ({
   projectData,
@@ -82,8 +87,7 @@ const Projects = ({
               href={repo_link}
               customClassName="mb-6 md:mb-0 md:mr-6"
             >
-              <img
-                loading="lazy"
+              <LazyImage
                 src="/static/images/github.png"
                 className="inline mr-4 w-8 h-8"
                 alt="github logo icon"

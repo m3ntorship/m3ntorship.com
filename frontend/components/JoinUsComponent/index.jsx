@@ -5,6 +5,12 @@ import Button from '../shared/Button';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(
+() => import('../../helper/lazy-image'),
+{ ssr: false }
+);
 
 const JoinUs = ({ data, settings }) => {
   const {
@@ -95,7 +101,7 @@ const JoinUs = ({ data, settings }) => {
         animate={controls}
       >
         <motion.div className="w-1/6" variants={animateOnMobile && leftImageVariants}>
-          <img loading ="lazy"
+          <LazyImage loading ="lazy"
             className="object-cover items-center hidden lg:block"
             src={left_image}
             alt=""
@@ -156,7 +162,7 @@ const JoinUs = ({ data, settings }) => {
           className="w-1/6 flex items-center"
           variants={animateOnMobile && rightImageVariants}
         >
-          <img loading ="lazy"
+          <LazyImage loading ="lazy"
             className="object-cover hidden lg:block"
             src={right_image}
             alt=""

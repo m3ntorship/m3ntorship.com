@@ -5,6 +5,11 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMedia from '../../helper/useMedia';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const textContainerVariant = {
   initial: {
@@ -83,7 +88,7 @@ export const Team = ({ data, team_members, settings }) => {
     return (
       <section className="team relative text-center container">
         <div className="absolute graph right-0 hidden xl:block">
-          <img  loading ="lazy" src={url} alt="side icon" />
+          <LazyImage src={url} alt="side icon" />
         </div>
         <div ref={textContainerRef}>
           <motion.div
