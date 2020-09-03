@@ -6,10 +6,9 @@ import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 import dynamic from 'next/dynamic';
 
-const LazyImage = dynamic(
-() => import('../../helper/lazy-image'),
-{ ssr: false }
-);
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const Footer = ({ data, settings }) => {
   if (data) {
@@ -49,6 +48,7 @@ const Footer = ({ data, settings }) => {
                 {side_image && (
                   <LazyImage
                     className="absolute inline ml-6 transform -translate-y-1"
+                    alt="logo side image"
                     src={side_image.url}
                   />
                 )}

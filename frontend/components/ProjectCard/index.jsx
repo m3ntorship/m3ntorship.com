@@ -7,10 +7,9 @@ import Link from 'next/link';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 import dynamic from 'next/dynamic';
 
-const LazyImage = dynamic(
-() => import('../../helper/lazy-image'),
-{ ssr: false }
-);
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const cardVaruants = {
   scale: {
@@ -27,7 +26,7 @@ const cardVaruants = {
 };
 
 const ProjectCard = ({ data, settings }) => {
-  const componentId = 'project_card'
+  const componentId = 'project_card';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const {
     project_overview: { summary },
@@ -72,6 +71,7 @@ const ProjectCard = ({ data, settings }) => {
                 <LazyImage
                   className="inline-block ml-2 w-4"
                   src="/static/images/right-arrow.svg"
+                  alt="right arrow"
                 />
               </a>
             </Link>

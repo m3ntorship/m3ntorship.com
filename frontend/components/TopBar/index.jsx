@@ -213,6 +213,7 @@ export const TopBar = ({
                     }}
                     className="w-10 h-10 block md:hidden"
                     onClick={() => setMenu(!menu)}
+                    aria-label="toggle-nav"
                   >
                     {xCircleSvg}
                   </motion.button>
@@ -228,6 +229,7 @@ export const TopBar = ({
                     }}
                     className="w-10 h-10 block md:hidden"
                     onClick={() => setMenu(!menu)}
+                    aria-label="toggle-nav"
                   >
                     {burgerSvg}
                   </motion.button>
