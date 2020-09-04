@@ -2,6 +2,11 @@ import React from 'react';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
 import Button from '../shared/Button';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const CardItem = ({ data }) => {
   const {
@@ -37,7 +42,11 @@ const CardItem = ({ data }) => {
               btnSize="large"
             >
               <span className="mr-4">
-                <img className="w-8" src="/static/images/github.png" />
+                <LazyImage
+                  className="w-8"
+                  src="/static/images/github.png"
+                  alt="github logo"
+                />
               </span>
               {link.name}
             </Button>
@@ -61,9 +70,10 @@ const CardItem = ({ data }) => {
               >
                 VIEW PROJECT
                 <span className="ml-2 w-1/6">
-                  <img
+                  <LazyImage
                     className="inline-block w-8 h-5"
                     src="/static/images/right-arrow.svg"
+                    alt="right arrow"
                   />
                 </span>
               </Button>

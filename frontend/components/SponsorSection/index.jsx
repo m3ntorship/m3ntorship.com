@@ -5,6 +5,11 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const sectionVariants = {
   hidden: {
@@ -86,7 +91,11 @@ const SponsorUs = ({
                     className=" max-w-xxs inline-block"
                     href={link}
                   >
-                    <img className="m-auto sponsors__logo" src={url} alt="" />
+                    <LazyImage
+                      className="m-auto sponsors__logo"
+                      src={url}
+                      alt="sponsor logo"
+                    />
                   </a>
                 </motion.li>
               );
