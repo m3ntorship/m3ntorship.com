@@ -6,6 +6,8 @@
 
 @import 'tailwindcss/utilities';
 /* import components styles */
+@import './markdown.css';
+
 @import './heading.css';
 
 @import './cardStyle.css';
