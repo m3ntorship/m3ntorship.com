@@ -96,10 +96,10 @@ jobs:
           sudo mv mo /usr/local/bin/
           echo "works" | mo
 
-      # deploy dev
-      - name: deploy-dev
+      # deploy live
+      - name: deploy-live
         env:
-          M3_DEPLOYMENT_PATH: deploy/dev/fullstack
+          M3_DEPLOYMENT_PATH: deploy/live/fullstack
           TEMP_DIR: temp
           M3_NAMESPACE: default
           M3_PROJECT: m3ntorshipcom
