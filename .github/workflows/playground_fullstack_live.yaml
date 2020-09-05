@@ -114,12 +114,11 @@ jobs:
           mkdir -p $TEMP_DIR
           for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
           kubectl apply -f $TEMP_DIR
-      - name: wait-for-success-deployment
-        run: |
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://m3ntorship.net)" != "200" ]]; do sleep 5; done
-          while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' https://be.m3ntorship.net)" != "200" ]]; do sleep 5; done
       - name: force-nextjs-incremental-build
         run: |
+          sleep 60
           curl https://m3ntorship.net
+          curl https://m3ntorship.com
           sleep 10
           curl https://m3ntorship.net
+          curl https://m3ntorship.com
