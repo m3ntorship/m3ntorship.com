@@ -13,8 +13,8 @@ jobs:
     
     outputs:
       sha: ${{ steps.prepare.outputs.sha }}
-      # version: ${{ steps.prepare.outputs.version }}
-      version: develop
+      version: ${{ steps.prepare.outputs.version }}
+      # version: develop
       image_frontend: m3ntorshipci/m3ntorshipcom-frontend
       image_backend: m3ntorshipci/m3ntorshipcom-backend
       dockerfile_frontend: Dockerfile.playground.frontend
@@ -107,7 +107,7 @@ jobs:
           M3_REPLICAS: '1'
           M3_PORT_FRONTEND: '3000'
           M3_PORT_BACKEND: '1337'
-          M3_VERSION: develop #hardcoded here until checking passing job env issue
+          M3_VERSION: ${{needs.prepare.outputs.version}}
           M3_SHA: ${{needs.prepare.outputs.sha}}
         run: |
           echo $M3_VERSION
