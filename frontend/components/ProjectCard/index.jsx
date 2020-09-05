@@ -5,6 +5,11 @@ import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const cardVaruants = {
   scale: {
@@ -21,7 +26,7 @@ const cardVaruants = {
 };
 
 const ProjectCard = ({ data, settings }) => {
-  const componentId = 'project_card'
+  const componentId = 'project_card';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const {
     project_overview: { summary },
@@ -63,10 +68,11 @@ const ProjectCard = ({ data, settings }) => {
             >
               <a className="font-bold inline-block">
                 {nav_to_project_page_text}
-                <img
+                <LazyImage
                   className="inline-block ml-2 w-4"
                   src="/static/images/right-arrow.svg"
-                ></img>
+                  alt="right arrow"
+                />
               </a>
             </Link>
           </div>

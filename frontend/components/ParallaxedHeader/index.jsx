@@ -2,6 +2,12 @@ import React from 'react';
 import { Heading } from '../shared/Heading';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(
+() => import('../../helper/lazy-image'),
+{ ssr: false }
+);
 
 const titleContainerVariant = {
   initial: {},
@@ -47,7 +53,7 @@ export const ParallaxedHeader = ({ data, settings }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
             >
-              {image && <img src={image.url} alt="side icon" />}
+              {image && <LazyImage src={image.url} alt="side icon" />}
             </motion.div>
             <div className="flex flex-col justify-center items-center mx-10">
               {title && (
@@ -92,7 +98,7 @@ export const ParallaxedHeader = ({ data, settings }) => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: 'spring' }}
             >
-              {image && <img src={image.url} alt="side icon" />}
+              {image && <LazyImage src={image.url} alt="side icon" />}
             </motion.div>
           </motion.div>
         </div>

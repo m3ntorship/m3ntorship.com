@@ -3,6 +3,11 @@ import Link from 'next/link';
 
 import cn from 'classnames';
 import { Heading, HEADING_OPTIONS } from '../shared/Heading';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 /**
  * Props List
@@ -58,7 +63,7 @@ const PatchCard = ({ cardDetails, dashed }) => {
                   },
                   name
                 }) => (
-                  <img
+                  <LazyImage
                     key={id}
                     src={url}
                     alt={name}
