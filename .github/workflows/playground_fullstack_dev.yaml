@@ -80,6 +80,8 @@ jobs:
       - build_frontend
       - build_backend
     runs-on: ubuntu-latest
+    env:
+      M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
       - uses: actions/checkout@v2
       - uses: azure/setup-kubectl@v1
@@ -107,7 +109,6 @@ jobs:
           M3_REPLICAS: '1'
           M3_PORT_FRONTEND: '3000'
           M3_PORT_BACKEND: '1337'
-          M3_VERSION: ${{needs.prepare.outputs.version}}
           M3_SHA: ${{needs.prepare.outputs.sha}}
         run: |
           echo $M3_VERSION
