@@ -12,8 +12,7 @@ jobs:
     
     outputs:
       sha: ${{ steps.prepare.outputs.sha }}
-      # version: ${{ steps.prepare.outputs.version }}
-      version: master
+      version: ${{ steps.prepare.outputs.version }}
       image_frontend: m3ntorshipci/m3ntorshipcom-frontend
       image_backend: m3ntorshipci/m3ntorshipcom-backend
       dockerfile_frontend: Dockerfile.playground.frontend
@@ -76,11 +75,12 @@ jobs:
     # DELETE OLD TAGS https://hub.docker.com/v2/repositories/amd64/ubuntu/tags?page_size=5000
   deploy:
     needs: 
+      - prepare
       - build_frontend
       - build_backend 
     runs-on: ubuntu-latest
-    # env:
-      # M3_VERSION: ${{needs.prepare.outputs.version}}
+    env:
+      M3_VERSION: ${{needs.prepare.outputs.version}}
     steps:
       - uses: actions/checkout@v2
       - uses: azure/setup-kubectl@v1
@@ -108,7 +108,7 @@ jobs:
           M3_REPLICAS: "3"
           M3_PORT_FRONTEND: "3000"
           M3_PORT_BACKEND: "1337"
-          M3_VERSION: master #hardcoded here until checking passing job env issue
+          M3_VERSION: ${{needs.prepare.outputs.version}}
           M3_SHA: ${{needs.prepare.outputs.sha}}
         run: |
           mkdir -p $TEMP_DIR

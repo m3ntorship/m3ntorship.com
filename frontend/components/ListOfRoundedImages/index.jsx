@@ -2,6 +2,12 @@ import React, { useRef } from 'react';
 import randomPosition from '../../helper/randomPosition';
 import { motion } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
+
+const LazyImage = dynamic(
+() => import('../../helper/lazy-image'),
+{ ssr: false }
+);
 
 const ListOfRoundedImages = ({ data, settings }) => {
   const componentId = 'list_of_random_images';
@@ -65,7 +71,7 @@ const ListOfRoundedImages = ({ data, settings }) => {
         className="absolute hidden lg:block left-0"
         style={{ width: '135%', top: '-10%' }}
       >
-        <img src="/static/images/splashes.png" alt="" />
+        <LazyImage src="/static/images/splashes.png" alt="" />
       </motion.div>
       {data &&
         data.map(({ url, title }, index) => {

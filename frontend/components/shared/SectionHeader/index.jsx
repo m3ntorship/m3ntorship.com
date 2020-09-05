@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import cn from 'classnames';
 import { useInView } from 'react-intersection-observer';
 import useMobileAnimation from '../../../helper/useMobileAnimation';
+import dynamic from 'next/dynamic';
 
 /**
  * Props List
@@ -14,6 +15,10 @@ import useMobileAnimation from '../../../helper/useMobileAnimation';
  *    image or images (patch)
  *    children >> buttons
  */
+
+const LazyImage = dynamic(() => import('../../../helper/lazy-image'), {
+  ssr: false
+});
 
 const sectionVariants = {
   hidden: { opacity: 0, x: -400 },
@@ -102,7 +107,7 @@ const SectionHeader = ({
               </Heading>
               {side_image && (
                 <div className="hidden lg:block heading-image">
-                  <img src={side_image.url} alt="" />
+                  <LazyImage src={side_image.url} alt="" />
                 </div>
               )}
             </div>
@@ -126,7 +131,11 @@ const SectionHeader = ({
               animate={headerInView ? 'visible' : ''}
               className="flex-1 mb-12 lg:mb-0 w-full lg:w-1/2"
             >
-              <img src={header_image.url} className="mx-auto" alt="" />
+              <LazyImage
+                src={header_image.url}
+                className="mx-auto"
+                alt=""
+              />
             </motion.div>
           )}
         </section>

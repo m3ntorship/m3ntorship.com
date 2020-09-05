@@ -12,6 +12,7 @@
     "classnames": "^2.2.6",
     "framer-motion": "^2.6.5",
     "globby": "^11.0.1",
+    "lazy-image": "^0.4.6",
     "next": "9.5.2",
     "nprogress": "^0.2.0",
     "postcss-extend": "^1.0.5",
@@ -22,7 +23,8 @@
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.27.1",
     "react-typeform-embed": "^0.2.1",
-    "tailwindcss": "^1.7.5"
+    "tailwindcss": "^1.7.5",
+    "vanilla-lazyload": "^17.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
