@@ -76,7 +76,7 @@ const SponsorUs = ({
             <p className="text-base text-center">{sub_title}</p>
           </div>
         </div>
-        {withIcons && (
+        {withIcons && !sponsersData.statusCode && (
           <ul className="flex items-center justify-center  md:px-32 mx-auto flex-wrap">
             {sponsersData.map(({ id, link, logo: { url } }) => {
               return (

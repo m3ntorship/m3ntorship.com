@@ -22,6 +22,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-intersection-observer": "^8.27.1",
+    "react-markdown": "^4.3.1",
     "react-typeform-embed": "^0.2.1",
     "tailwindcss": "^1.7.5",
     "vanilla-lazyload": "^17.1.2"

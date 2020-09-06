@@ -67,7 +67,13 @@ const cardVariant = {
   }
 };
 
-export const Team = ({ data, team_members, settings }) => {
+export const Team = ({
+  data,
+  settings,
+  batch_mentees,
+  batch_mentors,
+  batch_designers
+}) => {
   const componentId = 'cohort_team';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const [textContainerRef, textContainerInView] = useInView({
@@ -85,6 +91,23 @@ export const Team = ({ data, team_members, settings }) => {
       side_image: { url },
       description
     } = data;
+
+    const GroupOfPersonCards = ({ members, color }) => {
+      return members.map(({ member_info, id }) => {
+        return (
+          <motion.div variants={animateOnMobile && cardVariant} key={id}>
+            <PersonCard
+              cardDetails={member_info}
+              bgColord={true}
+              bgColor={color}
+              rounded={true}
+              roundedSmall={true}
+              settings={settings}
+            />
+          </motion.div>
+        );
+      });
+    };
     return (
       <section className="team relative text-center container">
         <div className="absolute graph right-0 hidden xl:block">
@@ -119,7 +142,7 @@ export const Team = ({ data, team_members, settings }) => {
             )}
           </motion.div>
         </div>
-        {team_members && (
+        {batch_mentors && batch_mentees && batch_designers && (
           <div ref={cardsRef}>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -127,22 +150,9 @@ export const Team = ({ data, team_members, settings }) => {
               initial="initial"
               animate={cardsInView ? 'shown' : null}
             >
-              {team_members.map(({ member_info, id }) => {
-                return (
-                  <motion.div
-                    variants={animateOnMobile && cardVariant}
-                    key={id}
-                  >
-                    <PersonCard
-                      cardDetails={member_info}
-                      bgColord={true}
-                      rounded={true}
-                      roundedSmall={true}
-                      settings={settings}
-                    />
-                  </motion.div>
-                );
-              })}
+              <GroupOfPersonCards members={batch_mentors} color={'blue'} />
+              <GroupOfPersonCards members={batch_designers} color={'blue'} />
+              <GroupOfPersonCards members={batch_mentees} color={'green'} />
             </motion.div>
           </div>
         )}

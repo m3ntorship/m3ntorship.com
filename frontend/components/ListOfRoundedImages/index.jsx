@@ -4,10 +4,9 @@ import { motion } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 import dynamic from 'next/dynamic';
 
-const LazyImage = dynamic(
-() => import('../../helper/lazy-image'),
-{ ssr: false }
-);
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 const ListOfRoundedImages = ({ data, settings }) => {
   const componentId = 'list_of_random_images';
@@ -48,7 +47,7 @@ const ListOfRoundedImages = ({ data, settings }) => {
   };
 
   const positionStyle = () => {
-    const position = randomPosition(120, 100, 14, cache, 1);
+    const position = randomPosition(135, 115, 14, cache, 0);
     return {
       left: `${position.x}%`,
       bottom: `${position.y}%`,

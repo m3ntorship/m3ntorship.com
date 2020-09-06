@@ -30,6 +30,7 @@ export const ApplyPage = ({ data, topBarData, pagesData, settings }) => {
           {!topBarData.statusCode && !pagesData.statusCode && (
             <TopBar
               data={topBarData}
+              button_color={mentor ? 'blue' : 'green'}
               navigationLinks={pagesData}
               settings={settings}
             />
