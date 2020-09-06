@@ -34,7 +34,6 @@ export const Home = ({ data }) => {
     sponsersData,
     sponserUsData
   } = data;
-
   return (
     <>
       <Head>{checkSeoData(metaData, settings)}</Head>
@@ -59,7 +58,7 @@ export const Home = ({ data }) => {
           projectsData={projectsData}
           settings={settings}
         />
-        {!sponsersData.statusCode && !sponserUsData.statusCode && (
+        {!sponserUsData.statusCode && (
           <SponsorUs
             withBtn={true}
             withIcons={true}
