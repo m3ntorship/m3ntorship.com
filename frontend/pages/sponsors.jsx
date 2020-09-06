@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { mentorshipAPI } from '../clients/index';
 import Footer from '../components/footer';
 import checkingDataError from '../helper/checkingDataError';
@@ -34,10 +35,8 @@ const Sponsors = ({
         >
           {title}
         </Heading>
-        <p className="text-center text-c500 my-10 mx-auto w-3/4">
-          {' '}
-          {description}{' '}
-        </p>
+        <div className="text-center text-c500 my-10 mx-auto w-3/4"></div>
+        <ReactMarkdown className="markdown " source={description} />
       </div>
       {!footerData.statusCode && (
         <Footer data={footerData} settings={settings} />
