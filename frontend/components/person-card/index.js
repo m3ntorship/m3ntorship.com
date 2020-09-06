@@ -7,10 +7,9 @@ import { motion } from 'framer-motion';
 import useMobileAnimation from '../../helper/useMobileAnimation';
 import dynamic from 'next/dynamic';
 
-const LazyImage = dynamic(
-() => import('../../helper/lazy-image'),
-{ ssr: false }
-);
+const LazyImage = dynamic(() => import('../../helper/lazy-image'), {
+  ssr: false
+});
 
 // props list
 
@@ -43,6 +42,7 @@ const cardVariants = {
 const PersonCard = ({
   cardDetails,
   bgColord,
+  bgColor,
   rounded,
   roundedSmall,
   boxShadow,
@@ -57,13 +57,6 @@ const PersonCard = ({
     triggerOnce: true
   });
   const isMobile = useMedia(['(min-width: 1025px)'], [false], true);
-  const isMentor = () => {
-    if (sub_title == 'Mentor' || sub_title == 'mentor') {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   return (
     <div ref={crdRef} className="h-full">
@@ -73,8 +66,8 @@ const PersonCard = ({
           initial={isMobile ? 'scale' : ''}
           animate={isMobile && cardInView ? 'unScale' : ''}
           className={cn('card h-full', 'overflow-hidden', 'p-10', {
-            'bg-c400': bgColord && !isMentor(),
-            'bg-c1300': isMentor(),
+            'bg-c400': bgColord && bgColor !== 'blue',
+            'bg-c1300': bgColor === 'blue',
             'text-center p-12': rounded,
             'shadow-card': boxShadow
           })}

@@ -67,7 +67,14 @@ const cardVariant = {
   }
 };
 
-export const Team = ({ data, team_members, settings }) => {
+export const Team = ({
+  data,
+  team_members,
+  settings,
+  batch_mentees,
+  batch_mentors,
+  batch_designers
+}) => {
   const componentId = 'cohort_team';
   const animateOnMobile = useMobileAnimation(settings, componentId);
   const [textContainerRef, textContainerInView] = useInView({
@@ -119,7 +126,7 @@ export const Team = ({ data, team_members, settings }) => {
             )}
           </motion.div>
         </div>
-        {team_members && (
+        {batch_mentors && batch_mentees && batch_designers && (
           <div ref={cardsRef}>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -127,7 +134,7 @@ export const Team = ({ data, team_members, settings }) => {
               initial="initial"
               animate={cardsInView ? 'shown' : null}
             >
-              {team_members.map(({ member_info, id }) => {
+              {batch_mentors.map(({ member_info, id }) => {
                 return (
                   <motion.div
                     variants={animateOnMobile && cardVariant}
@@ -136,6 +143,41 @@ export const Team = ({ data, team_members, settings }) => {
                     <PersonCard
                       cardDetails={member_info}
                       bgColord={true}
+                      bgColor={'blue'}
+                      rounded={true}
+                      roundedSmall={true}
+                      settings={settings}
+                    />
+                  </motion.div>
+                );
+              })}
+              {batch_designers.map(({ member_info, id }) => {
+                return (
+                  <motion.div
+                    variants={animateOnMobile && cardVariant}
+                    key={id}
+                  >
+                    <PersonCard
+                      cardDetails={member_info}
+                      bgColord={true}
+                      bgColor={'blue'}
+                      rounded={true}
+                      roundedSmall={true}
+                      settings={settings}
+                    />
+                  </motion.div>
+                );
+              })}
+              {batch_mentees.map(({ member_info, id }) => {
+                return (
+                  <motion.div
+                    variants={animateOnMobile && cardVariant}
+                    key={id}
+                  >
+                    <PersonCard
+                      cardDetails={member_info}
+                      bgColord={true}
+                      bgColor={'green'}
                       rounded={true}
                       roundedSmall={true}
                       settings={settings}
