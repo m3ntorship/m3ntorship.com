@@ -69,7 +69,6 @@ const cardVariant = {
 
 export const Team = ({
   data,
-  team_members,
   settings,
   batch_mentees,
   batch_mentors,
@@ -92,6 +91,23 @@ export const Team = ({
       side_image: { url },
       description
     } = data;
+
+    const GroupOfPersonCards = ({ members, color }) => {
+      return members.map(({ member_info, id }) => {
+        return (
+          <motion.div variants={animateOnMobile && cardVariant} key={id}>
+            <PersonCard
+              cardDetails={member_info}
+              bgColord={true}
+              bgColor={color}
+              rounded={true}
+              roundedSmall={true}
+              settings={settings}
+            />
+          </motion.div>
+        );
+      });
+    };
     return (
       <section className="team relative text-center container">
         <div className="absolute graph right-0 hidden xl:block">
@@ -134,57 +150,9 @@ export const Team = ({
               initial="initial"
               animate={cardsInView ? 'shown' : null}
             >
-              {batch_mentors.map(({ member_info, id }) => {
-                return (
-                  <motion.div
-                    variants={animateOnMobile && cardVariant}
-                    key={id}
-                  >
-                    <PersonCard
-                      cardDetails={member_info}
-                      bgColord={true}
-                      bgColor={'blue'}
-                      rounded={true}
-                      roundedSmall={true}
-                      settings={settings}
-                    />
-                  </motion.div>
-                );
-              })}
-              {batch_designers.map(({ member_info, id }) => {
-                return (
-                  <motion.div
-                    variants={animateOnMobile && cardVariant}
-                    key={id}
-                  >
-                    <PersonCard
-                      cardDetails={member_info}
-                      bgColord={true}
-                      bgColor={'blue'}
-                      rounded={true}
-                      roundedSmall={true}
-                      settings={settings}
-                    />
-                  </motion.div>
-                );
-              })}
-              {batch_mentees.map(({ member_info, id }) => {
-                return (
-                  <motion.div
-                    variants={animateOnMobile && cardVariant}
-                    key={id}
-                  >
-                    <PersonCard
-                      cardDetails={member_info}
-                      bgColord={true}
-                      bgColor={'green'}
-                      rounded={true}
-                      roundedSmall={true}
-                      settings={settings}
-                    />
-                  </motion.div>
-                );
-              })}
+              <GroupOfPersonCards members={batch_mentors} color={'blue'} />
+              <GroupOfPersonCards members={batch_designers} color={'blue'} />
+              <GroupOfPersonCards members={batch_mentees} color={'green'} />
             </motion.div>
           </div>
         )}
