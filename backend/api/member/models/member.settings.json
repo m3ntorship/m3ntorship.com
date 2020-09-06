@@ -20,6 +20,10 @@
     "batches": {
       "via": "batch_mentees",
       "collection": "batch"
+    },
+    "members": {
+      "via": "batch_designers",
+      "collection": "batch"
     }
   }
 }

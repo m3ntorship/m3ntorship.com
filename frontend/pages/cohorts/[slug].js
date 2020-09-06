@@ -45,7 +45,12 @@ const BatchPage = ({
   );
 
   // destructure Batch Projects
-  const batchProjects = batchData[0].projects;
+  const {
+    projects: batchProjects,
+    batch_mentees,
+    batch_mentors,
+    batch_designers
+  } = batchData[0];
 
   // all team images and titles
   const team_images = team_members.map(
@@ -112,6 +117,9 @@ const BatchPage = ({
         <Team
           data={batchTeamData}
           team_members={team_members}
+          batch_mentees={batch_mentees}
+          batch_mentors={batch_mentors}
+          batch_designers={batch_designers}
           settings={settings}
         />
         <JoinUs data={joinUsData} settings={settings} />
