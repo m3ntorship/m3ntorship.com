@@ -45,7 +45,7 @@ const ProjectCard = ({ data, settings }) => {
       variants={animateOnMobile && cardVaruants}
       initial={isMobile ? 'scale' : ''}
       animate={isMobile && cardInView ? 'unScale' : ''}
-      className="project-card bg-c1200 p-8"
+      className="project-card bg-c1200 p-8 h-full"
     >
       <div className="flex items-center justify-center">
         {project_name && (
