@@ -36,13 +36,18 @@
       "required": false
     },
     "projects": {
-      "via": "batches",
-      "collection": "project"
+      "collection": "project",
+      "via": "batches"
     },
     "batch_header": {
       "type": "component",
       "repeatable": false,
       "component": "general.batch-header"
+    },
+    "batch_designers": {
+      "collection": "member",
+      "via": "members",
+      "dominant": true
     }
   }
 }
