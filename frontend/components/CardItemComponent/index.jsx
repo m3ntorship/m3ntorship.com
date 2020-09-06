@@ -17,8 +17,9 @@ const CardItem = ({ data }) => {
     project_stack
   } = data;
   return (
-    <div className="repo__card my-3 border py-10 px-6 xl:px-12 border-c100">
-      <div>
+    <div className="repo__card border py-10 px-6 xl:px-12 border-c100 h-full">
+      <div className='flex justify-between flex-col h-full'>
+        <div>
         {project_name && (
           <Heading
             as="h2"
@@ -31,54 +32,57 @@ const CardItem = ({ data }) => {
         {project_stack && (
           <span className="mt-6  text-c700 text-base">{project_stack}</span>
         )}
-        {summary && <p className="mt-6 text-sm">{summary}</p>}
-        <div className="mt-6">
-          {link && (
-            <Button
-              href={link.url}
-              textColor="white"
-              bgColor="black"
-              customClassName="m-auto py-2 h-20 uppercase w-full sm:w-full"
-              btnSize="large"
-            >
-              <span className="mr-4">
-                <LazyImage
-                  className="w-8"
-                  src="/static/images/github.png"
-                  alt="github logo"
-                />
-              </span>
-              {link.name}
-            </Button>
-          )}
         </div>
-        <div className="mt-6">
-          {project_slug && (
-            <Link
-              href="/projects/[slug]"
-              as={`/projects/${project_slug}`}
-              passHref
-            >
+        {summary && <p className="mt-6 text-sm">{summary}</p>}
+        <div className=''>
+          <div className="mt-6">
+            {link && (
               <Button
-                textColor="black"
-                bgColor="gray"
-                customClassName="custom"
-                fontWeight="normal"
-                customClassName="underline m-auto py-4 h-20 w-full sm:w-full"
-                textSize="medium"
+                href={link.url}
+                textColor="white"
+                bgColor="black"
+                customClassName="m-auto py-2 h-20 uppercase w-full sm:w-full"
                 btnSize="large"
               >
-                VIEW PROJECT
-                <span className="ml-2 w-1/6">
+                <span className="mr-4">
                   <LazyImage
-                    className="inline-block w-8 h-5"
-                    src="/static/images/right-arrow.svg"
-                    alt="right arrow"
+                    className="w-8"
+                    src="/static/images/github.png"
+                    alt="github logo"
                   />
                 </span>
+                {link.name}
               </Button>
-            </Link>
-          )}
+            )}
+          </div>
+          <div className="mt-6">
+            {project_slug && (
+              <Link
+                href="/projects/[slug]"
+                as={`/projects/${project_slug}`}
+                passHref
+              >
+                <Button
+                  textColor="black"
+                  bgColor="gray"
+                  customClassName="custom"
+                  fontWeight="normal"
+                  customClassName="underline m-auto py-4 h-20 w-full sm:w-full"
+                  textSize="medium"
+                  btnSize="large"
+                >
+                  VIEW PROJECT
+                  <span className="ml-2 w-1/6">
+                    <LazyImage
+                      className="inline-block w-8 h-5"
+                      src="/static/images/right-arrow.svg"
+                      alt="right arrow"
+                    />
+                  </span>
+                </Button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>
