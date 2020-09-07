@@ -28,10 +28,10 @@ const Sponsors = ({
         />
       )}
       <Head>{checkSeoData(metaData, settings)}</Head>
-      <div className="my-10 md:my-0">
+      <div className="my-10 md:my-0 container">
         <Heading
           type={HEADING_OPTIONS.TYPE.MAIN_LARGE}
-          textAlign={HEADING_OPTIONS.TEXT_ALIGN.CENTER}
+          textAlign={HEADING_OPTIONS.TEXT_ALIGN.LEFT}
         >
           {title}
         </Heading>
