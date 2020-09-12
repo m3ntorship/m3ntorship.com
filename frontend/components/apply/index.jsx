@@ -151,7 +151,7 @@ const Apply = ({ data, inputFields, settings }) => {
         ) : (
           <div
             ref={ref}
-            style={{ height: '30rem' }}
+            style={{ height: '50rem' }}
             className="ExampleWidget mentee relative my-8"
           >
             <div className="hidden"></div>
