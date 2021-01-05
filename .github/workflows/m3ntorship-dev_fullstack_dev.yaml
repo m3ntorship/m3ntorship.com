@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: develop to m3ntorship-dev cluster
+=======
+name: DEV
+>>>>>>> 706b34b947be48fa08e16331b92abb7912074254
 
 on:
   push:
