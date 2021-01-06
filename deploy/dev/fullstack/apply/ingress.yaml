@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
@@ -18,14 +18,20 @@ spec:
     - host: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}-fe.m3ntorship.net'
       http:
         paths:
-          - backend:
-              serviceName: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
-              servicePort: 80
-            path: /
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
+                port:
+                  number: 80
     - host: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}-be.m3ntorship.net'
       http:
         paths:
-          - backend:
-              serviceName: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
-              servicePort: 81
-            path: /
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
+                port:
+                  number: 81
