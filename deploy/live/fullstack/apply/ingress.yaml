@@ -43,3 +43,17 @@ spec:
               serviceName: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
               servicePort: 81
             path: /
+    - host: 'm3ntorship.tech'
+      http:
+        paths:
+          - backend:
+              serviceName: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
+              servicePort: 80
+            path: /
+    - host: 'be.m3ntorship.tech'
+      http:
+        paths:
+          - backend:
+              serviceName: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
+              servicePort: 81
+            path: /
