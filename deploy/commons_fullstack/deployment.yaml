@@ -26,7 +26,6 @@ spec:
       containers:
         - name: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}-backend'
           image: 'm3ntorshipci/m3ntorshipcom-backend:{{{M3_VERSION}}}'
-          imagePullPolicy: Always
           envFrom:
             - secretRef:
                 name: '{{{M3_PROJECT}}}-{{{M3_COMPONENET}}}-{{{M3_ENVIRONMENT}}}'
