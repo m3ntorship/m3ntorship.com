@@ -101,7 +101,7 @@ jobs:
         env:
           M3_DEPLOYMENT_PATH: deploy/live/fullstack
           TEMP_DIR: temp
-          M3_NAMESPACE: default
+          M3_NAMESPACE: m3ntorshipcom-live
           M3_PROJECT: m3ntorshipcom
           M3_COMPONENET: fullstack
           M3_ENVIRONMENT: live
