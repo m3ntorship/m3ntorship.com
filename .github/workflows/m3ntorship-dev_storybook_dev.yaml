@@ -1,15 +1,15 @@
-name: deploy storybook to playground cluster
+name: deploy storybook to m3ntorship-dev cluster
 
 # trigger
 on:
   push:
     branches:
       - develop
-      - playground-deployment-storybook
+      
 env:
   # fixed deployment envs
   M3_IMAGE: m3ntorship/m3ntorshipcom-storybook
-  M3_DOCKER_FILE: Dockerfile.playground.storybook
+  M3_DOCKER_FILE: Dockerfile.m3ntorship-dev.storybook
 
 jobs:
   prepare:
@@ -74,7 +74,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/.kube
-          echo ${{ secrets.KUBE_CONFIG }} | base64 -d -i > ~/.kube/config
+          echo "${{ secrets.KUBE_CONFIG_DEV }}" | base64 -d -i > ~/.kube/config
       - name: install moustache
         run: |
           curl -sSL https://git.io/get-mo -o mo
@@ -87,7 +87,7 @@ jobs:
         env:
           M3_DEPLOYMENT_PATH: deploy/storybook
           TEMP_DIR: temp
-          M3_NAMESPACE: default
+          M3_NAMESPACE: m3ntorshipcom-dev
           M3_PROJECT: m3ntorshipcom
           M3_COMPONENET: storybook
           M3_ENVIRONMENT: dev

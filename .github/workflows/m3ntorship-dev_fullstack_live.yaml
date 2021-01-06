@@ -15,8 +15,8 @@ jobs:
       version: ${{ steps.prepare.outputs.version }}
       image_frontend: m3ntorshipci/m3ntorshipcom-frontend
       image_backend: m3ntorshipci/m3ntorshipcom-backend
-      dockerfile_frontend: Dockerfile.playground.frontend
-      dockerfile_backend: Dockerfile.playground.backend
+      dockerfile_frontend: Dockerfile.m3ntorship-dev.frontend
+      dockerfile_backend: Dockerfile.m3ntorship-dev.backend
     steps:
     - uses: actions/checkout@v2
     - id: prepare
