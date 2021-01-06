@@ -3,8 +3,8 @@ name: DEV
 on:
   push:
     branches:
-      - develop
-      - deployment-fullstack-workflows
+      - xdevelop
+      - xdeployment-fullstack-workflows
 
 jobs: 
   prepare:
