@@ -14,7 +14,7 @@
     "knex": "<0.20.0",
     "mongoose": "^5.9.25",
     "sqlite3": "latest",
-    "strapi": "3.0.6",
+    "strapi": "3.2.5",
     "strapi-admin": "3.0.6",
     "strapi-connector-bookshelf": "3.0.6",
     "strapi-connector-mongoose": "^3.0.6",
