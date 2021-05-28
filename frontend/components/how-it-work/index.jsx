@@ -85,6 +85,7 @@ const HowItWork = ({ data, settings }) => {
                       boxShadow={true}
                       isImageFull={true}
                       settings={settings}
+                      index={index}
                     />
                   </div>
                 </motion.div>
